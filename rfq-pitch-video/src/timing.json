@@ -1,0 +1,198 @@
+{
+  "provider": "Piper (en-us-ryan-high)",
+  "rate": 1.0131,
+  "fps": 30,
+  "totalSeconds": 30.0,
+  "speechEnd": 28.12,
+  "segments": [
+    {
+      "id": "S1",
+      "start": 0.35,
+      "end": 8.276,
+      "duration": 7.926,
+      "clauses": [
+        {
+          "text": "Two hundred suppliers reply to an RFQ.",
+          "start": 0.35,
+          "end": 2.695
+        },
+        {
+          "text": "PDFs, spreadsheets, prices buried in emails.",
+          "start": 2.82,
+          "end": 6.123
+        },
+        {
+          "text": "Today, that's hours of manual entry.",
+          "start": 6.253,
+          "end": 8.276
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "start": 8.876,
+      "end": 9.932,
+      "duration": 1.057,
+      "clauses": [
+        {
+          "text": "Now, one prompt.",
+          "start": 8.876,
+          "end": 9.932
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "start": 10.382,
+      "end": 18.835,
+      "duration": 8.452,
+      "clauses": [
+        {
+          "text": "Claude reads the replies with read-only access,",
+          "start": 10.382,
+          "end": 12.686
+        },
+        {
+          "text": "matches each one to its RFQ,",
+          "start": 12.761,
+          "end": 14.813
+        },
+        {
+          "text": "fills our template to our rules,",
+          "start": 14.95,
+          "end": 16.683
+        },
+        {
+          "text": "and checks every file before it's saved.",
+          "start": 16.756,
+          "end": 18.835
+        }
+      ]
+    },
+    {
+      "id": "S4",
+      "start": 19.335,
+      "end": 23.178,
+      "duration": 3.843,
+      "clauses": [
+        {
+          "text": "You get a folder ready to import,",
+          "start": 19.335,
+          "end": 20.827
+        },
+        {
+          "text": "and a report that flags what needs a human eye.",
+          "start": 21.001,
+          "end": 23.178
+        }
+      ]
+    },
+    {
+      "id": "S5",
+      "start": 23.728,
+      "end": 28.12,
+      "duration": 4.393,
+      "clauses": [
+        {
+          "text": "Hours of data entry become minutes of review.",
+          "start": 23.728,
+          "end": 26.154
+        },
+        {
+          "text": "Let's pilot it on one folio.",
+          "start": 26.278,
+          "end": 28.12
+        }
+      ]
+    }
+  ],
+  "sceneStarts": [
+    0.0,
+    8.776,
+    10.282,
+    19.235,
+    23.628
+  ],
+  "checkTicks": [
+    16.876,
+    17.414,
+    17.952,
+    18.49
+  ],
+  "captions": [
+    {
+      "text": "Two hundred suppliers reply to an RFQ.",
+      "start": 0.35,
+      "end": 2.695
+    },
+    {
+      "text": "PDFs, spreadsheets, prices buried in emails.",
+      "start": 2.82,
+      "end": 6.123
+    },
+    {
+      "text": "Today, that's hours of manual entry.",
+      "start": 6.253,
+      "end": 8.276
+    },
+    {
+      "text": "Now, one prompt.",
+      "start": 8.876,
+      "end": 9.932
+    },
+    {
+      "text": "Claude reads the replies with read-only access,",
+      "start": 10.382,
+      "end": 12.686
+    },
+    {
+      "text": "matches each one to its RFQ,",
+      "start": 12.761,
+      "end": 14.813
+    },
+    {
+      "text": "fills our template to our rules,",
+      "start": 14.95,
+      "end": 16.683
+    },
+    {
+      "text": "and checks every file before it's saved.",
+      "start": 16.756,
+      "end": 18.835
+    },
+    {
+      "text": "You get a folder ready to import,",
+      "start": 19.335,
+      "end": 20.827
+    },
+    {
+      "text": "and a report that flags",
+      "start": 21.001,
+      "end": 22.089
+    },
+    {
+      "text": "what needs a human eye.",
+      "start": 22.089,
+      "end": 23.178
+    },
+    {
+      "text": "Hours of data entry",
+      "start": 23.728,
+      "end": 24.775
+    },
+    {
+      "text": "become minutes of review.",
+      "start": 24.775,
+      "end": 26.154
+    },
+    {
+      "text": "Let's pilot it on one folio.",
+      "start": 26.278,
+      "end": 28.12
+    }
+  ],
+  "mix": {
+    "lufs": -15.97,
+    "truePeak": -3.27
+  }
+}

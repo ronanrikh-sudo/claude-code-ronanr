@@ -1,0 +1,56 @@
+1
+00:00:00,350 --> 00:00:02,695
+Two hundred suppliers reply to an RFQ.
+
+2
+00:00:02,820 --> 00:00:06,123
+PDFs, spreadsheets, prices buried in emails.
+
+3
+00:00:06,253 --> 00:00:08,276
+Today, that's hours of manual entry.
+
+4
+00:00:08,876 --> 00:00:09,932
+Now, one prompt.
+
+5
+00:00:10,382 --> 00:00:12,686
+Claude reads the replies with read-only access,
+
+6
+00:00:12,761 --> 00:00:14,813
+matches each one to its RFQ,
+
+7
+00:00:14,950 --> 00:00:16,683
+fills our template to our rules,
+
+8
+00:00:16,756 --> 00:00:18,835
+and checks every file before it's saved.
+
+9
+00:00:19,335 --> 00:00:20,827
+You get a folder ready to import,
+
+10
+00:00:21,001 --> 00:00:22,089
+and a report that flags
+
+11
+00:00:22,089 --> 00:00:23,178
+what needs a human eye.
+
+12
+00:00:23,728 --> 00:00:24,775
+Hours of data entry
+
+13
+00:00:24,775 --> 00:00:26,154
+become minutes of review.
+
+14
+00:00:26,278 --> 00:00:28,120
+Let's pilot it on one folio.
+
