@@ -1,198 +1,205 @@
 {
-  "provider": "Piper (en-us-ryan-high)",
-  "rate": 1.0131,
+  "provider": "ElevenLabs take (voiceover.mp3)",
   "fps": 30,
-  "totalSeconds": 30.0,
-  "speechEnd": 28.12,
+  "totalSeconds": 40,
+  "speechEnd": 38.242,
   "segments": [
     {
       "id": "S1",
-      "start": 0.35,
-      "end": 8.276,
-      "duration": 7.926,
+      "start": 0.4,
+      "end": 10.485,
+      "duration": 10.085,
       "clauses": [
         {
           "text": "Two hundred suppliers reply to an RFQ.",
-          "start": 0.35,
-          "end": 2.695
+          "start": 0.4,
+          "end": 3.132
         },
         {
           "text": "PDFs, spreadsheets, prices buried in emails.",
-          "start": 2.82,
-          "end": 6.123
+          "start": 3.634,
+          "end": 7.358
         },
         {
           "text": "Today, that's hours of manual entry.",
-          "start": 6.253,
-          "end": 8.276
+          "start": 7.888,
+          "end": 10.485
         }
       ]
     },
     {
       "id": "S2",
-      "start": 8.876,
-      "end": 9.932,
-      "duration": 1.057,
+      "start": 10.967,
+      "end": 12.419,
+      "duration": 1.452,
       "clauses": [
         {
           "text": "Now, one prompt.",
-          "start": 8.876,
-          "end": 9.932
+          "start": 10.967,
+          "end": 12.419
         }
       ]
     },
     {
       "id": "S3",
-      "start": 10.382,
-      "end": 18.835,
-      "duration": 8.452,
+      "start": 13.004,
+      "end": 23.38,
+      "duration": 10.376,
       "clauses": [
         {
-          "text": "Claude reads the replies with read-only access,",
-          "start": 10.382,
-          "end": 12.686
+          "text": "Claude reads every reply in Outlook with read-only access,",
+          "start": 13.004,
+          "end": 16.518
         },
         {
-          "text": "matches each one to its RFQ,",
-          "start": 12.761,
-          "end": 14.813
+          "text": "enters the data into our Excel template,",
+          "start": 16.895,
+          "end": 18.965
         },
         {
-          "text": "fills our template to our rules,",
-          "start": 14.95,
-          "end": 16.683
+          "text": "flags any notes or errors,",
+          "start": 19.278,
+          "end": 21.027
         },
         {
-          "text": "and checks every file before it's saved.",
-          "start": 16.756,
-          "end": 18.835
+          "text": "and gets it ready for CM integration.",
+          "start": 21.302,
+          "end": 23.38
         }
       ]
     },
     {
       "id": "S4",
-      "start": 19.335,
-      "end": 23.178,
-      "duration": 3.843,
+      "start": 23.96,
+      "end": 31.034,
+      "duration": 7.074,
       "clauses": [
         {
-          "text": "You get a folder ready to import,",
-          "start": 19.335,
-          "end": 20.827
+          "text": "You get a folder that's ready to integrate straight into CM,",
+          "start": 23.96,
+          "end": 27.17
         },
         {
-          "text": "and a report that flags what needs a human eye.",
-          "start": 21.001,
-          "end": 23.178
+          "text": "and a report that flags what needs a human eye for a further check.",
+          "start": 27.488,
+          "end": 31.034
         }
       ]
     },
     {
       "id": "S5",
-      "start": 23.728,
-      "end": 28.12,
-      "duration": 4.393,
+      "start": 31.598,
+      "end": 38.242,
+      "duration": 6.644,
       "clauses": [
         {
           "text": "Hours of data entry become minutes of review.",
-          "start": 23.728,
-          "end": 26.154
+          "start": 31.598,
+          "end": 34.338
         },
         {
-          "text": "Let's pilot it on one folio.",
-          "start": 26.278,
-          "end": 28.12
+          "text": "All by using Claude Code to automate repeat processes.",
+          "start": 34.883,
+          "end": 38.242
         }
       ]
     }
   ],
-  "sceneStarts": [
-    0.0,
-    8.776,
-    10.282,
-    19.235,
-    23.628
-  ],
   "checkTicks": [
-    16.876,
-    17.414,
-    17.952,
-    18.49
+    21.402,
+    21.924,
+    22.445,
+    22.967
   ],
   "captions": [
     {
       "text": "Two hundred suppliers reply to an RFQ.",
-      "start": 0.35,
-      "end": 2.695
+      "start": 0.4,
+      "end": 3.132
     },
     {
       "text": "PDFs, spreadsheets, prices buried in emails.",
-      "start": 2.82,
-      "end": 6.123
+      "start": 3.634,
+      "end": 7.358
     },
     {
       "text": "Today, that's hours of manual entry.",
-      "start": 6.253,
-      "end": 8.276
+      "start": 7.888,
+      "end": 10.485
     },
     {
       "text": "Now, one prompt.",
-      "start": 8.876,
-      "end": 9.932
+      "start": 10.967,
+      "end": 12.419
     },
     {
-      "text": "Claude reads the replies with read-only access,",
-      "start": 10.382,
-      "end": 12.686
+      "text": "Claude reads every reply in",
+      "start": 13.004,
+      "end": 14.668
     },
     {
-      "text": "matches each one to its RFQ,",
-      "start": 12.761,
-      "end": 14.813
+      "text": "Outlook with read-only access,",
+      "start": 14.668,
+      "end": 16.518
     },
     {
-      "text": "fills our template to our rules,",
-      "start": 14.95,
-      "end": 16.683
+      "text": "enters the data into our Excel template,",
+      "start": 16.895,
+      "end": 18.965
     },
     {
-      "text": "and checks every file before it's saved.",
-      "start": 16.756,
-      "end": 18.835
+      "text": "flags any notes or errors,",
+      "start": 19.278,
+      "end": 21.027
     },
     {
-      "text": "You get a folder ready to import,",
-      "start": 19.335,
-      "end": 20.827
+      "text": "and gets it ready for CM integration.",
+      "start": 21.302,
+      "end": 23.38
     },
     {
-      "text": "and a report that flags",
-      "start": 21.001,
-      "end": 22.089
+      "text": "You get a folder that's ready",
+      "start": 23.96,
+      "end": 25.538
     },
     {
-      "text": "what needs a human eye.",
-      "start": 22.089,
-      "end": 23.178
+      "text": "to integrate straight into CM,",
+      "start": 25.538,
+      "end": 27.17
+    },
+    {
+      "text": "and a report that flags what needs",
+      "start": 27.488,
+      "end": 29.315
+    },
+    {
+      "text": "a human eye for a further check.",
+      "start": 29.315,
+      "end": 31.034
     },
     {
       "text": "Hours of data entry",
-      "start": 23.728,
-      "end": 24.775
+      "start": 31.598,
+      "end": 32.781
     },
     {
       "text": "become minutes of review.",
-      "start": 24.775,
-      "end": 26.154
+      "start": 32.781,
+      "end": 34.338
     },
     {
-      "text": "Let's pilot it on one folio.",
-      "start": 26.278,
-      "end": 28.12
+      "text": "All by using Claude Code",
+      "start": 34.883,
+      "end": 36.404
+    },
+    {
+      "text": "to automate repeat processes.",
+      "start": 36.404,
+      "end": 38.242
     }
   ],
   "mix": {
-    "lufs": -15.97,
-    "truePeak": -3.27
+    "lufs": -16.0,
+    "truePeak": -1.5
   }
 }

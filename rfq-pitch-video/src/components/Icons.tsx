@@ -94,3 +94,46 @@ export const TerminalIcon: React.FC<P> = (p) => (
     <path d="M7 9.5l3 2.5-3 2.5M12.5 15h4.5" />
   </Svg>
 );
+
+export const DatabaseIcon: React.FC<P> = (p) => (
+  <Svg {...p}>
+    <ellipse cx="12" cy="6" rx="7.5" ry="3" />
+    <path d="M4.5 6v12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3" />
+  </Svg>
+);
+
+export const SearchIcon: React.FC<P> = (p) => (
+  <Svg {...p}>
+    <circle cx="11" cy="11" r="6.5" />
+    <path d="M16 16l4.5 4.5" />
+  </Svg>
+);
+
+/** Eight-ray asterisk in the spirit of the ✻ glyph the Claude Code CLI uses. */
+export const Spark: React.FC<{ size?: number; color?: string; rotate?: number; style?: React.CSSProperties }> = ({
+  size = 64, color = "#D97757", rotate = 0, style,
+}) => (
+  <svg width={size} height={size} viewBox="-50 -50 100 100" style={{ display: "block", flexShrink: 0, ...style }}>
+    <g transform={`rotate(${rotate})`} fill={color}>
+      {Array.from({ length: 8 }, (_, i) => (
+        <path key={i} transform={`rotate(${i * 45})`}
+          d="M -5.5 -9 C -6.5 -22, -4.5 -38, 0 -46 C 4.5 -38, 6.5 -22, 5.5 -9 Z" />
+      ))}
+      <circle r={10} />
+    </g>
+  </svg>
+);
+
+/** App tiles: generic glyphs on each app's colour, so the UI reads as "our Outlook / our Excel". */
+export const AppTile: React.FC<{ app: "outlook" | "excel" | "cm"; size?: number }> = ({ app, size = 40 }) => {
+  const bg = app === "outlook" ? "#0F6CBD" : app === "excel" ? "#107C41" : "#2B3A55";
+  return (
+    <div style={{ width: size, height: size, borderRadius: size * 0.22, background: bg, display: "flex",
+      alignItems: "center", justifyContent: "center", boxShadow: "inset 0 -2px 0 rgba(0,0,0,0.18)", flexShrink: 0 }}>
+      {app === "outlook" && <Envelope size={size * 0.62} color="#fff" stroke={2} />}
+      {app === "excel" && <SheetIcon size={size * 0.62} color="#fff" stroke={2} />}
+      {app === "cm" && <span style={{ color: "#fff", fontWeight: 800, fontSize: size * 0.4, letterSpacing: -0.5,
+        fontFamily: "Inter, sans-serif" }}>CM</span>}
+    </div>
+  );
+};

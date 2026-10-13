@@ -1,5 +1,13 @@
-// Single place to re-brand the video. Swap ACCENT for the brand colour.
-export const ACCENT = "#4C8DFF";
+import timing from "./timing.json";
+
+// Single place to re-brand the video. Claude coral by default.
+export const ACCENT = "#D97757";
+
+// App colours used for the Outlook / Excel styled UI.
+export const OUTLOOK_BLUE = "#0F6CBD";
+export const EXCEL_GREEN = "#107C41";
+export const CLAUDE_IVORY = "#F0EEE6";
+export const CLAUDE_INK = "#141413";
 
 export const SHOW_CAPTIONS = true;
 // The close scene's kinetic type already says the VO line, so captions step aside there.
@@ -8,7 +16,7 @@ export const CAPTIONS_IN_CLOSE = false;
 export const WIDTH = 1920;
 export const HEIGHT = 1080;
 export const FPS = 30;
-export const DURATION_FRAMES = 900;
+export const DURATION_FRAMES = Math.round(timing.totalSeconds * FPS);
 
 export const C = {
   bg: "#060A14",

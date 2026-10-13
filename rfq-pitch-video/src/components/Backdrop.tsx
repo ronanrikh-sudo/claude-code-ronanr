@@ -1,6 +1,7 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { C, accent } from "../config";
+import { AD_START, sec } from "../timing";
 
 /** Navy depth gradient, a slow accent glow, film grain and a vignette. */
 export const Backdrop: React.FC<{ glow?: number }> = ({ glow = 1 }) => {
@@ -26,10 +27,12 @@ export const Backdrop: React.FC<{ glow?: number }> = ({ glow = 1 }) => {
 
 export const Grain: React.FC = () => {
   const frame = useCurrentFrame();
+  // The ivory ad world gets lighter grain and no dark vignette.
+  const ivory = Math.min(1, Math.max(0, (frame - sec(AD_START)) / 12));
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
       <svg width="100%" height="100%" viewBox="0 0 960 540" preserveAspectRatio="none"
-        style={{ opacity: 0.075, mixBlendMode: "overlay" }}>
+        style={{ opacity: 0.075 - 0.035 * ivory, mixBlendMode: ivory > 0.5 ? "multiply" : "overlay" }}>
         <filter id="grain">
           <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed={frame % 12} stitchTiles="stitch" />
           <feColorMatrix type="saturate" values="0" />
@@ -37,7 +40,7 @@ export const Grain: React.FC = () => {
         <rect width="960" height="540" filter="url(#grain)" />
       </svg>
       <AbsoluteFill
-        style={{ background: "radial-gradient(ellipse 85% 80% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%)" }}
+        style={{ opacity: 1 - 0.8 * ivory, background: "radial-gradient(ellipse 85% 80% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%)" }}
       />
     </AbsoluteFill>
   );

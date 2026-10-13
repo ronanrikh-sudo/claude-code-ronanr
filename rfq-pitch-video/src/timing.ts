@@ -26,8 +26,8 @@ export const wordTime = (clause: { text: string; start: number; end: number }, w
 
 const LEAD = 0.1; // cut a few frames ahead of the first word
 
-// Visual scenes (seconds). Scene 2 keeps the terminal on screen through
-// "Claude reads the replies with read-only access", then the work begins.
+// Visual scenes (seconds). Scene 2 keeps the Claude Code terminal on screen through
+// "Claude reads every reply in Outlook with read-only access", then Excel takes over.
 export const SCENES = {
   problem: { from: 0, to: S2.start - LEAD },
   prompt: { from: S2.start - LEAD, to: S3.clauses[1].start - LEAD },
@@ -35,3 +35,6 @@ export const SCENES = {
   output: { from: S4.start - LEAD, to: S5.start - LEAD },
   close: { from: S5.start - LEAD, to: timing.totalSeconds },
 };
+
+/** When the Claude Code ad's ivory world takes over (seconds). */
+export const AD_START = S5.clauses[1].start - 0.3;

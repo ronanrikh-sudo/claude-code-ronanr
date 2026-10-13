@@ -9,7 +9,8 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const out = path.join(root, "out");
 const silent = path.join(root, ".build", "video-silent.mp4");
-const final = path.join(out, "rfq-pitch-30s.mp4");
+const timing = JSON.parse(fs.readFileSync(path.join(root, "src", "timing.json"), "utf8"));
+const final = path.join(out, "rfq-pitch.mp4");
 const mix = path.join(root, "public", "audio", "mix.wav");
 const browserExecutable = process.env.REMOTION_BROWSER || undefined;
 fs.mkdirSync(path.dirname(silent), { recursive: true });
@@ -31,7 +32,7 @@ await renderMedia({
 
 // The mix is already mastered (-16 LUFS, < -1 dBTP); mux it untouched apart from AAC encoding.
 execFileSync("ffmpeg", ["-y", "-v", "error", "-i", silent, "-i", mix, "-map", "0:v", "-map", "1:a",
-  "-c:v", "copy", "-c:a", "aac", "-b:a", "320k", "-ar", "48000", "-t", "30", "-movflags", "+faststart", final]);
+  "-c:v", "copy", "-c:a", "aac", "-b:a", "320k", "-ar", "48000", "-t", String(timing.totalSeconds), "-movflags", "+faststart", final]);
 
 // ---- checks
 const probe = JSON.parse(execFileSync("ffprobe", ["-v", "error", "-show_entries",
@@ -52,7 +53,7 @@ const report = {
   truePeakdBTP: Number(loud.input_tp),
 };
 console.log(JSON.stringify(report, null, 2));
-const ok = Math.abs(duration - 30) <= 0.2 && !!audio && report.truePeakdBTP <= -1 && Math.abs(report.loudnessLUFS + 16) <= 1;
+const ok = Math.abs(duration - timing.totalSeconds) <= 0.2 && !!audio && report.truePeakdBTP <= -1 && Math.abs(report.loudnessLUFS + 16) <= 1;
 if (!ok) {
   console.error("QC FAILED");
   process.exit(1);
