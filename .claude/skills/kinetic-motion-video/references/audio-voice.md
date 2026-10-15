@@ -12,10 +12,21 @@ The voice-over is the clock for the whole film. This file covers writing the scr
 
 ## Choosing the voice
 
-Use this priority order, and tell the user which voice you used:
+**Cast the voice from the art direction**, like the look. Decide gender, age, accent and energy from the audience and tone, unless the user specifies them:
+
+| Direction / tone | Voice brief |
+|---|---|
+| Midnight Signal, Corporate Clean (pitches, B2B) | warm, confident, professional narrator; mid pace |
+| Editorial Light, Luxury Noir | calm, low-to-mid pitch, unhurried, refined; often British or neutral |
+| Electric, Swiss Bold (launches) | energetic, crisp, younger; slightly faster |
+| Warm Organic | gentle, friendly, smiling delivery |
+| Playful Pop | bright, upbeat, characterful |
+| Local audience (e.g. Australian, UK) | match the accent when the library has a natural one |
+
+Provider priority:
 
 1. **ElevenLabs connector (MCP)**, when available in the session (tools named `mcp__ElevenLabs__creative_*`):
-   1. `creative_list_voices` with `gender`, `languages: ["en"]` and `sort: "usage_character_count_1y"` lists the most-used voices first. Pick to the brief: a warm professional narrator for pitches, an accent if requested. A proven default is **"Bella – Professional, Bright, Warm"** (`hpp4J3VqNfWAUOO0d1Us`). For an Australian male, "Charlie" is a premade option, but check that it is listed.
+   1. `creative_list_voices` with `gender`, `languages: ["en"]`, `sort: "usage_character_count_1y"`, plus `accent`, `age`, `descriptives` (e.g. `calm`, `confident`, `upbeat`) and `use_cases` to match the brief. Pick from the top results, preferring high-usage voices; they're the most natural. A proven warm professional female default is "Bella – Professional, Bright, Warm" (`hpp4J3VqNfWAUOO0d1Us`), but cast fresh for each project.
    2. `creative_generate_speech` with `model_id: "eleven_v4"`, `voice_id`, and `prompt` set to the full script, paragraphs separated by blank lines. It returns several takes on one flow (keep the default count).
    3. Poll `creative_get_flow_run_status(flow_id, session_ids)` about every 3 s until all takes are complete. One take may hit a concurrency limit and lag; you don't have to wait for it.
    4. Download each `content_url` with `curl` (they're signed and expire in about 2 h). Save the URLs to a file and loop over them, because they're too long to paste inline safely.
@@ -39,8 +50,15 @@ Use this priority order, and tell the user which voice you used:
 
 ## Music and mastering
 
-- **Pad**: synthesised in numpy, with three detuned partials per chord tone, a low-passed noise bed, slow swell and a fade in and out. There is one chord per segment, moving from tension to lift to resolution, with the resolving chord on the last segment. No licensed music is needed.
-- Level: the pad sits about **19 dB under the voice RMS**, and an envelope follower ducks it a further 44% while the voice speaks.
+- **Pad**: synthesised in numpy, with three detuned partials per chord tone, a low-passed noise bed, slow swell and a fade in and out. There is one chord per segment, and the mood's resolving chord falls on the last segment. No licensed music is needed.
+- **Mood**, set from the art direction in `script.json → music.mood`:
+  - `warm`: major, tension to resolve; pitches, explainers.
+  - `bright`: lifted and optimistic; launches, consumer, pop.
+  - `dark`: minor and cinematic; dramatic reveals, Electric or Noir.
+  - `minimal`: open fifths, barely there; editorial, luxury.
+  - `none`: voice only.
+- **Level**: `music.level_db` (default −19) is the pad relative to the voice RMS. Go to −16 for punchy or social cuts, and −22 for very calm or editorial ones. An envelope follower ducks the pad a further 44% while the voice speaks.
+- If the user supplies licensed music, mix it in place of the pad at a similar level, with the same ducking.
 - **Ticks**: 90 ms sine blips (1320 + 1980 Hz, fast decay) about 14 dB under the voice, only on checklist ticks.
 - **Master**: two-pass `loudnorm` to **−16 LUFS integrated, −1.5 dBTP**. `render.mjs` muxes the mastered WAV untouched (AAC 320k) and re-checks: −16 ±1 LUFS, true peak ≤ −1 dBTP.
 

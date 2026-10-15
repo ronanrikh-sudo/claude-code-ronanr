@@ -3,7 +3,7 @@
 // the accent line lands. Hold it long enough to read before the next cut.
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-import { ACCENT, C, FONT } from "../config";
+import { display, FONTS, THEME } from "../theme";
 import { KINETIC } from "../content";
 import { sec, T, type Clause } from "../timing";
 import type { SceneProps } from "../Video";
@@ -42,18 +42,18 @@ export const KineticLine: React.FC<SceneProps> = ({ from, to }) => {
   const exit = ramp(frame, end - 8, end);
 
   return (
-    <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", fontFamily: FONT, opacity: 1 - exit,
+    <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", fontFamily: FONTS.body, opacity: 1 - exit,
       filter: `blur(${exit * 10}px)`, transform: `scale(${interpolate(frame, [offset, end], [1.04, 1], clamp)})` }}>
-      <div style={{ fontSize: 124, fontWeight: 760, letterSpacing: -4.5, lineHeight: 1.12, textAlign: "center", color: C.text }}>
+      <div style={{ ...display(124), lineHeight: 1.12, textAlign: "center", color: THEME.text }}>
         <div style={{ opacity: 1 - 0.55 * dim }}>
           {KINETIC.from.map((w, i) => <Word key={i} text={w} at={fromTimes[i]} frame={frame} />)}
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 34, marginTop: 6 }}>
           <svg width={130} height={70} viewBox="0 0 130 70" style={{ opacity: arrow > 0 ? 1 : 0 }}>
-            <path d="M6 35 H118" stroke={ACCENT} strokeWidth={10} strokeLinecap="round" strokeDasharray={112} strokeDashoffset={112 * (1 - arrow)} />
-            <path d="M92 12 L120 35 L92 58" stroke={ACCENT} strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" fill="none" opacity={ramp(arrow, 0.6, 1)} />
+            <path d="M6 35 H118" stroke={THEME.accent} strokeWidth={10} strokeLinecap="round" strokeDasharray={112} strokeDashoffset={112 * (1 - arrow)} />
+            <path d="M92 12 L120 35 L92 58" stroke={THEME.accent} strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" fill="none" opacity={ramp(arrow, 0.6, 1)} />
           </svg>
-          <div>{KINETIC.to.map((w, i) => <Word key={i} text={w} at={toTimes[i]} frame={frame} color={ACCENT} />)}</div>
+          <div>{KINETIC.to.map((w, i) => <Word key={i} text={w} at={toTimes[i]} frame={frame} color={THEME.accent} />)}</div>
         </div>
       </div>
     </AbsoluteFill>

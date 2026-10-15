@@ -13,15 +13,16 @@ import { Finale } from "./scenes/Finale";
 export type SceneProps = { from: number; to: number };
 
 // ----------------------------------------------------------------- scene plan
-// Each scene starts on a VO cue: "S2" = segment start, "S3.1" = clause 1 of S3.
-// Scenes run until the next cue. captions:false hides captions where the scene's
+// Choose and order scenes for THIS project's story (see references/scene-recipes.md);
+// these five are only starting points. Each scene starts on a VO cue: "S2" = segment
+// start, "S3.1" = clause 1 of S3. Scenes run until the next cue. captions:false hides captions where the scene's
 // own kinetic type already says the line.
-const PLAN: { cue: string; Scene: React.FC<SceneProps>; captions?: boolean; light?: boolean }[] = [
+const PLAN: { cue: string; Scene: React.FC<SceneProps>; captions?: boolean; finale?: boolean }[] = [
   { cue: "S1", Scene: Hook },
   { cue: "S2", Scene: Terminal },
   { cue: "S3", Scene: Checklist },
   { cue: "S4", Scene: KineticLine, captions: false },
-  { cue: "S5", Scene: Finale, captions: false, light: true },
+  { cue: "S5", Scene: Finale, captions: false, finale: true },
 ];
 
 export const SCENES = PLAN.map((p, i) => ({
@@ -30,7 +31,7 @@ export const SCENES = PLAN.map((p, i) => ({
   to: i === PLAN.length - 1 ? T.totalSeconds : cue(PLAN[i + 1].cue) - LEAD,
 }));
 
-const lightFrom = SCENES.find((s) => s.light)?.from ?? null;
+const finaleFrom = SCENES.find((s) => s.finale)?.from ?? null;
 
 export const Main: React.FC = () => (
   <AbsoluteFill>
@@ -40,7 +41,7 @@ export const Main: React.FC = () => (
         <Scene from={from} to={to} />
       </Sequence>
     ))}
-    <Grain lightFrom={lightFrom} />
+    <Grain finaleFrom={finaleFrom} />
     {SHOW_CAPTIONS && <Captions hidden={SCENES.filter((s) => s.captions === false).map((s) => [s.from, s.to])} />}
     <Audio src={staticFile("audio/mix.wav")} />
   </AbsoluteFill>

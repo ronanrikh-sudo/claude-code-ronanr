@@ -26,8 +26,8 @@ export const CheckIcon: React.FC<P & { progress?: number }> = ({ progress = 1, .
   <Svg {...p}><path d="M5 12.5l4.3 4.3L19 7.2" strokeDasharray={22} strokeDashoffset={22 * (1 - progress)} /></Svg>
 );
 
-/** Eight-ray asterisk spark: the finale's brand mark placeholder. */
-export const Spark: React.FC<{ size?: number; color?: string; rotate?: number }> = ({ size = 64, color = "#D97757", rotate = 0 }) => (
+/** Eight-ray asterisk: placeholder brand mark / signature device. Swap for the user's logo SVG or the project's own motif. */
+export const Spark: React.FC<{ size?: number; color?: string; rotate?: number }> = ({ size = 64, color = "currentColor", rotate = 0 }) => (
   <svg width={size} height={size} viewBox="-50 -50 100 100" style={{ display: "block", flexShrink: 0 }}>
     <g transform={`rotate(${rotate})`} fill={color}>
       {Array.from({ length: 8 }, (_, i) => (

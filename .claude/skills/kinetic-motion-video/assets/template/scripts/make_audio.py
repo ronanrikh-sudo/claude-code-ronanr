@@ -273,8 +273,18 @@ def lowpass(x: np.ndarray, cutoff: float) -> np.ndarray:
     return sosfilt(butter(2, cutoff, btype="low", fs=SR, output="sos"), x)
 
 
-# Tension -> lift -> resolve, cycled if there are more segments.
-CHORDS = [[47, 54, 57, 61, 62], [43, 50, 54, 59], [38, 50, 54, 57, 64], [43, 50, 54, 57, 62], [38, 50, 54, 57, 61, 64]]
+# Pad moods (script.json -> "music": {"mood": ..., "level_db": -19}). Each is a list of
+# chords (MIDI notes); the last chord is the resolve used on the final segment, the rest
+# cycle across the earlier segments. Pick the mood from the art direction.
+MOODS = {
+    "warm":    [[47, 54, 57, 61, 62], [43, 50, 54, 59], [38, 50, 54, 57, 64], [43, 50, 54, 57, 62], [38, 50, 54, 57, 61, 64]],  # D major, tension -> resolve
+    "bright":  [[45, 52, 57, 61, 64], [41, 48, 53, 57, 64], [43, 50, 55, 59, 62], [48, 55, 60, 64, 67]],                       # lifted, optimistic
+    "dark":    [[40, 47, 52, 55, 59], [36, 43, 48, 52, 55], [38, 45, 50, 53, 57], [40, 47, 52, 55, 59, 62]],                   # E minor, cinematic
+    "minimal": [[38, 45, 50], [38, 45, 52], [38, 45, 50, 57]],                                                               # open fifths, editorial/luxury
+}
+MUSIC = SCRIPT.get("music", {})
+MOOD = MUSIC.get("mood", "warm")
+PAD_LEVEL_DB = float(MUSIC.get("level_db", -19))
 
 
 def synth_pad(total_s: float, starts: list[float], voice: np.ndarray) -> np.ndarray:
@@ -283,8 +293,9 @@ def synth_pad(total_s: float, starts: list[float], voice: np.ndarray) -> np.ndar
     rng = np.random.default_rng(7)
     left, right = np.zeros(n), np.zeros(n)
     xf = 0.9
+    chords = MOODS[MOOD]
     for ci, a in enumerate(starts):
-        chord = CHORDS[-1] if ci == len(starts) - 1 else CHORDS[ci % (len(CHORDS) - 1)]
+        chord = chords[-1] if ci == len(starts) - 1 else chords[ci % (len(chords) - 1)]
         b = starts[ci + 1] if ci + 1 < len(starts) else total_s
         env = np.clip((t - (a - xf / 2)) / xf, 0, 1) * np.clip(((b + xf / 2) - t) / xf, 0, 1)
         env = np.sin(env * np.pi / 2) ** 2
@@ -368,9 +379,12 @@ def main() -> None:
         i = int(tick * SR)
         sfx[i:i + len(blip)] += blip
 
-    pad = synth_pad(total_s, [0.0] + [s["start"] - 0.1 for s in segments_out[1:]], voice)
     v_rms = rms_db(voice[np.abs(voice) > 1e-4])
-    pad_gain = 10 ** ((v_rms - 19 - rms_db(pad)) / 20)       # pad ~19 dB under the voice
+    if MOOD == "none":
+        pad, pad_gain = np.zeros((len(voice), 2)), 0.0
+    else:
+        pad = synth_pad(total_s, [0.0] + [s["start"] - 0.1 for s in segments_out[1:]], voice)
+        pad_gain = 10 ** ((v_rms + PAD_LEVEL_DB - rms_db(pad)) / 20)  # default ~19 dB under the voice
     sfx_gain = 10 ** ((v_rms - 14 - rms_db(blip)) / 20)
     mix = np.stack([voice, voice], axis=1) + pad * pad_gain + np.stack([sfx, sfx], axis=1) * sfx_gain
     write_wav(BUILD / "mix_raw.wav", mix, channels=2)

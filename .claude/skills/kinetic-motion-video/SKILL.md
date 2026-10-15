@@ -1,110 +1,127 @@
 ---
 name: kinetic-motion-video
-description: Build premium kinetic motion-design videos (explainers, pitches, product teasers, internal demos, video ads) entirely from code with Remotion, synced frame-accurately to a natural AI voice-over, in one signature house style. The style is a dark navy world with a single accent colour, glass panels, spring physics, a parallax "flood" hook, recreated app UIs that fill themselves in, checklists that tick on the voice, kinetic typography, and an ivory brand-ad finale. Use this skill whenever the user asks for an explainer or pitch video, animated walkthrough, motion graphics, kinetic typography, a promo or ad video, "a video like the last one", or wants to turn a script or idea into an MP4. Use it even if they don't mention Remotion or code, and also when editing or re-voicing a video built this way.
+description: Make ultra-premium, kinetic motion-design videos (explainers, pitches, product launches, data stories, brand films, event promos, social ads) entirely from code with Remotion, synced frame-accurately to a natural AI voice-over. The motion language stays constant (spring physics, voice-synced beats, camera pushes, match cuts, layered depth, recreated UIs, kinetic type) while the look (palette, fonts, surfaces, texture, light or dark, energy, music) is art-directed fresh for each project from its audience, brand and tone. Use this skill whenever the user wants a video, animation, motion graphics, kinetic typography, an animated explainer or pitch, a promo, teaser or ad, or wants to turn a script, idea, product or dataset into an MP4. Use it even if they don't mention Remotion or code, and also when editing, restyling or re-voicing such a video.
 ---
 
 # Kinetic motion video
 
-This skill produces 20–60 s, 1920×1080 MP4s that look like a premium product ad. The voice-over is written and recorded first, and its measured timing then drives every visual beat.
+This skill makes 15–90 s videos that feel like top-tier product ads. Two layers, deliberately separated:
 
-The style was proven on a real pitch video. The template in `assets/template/` is a clean, project-agnostic version of it with five ready scenes. Start from the template, keep the style rules, and change the content.
+- **Constant: the motion language.** Everything springs; every beat lands on the voice; the camera always travels; scenes hand off through match cuts and zoom-throughs; real UIs and numbers animate instead of bullet points; something is always alive; the finish is restrained and premium. See `references/motion-language.md`.
+- **Chosen per project: the look.** Palette, type, surfaces, texture, light or dark world, motion temperament (calm, balanced or punchy), music mood and a signature device, all art-directed from the project's audience, brand and tone. See `references/art-direction.md`.
 
-**See the target look before building.** Open `assets/style-reference-pitch.jpg` (frames from the original 40 s pitch) and `assets/style-reference-template.jpg` (the template's demo render). Match that level of finish.
+Never carry the previous project's colours or fonts forward by default. A board report, a skincare launch and a dev-tool teaser should feel equally kinetic and look nothing alike.
 
-## The workflow
+The starter project in `assets/template/` is a **toolkit, not a template video**. It provides the voice-to-timing pipeline, render and QC scripts, theme-driven components and five example scenes. Everything visual reads from `src/theme.ts`, so you re-skin by art direction and assemble the scenes the story needs.
 
-Each step depends on the previous one, so follow them in order. Skipping the voice-first order is the usual way these videos end up feeling off-beat.
+## Workflow
 
-### 1. Brief → script → storyboard
+Each step feeds the next; skipping the voice-first order is the usual cause of off-beat videos.
 
-- **Length.** Ask for the target length or infer it. A natural voice speaks about **2.4 words per second**, so 30 s is about 70 words and 40 s is about 95. If the user's wording won't fit their length, keep their words, let the video run longer, and say so. Don't speed the voice up past natural.
-- **Structure.** Write the script as **segments** (S1, S2…), one per visual scene. Split each segment into **clauses** at commas and full stops. Clauses are the beats the visuals snap to, so put commas where you want visual changes.
-- **The proven arc.** Problem (the flood) → "Now, one prompt" (the turn) → the work, in 2–4 clause beats → the output → the payoff line → the brand sign-off. Adapt the arc to the topic.
-- **Storyboard.** Map each segment to a scene archetype from `references/scene-recipes.md`. Never put more than about 8 words of headline copy on screen at once; UI chrome and cards don't count.
-- **Data.** Use fictional names and data unless the user supplies real ones. Leave out claims the user can't back up, such as "100x" or "fully automated".
+### 1. Understand the project
 
-### 2. Scaffold
+Pin down:
+- **Purpose**: what should the viewer think or do afterwards?
+- **Audience**, and **where it plays**: meeting, big screen, muted social feed.
+- **Length and aspect**: 16:9 by default; 9:16 or 1:1 for social.
+- **Brand assets**: logo, colours, fonts, site, product screens.
+- **Real versus fictional data.**
+
+Infer what you can from the request and attachments; ask only about what genuinely blocks you. Default to fictional data and no unbackable claims.
+
+### 2. Art direction
+
+Follow `references/art-direction.md`:
+1. Read the signals.
+2. Pick or blend a direction from its library (Midnight Signal, Editorial Light, Swiss Bold, Electric, Warm Organic, Luxury Noir, Playful Pop, Corporate Clean), or derive one from the brand.
+3. Write the look spec.
+4. **Tell the user the look in 2–3 sentences**, then proceed.
+
+The direction sets the theme tokens, the fonts, `THEME.motion` (temperament), the signature device, the finale world, the music mood and the voice casting.
+
+### 3. Script and storyboard
+
+- **Length**: natural narration is about **2.4 words per second** (30 s ≈ 70 words, 40 s ≈ 95). If the user's wording doesn't fit their length, keep their words, let the video run longer and say so. Never speed the voice past natural.
+- **Structure**: choose a story structure from `references/scene-recipes.md` §1 (problem → turn → result, product reveal, data story, how-it-works, before/after, manifesto, event).
+- **Segments and clauses**: write one **segment** per scene. Clauses, split at commas and full stops, are the beats visuals snap to, so put punctuation where you want visual changes.
+- **Storyboard**: map each segment to an archetype (§2 there). Keep headline copy to about 8 words or fewer on screen at once.
+
+### 4. Scaffold and theme
 
 ```bash
-bash <this-skill>/scripts/new_project.sh ./my-video   # copies assets/template
-cd my-video && npm install && pip install numpy scipy  # + piper-tts for the offline fallback
+bash <this-skill>/scripts/new_project.sh ./my-video "My Video"
+cd my-video && npm install && pip install numpy scipy   # + piper-tts for the offline voice fallback
 ```
 
-Edit `script.json` (segments, clauses, the voice, acronym respellings, and which segment's clauses tick), `src/content.ts` (all on-screen copy), and `src/config.ts` (`ACCENT`, `BRAND`).
+- `src/theme.ts`: every look token, plus `BRAND`.
+- `src/fonts.ts`: `@fontsource` imports for the chosen families; `npm i @fontsource/<family>` first.
+- `script.json`: segments and clauses, `voice`, `music.mood` and `music.level_db`, `respell`, `ticks`.
+- `src/content.ts`: on-screen copy.
+- `src/Video.tsx`: the scene plan.
 
-### 3. Voice-over (one continuous take)
+### 5. Voice-over (one continuous take)
 
-Generate the **whole script as one take**, with a blank line between segments. Stitching segments together kills the natural flow. Then pick a provider in this order:
+Cast the voice to the direction (`references/audio-voice.md`). Generate the **whole script as one take**, with a blank line between segments, for natural flow.
 
-1. **ElevenLabs connector (MCP)**, when it's connected:
-   1. Call `creative_list_voices` (gender and language filters, `sort: usage_character_count_1y`) and pick from the top results. "Bella – Professional, Bright, Warm" (`hpp4J3VqNfWAUOO0d1Us`) is a proven default.
-   2. Call `creative_generate_speech` with `model_id: eleven_v4`. It produces several takes.
-   3. Poll `creative_get_flow_run_status`, then `curl` each `content_url`. The URLs expire after about 2 hours, so download them promptly.
-   4. Pick the take that is clearest and best paced (see `references/audio-voice.md`), and save it as `assets/vo/voiceover.mp3`.
+Pick a provider in this order:
+1. **The ElevenLabs connector**, if connected: `creative_list_voices` (sorted by usage, filtered to the casting) → `creative_generate_speech` (`eleven_v4`) → poll `creative_get_flow_run_status` → `curl` the `content_url`s (they expire after about 2 h) → pick the clearest take → `assets/vo/voiceover.mp3`. Each generation spends credits, so never re-run just to retry.
+2. An `ELEVENLABS_API_KEY` or `OPENAI_API_KEY` in the environment.
+3. Piper, offline.
 
-   Each call spends credits. Never re-run a generation just to retry.
-2. **`ELEVENLABS_API_KEY`** or **`OPENAI_API_KEY`** in the environment: `make_audio.py` calls the API itself.
-3. **Piper** (local): the script voices each segment separately and joins them with gaps. It downloads voices from GitHub because HuggingFace is often blocked.
+Then `npm run voice`. It aligns every clause to the real pauses (dynamic programming), sizes the video to the speech, synthesises the mood's music pad, masters to −16 LUFS, and writes `src/timing.json` and the `.srt`. **Read the printed clause table**: each start should follow a pause. If one is wrong, fix the punctuation or pick another take. Don't hand-edit times.
 
-Always tell the user which voice was used.
+Tell the user which voice you used.
 
-Then run `npm run voice`. It aligns every clause to the real pauses in the take, sizes the video to the speech, synthesises a ducked music pad, masters the mix to −16 LUFS, and writes `src/timing.json` and the `.srt` captions. **Read the clause table it prints.** Every start time should sit just after a pause. If one looks wrong (a clause crammed into under a second, or a sentence swallowing the next one's first word), fix the punctuation in the script or pick another take. Don't hand-edit the times.
+### 6. Build the scenes
 
-### 4. Build the scenes
+- Plan the scenes in `src/Video.tsx`. Each starts on a voice-over cue (`"S2"`, or `"S3.1"` for a clause) and runs to the next one.
+- Inside a scene, use absolute frames (`useCurrentFrame() + sec(from)`) and time everything from `T`, `seg()` and `wordTime()`. Never hard-code seconds.
+- **Never hard-code colours or fonts in scenes.** Use `THEME.*`, `accent()`, `alpha()`, `display()` and `FONTS.*`. Add a token to the theme if one is missing. The one exception: recreated third-party app UIs keep their own app colours inside their window.
+- Adapt the example scenes, or build new ones from the recipes in `references/scene-recipes.md` (stat reveal, chart build, product hero, feature cascade, before/after split, quote, recreated list or table apps, matching beams, output and report). Apply every rule in `references/motion-language.md`.
+- Use the **signature device** in at least two transitions and in the finale.
 
-- `src/Video.tsx` holds the **scene plan**. Each scene starts on a voice-over cue (`"S3"` = segment start, `"S3.1"` = clause 1), so every cut lands on a beat. Scenes run until the next cue.
-- Inside a scene, convert to absolute frames (`const frame = useCurrentFrame() + sec(from)`) and time everything from `T` / `seg()` / `wordTime()`. Never use hard-coded seconds; the next take will differ.
-- Reuse or adapt the template scenes (`Hook`, `Terminal`, `Checklist`, `KineticLine`, `Finale`). For anything else (recreated app UIs, matching beams, a folder with a report, a human-review step), follow the recipes and snippets in `references/scene-recipes.md`.
-- Keep the style rules below, and read `references/style-guide.md` before building a new scene or surface.
+### 7. QC: look at frames, then render
 
-### 5. QC: look at frames, then render
+1. Run `REMOTION_BROWSER=<chrome> node scripts/stills.mjs <seconds…>` at every beat: the middle of each clause, and just before and after each cut. **Look at every image** (a tiled contact sheet via ffmpeg `xstack` is fastest). Check against:
+   - the motion QC checklist in `motion-language.md` §12;
+   - the art-direction quality bar in `art-direction.md` §6: contrast, restraint, consistency, nothing cropped after camera pushes.
 
-1. Render stills at **every beat**: the middle of each clause, plus just before and after each cut:
-   ```bash
-   REMOTION_BROWSER=<chrome path> node scripts/stills.mjs 2.0 4.8 7.2 ...
-   ```
-   **Open and look at every image.** Check for clipped text, overlaps, unreadable contrast, words that appear before they're spoken, payoff lines that leave before they can be read, and anything off-frame after the camera push. Fix, re-render the stills, repeat. Tiling them into one contact sheet with ffmpeg `xstack` makes review fast.
-2. Run `npm run render`. It renders, muxes in the mastered mix, and checks that the duration is ±0.2 s, the audio is present, the loudness is −16 ±1 LUFS and the peaks are ≤ −1 dBTP. It exits non-zero on failure.
-3. Extract frames from the **final MP4** with `ffmpeg -ss <t> -frames:v 1`, look at them, and build a contact sheet for the user.
+   Fix and re-check.
+2. Run `npm run render`. It renders, muxes the mastered mix, and checks duration ±0.2 s, audio present, −16 ±1 LUFS and ≤ −1 dBTP, exiting non-zero on failure.
+3. Pull frames from the final MP4 and make a contact sheet for the user.
 
-### 6. Report back
+### 8. Report back
 
 Give the user:
-- the file paths
-- the voice used
-- the final duration and loudness
-- a scene table (time range, what's on screen, voice-over line)
-- anything they should check
+- the file paths;
+- the look you chose and why (one line);
+- the voice used;
+- the duration and loudness;
+- a scene table (time range · on screen · voice-over line);
+- things to review: pronunciation (you can't hear it), look-alike UIs of real products, any wording you changed, and credits spent.
 
-Always flag pronunciation, because you can't hear the audio. Also flag look-alike UIs of real products and any wording you changed.
+## Gotchas
 
-## Style rules (the short version)
-
-- **One accent colour carries the film.** Everything else is navy, near-black, white and muted greys. The default accent is coral `#D97757`, swappable in `config.ts`. Status colours (green, amber, red) are only for meaning. Recreated app UIs keep their own app colours, because that is what makes them read as "our Outlook" or "our Excel".
-- **Two worlds.** A dark world (navy radial gradient, a slow-drifting accent glow, film grain, a vignette) holds the story. A light **ivory brand world** (`#F0EEE6`, ink `#141413`) arrives only for the finale, as a circular wipe out of the brand mark.
-- **Type.** Inter for everything, JetBrains Mono for code, IDs and terminals. Headlines are 104–172 px, weight 700–800, with tight tracking (−4 to −7 px). Big numbers use tabular figures. Captions are 36 px on a dark pill.
-- **Surfaces.** Glass panels use a top-lit dark gradient, a 1 px hairline border and a deep soft shadow, with a 24 px radius. Light app windows sit on the dark world with a heavy drop shadow and a slight 3D tilt.
-- **Motion.** Everything is a spring: `SOFT` for big moves, `SNAPPY` for UI, `BOUNCY` for ticks and drops. Text rises in with blur-to-sharp. Use one slow camera push per scene (scale 1 → about 1.05), then a fast push or zoom-through into the cut. There are no gimmick transitions; cuts land on voice-over beats.
-- **Life.** Something is always moving: typing cursors, counters ticking, pulses travelling along links, orbiting tiles, spinner sparks.
-- **Sound.** A synthesised pad sits about 19 dB under the voice and is ducked further while the voice speaks. Soft UI ticks sound only on checklist ticks. There is no stock music.
-
-Full tokens, recipes and do/don't lists are in `references/style-guide.md`.
-
-## Gotchas this pipeline already hit
-
-- **Headless Chrome.** Set `REMOTION_BROWSER` to a local `chrome-headless-shell` if Remotion can't download one. In Claude Code cloud containers it is at `/opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell`.
-- **Run `npm run voice` before stills or render.** `<Audio>` needs `public/audio/mix.wav`, and the placeholder `timing.json` is only a stub.
-- **Emoji don't render in headless Chrome.** Draw status dots and icons as SVG instead (see `components/Icons.tsx`).
-- **Fonts come from `@fontsource`,** and `Root.tsx` delays the first frame until they load. Don't depend on system fonts or Google Fonts at render time.
-- **ffmpeg can't write to a file it's reading.** Keep "source" and "processed" audio filenames distinct.
-- **Alignment.** If the take has fewer pauses than clauses, `make_audio.py` stops and says so. Add punctuation or regenerate the take.
-- **Copyright and trademarks.** Recreate app UIs in code using their colours and layout. Don't use real logo files or screenshots unless the user supplies brand assets and has rights to them. Say in the report that they're look-alikes.
+- **Headless Chrome**: set `REMOTION_BROWSER` to a local `chrome-headless-shell` if Remotion can't download one. In Claude Code cloud containers it's at `/opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell`.
+- **Run `npm run voice` before stills or a render**: `<Audio>` needs `public/audio/mix.wav`, and the shipped `timing.json` is only a placeholder.
+- **Emoji don't render headless**: draw icons as SVG (`components/Icons.tsx`).
+- **Fonts only via `@fontsource` or local `.woff2`** (`fonts.ts`); `Root.tsx` waits for every theme family before the first frame. No system or CDN fonts.
+- **ffmpeg can't read and write the same file**: keep "source" and "processed" names distinct.
+- **Too few pauses**: if the take has fewer pauses than clauses, `make_audio.py` stops. Add punctuation, or pick or regenerate a take.
+- **Trademarks**: recreate third-party UIs in code (layout and colours, generic glyphs), never their logo files or screenshots unless the user supplies assets they have rights to. Flag look-alikes in the report.
 
 ## Files
 
-- `scripts/new_project.sh`: scaffolds a new project from the template.
-- `assets/style-reference-*.jpg`: contact sheets of finished renders in this style.
-- `assets/template/`: the runnable Remotion project. `script.json` holds the script, `src/content.ts` the on-screen copy, `src/config.ts` the brand settings, `src/Video.tsx` the scene plan, `scripts/make_audio.py` the voice-to-timing, music and mastering pipeline, and `scripts/render.mjs` and `scripts/stills.mjs` the render and QC tools.
-- `references/style-guide.md`: design tokens, motion presets, camera and transition grammar, the two worlds, UI recreation rules, and do's and don'ts. Read it before designing new scenes.
-- `references/scene-recipes.md`: the scene archetypes with code: flood hook, inbox recreation, spreadsheet fill-and-flag, terminal prompt, matching beams, checklist, folder → system → report with human review, kinetic line, brand finale.
-- `references/audio-voice.md`: script-writing rules, voice selection, the ElevenLabs connector flow, how alignment works, the pad and mastering targets, and troubleshooting.
+- `scripts/new_project.sh`: scaffold a project from the toolkit.
+- `assets/template/`: the toolkit.
+  - `src/theme.ts`: the look.
+  - `src/fonts.ts`: font loading.
+  - `src/components/`: motion presets and temperaments, backdrop and grain, captions, panels, chips, counters, icons.
+  - `src/scenes/`: example archetypes.
+  - `scripts/make_audio.py`: voice → timing, music and mastering.
+  - `scripts/render.mjs` and `scripts/stills.mjs`: render and QC.
+- `references/art-direction.md`: **read in step 2.** How to read a project, the look spec, 8 direction recipes with full tokens and fonts, blending, brand fonts, the quality bar.
+- `references/motion-language.md`: **read before building scenes.** The constant: springs and temperaments, sync rules, camera, transitions, depth, kinetic type, UI and data animation, pacing, aspect ratios, QC checklist.
+- `references/scene-recipes.md`: story structures plus 15 archetypes with snippets.
+- `references/audio-voice.md`: voice casting, the ElevenLabs connector flow, alignment, music moods, mastering, troubleshooting.
+- `assets/examples/finish-reference-midnight-pitch.jpg`: frames from a finished 40 s pitch. It's a reference for **finish and energy only**: density, polish, sync, layering. **Not a palette or font to copy.**

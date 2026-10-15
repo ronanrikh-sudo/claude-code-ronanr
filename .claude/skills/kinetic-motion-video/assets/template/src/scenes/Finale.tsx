@@ -1,9 +1,9 @@
-// BRAND FINALE ("ad" sign-off): a spark lands on the dark frame, an ivory world wipes
-// out of it, the spark slides left as the wordmark wipes in, a dark terminal pill types
-// the tagline, and app tiles orbit softly. Minimal copy; hold to the last frame.
+// BRAND FINALE (sign-off): the brand mark lands on the story world, the finale world
+// (THEME.finale) wipes out of it, the mark slides aside as the wordmark wipes in, a pill
+// types the tagline and tiles orbit. Swap the circle wipe for the project's signature device.
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-import { ACCENT, BRAND, FONT, MONO } from "../config";
+import { alpha, BRAND, display, FONTS, THEME } from "../theme";
 import { FINALE } from "../content";
 import { sec } from "../timing";
 import type { SceneProps } from "../Video";
@@ -32,8 +32,8 @@ export const Finale: React.FC<SceneProps> = ({ from, to }) => {
   const sparkX = interpolate(lock, [0, 1], [960, left + 92]);
 
   return (
-    <AbsoluteFill style={{ fontFamily: FONT }}>
-      <AbsoluteFill style={{ background: BRAND.ivory, clipPath: `circle(${wipe * 1300}px at 50% 47%)` }}>
+    <AbsoluteFill style={{ fontFamily: FONTS.body }}>
+      <AbsoluteFill style={{ background: THEME.finale.bg, clipPath: `circle(${wipe * 1300}px at 50% 47%)` }}>
         <AbsoluteFill style={{ background: "radial-gradient(ellipse 60% 55% at 50% 45%, rgba(255,255,255,0.7), transparent 70%)" }} />
         <AbsoluteFill style={{ opacity: 0.5 * Math.sin(sweep * Math.PI),
           background: `linear-gradient(105deg, transparent ${sweep * 120 - 30}%, rgba(255,255,255,0.9) ${sweep * 120 - 15}%, transparent ${sweep * 120}%)` }} />
@@ -44,25 +44,25 @@ export const Finale: React.FC<SceneProps> = ({ from, to }) => {
           const p = sp(frame, typeAt + 8 + i * 4, SNAPPY);
           return (
             <div key={i} style={{ position: "absolute", left: 960 + Math.cos(ang) * 830, top: 480 + Math.sin(ang) * 390,
-              transform: `translate(-50%,-50%) scale(${p})`, opacity: p * 0.95, filter: "drop-shadow(0 18px 30px rgba(20,20,19,0.25))" }}>
+              transform: `translate(-50%,-50%) scale(${p})`, opacity: p * 0.95, filter: `drop-shadow(0 18px 30px ${alpha(THEME.finale.ink, 0.25)})` }}>
               <AppTile color={o.color} size={78}>{o.glyph}</AppTile>
             </div>
           );
         })}
         <div style={{ position: "absolute", left: sparkX, top: 470,
           transform: `translate(-50%,-50%) scale(${sparkIn * interpolate(lock, [0, 1], [1.5, 1])})` }}>
-          <Spark size={200} color={ACCENT} rotate={(frame - A) * 1.2 + 30 * (1 - sparkIn)} />
+          <Spark size={200} color={THEME.accent} rotate={(frame - A) * 1.2 + 30 * (1 - sparkIn)} />
         </div>
         <div style={{ position: "absolute", left: left + 250, top: 470, transform: "translateY(-50%)", opacity: lock,
           clipPath: `inset(-20% ${100 - 100 * lock}% -20% 0)` }}>
-          <div style={{ fontSize: 172, fontWeight: 760, letterSpacing: -7, color: BRAND.ink, whiteSpace: "nowrap", lineHeight: 1 }}>{BRAND.name}</div>
+          <div style={{ ...display(172), color: THEME.finale.ink, whiteSpace: "nowrap", lineHeight: 1 }}>{BRAND.name}</div>
         </div>
         <div style={{ position: "absolute", left: 960, top: 720, transform: `translate(-50%, ${(1 - term) * 30}px)`, opacity: term,
-          display: "flex", alignItems: "center", gap: 20, padding: "22px 36px", borderRadius: 18, background: BRAND.ink,
-          fontFamily: MONO, fontSize: 40, color: BRAND.ivory, boxShadow: "0 30px 70px rgba(20,20,19,0.28)", minWidth: 700 }}>
-          <span style={{ color: ACCENT, fontWeight: 700 }}>&gt;</span>
+          display: "flex", alignItems: "center", gap: 20, padding: "22px 36px", borderRadius: 18, background: THEME.finale.ink,
+          fontFamily: FONTS.mono, fontSize: 40, color: THEME.finale.bg, boxShadow: `0 30px 70px ${alpha(THEME.finale.ink, 0.28)}`, minWidth: 700 }}>
+          <span style={{ color: THEME.accent, fontWeight: 700 }}>&gt;</span>
           <span>{BRAND.tagline.slice(0, typed)}</span>
-          <span style={{ width: 20, height: 42, background: ACCENT, opacity: typed < BRAND.tagline.length || Math.floor(frame / 15) % 2 ? 1 : 0.15 }} />
+          <span style={{ width: 20, height: 42, background: THEME.accent, opacity: typed < BRAND.tagline.length || Math.floor(frame / 15) % 2 ? 1 : 0.15 }} />
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

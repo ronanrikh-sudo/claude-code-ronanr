@@ -3,13 +3,14 @@
 // fast camera push into the cut.
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-import { C, FONT, FPS } from "../config";
+import { FPS } from "../config";
+import { alpha, FONTS, THEME } from "../theme";
 import { HOOK } from "../content";
 import { seg, sec, wordTime } from "../timing";
 import type { SceneProps } from "../Video";
 import { ChatIcon, Envelope } from "../components/Icons";
 import { Chip, Counter } from "../components/ui";
-import { BOUNCY, clamp, easeInOut, ramp, rand, SNAPPY, sp } from "../components/motion";
+import { BOUNCY, CAMERA, clamp, easeInOut, ramp, rand, SNAPPY, sp } from "../components/motion";
 
 const LAYERS = [
   { depth: 0.5, count: 60, blur: 2.2, dim: 0.5 },
@@ -40,7 +41,7 @@ export const Hook: React.FC<SceneProps> = ({ to }) => {
   const chips = HOOK.chips.map((c, i) => ({ ...c, t: wordTime(clause2, c.word), x: 960 + (i - 1) * 380, y: 700 + (rand(i) - 0.5) * 30, rot: (rand(i * 6.6) - 0.5) * 8 }));
 
   const push = easeInOut(ramp(frame, end - 10, end));
-  const scale = interpolate(frame, [0, end - 10], [1, 1.09], clamp) + 0.12 * push;
+  const scale = interpolate(frame, [0, end - 10], [1, 1 + 0.09 * CAMERA], clamp) + 0.12 * CAMERA * push;
   const sat = interpolate(frame, [0, end], [0.7, 0.35], clamp);
   const hud = sp(frame, 2, SNAPPY);
 
@@ -54,29 +55,29 @@ export const Hook: React.FC<SceneProps> = ({ to }) => {
               const p = sp(frame, c.arrive * FPS, SNAPPY);
               if (p <= 0.001) return null;
               return (
-                <div key={c.i} style={{ position: "absolute", left: c.x, top: c.y, width: 380, height: 100, borderRadius: 14,
+                <div key={c.i} style={{ position: "absolute", left: c.x, top: c.y, width: 380, height: 100, borderRadius: THEME.radiusSm,
                   opacity: Math.min(1, p * 1.4), transform: `translateY(${(1 - p) * -70}px) scale(${0.88 + 0.12 * p}) rotate(${c.rot}deg)`,
-                  background: "linear-gradient(180deg,#161F33,#111829)", border: `1px solid ${C.lineHi}`, boxShadow: "0 18px 40px rgba(0,0,0,0.45)",
-                  padding: "14px 18px", fontFamily: FONT, display: "flex", gap: 14 }}>
-                  <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(255,255,255,0.06)", display: "flex",
-                    alignItems: "center", justifyContent: "center" }}><Envelope size={22} color={C.muted} /></div>
+                  background: THEME.card, border: `1px solid ${THEME.lineStrong}`, boxShadow: THEME.shadowSm,
+                  padding: "14px 18px", fontFamily: FONTS.body, display: "flex", gap: 14 }}>
+                  <div style={{ width: 40, height: 40, borderRadius: 10, background: alpha(THEME.text, 0.06), display: "flex",
+                    alignItems: "center", justifyContent: "center" }}><Envelope size={22} color={THEME.muted} /></div>
                   <div style={{ minWidth: 0 }}>
-                    <div style={{ color: C.text, fontSize: 19, fontWeight: 600, whiteSpace: "nowrap" }}>{HOOK.senders[c.i % HOOK.senders.length]}</div>
-                    <div style={{ color: C.muted, fontSize: 15, marginTop: 4, whiteSpace: "nowrap" }}>{HOOK.subjects[c.i % HOOK.subjects.length]}</div>
+                    <div style={{ color: THEME.text, fontSize: 19, fontWeight: 600, whiteSpace: "nowrap" }}>{HOOK.senders[c.i % HOOK.senders.length]}</div>
+                    <div style={{ color: THEME.muted, fontSize: 15, marginTop: 4, whiteSpace: "nowrap" }}>{HOOK.subjects[c.i % HOOK.subjects.length]}</div>
                   </div>
                 </div>
               );
             })}
           </AbsoluteFill>
         ))}
-        <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(3,5,11,0) 45%, rgba(3,5,11,0.55) 100%)" }} />
+        <AbsoluteFill style={{ background: `linear-gradient(180deg, transparent 45%, ${alpha(THEME.bgEdge, 0.55)} 100%)` }} />
         {chips.map((c, i) => {
           const p = sp(frame, c.t * FPS, BOUNCY);
           if (p <= 0.001) return null;
           return (
             <div key={i} style={{ position: "absolute", left: c.x, top: c.y, zIndex: 10 + i,
               transform: `translate(-50%, ${(1 - p) * -520}px) rotate(${c.rot * p}deg) scale(1.25)` }}>
-              <Chip strong icon={<ChatIcon size={22} color={C.muted} />}>{c.label}</Chip>
+              <Chip strong icon={<ChatIcon size={22} color={THEME.muted} />}>{c.label}</Chip>
             </div>
           );
         })}

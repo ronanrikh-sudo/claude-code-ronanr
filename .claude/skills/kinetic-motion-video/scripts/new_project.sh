@@ -24,7 +24,9 @@ cat <<MSG
 Scaffolded $TARGET
 Next:
   cd $TARGET && npm install && pip install numpy scipy   # + piper-tts for the offline voice
-  edit script.json (VO), src/content.ts (on-screen copy), src/config.ts (ACCENT, BRAND), src/Video.tsx (scene plan)
+  1. art-direct: set src/theme.ts (look) + src/fonts.ts (npm i @fontsource/<family>)   -> references/art-direction.md
+  2. write script.json (segments/clauses, voice, music.mood) + src/content.ts (on-screen copy)
+  3. plan scenes in src/Video.tsx (example scenes are starting points)     -> references/scene-recipes.md
   put a pre-generated take at assets/vo/voiceover.mp3 (optional), then:
   npm run voice && node scripts/stills.mjs 2 5 8 && npm run render
 MSG

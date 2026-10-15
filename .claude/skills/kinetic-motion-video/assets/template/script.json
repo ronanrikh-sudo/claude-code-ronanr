@@ -6,20 +6,50 @@
     "elevenlabs_voice_name": "Bella - Professional, Bright, Warm",
     "piper_voice": "en-us-lessac-medium"
   },
-  "respell": { "AI": "A I", "FAQ": "F A Q" },
+  "respell": {
+    "AI": "A I",
+    "FAQ": "F A Q"
+  },
   "segments": [
-    { "id": "S1", "clauses": [
-      "Every week, three hundred support tickets land in the queue.",
-      "Most of them ask the same five questions."
-    ]},
-    { "id": "S2", "clauses": ["Now, one prompt drafts every reply."] },
-    { "id": "S3", "clauses": [
-      "It matches the house tone,",
-      "links the right help article,",
-      "and flags anything unusual for a person."
-    ]},
-    { "id": "S4", "clauses": ["Hours of triage become minutes of review."] },
-    { "id": "S5", "clauses": ["Your team, with the afternoon back."] }
+    {
+      "id": "S1",
+      "clauses": [
+        "Every week, three hundred support tickets land in the queue.",
+        "Most of them ask the same five questions."
+      ]
+    },
+    {
+      "id": "S2",
+      "clauses": [
+        "Now, one prompt drafts every reply."
+      ]
+    },
+    {
+      "id": "S3",
+      "clauses": [
+        "It matches the house tone,",
+        "links the right help article,",
+        "and flags anything unusual for a person."
+      ]
+    },
+    {
+      "id": "S4",
+      "clauses": [
+        "Hours of triage become minutes of review."
+      ]
+    },
+    {
+      "id": "S5",
+      "clauses": [
+        "Your team, with the afternoon back."
+      ]
+    }
   ],
-  "ticks": { "segment": "S3" }
+  "ticks": {
+    "segment": "S3"
+  },
+  "music": {
+    "mood": "warm",
+    "level_db": -19
+  }
 }

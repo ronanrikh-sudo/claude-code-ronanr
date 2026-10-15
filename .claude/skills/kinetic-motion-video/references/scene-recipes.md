@@ -1,126 +1,139 @@
-# Scene recipes
+# Story structures and scene recipes
 
-These are the scene archetypes for this style. The template ships five of them, ready to use. The others are given here as compact, working snippets taken from a produced film. Every recipe assumes the template's conventions:
+Pick a **story structure** for the project, then build each beat from **scene archetypes**. Archetypes are motion recipes, not looks: every colour, font and surface comes from `THEME`. The template ships five of them; the rest are compact recipes and snippets here.
+
+Every recipe assumes the template's conventions:
 
 ```ts
 const offset = sec(from);                    // scene start (frames)
 const frame = useCurrentFrame() + offset;    // absolute frame -> VO times usable directly
 const end = sec(to);
+// colours/fonts: THEME.*, accent(a), alpha(hex, a), display(size), FONTS.*
+// motion: sp(frame, start, SOFT|SNAPPY|BOUNCY), ramp, push(frame, a, b, amt), CAMERA
 ```
 
 ## Contents
-| Archetype | In template | Typical voice-over beat |
-|---|---|---|
-| 1. Flood hook + HUD counter + chips + clock | `scenes/Hook.tsx` (no clock) | "Two hundred X arrive… PDFs, spreadsheets… hours of manual work" |
-| 2. Inbox recreation (email-client look-alike) | snippet | the problem, shown in the real tool |
-| 3. Terminal prompt + tool calls + capability chips | `scenes/Terminal.tsx` | "Now, one prompt." |
-| 4. Matching beams (cards dock onto targets) | snippet | "matches each one to its record" |
-| 5. Spreadsheet fill → flag → check | snippet | "fills our template, flags notes or errors" |
-| 6. Checklist ticking on clauses | `scenes/Checklist.tsx` | "checks A, B and C" |
-| 7. Folder → system → report with human review | snippet | "You get a folder ready for X, and a report…" |
-| 8. Kinetic line | `scenes/KineticLine.tsx` | "Hours of X become minutes of Y." |
-| 9. Brand finale (ivory ad world) | `scenes/Finale.tsx` | "All with <brand>." |
+1. Story structures
+2. Archetype index
+3. Recipes 1–15
 
 ---
 
-## 1. Flood hook
+## 1. Story structures
 
-This is the template's `Hook`. Cards rain in on three parallax layers, and an accelerating arrival curve `t = start + span * (k/(n-1))^0.7` makes the counter hit its target while the first line is still being spoken. Chips drop with `BOUNCY` exactly on the words that name them (`wordTime(clause, "PDFs")`). Saturation drains, and the scene ends with a fast push.
+Choose the structure from what the video must *do*, then map one segment (S1, S2…) to each beat.
 
-**Optional clock** for "hours of manual work": an SVG face where the minute hand rotates by `0.7*t² + 30*t` degrees (accelerating), with a faint trail arc behind the hand, a `rgba(3,5,11,.94)` radial backdrop so it reads over the clutter, and a 2-word label ("Manual entry").
+| Structure | Beats | Good for |
+|---|---|---|
+| **Problem → turn → work → result → sign-off** | flood or pain · "Now, one…" · 2–4 work beats · output · payoff line · finale | process improvements, internal pitches, tools, B2B |
+| **Product reveal** | tease (macro detail, darkness) · reveal (hero) · 3 features · proof (stat or quote) · sign-off | launches, physical or digital products |
+| **Data story** | headline number · context · 2–3 supporting stats or charts · so-what line · sign-off | results, reports, impact videos |
+| **How it works** | promise · step 1 · step 2 · step 3 · outcome · sign-off | onboarding, explainers, tutorials |
+| **Before / after** | "Today…" (grey, cluttered) · hard turn · "With X…" (clean, accent) · comparison · sign-off | transformations, migrations, ROI |
+| **Manifesto / brand film** | 4–6 kinetic statements over textures or imagery · brand line · sign-off | culture, recruiting, brand launches |
+| **Event / announcement** | hook line · what · when and where (big type) · why come · sign-off | events, webinars, launches |
 
-## 2. Inbox recreation
+The turn moment always gets the strongest change: a clean cut, a new world, or the accent's first appearance.
 
-This is a light email-client window (title bar in the app's blue, folder pane, message list, reading pane) tilted under `perspective`. New mail lands at the top and pushes older rows down smoothly.
+## 2. Archetype index
+
+| # | Archetype | Template file | Beat it serves |
+|---|---|---|---|
+| 1 | Flood hook + stat counter + chips | `scenes/Hook.tsx` | volume, chaos, "too much" |
+| 2 | Terminal / command prompt | `scenes/Terminal.tsx` | "one prompt", automation, dev tools |
+| 3 | Checklist ticking on clauses | `scenes/Checklist.tsx` | checks, steps, criteria |
+| 4 | Kinetic line (two-line payoff) | `scenes/KineticLine.tsx` | the big idea, before → after |
+| 5 | Brand finale (sign-off world) | `scenes/Finale.tsx` | the ending |
+| 6 | Recreated list app (inbox, feed, queue) | recipe | the problem in the real tool |
+| 7 | Recreated table (spreadsheet fill → flag → check) | recipe | data entry, forms, records |
+| 8 | Matching beams | recipe | linking, routing, reconciliation |
+| 9 | Output: container → system → report + human | recipe | results, hand-off, review |
+| 10 | Stat reveal | recipe | headline numbers |
+| 11 | Chart build | recipe | trends, comparisons |
+| 12 | Product / device hero | recipe | product reveal |
+| 13 | Feature cascade | recipe | 3–6 features |
+| 14 | Split before / after | recipe | comparison |
+| 15 | Quote / testimonial | recipe | social proof |
+
+---
+
+## Recipe 1 — Flood hook (template `Hook`)
+Cards rain in on three parallax layers. The arrival curve `start + span * (k/(n-1))^0.7` accelerates, so the counter lands during the first line. Chips drop with `BOUNCY` on the words that name them. Saturation drains (`saturate(0.7 → 0.35)`), then a push into the cut. Re-skin the cards to the project (tickets, emails, invoices, applications, notifications).
+
+**Optional clock** for "hours lost": an SVG face whose minute hand rotates by `0.7*t² + 30*t` degrees, with a trail arc, a radial scrim behind it and a 2-word label.
+
+## Recipe 2 — Terminal (template `Terminal`)
+A welcome box draws on via `clipPath inset`. The prompt types across about 45% of the scene. Tool-call lines follow (a dot, then a result with an L-shaped connector, drawn in CSS rather than glyphs), with a spinner line using the rotating mark. Capability chips sit in the corner (connector, skill, integration), each popping on the word that names it. Best when the scene spans the "one prompt" line plus the following clause. Accent spans get `white-space: nowrap`.
+
+## Recipe 3 — Checklist (template `Checklist`)
+`script.json → ticks.segment` gives one tick per clause of that segment, shared with the tick sound. A "paper" card on the left lights the line each tick refers to.
+
+## Recipe 4 — Kinetic line (template `KineticLine`)
+Two lines through `display()`. Words spring in on their spoken times, using a per-clause cursor so repeated words resolve correctly. The pivot word draws a connector; line 2 is in the accent; line 1 dims. Hold the complete line for about 1 s. Captions hidden.
+
+## Recipe 5 — Brand finale (template `Finale`)
+The mark lands on the story world. The finale world (`THEME.finale`) wipes out of it as a circular `clipPath`, or uses the project's signature device instead. The mark slides aside as the wordmark wipes in, centred as one lockup. A light sweep crosses once. A tagline types into a pill. App or product tiles orbit on a wide ellipse. Hold to the last frame, with minimal copy. Replace the placeholder mark with the user's logo SVG when supplied. Tune `wordW` (about 0.53 × font size per character for grotesks; measure serifs in a still).
+
+## Recipe 6 — Recreated list app (inbox, feed, ticket queue)
+A light window in the app's own colours, tilted under `perspective`. New items land at the top and push the rest down:
 
 ```tsx
-// ARRIVALS[i] = arrival time (s) of message i, oldest first
-const prog = ARRIVALS.map((a) => sp(frame, a * FPS, SNAPPY));
+const prog = ARRIVALS.map((a) => sp(frame, a * FPS, SNAPPY));   // ARRIVALS oldest first (s)
 const rows: React.ReactNode[] = [];
-let below = 0;                                     // stacked height of newer rows, in rows
+let below = 0;
 for (let i = TOTAL - 1; i >= 0 && below < 11; i--) {
   if (prog[i] <= 0.001) continue;
-  // unshift: older rows render first, so newer ones slide over them
-  rows.unshift(<Row key={i} i={i} y={below * ROW_H} p={prog[i]} />);
+  rows.unshift(<Row key={i} i={i} y={below * ROW_H} p={prog[i]} />); // older first, newer on top
   below += prog[i];
 }
-// Row: top = y - (1 - p) * ROW_H (slides down from under the list header),
-// OPAQUE background that fades from a light blue tint to white as p -> 1.
-// A translucent row background makes overlapping rows unreadable.
+// Row: top = y - (1 - p) * ROW_H; OPAQUE background fading from a tint to white as p -> 1.
 ```
 
-Details that sell it: a 3 px unread bar in the app colour, an initials avatar in rotating colours, a bold sender, a coloured subject, a grey preview, a paperclip and time, the folder count tracking arrivals, "Focused / Other" tabs, and a reading pane showing one reply with attachment chips and an inline price table in mono.
+What sells it: an unread bar, initials avatars, bold sender, coloured subject, grey preview, attachment icon and time, a folder count tracking arrivals, and a reading pane with one realistic item.
 
-## 3. Terminal prompt
+## Recipe 7 — Recreated table: fill → flag → check
+App-coloured title bar, tabs, a ribbon placeholder, a formula or address bar echoing the active cell, lettered columns, row numbers, a dark header row, tinted input cells, empty rows below, and a status bar.
 
-This is the template's `Terminal`: a welcome box that draws on via `clipPath inset`, a prompt typed across about 45% of the scene, then tool-call lines (`⏺` dot → `⎿` result, drawn with CSS borders rather than glyphs). A spinner line with a rotating spark reads "Working…". Corner chips name the capabilities the pitch is about, for example "Outlook connector · Read-only access" or "Shared skill · <name>". Pulse a chip (scale and glow) on the word that names it.
-
-The terminal scene works best when it spans the "Now, one prompt" line **plus** the next clause, so the tool calls have voice-over to sync to. Start the next scene on cue `"S3.1"` rather than `"S3"`.
-
-Keep accent-coloured spans `white-space: nowrap` so a slash-command never wraps mid-word.
-
-## 4. Matching beams
-
-Reply cards on the left and target tiles on the right, in a **different order** so the matching is visible. Each pair: both ref chips glow, a bezier beam draws between them, then the card springs across and docks onto its target, offset +14 px like a stacked paper.
-
-```tsx
-const pairs = MATCHES.map((m, k) => {
-  const glowAt = A + 1 + k * 9, moveAt = A + 8 + k * 9;   // A = clause start frame
-  return {
-    glow: ramp(frame, glowAt, glowAt + 5),
-    move: sp(frame, moveAt, SNAPPY),
-    dock: ramp(frame, moveAt + 10, moveAt + 16),       // target border turns accent
-    fromY: ROW_Y[k], toY: ROW_Y[TARGET_ORDER.indexOf(m.ref)],
-  };
-});
-// beam: <path d={`M x1 y1 C x1+420 y1, x2-420 y2, x2 y2`} stroke="url(#beam)"
-//        strokeDasharray=1400 strokeDashoffset={1400*(1-glow)} opacity={glow*(1-move)} />
-// card: left = lerp(LEFT_X, RIGHT_X+14, move), top = lerp(fromY, toY+14, move),
-//       rotate = sin(move*PI) * -3deg
-```
-
-**Match cut** out of this beat: the docked target tile grows into the next scene's full UI. Interpolate its centre and scale from the tile's rectangle to the full-size window over about 12 frames.
-
-## 5. Spreadsheet: fill → flag → check
-
-This is a light spreadsheet look-alike: green title bar with AutoSave, ribbon tabs (Home underlined), a placeholder ribbon, formula bar (name box + *fx* + the active value), lettered column headers, row numbers, a dark template header row, pale-green input cells, empty rows 7–12, sheet tabs and a status bar.
-
-**Fill**, typewriter, row by row:
 ```tsx
 const cellStart = (r, key) => FILL + 4 + r * 7 + INPUT_KEYS.indexOf(key) * 2;
 const n = Math.floor(interpolate(frame, [s, s + 5], [0, value.length], clamp));
-const flash = Math.max(0, 1 - Math.abs(frame - (s + 5)) / 8); // cell brightens as it completes
-// active cell = latest started cell -> 3px green selection box + fill handle,
-// highlighted column letter and row number, formula bar shows its value.
+const flash = Math.max(0, 1 - Math.abs(frame - (s + 5)) / 8);   // cell brightens as it completes
+// active cell = latest started -> thick selection box + handle, highlighted header and row number
 ```
 
-**Flag**, on the "flags" clause: a Flags column fills with the native Good / Neutral / Bad styles (`✓ OK`, `● Note`, `✕ Error`), popping with `BOUNCY`, 3 frames apart. Erroneous cells turn `#FFC7CE` with a red corner triangle. Notes appear as pale-yellow boxes (`#FFFFE1`, grey border, small drop shadow) authored by the assistant (**"Claude:** No price quoted for this line."), with a short leader line. Hide them before the next beat.
+- **Flag** beat: a status column pops Good / Neutral / Bad chips (in a spreadsheet, use its native cell styles). Faulty cells tint, with a corner triangle. Note boxes appear beside them with a leader line, signed by the actor.
+- **Check** beat: the table shrinks to about 0.66 and slides aside; a checklist panel slides in; each tick outlines the column it validates. Then a "Ready for X" badge, and the title bar changes to "Saved".
 
-**Check**, on the next clause: the sheet shrinks (scale about 0.66) and slides left, and a glass checklist slides in from the right. Each tick outlines the column it validates with a 4 px accent border and glow. After the last tick, a "Ready for <system>" badge appears and the title bar changes to "Saved to <folder>".
-
-Keep the sheet's left edge on screen at the scaled size. Check the frame at the end of the camera push.
-
-## 6. Checklist
-
-This is the template's `Checklist`. `script.json → "ticks": {"segment": "S3"}` produces one tick per clause, at clause start + 0.2 s, shared with the tick sound effect. A light "real UI" card on the left highlights the line each tick refers to.
-
-## 7. Folder → system → report with human review
-
-**Stage A** (first clause): a big folder in the accent colour (dark back, white file sheets that stack up as the count rises, accent front face with `perspective rotateX(-8°)` that bumps on each arrival). Its face reads "<Folder>" and "<N> ready". Files arc in from above. A dashed line then draws to a dark **system tile** ("CM · Import queue", progress bar, "Ready to integrate"), with accent pulses travelling along it:
+## Recipe 8 — Matching beams
+Sources on the left, targets on the right in a **different order**. Per pair: both IDs glow, a bezier beam draws, then the source springs across and docks onto its target (+14 px offset).
 
 ```tsx
-const pulses = Array.from({ length: 6 }, (_, i) => (frame / 22 + i / 6) % 1);
-// <circle cx={x0 + (x1-x0)*q} cy={y0 + (y1-y0)*q} r={7} fill={ACCENT} opacity={Math.sin(q*Math.PI)} />
+const glowAt = A + 1 + k * 9, moveAt = A + 8 + k * 9;
+// beam: <path d={`M x1 y1 C x1+420 y1, x2-420 y2, x2 y2`} strokeDasharray=1400
+//        strokeDashoffset={1400*(1-glow)} opacity={glow*(1-move)} />
+// card: left = lerp(LEFT_X, RIGHT_X+14, move); top = lerp(fromY, toY+14, move); rotate = sin(move*PI)*-3deg
 ```
 
-**Stage B** (second clause): folder and tile spring up to a small top row (scale 0.4–0.55), and a **briefing report** rises from below. It has a header with an icon, title and folio, and rows of status dot · bold name · note. On the word "human", flagged rows get accent outlines and glow, the all-clear row dims to 55%, and a person avatar with an accent ring pops onto the panel corner. On "further check" (or the matching phrase), a small "Further check" pill with an eye icon appears on each flagged row.
+Match-cut out: the docked target grows into the next scene's full UI.
 
-## 8. Kinetic line
+## Recipe 9 — Output: container → system → report + human
+- **Stage A**: a large container (folder, box, inbox) in the accent colour; items arc in; the count on its face rises; the face bumps on each arrival. A dashed connector draws to a system tile, and pulses travel along it (`(frame/22 + i/6) % 1`).
+- **Stage B**: the container and system shrink to a top row, and a report panel rises with status rows (dot · name · note). On "human", the flagged rows get accent outlines and the clear rows dim. A person avatar pops onto the corner, and "Further check" pills land on the flagged rows on their words.
 
-This is the template's `KineticLine`. Two lines at 124 px: line 1 in white, which dims to 45% once line 2 starts. An accent arrow (a stroke-dash draw plus the head) draws on the pivot word, and line 2 in the accent colour. Each word springs in on its own spoken time, computed with a per-clause cursor so repeated words like "of" resolve correctly. Hide captions during this scene. Hold the complete line for about 1 s before the next cut. If the voice-over runs straight on, start the next scene on a later word.
+## Recipe 10 — Stat reveal
+A giant number (160–240 px, `display()`, tabular) counts up with `easeOut(ramp)` over about 0.8–1.2 s, landing on its spoken word. Then the unit and label spring in beneath, and a thin accent rule draws under it. Context variant: a small "from X" value strikes through as the big one lands. Multiple stats: 3 columns cascading 6 frames apart, the hero stat in the accent.
 
-## 9. Brand finale
+## Recipe 11 — Chart build
+Axes or baseline draw first (hairlines). Bars grow from the baseline with `SOFT`, 3 frames apart; lines draw via `strokeDashoffset`. The value that matters gets an accent colour, a callout bubble and a pulse. Keep it to at most 6 bars or 2 lines; label directly, no legends.
 
-This is the template's `Finale`. The spark (8-ray asterisk) springs in centred on the dark frame. An ivory circle wipes out from it over about 14 frames. The spark scales down and slides left while the wordmark (172 px, ink) wipes in from the left via `clipPath inset`, the pair centred as one lockup. A light sweep crosses once. An ink pill types the tagline in mono with an accent `>` and a blinking accent cursor. Three app tiles orbit on a wide ellipse (rx about 830, ry about 390) clear of the wordmark. Hold to the last frame, with no extra copy.
+## Recipe 12 — Product / device hero
+The device or product frame (a CSS-drawn phone or laptop, or a supplied render) enters on `rotateY 25° → 8°` with `SOFT`, a soft floor shadow growing beneath it. The screen content animates inside (reuse UI recipes). A slow orbit (`rotateY` drift of about 6° over the scene) and a light sweep across the glass. Callout labels pop out on hairline leaders as each feature is named.
 
-Adjust `wordW` in `Finale.tsx` (about 92 px per character at 172 px) if the lockup isn't centred in the still. Swap the spark for the user's logo SVG if they supply one.
+## Recipe 13 — Feature cascade
+3–6 cards in a grid, each with an icon, a 2–4 word title and one line. They enter with a 4-frame stagger (`SNAPPY`, rise plus fade). As the voice names each feature, that card lifts (scale 1.04, accent border, glow) and the others dim to about 60%. End with all cards settled for a 1 s read.
+
+## Recipe 14 — Split before / after
+The frame splits with a vertical divider that draws top to bottom. **Before** is desaturated, cluttered, muted text, maybe a ticking clock. **After** is clean, in the accent, with the outcome number. The divider then sweeps left so "after" takes the full frame (match cut into the next scene).
+
+## Recipe 15 — Quote / testimonial
+A large quote mark in the accent scales in. The quote is set in display type (serif works beautifully even in sans directions), words springing in on the voice if it's spoken, or 3 frames apart if not. The attribution (avatar circle with initials, name, role) slides up after the quote completes. Hold for at least 2 s. Use fictional names unless the user provides real, approved quotes.
