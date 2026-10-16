@@ -1,0 +1,347 @@
+{
+  "title": "CAGECRAFT Sale",
+  "output": "cagecraft-sale",
+  "voice": {
+    "elevenlabs_voice_id": "nBoLwpO4PAjQaQwVKPI1",
+    "elevenlabs_voice_name": "Amelia - Young Australian Female",
+    "model": "eleven_v4",
+    "take": "assets/vo/voiceover.mp3",
+    "words": "assets/vo/voiceover.words.json",
+    "script": "Fighters.\n\nStop scrolling.\n\nThe biggest sale in fightwear. Ever.\n\nUp to 40% off.\n\nFree gifts.\n\nMonths of building. One week only.\n\nThis is Cagecraft.\n\nShop now."
+  },
+  "timeline": {
+    "fps": 30,
+    "vo_lead": 3.45,
+    "tail_after_final_hit": 2.1,
+    "gaps_after": {
+      "ever": 0.25,
+      "gifts": 0.8,
+      "only": 0.6
+    },
+    "hook": {
+      "kick": 0.3,
+      "slow_in": 0.55,
+      "slow_full": 0.85,
+      "contact": 1.9,
+      "ramp_up": 2.95,
+      "snap": 3.3
+    }
+  },
+  "captions": [
+    [
+      "FIGHTERS.",
+      "fighters"
+    ],
+    [
+      "STOP",
+      "stop"
+    ],
+    [
+      "SCROLLING.",
+      "scrolling"
+    ],
+    [
+      "THE",
+      "the"
+    ],
+    [
+      "BIGGEST",
+      "biggest"
+    ],
+    [
+      "SALE",
+      "sale"
+    ],
+    [
+      "IN",
+      "in"
+    ],
+    [
+      "FIGHTWEAR.",
+      "fightwear"
+    ],
+    [
+      "EVER.",
+      "ever"
+    ],
+    [
+      "UP",
+      "up"
+    ],
+    [
+      "TO",
+      "to"
+    ],
+    [
+      "40%",
+      "forty percent"
+    ],
+    [
+      "OFF.",
+      "off"
+    ],
+    [
+      "FREE",
+      "free"
+    ],
+    [
+      "GIFTS.",
+      "gifts"
+    ],
+    [
+      "MONTHS",
+      "months"
+    ],
+    [
+      "OF",
+      "of"
+    ],
+    [
+      "BUILDING.",
+      "building"
+    ],
+    [
+      "ONE",
+      "one"
+    ],
+    [
+      "WEEK",
+      "week"
+    ],
+    [
+      "ONLY.",
+      "only"
+    ],
+    [
+      "THIS",
+      "this"
+    ],
+    [
+      "IS",
+      "is"
+    ],
+    [
+      "CAGECRAFT.",
+      "cagecraft"
+    ],
+    [
+      "SHOP",
+      "shop"
+    ],
+    [
+      "NOW.",
+      "now"
+    ]
+  ],
+  "music": {
+    "file": "assets/music/track.mp3",
+    "bpm": 140,
+    "note": "ElevenLabs Music, 140 BPM. Bar 0 drops on the hook snap, tape-stops on 'stop', re-enters on bar 1 at 'biggest', bar 2 is cut so the final hit (bar 10) lands after 'Shop now'.",
+    "duck_db": -7,
+    "level_db": -3
+  },
+  "sfx": [
+    {
+      "file": "whoosh-dz6EyD6c0E8E3UPAmFL8",
+      "at": "hook.kick",
+      "align": "start",
+      "offset": 0.0,
+      "rate": 1.0,
+      "db": -9
+    },
+    {
+      "file": "whoosh-dz6EyD6c0E8E3UPAmFL8",
+      "at": "hook.slow_in",
+      "align": "start",
+      "offset": 0.05,
+      "rate": 0.45,
+      "db": -10
+    },
+    {
+      "file": "slowmo-tWvlo4T7KKsCHANU4573",
+      "at": "hook.slow_in",
+      "align": "start",
+      "offset": 0.0,
+      "rate": 0.85,
+      "db": -19,
+      "fade_out": 0.25,
+      "until": "hook.snap"
+    },
+    {
+      "file": "impact-9T2wFF5hFD76UKTsHmzn",
+      "at": "hook.contact",
+      "align": "peak",
+      "offset": 0.0,
+      "rate": 0.8,
+      "db": -2
+    },
+    {
+      "file": "shatter-LAsL864Ya0mGgRhrqTKJ",
+      "at": "hook.contact",
+      "align": "peak",
+      "offset": 0.03,
+      "rate": 0.5,
+      "db": -9
+    },
+    {
+      "file": "shatter-OD3f1m1uHPSrDR2fRJw6",
+      "at": "hook.contact",
+      "align": "start",
+      "offset": 0.1,
+      "rate": 0.6,
+      "db": -8
+    },
+    {
+      "file": "snap-e1HI57EExiPyX8NcBtFS",
+      "at": "hook.snap",
+      "align": "peak",
+      "offset": 0.0,
+      "rate": 1.0,
+      "db": -4
+    },
+    {
+      "file": "shatter-LAsL864Ya0mGgRhrqTKJ",
+      "at": "hook.snap",
+      "align": "peak",
+      "offset": 0.0,
+      "rate": 1.0,
+      "db": -3
+    },
+    {
+      "file": "freeze-aBS5UEAWv4Q4sy0bxwhy",
+      "at": "word.stop",
+      "align": "start",
+      "offset": -0.04,
+      "rate": 1.0,
+      "db": -9
+    },
+    {
+      "file": "assemble-CYdMe99hRsHs075xduBA",
+      "at": "word.biggest",
+      "align": "peak",
+      "offset": -0.02,
+      "rate": 1.0,
+      "db": -10
+    },
+    {
+      "file": "slam-wxc7nbV7XISQVuc5QscQ",
+      "at": "word.ever",
+      "align": "peak",
+      "offset": 0.0,
+      "rate": 1.0,
+      "db": -7
+    },
+    {
+      "file": "assemble-CYdMe99hRsHs075xduBA",
+      "at": "word.forty",
+      "align": "peak",
+      "offset": -0.03,
+      "rate": 1.15,
+      "db": -10
+    },
+    {
+      "file": "slam-89Gjyv7ZWHt2cs5IFSxM",
+      "at": "word.forty",
+      "align": "peak",
+      "offset": 0.0,
+      "rate": 1.0,
+      "db": -10
+    },
+    {
+      "file": "kitbag-9YuXWJT9P1u0xTPpGVXV",
+      "at": "word.free",
+      "align": "start",
+      "offset": 0.0,
+      "rate": 1.0,
+      "db": -9
+    },
+    {
+      "file": "assemble-Xp8Mf3ERnkMp65vhhfKY",
+      "at": "word.gifts",
+      "align": "peak",
+      "offset": 0.0,
+      "rate": 1.0,
+      "db": -12
+    },
+    {
+      "file": "assemble-Xp8Mf3ERnkMp65vhhfKY",
+      "at": "word.gifts",
+      "align": "peak",
+      "offset": 0.13,
+      "rate": 1.1,
+      "db": -13
+    },
+    {
+      "file": "assemble-Xp8Mf3ERnkMp65vhhfKY",
+      "at": "word.gifts",
+      "align": "peak",
+      "offset": 0.26,
+      "rate": 0.95,
+      "db": -13
+    },
+    {
+      "file": "assemble-Xp8Mf3ERnkMp65vhhfKY",
+      "at": "word.gifts",
+      "align": "peak",
+      "offset": 0.39,
+      "rate": 1.2,
+      "db": -13
+    },
+    {
+      "file": "assemble-CYdMe99hRsHs075xduBA",
+      "at": "word.months",
+      "align": "peak",
+      "offset": 0.0,
+      "rate": 0.9,
+      "db": -12
+    },
+    {
+      "file": "assemble-CYdMe99hRsHs075xduBA",
+      "at": "word.building",
+      "align": "peak",
+      "offset": 0.0,
+      "rate": 1.0,
+      "db": -11
+    },
+    {
+      "file": "slam-89Gjyv7ZWHt2cs5IFSxM",
+      "at": "word.one",
+      "align": "peak",
+      "offset": 0.0,
+      "rate": 1.0,
+      "db": -12
+    },
+    {
+      "file": "assemble-CYdMe99hRsHs075xduBA",
+      "at": "word.this",
+      "align": "peak",
+      "offset": 0.05,
+      "rate": 1.0,
+      "db": -11
+    },
+    {
+      "file": "logo-8akkxMReMBQSRxTsERPN",
+      "at": "word.cagecraft",
+      "align": "peak",
+      "offset": 0.02,
+      "rate": 1.0,
+      "db": -5
+    },
+    {
+      "file": "button-Ry72jq7sFN1yuPfpcNHY",
+      "at": "word.shop",
+      "align": "start",
+      "offset": 0.0,
+      "rate": 1.0,
+      "db": -14
+    },
+    {
+      "file": "button-RpUTWOqENCgyQ00SW5pV",
+      "at": "music.final",
+      "align": "peak",
+      "offset": 0.0,
+      "rate": 1.0,
+      "db": -8
+    }
+  ]
+}

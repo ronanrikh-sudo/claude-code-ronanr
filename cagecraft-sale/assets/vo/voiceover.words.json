@@ -1,0 +1,137 @@
+[
+ {
+  "w": "fighters",
+  "start": 0.0,
+  "end": 0.86
+ },
+ {
+  "w": "stop",
+  "start": 0.87,
+  "end": 1.24
+ },
+ {
+  "w": "scrolling",
+  "start": 1.25,
+  "end": 1.91
+ },
+ {
+  "w": "the",
+  "start": 2.27,
+  "end": 2.34
+ },
+ {
+  "w": "biggest",
+  "start": 2.35,
+  "end": 2.73
+ },
+ {
+  "w": "sale",
+  "start": 2.74,
+  "end": 3.04
+ },
+ {
+  "w": "in",
+  "start": 3.05,
+  "end": 3.19
+ },
+ {
+  "w": "fightwear",
+  "start": 3.2,
+  "end": 3.88
+ },
+ {
+  "w": "ever",
+  "start": 4.22,
+  "end": 4.74
+ },
+ {
+  "w": "up",
+  "start": 5.12,
+  "end": 5.27
+ },
+ {
+  "w": "to",
+  "start": 5.28,
+  "end": 5.41
+ },
+ {
+  "w": "forty",
+  "start": 5.42,
+  "end": 5.77
+ },
+ {
+  "w": "percent",
+  "start": 5.78,
+  "end": 6.17
+ },
+ {
+  "w": "off",
+  "start": 6.18,
+  "end": 6.6
+ },
+ {
+  "w": "free",
+  "start": 6.91,
+  "end": 7.26
+ },
+ {
+  "w": "gifts",
+  "start": 7.27,
+  "end": 7.9
+ },
+ {
+  "w": "months",
+  "start": 8.36,
+  "end": 8.77
+ },
+ {
+  "w": "of",
+  "start": 8.78,
+  "end": 8.91
+ },
+ {
+  "w": "building",
+  "start": 8.92,
+  "end": 9.53
+ },
+ {
+  "w": "one",
+  "start": 10.03,
+  "end": 10.29
+ },
+ {
+  "w": "week",
+  "start": 10.3,
+  "end": 10.57
+ },
+ {
+  "w": "only",
+  "start": 10.58,
+  "end": 11.14
+ },
+ {
+  "w": "this",
+  "start": 11.66,
+  "end": 11.87
+ },
+ {
+  "w": "is",
+  "start": 11.88,
+  "end": 12.04
+ },
+ {
+  "w": "cagecraft",
+  "start": 12.05,
+  "end": 13.0
+ },
+ {
+  "w": "shop",
+  "start": 13.28,
+  "end": 13.68
+ },
+ {
+  "w": "now",
+  "start": 13.69,
+  "end": 14.31
+ }
+]

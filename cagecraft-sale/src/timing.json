@@ -1,0 +1,293 @@
+{
+ "fps": 30,
+ "totalSeconds": 21.633333333333333,
+ "voLead": 3.45,
+ "speechEnd": 19.41,
+ "words": [
+  {
+   "w": "fighters",
+   "start": 3.45,
+   "end": 4.31
+  },
+  {
+   "w": "stop",
+   "start": 4.32,
+   "end": 4.69
+  },
+  {
+   "w": "scrolling",
+   "start": 4.7,
+   "end": 5.36
+  },
+  {
+   "w": "the",
+   "start": 5.72,
+   "end": 5.79
+  },
+  {
+   "w": "biggest",
+   "start": 5.8,
+   "end": 6.18
+  },
+  {
+   "w": "sale",
+   "start": 6.19,
+   "end": 6.49
+  },
+  {
+   "w": "in",
+   "start": 6.5,
+   "end": 6.64
+  },
+  {
+   "w": "fightwear",
+   "start": 6.65,
+   "end": 7.33
+  },
+  {
+   "w": "ever",
+   "start": 7.67,
+   "end": 8.19
+  },
+  {
+   "w": "up",
+   "start": 8.82,
+   "end": 8.97
+  },
+  {
+   "w": "to",
+   "start": 8.98,
+   "end": 9.11
+  },
+  {
+   "w": "forty",
+   "start": 9.12,
+   "end": 9.47
+  },
+  {
+   "w": "percent",
+   "start": 9.48,
+   "end": 9.87
+  },
+  {
+   "w": "off",
+   "start": 9.88,
+   "end": 10.3
+  },
+  {
+   "w": "free",
+   "start": 10.61,
+   "end": 10.96
+  },
+  {
+   "w": "gifts",
+   "start": 10.97,
+   "end": 11.6
+  },
+  {
+   "w": "months",
+   "start": 12.86,
+   "end": 13.27
+  },
+  {
+   "w": "of",
+   "start": 13.28,
+   "end": 13.41
+  },
+  {
+   "w": "building",
+   "start": 13.42,
+   "end": 14.03
+  },
+  {
+   "w": "one",
+   "start": 14.53,
+   "end": 14.79
+  },
+  {
+   "w": "week",
+   "start": 14.8,
+   "end": 15.07
+  },
+  {
+   "w": "only",
+   "start": 15.08,
+   "end": 15.64
+  },
+  {
+   "w": "this",
+   "start": 16.76,
+   "end": 16.97
+  },
+  {
+   "w": "is",
+   "start": 16.98,
+   "end": 17.14
+  },
+  {
+   "w": "cagecraft",
+   "start": 17.15,
+   "end": 18.1
+  },
+  {
+   "w": "shop",
+   "start": 18.38,
+   "end": 18.78
+  },
+  {
+   "w": "now",
+   "start": 18.79,
+   "end": 19.41
+  }
+ ],
+ "captions": [
+  {
+   "text": "FIGHTERS.",
+   "start": 3.45,
+   "end": 4.31
+  },
+  {
+   "text": "STOP",
+   "start": 4.32,
+   "end": 4.69
+  },
+  {
+   "text": "SCROLLING.",
+   "start": 4.7,
+   "end": 5.36
+  },
+  {
+   "text": "THE",
+   "start": 5.72,
+   "end": 5.79
+  },
+  {
+   "text": "BIGGEST",
+   "start": 5.8,
+   "end": 6.18
+  },
+  {
+   "text": "SALE",
+   "start": 6.19,
+   "end": 6.49
+  },
+  {
+   "text": "IN",
+   "start": 6.5,
+   "end": 6.64
+  },
+  {
+   "text": "FIGHTWEAR.",
+   "start": 6.65,
+   "end": 7.33
+  },
+  {
+   "text": "EVER.",
+   "start": 7.67,
+   "end": 8.19
+  },
+  {
+   "text": "UP",
+   "start": 8.82,
+   "end": 8.97
+  },
+  {
+   "text": "TO",
+   "start": 8.98,
+   "end": 9.11
+  },
+  {
+   "text": "40%",
+   "start": 9.12,
+   "end": 9.87
+  },
+  {
+   "text": "OFF.",
+   "start": 9.88,
+   "end": 10.3
+  },
+  {
+   "text": "FREE",
+   "start": 10.61,
+   "end": 10.96
+  },
+  {
+   "text": "GIFTS.",
+   "start": 10.97,
+   "end": 11.6
+  },
+  {
+   "text": "MONTHS",
+   "start": 12.86,
+   "end": 13.27
+  },
+  {
+   "text": "OF",
+   "start": 13.28,
+   "end": 13.41
+  },
+  {
+   "text": "BUILDING.",
+   "start": 13.42,
+   "end": 14.03
+  },
+  {
+   "text": "ONE",
+   "start": 14.53,
+   "end": 14.79
+  },
+  {
+   "text": "WEEK",
+   "start": 14.8,
+   "end": 15.07
+  },
+  {
+   "text": "ONLY.",
+   "start": 15.08,
+   "end": 15.64
+  },
+  {
+   "text": "THIS",
+   "start": 16.76,
+   "end": 16.97
+  },
+  {
+   "text": "IS",
+   "start": 16.98,
+   "end": 17.14
+  },
+  {
+   "text": "CAGECRAFT.",
+   "start": 17.15,
+   "end": 18.1
+  },
+  {
+   "text": "SHOP",
+   "start": 18.38,
+   "end": 18.78
+  },
+  {
+   "text": "NOW.",
+   "start": 18.79,
+   "end": 19.41
+  }
+ ],
+ "marks": {
+  "kick": 0.3,
+  "slow_in": 0.55,
+  "slow_full": 0.85,
+  "contact": 1.9,
+  "ramp_up": 2.95,
+  "snap": 3.3,
+  "freeze": 4.32,
+  "biggest": 5.8,
+  "finalHit": 19.514,
+  "bar": 1.714286,
+  "musicStart": 3.3
+ },
+ "voice": "Amelia - Young Australian Female",
+ "mix": {
+  "lufs": -16.18,
+  "truePeak": -2.02
+ }
+}
