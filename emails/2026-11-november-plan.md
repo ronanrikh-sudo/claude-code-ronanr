@@ -25,7 +25,8 @@ All times AEDT. Send at 6pm unless noted (gym-goers check email after work; adju
 | 1 | Tue 3 Nov | **What's coming** (drafted) | All, excl. unengaged | Biggest sale, new kit, restock, you're on the list | Follow for the reveal |
 | 2 | Tue 10 Nov | **The kit reveal** | All, excl. unengaged | First look at the new fight kit and new long sleeve rashguard. Hero shots, fabric, fit. "Drops in early access, Fri 20 Nov." | See the full kit |
 | 3 | Fri 13 Nov | **5 tees + the throwback** | All, excl. unengaged | Lookbook of the 5 new oversized tees. Reveal the day-one jersey colourway with the backstory of our first drop. | See the tees |
-| 4 | Mon 16 Nov | **The restock list** | All, excl. unengaged | Every product coming back, size runs, proof it's wanted ("300+ Walkout Hoodie orders this year, sold out for months"). All of it lands Fri 20 Nov for the list. | Pick your favourites |
+| R | **Wed 4 Nov** | **Restock: They're back** (drafted) | All subscribers | Hoodies, jerseys and tees restocked early, at full price. See `2026-11-restock/`. | Shop the restock |
+| 4 | Mon 16 Nov | **What's selling since the restock** | All, excl. unengaged | The restock landed early (4 Nov), so this becomes a best-sellers update: which sizes and colourways are running low. Early access opens Fri 20 Nov. | Grab your size |
 | 5 | Wed 18 Nov | **The sale reveal** | All, excl. unengaged | The offer, free gifts, the two dates: you get in Fri 20 Nov, everyone else waits until Fri 27 Nov. A full week's head start. How to get in. | Add to calendar |
 | 6a | Thu 19 Nov 6pm | **VIP: you're in now** (optional) | VIP ($200+ or 2+ orders) | Head start for best customers, before the rest of the list | Shop early access |
 | 6b | Thu 19 Nov 6pm | **Tomorrow, 7am** | All excl. VIP, excl. unengaged | Exact open time, how access works, what's included | Set a reminder |
@@ -62,5 +63,5 @@ The public can't shop until Fri 27 Nov, so from Fri 20 Nov the pitch to non-subs
 2. **The offer.** The ad placeholder is "up to 40% off + free gifts" (180 towels and 43 pairs of socks in stock). Is it the same offer in early access and the main sale, or does early access get something extra? Is the new kit discounted, or full price plus a gift?
 3. **Early access gating.** Code, hidden collection or customer tag (see above).
 4. **Reveal assets.** #2 and #3 need product photos of the new kit, tees and jersey by about 8 Nov and 11 Nov.
-5. **Restock timing.** Restocked inventory must be live in Shopify by Thu 19 Nov (VIP) or Fri 20 Nov.
+5. **Restock timing.** Done: hoodies, jerseys and tees went live on 4 Nov. Shorts and rashguards are still mostly out of stock.
 6. **VIP head start.** Keep it, or open the whole list together on Fri 20 Nov?
