@@ -36,6 +36,9 @@ const page = (w, h, body) => `<!doctype html><html><head><meta charset="utf-8"><
 const jobs = [
   { name: "cagecraft-label-card-black-A6-bleed", w: 111, h: 154, body: card("", 3) },
   { name: "cagecraft-label-card-black", w: 105, h: 148, body: card("", 0), png: true, pdf: false },
+  // 5mm bleed per edge: the 115 x 158mm upload size online printers ask for on A6.
+  { name: "cagecraft-label-card-black-A6-115x158", w: 115, h: 158, body: card("", 5) },
+  { name: "cagecraft-label-card-white-A6-115x158", w: 115, h: 158, body: card("light", 5) },
   { name: "cagecraft-label-card-black-A6", w: 105, h: 148, body: card("", 0) },
   { name: "cagecraft-label-card-white", w: 105, h: 148, body: card("light", 0), png: true, pdf: false },
   { name: "cagecraft-label-card-white-A6", w: 105, h: 148, body: card("light", 0) },
