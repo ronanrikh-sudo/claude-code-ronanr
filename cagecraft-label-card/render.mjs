@@ -34,8 +34,11 @@ const page = (w, h, body) => `<!doctype html><html><head><meta charset="utf-8"><
 </style></head><body>${body}</body></html>`;
 
 const jobs = [
-  { name: "cagecraft-label-card-black", w: 111, h: 154, body: card("", 3), png: true },
+  { name: "cagecraft-label-card-black-A6-bleed", w: 111, h: 154, body: card("", 3) },
+  { name: "cagecraft-label-card-black", w: 105, h: 148, body: card("", 0), png: true, pdf: false },
+  { name: "cagecraft-label-card-black-A6", w: 105, h: 148, body: card("", 0) },
   { name: "cagecraft-label-card-white", w: 105, h: 148, body: card("light", 0), png: true, pdf: false },
+  { name: "cagecraft-label-card-white-A6", w: 105, h: 148, body: card("light", 0) },
   { name: "cagecraft-label-card-white-A4-4up", w: 210, h: 297, body: `<div class="sheet">${card("light", 0).repeat(4)}<i class="cut v"></i><i class="cut h"></i></div>` },
 ];
 
