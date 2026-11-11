@@ -5,6 +5,7 @@ const { chromium } = createRequire(import.meta.url)("playwright"); // global ins
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import fs from "node:fs";
+import { execFileSync } from "node:child_process";
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const CODE = process.argv[2] || "LABEL10";
@@ -55,6 +56,7 @@ for (const j of jobs) {
   await p.goto(`file://${tmp}`);
   await p.evaluate(() => document.fonts.ready);
   if (j.pdf !== false) await p.pdf({ path: path.join(dir, "out", `${j.name}.pdf`), width: `${j.w}mm`, height: `${j.h}mm`, printBackground: true });
+  if (j.pdf !== false) execFileSync("python3", [path.join(dir, "boxes.py"), path.join(dir, "out", `${j.name}.pdf`), j.w, j.h].map(String));
   if (j.png) await p.screenshot({ path: path.join(dir, "out", `${j.name}.png`) });
   await ctx.close();
   fs.unlinkSync(tmp);
