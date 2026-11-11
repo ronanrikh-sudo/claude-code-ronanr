@@ -1,0 +1,10 @@
+{
+  "name": "cagecraft-label-card",
+  "private": true,
+  "type": "module",
+  "scripts": { "render": "node render.mjs" },
+  "dependencies": {
+    "@fontsource-variable/archivo": "^5.0.0",
+    "@fontsource/inter-tight": "^5.0.0"
+  }
+}

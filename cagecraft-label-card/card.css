@@ -1,0 +1,25 @@
+@font-face{font-family:"Archivo";src:url("node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-italic.woff2") format("woff2");font-style:italic;font-weight:100 900;font-stretch:62% 125%}
+@font-face{font-family:"Archivo";src:url("node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2") format("woff2");font-style:normal;font-weight:100 900;font-stretch:62% 125%}
+@font-face{font-family:"Inter Tight";src:url("node_modules/@fontsource/inter-tight/files/inter-tight-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Inter Tight";src:url("node_modules/@fontsource/inter-tight/files/inter-tight-latin-600-normal.woff2") format("woff2");font-weight:600}
+@font-face{font-family:"Inter Tight";src:url("node_modules/@fontsource/inter-tight/files/inter-tight-latin-700-normal.woff2") format("woff2");font-weight:700}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+/* A6 card. --bleed is 3mm for the print-shop file, 0 for the cut-at-home sheet. */
+.card{--bleed:0mm;--bg:#050506;--fg:#fff;--muted:#A7ABB3;--line:rgba(255,255,255,.22);--teal:#16B3B7;
+  width:calc(105mm + 2*var(--bleed));height:calc(148mm + 2*var(--bleed));padding:calc(10mm + var(--bleed));
+  background:var(--bg);color:var(--fg);display:flex;flex-direction:column;font-family:"Inter Tight",sans-serif;overflow:hidden}
+.card.light{--bg:#fff;--fg:#0A0A0B;--muted:#55595F;--line:rgba(0,0,0,.25);--teal:#0E9296}
+.card.light .logo{filter:invert(1)}
+.logo{width:46mm;display:block}
+.eyebrow{margin-top:19mm;font-weight:700;font-size:6.6pt;letter-spacing:.24em;text-transform:uppercase;color:var(--teal)}
+h1{margin-top:4mm;font-family:"Archivo",sans-serif;font-style:italic;font-weight:900;font-stretch:125%;font-size:27pt;line-height:.94;letter-spacing:-.01em;text-transform:uppercase}
+.rule{width:14mm;height:.9mm;background:var(--teal);margin-top:6mm}
+p{margin-top:6mm;font-weight:500;font-size:9.6pt;line-height:1.5;max-width:80mm}
+p + p{margin-top:3.2mm}
+p b{font-weight:700}
+.offer{margin-top:auto;border:.35mm solid var(--line);padding:4.5mm 5mm;display:flex;align-items:center;justify-content:space-between;gap:4mm}
+.offer .k{font-weight:700;font-size:6.2pt;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.offer .v{margin-top:1.4mm;font-family:"Archivo",sans-serif;font-style:italic;font-weight:900;font-stretch:125%;font-size:15pt;text-transform:uppercase;line-height:1}
+.offer .code{font-family:"Archivo",sans-serif;font-weight:900;font-stretch:112%;font-size:15pt;letter-spacing:.06em;color:var(--bg);background:var(--teal);padding:2.6mm 4mm;line-height:1;white-space:nowrap}
+.foot{margin-top:4.5mm;display:flex;justify-content:space-between;font-weight:600;font-size:6pt;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
