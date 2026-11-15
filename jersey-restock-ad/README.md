@@ -59,31 +59,54 @@ Stories and Feed.
   footage was lightly denoised, upscaled with lanczos to 1080×1920 and gently sharpened. All type
   and graphics render natively at 1080p.
 
-## Ad copy to pair with each version
+## Live on Meta (launched 16 Nov 2026 AEDT)
+
+**Placement:** CBO | Q4 SCALE | SEPT 24 → PROSPECTING | BROAD ADV+ | Q4 (`120252988221980730`).
+
+Why this ad set:
+- The original rooftop video won its 10 sales here.
+- It gets most of the campaign budget: $652 of $836 over the last 7 days.
+- It beat the Lookalike over the last 7 days: 2.29 vs 1.77 ROAS.
+- The Lookalike is saturating, with frequency around 3 and only about 4.6k people reached a week.
+
+| Ad | Ad ID | Creative ID | Video ID |
+|---|---|---|---|
+| VIDEO \| Rooftop Re-edit - Just Restocked \| Nov26 | 120253813507860730 | 2414759269460893 | 1693438502368714 |
+| VIDEO \| Rooftop Re-edit - Diamond or Cotton Candy \| Nov26 | 120253813507930730 | 1085136477893946 | 1419955156829925 |
+| VIDEO \| Rooftop Re-edit - Free Kit Bag \| Nov26 | 120253813507990730 | 1809583103432020 | 1102300912811350 |
+
+**Copy style**, taken from the account's converting ads:
+- **Openers:** two-beat parallel lines. "Two colourways. One standard." comes from the rooftop winner (10 sales). "Crafted for combat. Cut for the street." comes from the Concrete "Just restocked" ad (7 sales, about 5.9 ROAS).
+- **Offer line:** "Free kit bag" as the closer.
+- **Headline:** "Fight Jersey 2.0 — $79.95", from the colourway static (5.4 ROAS).
+- **Style:** short lines and at most one emoji.
 
 **Restock**
-- Headline: Fight Jersey 2.0, Back In Stock
-- Primary text: Back in stock: the Fight Jersey 2.0 in Diamond and Cotton Candy. Lightweight,
-  breathable and cut to move. Built for the gym, worn everywhere else. Free kit bag with any order.
+- Body: Just restocked. 👊 / Crafted for combat. Cut for the street. The Fight Jersey 2.0 in Diamond and
+  Cotton Candy: lightweight, breathable and cut to move. / Free kit bag with any order.
+- Headlines: Fight Jersey 2.0 — $79.95 | Two Colourways. Zero Compromise.
 
 **Colourway**
-- Headline: Diamond or Cotton Candy?
-- Primary text: Diamond or Cotton Candy? The Fight Jersey 2.0 is lightweight, breathable and cut
-  to move. Pick your side. Free kit bag with any order.
+- Body: Two colourways. One standard. / Diamond or Cotton Candy? 👇 / The Fight Jersey 2.0: lightweight,
+  breathable and cut to move. Built for the gym, worn everywhere else. / Free kit bag with any order.
+- Headlines: Diamond or Cotton Candy? | Fight Jersey 2.0 — $79.95
 
 **Kit bag**
-- Headline: Free Kit Bag With Any Order
-- Primary text: Free kit bag with any order. Grab the Fight Jersey 2.0 in Diamond or Cotton
-  Candy: lightweight, breathable, cut to move.
+- Body: Free kit bag with any order. 🎁 / The Fight Jersey 2.0 in Diamond and Cotton Candy. Lightweight,
+  breathable and cut to move. Built for the gym, worn everywhere else. / Just restocked.
+- Headlines: Claim Your Free Kit Bag | Fight Jersey 2.0 — $79.95
 
 **All three**
-- Description: One kit bag per customer.
-- CTA: Shop Now.
-- Destination: `https://www.cagecraftco.com/products/fight-jersey-2-0-cotton-candy`, the same as
-  the original ad.
+- Description: Free kit bag with any order · One per customer.
+- CTA: Shop Now. Destination: /products/fight-jersey-2-0-cotton-candy (the original winner's).
+- URL parameters: `utm_source=facebook&utm_medium=paid&utm_campaign={{campaign.id}}&utm_content={{ad.id}}`.
+  These match the UTMs already seen on Shopify orders.
 
-"Free kit bag with any order · one per customer" matches the FREEKITBAG discount: buy any item,
-get one kit bag free, one use per customer. It also matches the corrected pop-up copy.
+**Meta enhancements**
+- **On:** relevant comments, enhance CTA, and product extensions, which show a catalog strip under the
+  video like the original winner.
+- **Off:** text optimisations (so the copy stays exactly as written), video auto-crop and filters (so the
+  typography isn't cropped or re-graded), and image brightness/contrast.
 
 ## Rebuild
 
