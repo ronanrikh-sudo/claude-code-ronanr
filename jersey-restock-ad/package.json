@@ -1,0 +1,24 @@
+{
+  "name": "jersey-restock-ad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CAGECRAFT Fight Jersey 2.0 re-edit: 9:16 Meta ad, three hook versions, rendered with Remotion",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource/inter-tight": "^5.3.0",
+    "@remotion/bundler": "4.0.535",
+    "@remotion/cli": "4.0.535",
+    "@remotion/renderer": "4.0.535",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "4.0.535"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.6.0"
+  }
+}
