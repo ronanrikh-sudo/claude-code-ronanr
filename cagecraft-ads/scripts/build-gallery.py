@@ -49,6 +49,7 @@ def as_text(v):
 ads = []
 for bf in sorted(glob.glob(os.path.join(ROOT, "ads", "*", "brief.json"))):
     d = os.path.dirname(bf); aid = os.path.basename(d); num = aid.split("-")[0]
+    if num == "bf": num = "BF" + aid.split("-")[1].lstrip("0")
     try: b = json.load(open(bf))
     except Exception as e: print("bad brief", aid, e); continue
     outd = os.path.join(d, "out")
@@ -83,6 +84,7 @@ for bf in sorted(glob.glob(os.path.join(ROOT, "ads", "*", "brief.json"))):
         "fidelity": as_text(b.get("fidelity")), "notes": as_text(b.get("notes_for_owner")), "media": media,
     })
 
+ads.sort(key=lambda a: (not a["id"].startswith("bf-"), a["id"]))
 tpl = open(os.path.join(ROOT, "scripts", "gallery.template.html")).read()
 page = tpl.replace("/*__DATA__*/[]", json.dumps(ads, ensure_ascii=False).replace("</", "<\\/"))
 open(os.path.join(OUT, "index.html"), "w").write(page)

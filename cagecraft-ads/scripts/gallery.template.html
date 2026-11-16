@@ -82,7 +82,7 @@ summary::after { content: " +"; } details[open] summary::after { content: " –"
   <header class="top">
     <div class="eyebrow">Creative review · built from competitor formats with evidence of working</div>
     <h1>Cagecraft Ad Recreations</h1>
-    <p class="lede">Each creative below rebuilds a long-running competitor ad format for a Cagecraft bestseller. <b>Wherever a garment appears, it is your own photography, placed as-is.</b> Where AI was used, it made only backgrounds, b-roll with no product in frame, or audio. Open a card's sheet for the ad copy, the source photos and what to check before it runs.</p>
+    <p class="lede">The Black Friday set comes first, built on your locked offer. The rest rebuild long-running competitor ad formats for your bestsellers. <b>Wherever a garment appears, it is your own photography, placed as-is.</b> Where AI was used, it made only backgrounds, b-roll with no product in frame, or audio. Open a card's sheet for the ad copy, the source photos and what to check before it runs.</p>
     <div class="rule" id="stats"></div>
   </header>
 
@@ -100,10 +100,11 @@ summary::after { content: " +"; } details[open] summary::after { content: " –"
 const ADS = /*__DATA__*/[];
 const $ = (s, r = document) => r.querySelector(s);
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
-const productKey = (a) => { const p = (a.product + " " + a.id).toLowerCase(); return p.includes("hoodie") ? "hoodie" : p.includes("jersey") ? "jersey" : "legacy"; };
+const productKey = (a) => { const p = (a.product + " " + a.id).toLowerCase(); return p.includes("hoodie") ? "hoodie" : p.includes("jersey") ? "jersey" : p.includes("legacy") ? "legacy" : "other"; };
 
 const FILTERS = [
   ["all", "All", () => true],
+  ["bf", "Black Friday", (a) => a.id.startsWith("bf-")],
   ["static", "Stills", (a) => a.type === "static"],
   ["video", "Videos", (a) => a.type === "video"],
   ["hoodie", "Walkout Hoodie", (a) => productKey(a) === "hoodie"],
