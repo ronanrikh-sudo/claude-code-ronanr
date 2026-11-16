@@ -1,0 +1,199 @@
+<title>Cagecraft Ad Recreations</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100..125,500..900;1,100..125,700..900&family=Inter+Tight:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a proof wall. Sticky filter bar over a grid of proof cards; each card is one creative with its
+   variants, the competitor format it recreates, and a fold-out sheet of copy + provenance. */
+:root {
+  --bg: #ECEDEE; --surface: #FFFFFF; --stage: #D9DBDD; --ink: #101214; --muted: #5B6168; --line: #D2D5D8;
+  --accent: #0A7E82; --accent-ink: #FFFFFF; --ai: #B23A72; --ok: #1F7A46; --warn: #8A5A00;
+  --display: "Archivo", "Inter Tight", system-ui, sans-serif;
+  --body: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0B0C0E; --surface: #15171A; --stage: #1E2125; --ink: #F1F2F3; --muted: #9AA0A8; --line: #2A2E33;
+  --accent: #2CC4C8; --accent-ink: #04191A; --ai: #F09EC0; --ok: #5FD08A; --warn: #E8B24A; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0B0C0E; --surface: #15171A; --stage: #1E2125; --ink: #F1F2F3; --muted: #9AA0A8; --line: #2A2E33;
+  --accent: #2CC4C8; --accent-ink: #04191A; --ai: #F09EC0; --ok: #5FD08A; --warn: #E8B24A; color-scheme: dark }
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1400px; margin: 0 auto; padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 24px; }
+header.top { display: flex; flex-direction: column; gap: 12px; }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { margin: 0; font-family: var(--display); font-weight: 900; font-stretch: 125%; font-style: italic; font-size: clamp(30px, 6vw, 56px); line-height: .95; letter-spacing: -.01em; text-transform: uppercase; text-wrap: balance; }
+.lede { margin: 0; max-width: 68ch; color: var(--muted); font-size: 16px; }
+.lede b { color: var(--ink); font-weight: 600; }
+.rule { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.rule > div { background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.rule .k { font: 600 11px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.rule .v { font-size: 14px; }
+.rule .n { font-family: var(--display); font-weight: 800; font-stretch: 110%; font-size: 26px; line-height: 1; font-variant-numeric: tabular-nums; }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.chip { font: 600 13px/1 var(--body); padding: 9px 13px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip:focus-visible, button:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.count { margin-left: auto; font: 500 12px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 20px; align-items: start; }
+.card { background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; }
+.stage { position: relative; background: var(--stage); aspect-ratio: 4 / 5; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.stage img, .stage video { max-width: 100%; max-height: 100%; width: auto; height: 100%; object-fit: contain; display: block; }
+.stage button.zoom { position: absolute; inset: 0; background: none; border: 0; padding: 0; cursor: zoom-in; }
+.num { position: absolute; left: 0; top: 0; background: var(--ink); color: var(--bg); font: 700 12px/1 var(--mono); padding: 7px 9px; letter-spacing: .04em; z-index: 2; }
+.variants { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 14px 0; }
+.variants button { font: 600 11px/1 var(--mono); padding: 6px 8px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; text-transform: uppercase; letter-spacing: .04em; }
+.variants button[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
+.meta { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.meta h2 { margin: 0; font: 700 17px/1.25 var(--body); text-wrap: balance; }
+.product { color: var(--muted); font-size: 13px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 600 11px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; padding: 5px 7px; border: 1px solid currentColor; }
+.tag.real { color: var(--ok); } .tag.ai { color: var(--ai); } .tag.kind { color: var(--muted); }
+.src { border-top: 1px solid var(--line); padding-top: 10px; display: flex; flex-direction: column; gap: 2px; }
+.src .k, .sheet .k { font: 600 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.src .f { font-weight: 600; }
+.src .e { color: var(--muted); font-size: 13px; }
+details { border-top: 1px solid var(--line); }
+summary { cursor: pointer; padding: 10px 0 0; font: 600 13px/1 var(--body); color: var(--accent); list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: " +"; } details[open] summary::after { content: " –"; }
+.sheet { display: flex; flex-direction: column; gap: 12px; padding-top: 12px; }
+.sheet .row { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.sheet .t { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; }
+.sheet .t.mono { font: 12px/1.5 var(--mono); color: var(--muted); }
+.sheet .head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.copy { font: 600 11px/1 var(--mono); padding: 5px 7px; background: transparent; color: var(--accent); border: 1px solid var(--accent); cursor: pointer; text-transform: uppercase; letter-spacing: .04em; flex: none; }
+.note { border-left: 3px solid var(--warn); padding-left: 10px; }
+.empty { color: var(--muted); padding: 40px 0; }
+
+.lightbox { position: fixed; inset: 0; z-index: 20; background: rgba(5, 6, 8, .94); display: flex; align-items: center; justify-content: center; padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lightbox button { position: absolute; top: calc(12px + env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); font: 600 13px/1 var(--body); padding: 10px 14px; background: #F1F2F3; color: #101214; border: 0; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">Creative review · built from competitor formats with evidence of working</div>
+    <h1>Cagecraft Ad Recreations</h1>
+    <p class="lede">Each creative below rebuilds a long-running competitor ad format for a Cagecraft bestseller. <b>The garment in every one is your own photography, placed as-is.</b> Where AI was used, it made only backgrounds, b-roll with no product in frame, or audio. Open a card's sheet for the ad copy, the source photos and what to check before it runs.</p>
+    <div class="rule" id="stats"></div>
+  </header>
+
+  <div class="bar" id="bar" role="toolbar" aria-label="Filter creatives"></div>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>No creatives match this filter.</p>
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" id="lb-close">Close</button>
+  <img id="lb-img" alt="">
+</div>
+
+<script>
+const ADS = /*__DATA__*/[];
+const $ = (s, r = document) => r.querySelector(s);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const productKey = (a) => { const p = (a.product + " " + a.id).toLowerCase(); return p.includes("hoodie") ? "hoodie" : p.includes("jersey") ? "jersey" : "legacy"; };
+
+const FILTERS = [
+  ["all", "All", () => true],
+  ["static", "Stills", (a) => a.type === "static"],
+  ["video", "Videos", (a) => a.type === "video"],
+  ["hoodie", "Walkout Hoodie", (a) => productKey(a) === "hoodie"],
+  ["jersey", "Fight Jersey 2.0", (a) => productKey(a) === "jersey"],
+  ["legacy", "Legacy kit", (a) => productKey(a) === "legacy"],
+  ["ai", "Uses AI", (a) => !!a.ai],
+  ["noai", "No AI", (a) => !a.ai],
+];
+let active = "all";
+try { const s = localStorage.getItem("cc-filter"); if (s && FILTERS.some((f) => f[0] === s)) active = s; } catch (e) {}
+
+function stats() {
+  const n = ADS.length, st = ADS.filter((a) => a.type === "static").length, ai = ADS.filter((a) => a.ai).length;
+  const files = ADS.reduce((t, a) => t + a.media.length, 0);
+  const cells = [[n, "Creatives", st + " stills, " + (n - st) + " videos"], [files, "Deliverable files", "Sizes for feed, Stories and Reels"], [n, "Real garment", "Product pixels are your photography in every creative"], [ai, "Use AI", "Backgrounds, b-roll or audio only"]];
+  const box = $("#stats"); box.textContent = "";
+  for (const [num, k, v] of cells) { const d = el("div"); d.append(el("div", "k", k), el("div", "n", String(num)), el("div", "v", v)); box.append(d); }
+}
+
+function bar() {
+  const b = $("#bar"); b.textContent = "";
+  for (const [key, label, fn] of FILTERS) {
+    const c = el("button", "chip", label + " " + ADS.filter(fn).length); c.type = "button"; c.id = "f-" + key;
+    c.setAttribute("aria-pressed", String(key === active));
+    c.addEventListener("click", () => { active = key; try { localStorage.setItem("cc-filter", key); } catch (e) {} bar(); grid(); });
+    b.append(c);
+  }
+  b.append(el("span", "count", ""));
+}
+
+function copyBtn(text) {
+  const b = el("button", "copy", "Copy"); b.type = "button";
+  b.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(text); b.textContent = "Copied"; }
+    catch (e) { const t = b.closest(".row").querySelector(".t"); const r = document.createRange(); r.selectNodeContents(t); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected"; }
+    setTimeout(() => (b.textContent = "Copy"), 1500);
+  });
+  return b;
+}
+function row(k, text, opts = {}) {
+  if (!text) return null;
+  const r = el("div", "row" + (opts.note ? " note" : "")), h = el("div", "head"); h.append(el("div", "k", k)); if (opts.copy) h.append(copyBtn(text));
+  r.append(h, el("div", "t" + (opts.mono ? " mono" : ""), text)); return r;
+}
+
+function card(a) {
+  const c = el("article", "card"); c.id = "ad-" + a.id;
+  const stage = el("div", "stage"); stage.append(el("div", "num", a.num));
+  const show = (m) => {
+    stage.querySelectorAll("img,video,button.zoom").forEach((n) => n.remove());
+    stage.style.aspectRatio = m.h / m.w > 1.4 ? "9 / 14" : "4 / 5";
+    if (m.kind === "video") { const v = el("video"); v.controls = true; v.preload = "none"; v.playsInline = true; v.poster = m.poster; v.src = m.src; stage.append(v); }
+    else { const i = el("img"); i.loading = "lazy"; i.src = m.src; i.alt = a.title + " (" + m.label + ")"; i.width = m.w; i.height = m.h; const z = el("button", "zoom"); z.type = "button"; z.setAttribute("aria-label", "Enlarge " + a.title); z.addEventListener("click", () => open(m.src, i.alt)); stage.append(i, z); }
+  };
+  c.append(stage);
+  if (a.media.length > 1) {
+    const vs = el("div", "variants");
+    a.media.forEach((m, ix) => { const b = el("button", null, (m.kind === "video" ? "▶ " : "") + m.label); b.type = "button"; b.setAttribute("aria-pressed", String(ix === 0));
+      b.addEventListener("click", () => { vs.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", "false")); b.setAttribute("aria-pressed", "true"); show(m); }); vs.append(b); });
+    c.append(vs);
+  }
+  show(a.media[0]);
+
+  const meta = el("div", "meta");
+  meta.append(el("h2", null, a.title), el("div", "product", a.product));
+  const tags = el("div", "tags");
+  tags.append(el("span", "tag kind", a.type === "video" ? "Video" : "Still"), el("span", "tag real", "Real garment"), el("span", "tag " + (a.ai ? "ai" : "kind"), a.ai ? "AI: scene / audio" : "No AI"));
+  meta.append(tags);
+  const src = el("div", "src"); src.append(el("div", "k", "Recreates"), el("div", "f", a.format), el("div", "e", a.evidence)); meta.append(src);
+  const d = el("details"), s = el("summary", null, "Copy, sources and checks"); d.append(s);
+  const sheet = el("div", "sheet");
+  [row("Hook", a.hook), row("Primary text", a.primary_text, { copy: true }), row("Headline", a.headline, { copy: true }), row("Before it runs", a.notes, { note: true }),
+   row("What is AI-generated", a.ai || "Nothing. Layout and type are code; every image is a real photograph."), row("Garment source", a.garment_source, { mono: true }), row("Fidelity check", a.fidelity, { mono: true }),
+   row("Full-quality files", a.media.map((m) => "cagecraft-ads/" + m.master).join("\n"), { mono: true })].forEach((r) => r && sheet.append(r));
+  d.append(sheet); meta.append(d); c.append(meta);
+  return c;
+}
+
+function grid() {
+  const g = $("#grid"); g.textContent = "";
+  const fn = FILTERS.find((f) => f[0] === active)[2], list = ADS.filter(fn);
+  list.forEach((a) => g.append(card(a)));
+  $("#empty").hidden = list.length > 0;
+  const c = $(".count"); if (c) c.textContent = list.length + " of " + ADS.length + " shown";
+}
+
+function open(src, alt) { $("#lb-img").src = src; $("#lb-img").alt = alt; $("#lightbox").hidden = false; }
+function close() { $("#lightbox").hidden = true; $("#lb-img").removeAttribute("src"); }
+$("#lb-close").addEventListener("click", close);
+$("#lightbox").addEventListener("click", (e) => { if (e.target.id === "lightbox") close(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+
+stats(); bar(); grid();
+</script>
