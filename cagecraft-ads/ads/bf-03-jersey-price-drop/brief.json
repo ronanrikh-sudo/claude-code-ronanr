@@ -1,0 +1,47 @@
+{
+  "id": "bf-03-jersey-price-drop",
+  "title": "Black Friday: 30% off the Fight Jersey 2.0",
+  "format": "Static image, 4:5 (1080x1350) feed and 9:16 (1080x1920) Stories/Reels",
+  "product": "Fight Jersey 2.0 (all four colourways)",
+  "recreates": "Offer-first product banner with price anchor",
+  "hook": "30% OFF THE FIGHT JERSEY 2.0.",
+  "primary_text": [
+    "Black Friday: 30% off the Fight Jersey 2.0.",
+    "Now $55.97, was $79.95. Concrete, Cotton Candy, Tiffany and Diamond, XS to 2XL.",
+    "Lightweight 190GSM mesh. Free kit bag with orders over $50.",
+    "Sale ends Sunday 29 November."
+  ],
+  "headline": "30% off the Fight Jersey 2.0",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/bf-03-jersey-price-drop_4x5.jpg",
+    "out/bf-03-jersey-price-drop_9x16.jpg"
+  ],
+  "garment_source": [
+    "library/cut/jersey-concrete/front.png",
+    "library/cut/jersey-cottoncandy/front.png",
+    "library/cut/jersey-tiffany/front.png",
+    "library/cut/jersey-diamond/front.png"
+  ],
+  "ai_generated": [],
+  "fidelity": {
+    "4x5": [
+      "PASS     cut/jersey-concrete/front.png                           mean_diff= 2.35  occluded=  0.1%  on-canvas= 95.7%  drawn@24% of native",
+      "PASS     cut/jersey-cottoncandy/front.png                        mean_diff= 1.25  occluded=  0.3%  on-canvas=100.0%  drawn@24% of native",
+      "PASS     cut/jersey-tiffany/front.png                            mean_diff= 1.16  occluded=  0.0%  on-canvas=100.0%  drawn@23% of native",
+      "PASS     cut/jersey-diamond/front.png                            mean_diff= 1.86  occluded=  1.5%  on-canvas= 96.7%  drawn@23% of native"
+    ],
+    "9x16": [
+      "PASS     cut/jersey-concrete/front.png                           mean_diff= 2.24  occluded=  0.1%  on-canvas= 91.7%  drawn@25% of native",
+      "PASS     cut/jersey-cottoncandy/front.png                        mean_diff= 0.95  occluded=  1.0%  on-canvas=100.0%  drawn@25% of native",
+      "PASS     cut/jersey-tiffany/front.png                            mean_diff= 1.36  occluded=  0.0%  on-canvas=100.0%  drawn@24% of native",
+      "PASS     cut/jersey-diamond/front.png                            mean_diff= 1.62  occluded=  0.2%  on-canvas= 92.5%  drawn@24% of native"
+    ]
+  },
+  "notes_for_owner": [
+    "$79.95 is the established Fight Jersey 2.0 price, so the was-price is fine to show.",
+    "Confirm the free kit bag tier for orders over $50 is live in the cart app before launch.",
+    "Switch off Advantage+ creative enhancements so Meta does not crop, filter or regenerate the product photos.",
+    "The jerseys sit side by side rather than overlapping: any overlap hid more than 2% of a garment and failed the fidelity check."
+  ]
+}
