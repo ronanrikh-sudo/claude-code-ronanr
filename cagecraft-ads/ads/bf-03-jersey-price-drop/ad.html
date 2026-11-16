@@ -38,30 +38,30 @@
   /* ---------- price row ---------- */
   .price-row { left: var(--side); right: var(--side); top: var(--price-y); border-top: 1px solid var(--hair); padding-top: var(--price-pad, 30px);
     display: flex; align-items: center; justify-content: space-between; }
-  .price { display: flex; align-items: baseline; gap: 22px; }
+  .price { display: flex; align-items: baseline; gap: 18px; }
   .price .now { font-size: var(--price, 118px); line-height: .82; color: var(--pink); }
   .price .was { font: 600 24px/1 var(--cc-body); color: var(--grey); white-space: nowrap; }
   .price .was s { text-decoration: none; position: relative; }
   .price .was s::after { content: ""; position: absolute; left: -2px; right: -2px; top: 52%; height: 1.5px; background: var(--grey); }
-  .btn { background: #fff; color: #050506; border-radius: 999px; padding: 24px 38px 24px 40px; font: 800 22px/1 var(--cc-body); letter-spacing: .08em; text-transform: uppercase;
+  .btn { background: #fff; color: #050506; border-radius: 999px; padding: 23px 32px 23px 36px; font: 800 21px/1 var(--cc-body); letter-spacing: .08em; text-transform: uppercase;
     display: flex; align-items: center; gap: 14px; white-space: nowrap; }
   .btn svg { width: 12px; height: 20px; }
 
   /* ---------- facts line ---------- */
-  .facts { left: var(--side); right: var(--side); top: var(--facts-y); display: flex; align-items: center; gap: 16px;
-    font: 700 18px/1 var(--cc-body); letter-spacing: .2em; text-transform: uppercase; color: var(--grey); white-space: nowrap; }
-  .dots { display: flex; gap: 7px; }
-  .dot { width: 16px; height: 16px; border-radius: 50%; position: relative; box-shadow: 0 0 0 1px rgba(255,255,255,.28); }
+  .facts { left: var(--side); right: var(--side); top: var(--facts-y); display: flex; align-items: center; gap: 12px;
+    font: 700 18px/1 var(--cc-body); letter-spacing: .18em; text-transform: uppercase; color: var(--grey); white-space: nowrap; }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 15px; height: 15px; border-radius: 50%; position: relative; box-shadow: 0 0 0 1px rgba(255,255,255,.28); }
   .dot::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--ink); }
   .facts i { font-style: normal; color: rgba(167,171,179,.55); margin: 0 -2px; }
 
   /* ---------- 9:16 ---------- */
   .v916 { --side: 65px; }
-  .v916 .facts { font-size: 16.5px; letter-spacing: .17em; gap: 13px; }
 </style>
 </head>
 <body>
   <div class="abs floor"></div>
+  <div class="abs grain"></div>
 
   <div class="abs labels">
     <div class="campaign"><span class="tag">Black Friday</span><span class="lab">Nov 20 – 29</span></div>
@@ -90,19 +90,17 @@
     <span>Four colourways <i>·</i> XS to 2XL <i>·</i> Free kit bag over $50 <i>·</i> Ends Sun 29 Nov</span>
   </div>
 
-  <div class="abs grain"></div>
-
 <script>
   // Every jersey is the real front cutout, sized by width only, translate/rotate only.
   // Order Concrete, Cotton Candy, Tiffany, Diamond so light and dark alternate. Nothing sits on a garment.
   const tall = new URLSearchParams(location.search).get("v") === "916";
   if (tall) document.body.classList.add("v916");
   const L = tall ? {
-    labelsY: 280, headY: 338, h1: 196, h2: 62, priceY: 1080, factsY: 1226,
-    top: 585, floorY: 1010, floorH: 380, w: 342, step: 262, rot: 2.5,
+    labelsY: 278, headY: 356, h1: 160, h2: 62, priceY: 1078, factsY: 1226,
+    top: 618, floorY: 1010, floorH: 380, w: 300, step: 302, rot: 2,
   } : {
-    labelsY: 62, headY: 136, h1: 196, h2: 62, priceY: 958, factsY: 1124,
-    top: 448, floorY: 870, floorH: 360, w: 322, step: 254, rot: 2.5,
+    labelsY: 80, headY: 184, h1: 160, h2: 62, priceY: 972, factsY: 1166,
+    top: 478, floorY: 868, floorH: 360, w: 300, step: 302, rot: 2,
   };
   const R = document.documentElement.style;
   for (const [k, v] of Object.entries({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": L.h1, "--h2": L.h2,

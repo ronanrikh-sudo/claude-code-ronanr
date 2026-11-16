@@ -1,0 +1,32 @@
+{
+  "id": "bf-04-hoodie-review",
+  "title": "Black Friday: Walkout Hoodie five-star review with price band",
+  "format": "Static image, 4:5 (1080x1350) feed and 9:16 (1080x1920) Stories/Reels",
+  "product": "Walkout Hoodie Cotton Candy",
+  "recreates": "Five-star customer quote static with a Black Friday price band",
+  "hook": "“Best hoodie in my closet!!…”, now $82.46",
+  "primary_text": [
+    "“Best hoodie in my closet!!” Sena D., verified buyer.",
+    "The Walkout Hoodie is 25% off for Black Friday: now $82.46, was $109.95.",
+    "Free kit bag with orders over $50.",
+    "Sale ends Sunday 29 November."
+  ],
+  "headline": "Walkout Hoodie, 25% off: now $82.46",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/bf-04-hoodie-review_4x5.jpg",
+    "out/bf-04-hoodie-review_9x16.jpg"
+  ],
+  "garment_source": ["cut/hoodie-cottoncandy/studio-male-front.png"],
+  "ai_generated": [],
+  "fidelity": [
+    "4x5: REVIEW   cut/hoodie-cottoncandy/studio-male-front.png            mean_diff= 1.33  occluded=  8.2%  on-canvas= 73.1%  drawn@81% of native (exit 0 with --allow-cover; occlusion is the Black Friday band over trousers and hands only, hoodie hem fully visible, checked by eye)",
+    "9x16: REVIEW   cut/hoodie-cottoncandy/studio-male-front.png            mean_diff= 1.82  occluded= 12.3%  on-canvas=100.0%  drawn@69% of native (exit 0 with --allow-cover; occlusion is the band over trousers and hands only, checked by eye)"
+  ],
+  "notes_for_owner": [
+    "$109.95 is the established hoodie price, so the was-price is fine.",
+    "The quote is a real store review, credited by first name and initial (Sena D.).",
+    "The model must be covered by a release for paid ads.",
+    "Switch off Advantage+ creative enhancements so Meta does not crop, recolour or overlay the garment."
+  ]
+}

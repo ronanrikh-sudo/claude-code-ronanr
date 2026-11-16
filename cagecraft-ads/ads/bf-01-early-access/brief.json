@@ -1,0 +1,19 @@
+{
+  "id": "bf-01-early-access",
+  "title": "Early access pass",
+  "format": "Static image, 4:5 (1080x1350) and 9:16 (1080x1920)",
+  "product": "Black Friday early access",
+  "recreates": "Event-pass style waitlist ad; offer-first, type-led",
+  "hook": "One hour head start.",
+  "primary_text": "Black Friday early access opens Friday 20 November, 10am to 11am AEDT.\nOne hour, email + SMS list only. First pick of the restock.\nThe public sale opens at 11am with up to 40% off.\nGet on the list.",
+  "headline": "One hour head start",
+  "cta": "Sign Up",
+  "deliverables": [
+    "out/bf-01-early-access_4x5.jpg",
+    "out/bf-01-early-access_9x16.jpg"
+  ],
+  "garment_source": [],
+  "ai_generated": [],
+  "fidelity": "Type only: no garment in the image.",
+  "notes_for_owner": "Point the ad at the sign-up page. Stop it at 10am Fri 20 Nov, when early access opens. Switch off Advantage+ creative enhancements so Meta does not crop, recolour or add text to the pass."
+}
