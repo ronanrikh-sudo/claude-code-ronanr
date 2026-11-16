@@ -1,0 +1,24 @@
+{
+  "id": "bf-02-now-live-poster",
+  "title": "The card: Black Friday now live",
+  "format": "Static, type only. 4:5 (1080x1350) feed and 9:16 (1080x1920) Stories/Reels",
+  "product": "Sitewide Black Friday sale",
+  "recreates": "Typography-only sale poster, the most duplicated creative on the largest AU fightwear account",
+  "hook": "Up to 40% off, in pink, filling the top of the frame",
+  "primary_text": [
+    "Black Friday is live.",
+    "Up to 40% off the card: Essentials Training Tee 40%, Fight Jersey 2.0 30%, Walkouts, Rashguards, Shorts and Oversized Tees 25%.",
+    "Free gift with every $50 spent.",
+    "Ends Sunday 29 November."
+  ],
+  "headline": "Black Friday. Up to 40% off.",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/bf-02-now-live-poster_4x5.jpg",
+    "out/bf-02-now-live-poster_9x16.jpg"
+  ],
+  "garment_source": [],
+  "ai_generated": [],
+  "fidelity": "Type only: no garment in the image.",
+  "notes_for_owner": "Run from 11am AEDT Fri 20 Nov. The 40% applies to the Essentials Training Tee only, which is why the ad says 'up to'. Confirm the gift tiers are live in the cart app before launch. Switch off Advantage+ creative enhancements so Meta does not crop, recolour or add text to the type."
+}

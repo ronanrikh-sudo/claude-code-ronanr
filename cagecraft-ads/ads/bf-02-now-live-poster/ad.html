@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CAGECRAFT Black Friday card</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  /* One file, two canvases: default 4:5 (1080x1350); ?v=916 for 1080x1920.
+     Type only. Ancestor: ads/11-hoodie-type-poster (frame, labels, ruled rows). */
+  :root {
+    --accent: var(--cc-pink);
+    --paper: #050506;
+    --rule: rgba(255,255,255,.16);
+    --muted: #A7ABB3;
+    --W: 1080px; --H: 1350px;
+    --cx: 74px; --cy: 98px; --cw: 932px; --ch: 1154px;
+    --frame: 44px;
+    --row-pad: 18px; --row-size: 30px; --fig-size: 36px;
+    --gap-a: 52px; --gap-b: 30px; --gap-c: 0px;
+  }
+  body.v916 {
+    --H: 1920px;
+    /* Reels safe band: text only between y=270 and y=1250, 65px+ from the sides */
+    --cy: 282px; --ch: 964px;
+    --row-pad: 9px; --row-size: 28px; --fig-size: 32px;
+    --gap-a: 36px; --gap-b: 26px;
+  }
+  html, body { width: var(--W); height: var(--H); overflow: hidden; margin: 0; }
+  body { background: var(--paper); position: relative; color: var(--cc-white); }
+
+  .grain, .frame, .marks { position: absolute; inset: 0; pointer-events: none; }
+  .grain { opacity: .06; z-index: 20;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 256px 256px; }
+
+  .frame { inset: var(--frame); border: 1.5px solid var(--rule); }
+  .marks i { position: absolute; width: 34px; height: 34px; border: 0 solid var(--accent); }
+  .marks .tl { left: calc(var(--frame) - 12px); top: calc(var(--frame) - 12px); border-left-width: 4px; border-top-width: 4px; }
+  .marks .tr { right: calc(var(--frame) - 12px); top: calc(var(--frame) - 12px); border-right-width: 4px; border-top-width: 4px; }
+  .marks .bl { left: calc(var(--frame) - 12px); bottom: calc(var(--frame) - 12px); border-left-width: 4px; border-bottom-width: 4px; }
+  .marks .br { right: calc(var(--frame) - 12px); bottom: calc(var(--frame) - 12px); border-right-width: 4px; border-bottom-width: 4px; }
+
+  .content { position: absolute; left: var(--cx); top: var(--cy); width: var(--cw); height: var(--ch);
+    display: flex; flex-direction: column; z-index: 5; }
+
+  .label { font-family: var(--cc-body); font-weight: 700; text-transform: uppercase; letter-spacing: .2em; font-size: 20px; line-height: 1; }
+  .disp { font-family: var(--cc-display); font-weight: 900; font-stretch: 125%; font-style: italic; text-transform: uppercase; letter-spacing: -.01em; line-height: .9; }
+
+  /* 1. label row */
+  .topbar { display: flex; align-items: center; gap: 18px; }
+  .tag { font-family: var(--cc-body); font-weight: 800; text-transform: uppercase; letter-spacing: .16em; font-size: 20px; line-height: 1;
+    color: #050506; background: var(--accent); padding: 8px 10px 7px 13px; }
+  .topbar .dates { color: var(--cc-white); }
+  .topbar .live { margin-left: auto; color: var(--cc-white); }
+
+  /* 2. dominant block */
+  .hero { margin-top: var(--gap-a); position: relative; }
+  .hero .upto { display: block; color: var(--cc-white); font-size: 22px; margin-bottom: 4px; }
+  .hero .num { display: inline-block; white-space: nowrap; color: var(--accent); line-height: .8; letter-spacing: -.045em; }
+  .hero .off { display: block; text-align: right; color: var(--cc-white); line-height: .8; padding-right: 6px; }
+
+  /* 3. the card */
+  .card { margin-top: auto; }
+  .card-head { display: flex; justify-content: space-between; align-items: baseline; border-top: 2px solid var(--cc-white); padding: 14px 0 12px; font-size: 18px; }
+  .card-head .r { color: var(--muted); }
+  .row { display: flex; justify-content: space-between; align-items: baseline; border-top: 1.5px solid var(--rule); padding: var(--row-pad) 0; }
+  .row:last-child { border-bottom: 1.5px solid var(--rule); }
+  .row .p { font-family: var(--cc-body); font-weight: 700; font-size: var(--row-size); text-transform: uppercase; letter-spacing: .01em; line-height: 1.1; }
+  .row .d { font-family: var(--cc-display); font-weight: 900; font-stretch: 125%; font-style: italic; font-size: var(--fig-size); letter-spacing: 0; line-height: 1; padding-right: 3px; }
+  .row .d.hot { color: var(--accent); }
+
+  /* 4. footer */
+  .foot { margin-top: var(--gap-b); }
+  .foot .line { display: flex; justify-content: space-between; align-items: flex-end; }
+  .foot .gift { font-size: 30px; }
+  .foot img { width: 230px; height: auto; display: block; }
+  .foot .ends { color: var(--muted); font-size: 18px; text-align: right; margin-top: 16px; }
+</style>
+</head>
+<body>
+<script>
+  const v = new URLSearchParams(location.search).get("v");
+  if (v === "916" || v === "9x16") document.body.classList.add("v916");
+</script>
+
+<div class="frame"></div>
+<div class="marks"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+
+<main class="content">
+  <div class="topbar label">
+    <span class="tag">Black Friday</span>
+    <span class="dates">Nov 20 &ndash; 29</span>
+    <span class="live">Now live</span>
+  </div>
+
+  <h1 class="hero" style="font-weight:inherit;font-size:inherit;margin-bottom:0">
+    <span class="label upto">Up to</span>
+    <span class="disp num" id="num">40%</span>
+    <span class="disp off" id="off">Off</span>
+  </h1>
+
+  <section class="card">
+    <div class="card-head label"><span>The card</span><span class="r">Black Friday 2026</span></div>
+    <div class="row"><span class="p">Essentials Training Tee</span><span class="d hot">40% OFF</span></div>
+    <div class="row"><span class="p">Fight Jersey 2.0</span><span class="d">30% OFF</span></div>
+    <div class="row"><span class="p">Walkout Hoodies</span><span class="d">25% OFF</span></div>
+    <div class="row"><span class="p">Rashguards</span><span class="d">25% OFF</span></div>
+    <div class="row"><span class="p">MMA Shorts</span><span class="d">25% OFF</span></div>
+    <div class="row"><span class="p">Oversized Tees</span><span class="d">25% OFF</span></div>
+  </section>
+
+  <footer class="foot">
+    <div class="line">
+      <span class="disp gift">Free gift with every $50.</span>
+      <img src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+    </div>
+    <div class="label ends">Ends Sun 29 Nov &middot; cagecraftco.com</div>
+  </footer>
+</main>
+
+<div class="grain"></div>
+
+<script>
+  // Fit the numeral to the measure (minus italic overhang); OFF at a third of its size.
+  function fit() {
+    const W = document.querySelector(".content").clientWidth * 0.975;
+    const num = document.getElementById("num"), off = document.getElementById("off");
+    num.style.fontSize = "100px";
+    const s = 100 * W / num.getBoundingClientRect().width;
+    const max = document.body.classList.contains("v916") ? 9999 : 9999;
+    const fs = Math.min(s, max);
+    num.style.fontSize = fs.toFixed(1) + "px";
+    off.style.fontSize = (fs * 0.34).toFixed(1) + "px";
+    off.style.marginTop = (-fs * 0.02).toFixed(1) + "px";
+  }
+  document.fonts.ready.then(fit);
+</script>
+</body>
+</html>

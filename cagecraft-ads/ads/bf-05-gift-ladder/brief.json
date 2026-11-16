@@ -1,0 +1,20 @@
+{
+  "id": "bf-05-gift-ladder",
+  "title": "Five rounds",
+  "format": "Static image, 4:5 (1080x1350) and 9:16 (1080x1920)",
+  "product": "Black Friday gift ladder (all products)",
+  "recreates": "Gift-with-purchase tier ad; offer as the whole creative",
+  "hook": "A free gift every $50.",
+  "primary_text": "Black Friday is five rounds.\nEvery $50 you spend adds a free gift: kit bag, socks, shipping, towel, then an Essentials Training Tee at $250.\nOn top of up to 40% off. Ends Sun 29 Nov.",
+  "headline": "A free gift every $50",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/bf-05-gift-ladder_4x5.jpg",
+    "out/bf-05-gift-ladder_9x16.jpg",
+    "ad.html"
+  ],
+  "garment_source": [],
+  "ai_generated": [],
+  "fidelity": "Type only: no garment in the image.",
+  "notes_for_owner": "The planning page notes the cart app's tiers did not yet match this ladder: fix them before this runs. Confirm each tier adds to the ones below as shown ($250 gets kit bag, socks, shipping, towel and the Essentials Training Tee). Switch off Advantage+ creative enhancements so Meta does not crop, recolour or overlay the type."
+}

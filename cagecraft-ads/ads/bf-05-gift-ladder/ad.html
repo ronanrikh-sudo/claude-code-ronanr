@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CAGECRAFT Black Friday gift ladder</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  /* One file, two canvases: default 4:5 (1080x1350); ?v=916 for 1080x1920.
+     Type only. Five-round scorecard: the growing pink bars are the picture. */
+  :root {
+    --accent: var(--cc-pink);
+    --paper: #050506;
+    --rule: rgba(255,255,255,.16);
+    --muted: #A7ABB3;
+    --W: 1080px; --H: 1350px;
+    --frame: 44px;
+    /* content box */
+    --cx: 92px; --cy: 100px; --cw: 896px; --ch: 1150px;
+    --row-h: 122px;
+    --gap-head: 56px;     /* label row -> headline */
+    --gap-card: 80px;     /* headline -> scorecard */
+  }
+  body.v916 {
+    --H: 1920px;
+    /* Reels safe band: text between y=270 and y=1250, 65px+ from sides */
+    --cy: 284px; --ch: 958px;
+    --row-h: 104px;
+    --gap-head: 34px;
+    --gap-card: 40px;
+  }
+  html, body { width: var(--W); height: var(--H); overflow: hidden; margin: 0; }
+  body { background: var(--paper); position: relative; color: var(--cc-white); }
+
+  /* ---------- ground: flat near-black + fine film grain ---------- */
+  .grain, .frame, .marks { position: absolute; inset: 0; pointer-events: none; }
+  .grain { opacity: .06; z-index: 20;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.35'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 256px 256px; }
+
+  /* ---------- fight-card frame + pink corner brackets ---------- */
+  .frame { inset: var(--frame); border: 1.5px solid var(--rule); }
+  .marks i { position: absolute; width: 34px; height: 34px; border: 0 solid var(--accent); }
+  .marks .tl { left: calc(var(--frame) - 12px); top: calc(var(--frame) - 12px); border-left-width: 4px; border-top-width: 4px; }
+  .marks .tr { right: calc(var(--frame) - 12px); top: calc(var(--frame) - 12px); border-right-width: 4px; border-top-width: 4px; }
+  .marks .bl { left: calc(var(--frame) - 12px); bottom: calc(var(--frame) - 12px); border-left-width: 4px; border-bottom-width: 4px; }
+  .marks .br { right: calc(var(--frame) - 12px); bottom: calc(var(--frame) - 12px); border-right-width: 4px; border-bottom-width: 4px; }
+
+  /* ---------- content ---------- */
+  .content { position: absolute; left: var(--cx); top: var(--cy); width: var(--cw); height: var(--ch);
+    display: flex; flex-direction: column; z-index: 5; }
+  .label { font-family: var(--cc-body); font-weight: 700; text-transform: uppercase; letter-spacing: .2em; font-size: 20px; line-height: 1; }
+
+  /* 1. label row */
+  .top { display: flex; align-items: center; gap: 18px; }
+  .tag { background: var(--accent); color: #050506; font-family: var(--cc-body); font-weight: 800; text-transform: uppercase;
+    letter-spacing: .16em; font-size: 20px; line-height: 1; padding: 8px 10px 7px 13px; }
+  .top .dates { color: var(--cc-white); }
+  .top .gwp { margin-left: auto; color: var(--muted); }
+
+  /* 2. headline */
+  h1 { margin: var(--gap-head) 0 0; font-size: 100px; font-weight: 900; }
+  h1 .ln { display: block; white-space: nowrap; color: var(--cc-white); }
+  h1 em { font-style: inherit; color: var(--accent); }
+
+  /* 3. scorecard */
+  .card { margin-top: var(--gap-card); border-bottom: 1.5px solid var(--rule); }
+  .row { height: var(--row-h); box-sizing: border-box; border-top: 1.5px solid var(--rule);
+    display: grid; grid-template-columns: 112px 164px 1fr; column-gap: 26px; align-items: center; }
+  .row .rd { color: var(--muted); font-size: 18px; }
+  .row .amt { font-size: 56px; text-align: right; color: var(--cc-white); padding-right: 4px; }
+  .lane { display: flex; align-items: center; gap: 18px; min-width: 0; }
+  .bar { height: 44px; background: var(--accent); flex: none; width: 60px; }
+  .gift { font-family: var(--cc-body); font-weight: 800; text-transform: uppercase; font-size: 23px; letter-spacing: .03em;
+    white-space: nowrap; color: var(--cc-white); line-height: 1; }
+
+  /* 4. footer */
+  .foot { margin-top: auto; border-top: 1.5px solid var(--rule); padding-top: 24px; }
+  .foot .l1 { display: flex; align-items: center; justify-content: space-between; }
+  .foot .offer { color: var(--cc-white); font-size: 22px; }
+  .foot img { width: 220px; height: auto; display: block; }
+  .foot .l2 { color: var(--muted); font-size: 18px; margin-top: 16px; }
+</style>
+</head>
+<body>
+<script>
+  if (new URLSearchParams(location.search).get("v") === "916") document.body.classList.add("v916");
+</script>
+
+<div class="frame"></div>
+<div class="marks"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+
+<main class="content">
+  <div class="top">
+    <span class="tag">Black Friday</span>
+    <span class="label dates">Nov 20 &ndash; 29</span>
+    <span class="label gwp">Gift with purchase</span>
+  </div>
+
+  <h1 class="cc-display">
+    <span class="ln" data-fit>A free gift</span>
+    <span class="ln" data-fit>Every <em>$50</em>.</span>
+  </h1>
+
+  <section class="card">
+    <div class="row"><span class="label rd">Round 1</span><span class="cc-display amt">$50</span><span class="lane"><i class="bar" data-r="1"></i><span class="gift">Free kit bag</span></span></div>
+    <div class="row"><span class="label rd">Round 2</span><span class="cc-display amt">$100</span><span class="lane"><i class="bar" data-r="2"></i><span class="gift">+ Free socks</span></span></div>
+    <div class="row"><span class="label rd">Round 3</span><span class="cc-display amt">$150</span><span class="lane"><i class="bar" data-r="3"></i><span class="gift">+ Free shipping</span></span></div>
+    <div class="row"><span class="label rd">Round 4</span><span class="cc-display amt">$200</span><span class="lane"><i class="bar" data-r="4"></i><span class="gift">+ Free towel</span></span></div>
+    <div class="row"><span class="label rd">Round 5</span><span class="cc-display amt">$250</span><span class="lane"><i class="bar" data-r="5"></i><span class="gift">+ Free Essentials tee</span></span></div>
+  </section>
+
+  <footer class="foot">
+    <div class="l1">
+      <span class="label offer">On top of up to 40% off</span>
+      <img src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+    </div>
+    <div class="label l2">Ends Sun 29 Nov &middot; cagecraftco.com</div>
+  </footer>
+</main>
+
+<div class="grain"></div>
+
+<script>
+  function layout() {
+    // Headline: both lines at one size, the largest that fits the measure.
+    const W = document.querySelector(".content").clientWidth * 0.975; // room for italic overhang
+    let size = Infinity;
+    for (const el of document.querySelectorAll("[data-fit]")) {
+      el.style.display = "inline-block"; el.style.fontSize = "100px";
+      size = Math.min(size, 100 * W / el.getBoundingClientRect().width);
+      el.style.display = "";  el.style.fontSize = "";
+    }
+    document.querySelector("h1").style.fontSize = size.toFixed(2) + "px";
+
+    // Bars: 20/40/60/80/100% of one track, the longest the lane allows
+    // while every gift label still sits beside its bar inside the row.
+    const lanes = [...document.querySelectorAll(".lane")];
+    const gap = 18;
+    let track = Infinity;
+    lanes.forEach((lane, i) => {
+      const avail = lane.clientWidth - gap - lane.querySelector(".gift").getBoundingClientRect().width - 2;
+      track = Math.min(track, avail / ((i + 1) * 0.2));
+    });
+    lanes.forEach((lane, i) => { lane.querySelector(".bar").style.width = (track * (i + 1) * 0.2).toFixed(1) + "px"; });
+  }
+  document.fonts.ready.then(layout);
+</script>
+</body>
+</html>

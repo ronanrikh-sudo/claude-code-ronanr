@@ -1,0 +1,61 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/jersey-concrete/front.png",
+      "x": -20.530174255371094,
+      "y": 441.38494873046875,
+      "w": 340.376953125,
+      "h": 441.96588134765625,
+      "rotation": -2.500001277003086,
+      "flipX": false,
+      "drawnWidth": 321.9999288960101,
+      "naturalWidth": 1175,
+      "upscale": 0.2740424926774554
+    },
+    {
+      "src": "cut/jersey-cottoncandy/front.png",
+      "x": 252.15322875976562,
+      "y": 441.3970031738281,
+      "w": 340.9296569824219,
+      "h": 454.6257019042969,
+      "rotation": 2.500001277003086,
+      "flipX": false,
+      "drawnWidth": 321.9999288960101,
+      "naturalWidth": 1177,
+      "upscale": 0.27357682998811395
+    },
+    {
+      "src": "cut/jersey-tiffany/front.png",
+      "x": 487.6729431152344,
+      "y": 441.3805236816406,
+      "w": 340.1737976074219,
+      "h": 437.3140563964844,
+      "rotation": -2.500001277003086,
+      "flipX": false,
+      "drawnWidth": 321.9999288960101,
+      "naturalWidth": 1216,
+      "upscale": 0.26480257310527144
+    },
+    {
+      "src": "cut/jersey-diamond/front.png",
+      "x": 760.1532592773438,
+      "y": 441.3875427246094,
+      "w": 340.49615478515625,
+      "h": 444.6976623535156,
+      "rotation": 2.500001277003086,
+      "flipX": false,
+      "drawnWidth": 321.9999288960101,
+      "naturalWidth": 1231,
+      "upscale": 0.2615758967473681
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}
