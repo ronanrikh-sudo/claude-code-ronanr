@@ -39,17 +39,17 @@
   .price-row { left: var(--side); right: var(--side); top: var(--price-y); border-top: 1px solid var(--hair); padding-top: var(--price-pad, 30px);
     display: flex; align-items: center; justify-content: space-between; }
   .price { display: flex; align-items: baseline; gap: 18px; }
-  .price .now { font-size: var(--price, 118px); line-height: .82; color: var(--pink); }
+  .price .now { font-size: var(--price, 110px); line-height: .82; color: var(--pink); }
   .price .was { font: 600 24px/1 var(--cc-body); color: var(--grey); white-space: nowrap; }
   .price .was s { text-decoration: none; position: relative; }
   .price .was s::after { content: ""; position: absolute; left: -2px; right: -2px; top: 52%; height: 1.5px; background: var(--grey); }
-  .btn { background: #fff; color: #050506; border-radius: 999px; padding: 23px 32px 23px 36px; font: 800 21px/1 var(--cc-body); letter-spacing: .08em; text-transform: uppercase;
+  .btn { background: #fff; color: #050506; border-radius: 999px; padding: 22px 28px 22px 32px; font: 800 20px/1 var(--cc-body); letter-spacing: .06em; text-transform: uppercase;
     display: flex; align-items: center; gap: 14px; white-space: nowrap; }
   .btn svg { width: 12px; height: 20px; }
 
   /* ---------- facts line ---------- */
   .facts { left: var(--side); right: var(--side); top: var(--facts-y); display: flex; align-items: center; gap: 12px;
-    font: 700 18px/1 var(--cc-body); letter-spacing: .18em; text-transform: uppercase; color: var(--grey); white-space: nowrap; }
+    font: 700 18px/1 var(--cc-body); letter-spacing: .15em; text-transform: uppercase; color: var(--grey); white-space: nowrap; }
   .dots { display: flex; gap: 6px; }
   .dot { width: 15px; height: 15px; border-radius: 50%; position: relative; box-shadow: 0 0 0 1px rgba(255,255,255,.28); }
   .dot::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--ink); }
@@ -96,11 +96,11 @@
   const tall = new URLSearchParams(location.search).get("v") === "916";
   if (tall) document.body.classList.add("v916");
   const L = tall ? {
-    labelsY: 278, headY: 356, h1: 160, h2: 62, priceY: 1078, factsY: 1226,
-    top: 618, floorY: 1010, floorH: 380, w: 300, step: 302, rot: 2,
+    labelsY: 278, headY: 352, h1: 166, h2: 62, priceY: 1084, factsY: 1230,
+    top: 628, floorY: 1000, floorH: 400, w: 296, step: 284, rot: 2,
   } : {
-    labelsY: 80, headY: 184, h1: 160, h2: 62, priceY: 972, factsY: 1166,
-    top: 478, floorY: 868, floorH: 360, w: 300, step: 302, rot: 2,
+    labelsY: 80, headY: 184, h1: 166, h2: 62, priceY: 962, factsY: 1160,
+    top: 480, floorY: 850, floorH: 360, w: 284, step: 278, rot: 2,
   };
   const R = document.documentElement.style;
   for (const [k, v] of Object.entries({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": L.h1, "--h2": L.h2,
