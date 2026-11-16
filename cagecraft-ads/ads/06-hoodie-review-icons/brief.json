@@ -1,0 +1,19 @@
+{
+  "id": "06-hoodie-review-icons",
+  "title": "Best hoodie in my closet (review + icons)",
+  "product": "Walkout Hoodie Cotton Candy",
+  "hook": "\"Best hoodie in my closet!!\" with five stars.",
+  "primary_text": "\"best hoodie in my closet!!\"\nThat's Sena, a verified buyer. 350GSM fleece, mesh appliqué wordmarks, embroidered sleeves, boxy oversized fit.\nWalkout Hoodie, $109.95.",
+  "headline": "\"Best hoodie in my closet\"",
+  "garment_source": [
+    "cut/hoodie-cottoncandy/studio-male-front.png"
+  ],
+  "ai_generated": [],
+  "fidelity": "PASS (mean pixel difference 0.44 of 255). The figure runs off the bottom of the frame by design.",
+  "notes_for_owner": "The quote is a real five-star review from your store, word for word, shortened with an ellipsis and credited as 'Sena D., verified buyer'. Check you are happy using a customer's first name in an ad. People in the photo are real models: make sure the shoot's release covers paid ads. In Ads Manager, switch off Advantage+ creative enhancements for this ad so Meta does not alter the image.",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/06-hoodie-review-icons_4x5.jpg"
+  ],
+  "format": "static 4:5"
+}

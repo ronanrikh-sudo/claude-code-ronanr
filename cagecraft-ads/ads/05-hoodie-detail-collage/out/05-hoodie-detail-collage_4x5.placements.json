@@ -1,0 +1,34 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [],
+  "photos": [
+    {
+      "src": "photo/hoodie-diamond/studio-female-back.jpg",
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 700
+    },
+    {
+      "src": "photo/hoodie-diamond/closeup-details.jpg",
+      "x": 0,
+      "y": 924,
+      "w": 537,
+      "h": 426
+    },
+    {
+      "src": "photo/hoodie-cottoncandy/sleeve-logo.jpg",
+      "x": 543,
+      "y": 924,
+      "w": 537,
+      "h": 426
+    }
+  ],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

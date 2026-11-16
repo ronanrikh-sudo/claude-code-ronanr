@@ -1,0 +1,23 @@
+{
+  "id": "10-legacy-flatlay-floor",
+  "title": "Legacy kit flat-lay",
+  "product": "Legacy Rashguard + Legacy 2-in-1 Hybrid MMA Shorts",
+  "hook": "The matching kit, laid out, no text.",
+  "primary_text": "The Legacy kit.\nRashguard with mesh underarm panels and sublimated artwork that won't crack or peel. 2-in-1 shorts with a built-in compression liner and 4-way stretch.\nDesigned in Australia.",
+  "headline": "Legacy Rashguard + 2-in-1 Shorts",
+  "garment_source": [
+    "cut/rashguard-legacy/flat-front.png",
+    "cut/shorts-legacy/flat-front.png"
+  ],
+  "ai_generated": [
+    "Concrete floor with blue light spill (Higgsfield, text-to-image, nothing on it). Shadows are drawn in code and sit under both garments, never across fabric."
+  ],
+  "fidelity": "Shorts PASS. Rashguard pixels match (mean difference 1.7 to 2.1 of 255); 3.4% of it is hidden where the shorts overlap its hem, by design. Both wordmarks are fully visible.",
+  "notes_for_owner": "Legacy stock was low when this was built (8 shorts, 7 rashguards), so keep the budget small until it is restocked. The background is AI-generated (the garment is not): TikTok requires its AI-content label, and Meta may add its own. In Ads Manager, switch off Advantage+ creative enhancements for this ad so Meta does not alter the image.",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/10-legacy-flatlay-floor_4x5.jpg",
+    "out/10-legacy-flatlay-floor_9x16.jpg"
+  ],
+  "format": "static 4:5, 9:16"
+}

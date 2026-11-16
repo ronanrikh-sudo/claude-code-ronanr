@@ -18,6 +18,7 @@
   --bg: #0B0C0E; --surface: #15171A; --stage: #1E2125; --ink: #F1F2F3; --muted: #9AA0A8; --line: #2A2E33;
   --accent: #2CC4C8; --accent-ink: #04191A; --ai: #F09EC0; --ok: #5FD08A; --warn: #E8B24A; color-scheme: dark }
 
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
 .wrap { max-width: 1400px; margin: 0 auto; padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 24px; }
@@ -81,7 +82,7 @@ summary::after { content: " +"; } details[open] summary::after { content: " –"
   <header class="top">
     <div class="eyebrow">Creative review · built from competitor formats with evidence of working</div>
     <h1>Cagecraft Ad Recreations</h1>
-    <p class="lede">Each creative below rebuilds a long-running competitor ad format for a Cagecraft bestseller. <b>The garment in every one is your own photography, placed as-is.</b> Where AI was used, it made only backgrounds, b-roll with no product in frame, or audio. Open a card's sheet for the ad copy, the source photos and what to check before it runs.</p>
+    <p class="lede">Each creative below rebuilds a long-running competitor ad format for a Cagecraft bestseller. <b>Wherever a garment appears, it is your own photography, placed as-is.</b> Where AI was used, it made only backgrounds, b-roll with no product in frame, or audio. Open a card's sheet for the ad copy, the source photos and what to check before it runs.</p>
     <div class="rule" id="stats"></div>
   </header>
 
@@ -117,7 +118,7 @@ try { const s = localStorage.getItem("cc-filter"); if (s && FILTERS.some((f) => 
 function stats() {
   const n = ADS.length, st = ADS.filter((a) => a.type === "static").length, ai = ADS.filter((a) => a.ai).length;
   const files = ADS.reduce((t, a) => t + a.media.length, 0);
-  const cells = [[n, "Creatives", st + " stills, " + (n - st) + " videos"], [files, "Deliverable files", "Sizes for feed, Stories and Reels"], [n, "Real garment", "Product pixels are your photography in every creative"], [ai, "Use AI", "Backgrounds, b-roll or audio only"]];
+  const cells = [[n, "Creatives", st + " stills, " + (n - st) + " videos"], [files, "Deliverable files", "Sizes for feed, Stories and Reels"], [n, "Real garment", "Wherever a garment appears, it is your photograph"], [ai, "Use AI", "Backgrounds, b-roll or audio only"]];
   const box = $("#stats"); box.textContent = "";
   for (const [num, k, v] of cells) { const d = el("div"); d.append(el("div", "k", k), el("div", "n", String(num)), el("div", "v", v)); box.append(d); }
 }
@@ -153,7 +154,7 @@ function card(a) {
   const stage = el("div", "stage"); stage.append(el("div", "num", a.num));
   const show = (m) => {
     stage.querySelectorAll("img,video,button.zoom").forEach((n) => n.remove());
-    stage.style.aspectRatio = m.h / m.w > 1.4 ? "9 / 14" : "4 / 5";
+    const r = m.h / m.w; stage.style.aspectRatio = r > 1.4 ? "9 / 14" : r < 1.1 ? "1 / 1" : "4 / 5";
     if (m.kind === "video") { const v = el("video"); v.controls = true; v.preload = "none"; v.playsInline = true; v.poster = m.poster; v.src = m.src; stage.append(v); }
     else { const i = el("img"); i.loading = "lazy"; i.src = m.src; i.alt = a.title + " (" + m.label + ")"; i.width = m.w; i.height = m.h; const z = el("button", "zoom"); z.type = "button"; z.setAttribute("aria-label", "Enlarge " + a.title); z.addEventListener("click", () => open(m.src, i.alt)); stage.append(i, z); }
   };

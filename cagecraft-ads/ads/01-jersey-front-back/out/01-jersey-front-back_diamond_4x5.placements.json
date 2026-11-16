@@ -6,27 +6,27 @@
   "products": [
     {
       "src": "cut/jersey-diamond/back.png",
-      "x": 446,
-      "y": 50,
-      "w": 584,
-      "h": 797.890625,
+      "x": 430,
+      "y": 44,
+      "w": 600,
+      "h": 819.75,
       "rotation": 0,
       "flipX": false,
-      "drawnWidth": 584,
+      "drawnWidth": 600,
       "naturalWidth": 1245,
-      "upscale": 0.46907630522088356
+      "upscale": 0.4819277108433735
     },
     {
       "src": "cut/jersey-diamond/front.png",
-      "x": 52,
-      "y": 512,
-      "w": 566,
-      "h": 757.71875,
+      "x": 50,
+      "y": 500,
+      "w": 580,
+      "h": 776.46875,
       "rotation": 0,
       "flipX": false,
-      "drawnWidth": 566,
+      "drawnWidth": 580,
       "naturalWidth": 1231,
-      "upscale": 0.45978878960194963
+      "upscale": 0.471161657189277
     }
   ],
   "photos": [],

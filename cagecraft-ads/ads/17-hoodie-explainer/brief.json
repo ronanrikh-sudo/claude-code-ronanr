@@ -1,0 +1,26 @@
+{
+  "id": "17-hoodie-explainer",
+  "title": "Why it's $109.95 (annotated explainer video)",
+  "product": "Walkout Hoodie Concrete",
+  "hook": "You reckon 110 bucks is a lot for a hoodie?",
+  "format": "video 9:16, 23.7s",
+  "primary_text": "You reckon $110 is a lot for a hoodie? Fair.\nHere's what you get: 350GSM fleece, a mesh appliqué wordmark framed in embroidery, embroidered sleeves, a boxy cut.\nNot every hoodie's worth walking out in.",
+  "headline": "Why it's $109.95",
+  "garment_source": [
+    "photo/hoodie-concrete/hero.jpg",
+    "photo/hoodie-concrete/closeup-front.jpg",
+    "photo/hoodie-concrete/closeup-back.jpg",
+    "photo/hoodie-concrete/sleeves.jpg",
+    "photo/hoodie-concrete/studio-model-front.jpg"
+  ],
+  "ai_generated": [
+    "The voice-over (ElevenLabs AI voice). Every picture is a real photograph with a slow zoom; the teal marker lines, captions and end card are drawn in code. Music bed is the track from your earlier sale video."
+  ],
+  "fidelity": "Checked frame by frame: all five shots are your photographs, cropped and zoomed only. Marker annotations sit beside the embroidery, not on it. Captions stay inside the Reels safe zone.",
+  "script": "You reckon 110 bucks is a lot for a hoodie? Fair. Here's what you get. It's 350GSM fleece, heavy and soft inside. That wordmark's not a print. It's mesh appliqué framed in embroidery. Both sleeves? Embroidered too. And it's cut boxy. Not every hoodie's worth walking out in. This one was made for it.",
+  "notes_for_owner": "The voice says '110 bucks' (the end card shows $109.95). The voice is AI: TikTok requires its AI-content label. People in the photo are real models: make sure the shoot's release covers paid ads.",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/17-hoodie-explainer_9x16.mp4"
+  ]
+}

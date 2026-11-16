@@ -1,0 +1,40 @@
+<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><title>12 walkout scene</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  :root { --W: 1080px; --H: 1920px; }
+  html, body { width: var(--W); height: var(--H); overflow: hidden; }
+  body { position: relative; background: #cfcfcd; }
+  /* AI plate: empty, evenly lit arena tunnel. Depth cue: the plate (never the figure) is softly blurred. */
+  .plate { position: absolute; left: var(--px); top: var(--py); width: var(--pw); height: auto; filter: blur(var(--pb)); }
+  .veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(246,246,244,.72) 0%, rgba(246,246,244,0) 34%); }
+  /* grounding, all separate elements under the figure */
+  .cast { position: absolute; left: var(--fx); top: var(--fy); width: var(--fw); height: auto; transform-origin: 50% 99%; transform: scaleY(-.16) skewX(-18deg); filter: blur(14px); opacity: .34; }
+  .foot { position: absolute; border-radius: 50%; background: rgba(0,0,0,.62); filter: blur(9px); }
+  .figure { position: absolute; left: var(--fx); top: var(--fy); width: var(--fw); height: auto; }
+  .copy { position: absolute; left: 76px; top: var(--ty); color: var(--cc-ink); }
+  .copy .logo { width: 236px; height: auto; filter: invert(1); margin-bottom: 26px; }
+  .h { font-size: var(--hs); margin: 0; }
+  .h em { font-style: inherit; color: #0A8C90; }
+  .sub { margin-top: 18px; font: 700 23px/1.2 var(--cc-body); letter-spacing: .2em; text-transform: uppercase; color: #3b3e44; }
+</style></head><body>
+  <img class="plate" data-ai="empty arena tunnel background plate (Higgsfield text-to-image; no people, garments or logos)" src="plates/tunnel_b_2160.jpg" alt="">
+  <div class="veil"></div>
+  <img class="cast" src="plates/model_mask.png" alt="">
+  <div class="foot" id="f1"></div><div class="foot" id="f2"></div>
+  <img class="figure" data-product="cut/hoodie-diamond/studio-female-back.png" src="../../library/cut/hoodie-diamond/studio-female-back.png" alt="Walkout Hoodie Diamond, worn, back">
+  <div class="copy">
+    <img class="logo" src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+    <h1 class="h cc-display">Walk out<br><em>in it.</em></h1>
+    <div class="sub">Walkout Hoodie · 350GSM</div>
+  </div>
+<script>
+  const v = new URLSearchParams(location.search).get("v");
+  const L = v === "45"
+    ? { H: 1350, px: -40, py: -330, pw: 1160, pb: 2.2, fx: 372, fy: 322, fw: 452, ty: 84, hs: 92 }
+    : { H: 1920, px: -30, py: -40, pw: 1140, pb: 2.4, fx: 322, fy: 618, fw: 566, ty: 300, hs: 118 };
+  const r = document.documentElement.style;
+  for (const [k, x] of Object.entries(L)) r.setProperty("--" + k, x + (k === "pb" || k === "hs" || k !== "H" ? "px" : "px"));
+  const fh = L.fw * 1957 / 874, by = L.fy + fh;
+  const feet = [[0.15, 0.36], [0.60, 0.36]];
+  feet.forEach(([x, w], i) => Object.assign(document.getElementById("f" + (i + 1)).style, { left: L.fx + L.fw * x + "px", top: by - L.fw * 0.062 + "px", width: L.fw * w + "px", height: L.fw * 0.085 + "px" }));
+</script></body></html>

@@ -1,0 +1,45 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/rashguard-legacy/flat-front.png",
+      "x": -17.50722312927246,
+      "y": 10.00772762298584,
+      "w": 945.014404296875,
+      "h": 920.5313720703125,
+      "rotation": -8.999976735956185,
+      "flipX": false,
+      "drawnWidth": 829.9996604054305,
+      "naturalWidth": 1748,
+      "upscale": 0.4748281810099717
+    },
+    {
+      "src": "cut/shorts-legacy/flat-front.png",
+      "x": 299.0318908691406,
+      "y": 688.0242919921875,
+      "w": 761.936279296875,
+      "h": 554.967041015625,
+      "rotation": 8.999976735956185,
+      "flipX": false,
+      "drawnWidth": 699.9997135949415,
+      "naturalWidth": 1819,
+      "upscale": 0.38482667047550384
+    }
+  ],
+  "photos": [],
+  "ai": [
+    {
+      "what": "empty concrete floor plate with blue light spill (Higgsfield text-to-image; no garments, objects or logos)",
+      "x": 0,
+      "y": -280,
+      "w": 1080,
+      "h": 1909.890625
+    }
+  ],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

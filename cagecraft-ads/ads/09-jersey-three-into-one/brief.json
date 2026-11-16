@@ -1,0 +1,20 @@
+{
+  "id": "09-jersey-three-into-one",
+  "title": "Three tops → one",
+  "product": "Fight Jersey 2.0 Diamond",
+  "hook": "three tops → ONE",
+  "primary_text": "Three tops became one.\nGym top, beach singlet, going-out shirt. Or one Fight Jersey 2.0: 190GSM breathable mesh, moisture-wicking, four colourways.\n$79.95.",
+  "headline": "Three tops → one.",
+  "garment_source": [
+    "cut/jersey-diamond/front.png"
+  ],
+  "ai_generated": [],
+  "fidelity": "PASS on both sizes (mean pixel difference 0.8 and 2.3 of 255). The three 'other tops' are line drawings, not photos.",
+  "notes_for_owner": "No saving is claimed: the ad never says what three tops would cost. In Ads Manager, switch off Advantage+ creative enhancements for this ad so Meta does not alter the image.",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/09-jersey-three-into-one_1x1.jpg",
+    "out/09-jersey-three-into-one_4x5.jpg"
+  ],
+  "format": "static 1:1, 4:5"
+}

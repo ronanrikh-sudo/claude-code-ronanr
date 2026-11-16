@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>05-hoodie-detail-collage</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  :root { --W: 1080px; --H: 1350px; --gut: 6px; --gutter-col: #E9EAEC; }
+  html, body { width: var(--W); height: var(--H); overflow: hidden; }
+  body { background: var(--gutter-col); position: relative; }
+
+  /* collage grid: hero / text block / two details (4:5 default) */
+  .grid { position: absolute; inset: 0; display: grid; gap: var(--gut);
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 700px 212px 1fr;
+          grid-template-areas: "hero hero" "band band" "d1 d2"; }
+  .hero { grid-area: hero; } .band { grid-area: band; } .d1 { grid-area: d1; } .d2 { grid-area: d2; }
+
+  .tile { position: relative; overflow: hidden; background: #0a0a0b; }
+  .tile > img.ph { position: absolute; max-width: none; }
+
+  /* solid text block across the collage */
+  .band { background: var(--cc-black); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 60px; }
+  .kicker { font-family: var(--cc-body); font-weight: 600; font-size: 19px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cc-silver); margin-bottom: 12px; }
+  .kicker b { color: var(--cc-white); font-weight: 700; }
+  .headline { font-size: 55px; color: var(--cc-white); white-space: nowrap; }
+  .sub { font-family: var(--cc-body); font-weight: 600; font-size: 27px; color: var(--cc-teal); margin-top: 14px; letter-spacing: 0.005em; }
+
+  /* logo tab, top-left of the hero, like a brand bug */
+  .logo-tab { position: absolute; left: 0; top: 0; background: var(--cc-black); padding: 22px 26px 20px 60px; }
+  .logo-tab img { width: 250px; height: auto; }
+
+  /* 9:16 variant: same blocks, taller rows; text kept inside 270..1250 safe area */
+  html.v916 { --H: 1920px; }
+  html.v916 .grid { grid-template-rows: 1000px 250px 1fr; }
+  html.v916 .logo-tab { display: none; }
+  html.v916 .band .logo { display: block; }
+  .band .logo { display: none; width: 210px; height: auto; margin-bottom: 18px; }
+  html.v916 .kicker { display: none; }
+</style>
+<script>
+  if (new URLSearchParams(location.search).get("v") === "916") document.documentElement.classList.add("v916");
+</script>
+</head>
+<body>
+<div class="grid">
+
+  <!-- HERO: real on-model photograph, cropped only -->
+  <div class="tile hero" data-photo="photo/hoodie-diamond/studio-female-back.jpg">
+    <img class="ph" src="../../library/photo/hoodie-diamond/studio-female-back.jpg" data-crop="1085,1000,1487" data-crop916="1085,1040,1290">
+    <div class="logo-tab"><img src="../../library/logo/logo-white.png" alt="CAGECRAFT"></div>
+  </div>
+
+  <!-- TEXT BLOCK -->
+  <div class="band">
+    <img class="logo" src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+    <div class="kicker">Walkout Hoodie <b>/</b> Diamond</div>
+    <div class="headline cc-display">Stitched. Not printed.</div>
+    <div class="sub">350GSM fleece. Mesh appliqué. Embroidered sleeves.</div>
+  </div>
+
+  <!-- DETAIL 1: back embroidery macro (real photo, brand's own macro) -->
+  <div class="tile d1" data-photo="photo/hoodie-diamond/closeup-details.jpg">
+    <img class="ph" src="../../library/photo/hoodie-diamond/closeup-details.jpg" data-crop="900,1000,960" data-crop916="880,1010,1000">
+  </div>
+
+  <!-- DETAIL 2: sleeve embroidery macro (white thread; same on every colourway) -->
+  <div class="tile d2" data-photo="photo/hoodie-cottoncandy/sleeve-logo.jpg">
+    <img class="ph" src="../../library/photo/hoodie-cottoncandy/sleeve-logo.jpg" data-crop="1400,1110,720" data-crop916="1380,1150,780">
+  </div>
+</div>
+
+<script>
+  // Crop-only placement: data-crop = "cx,cy,cropWidth" in source pixels. Uniform scale + translate, nothing else.
+  const v916 = document.documentElement.classList.contains("v916");
+  function place(img) {
+    const tile = img.parentElement, tw = tile.clientWidth, th = tile.clientHeight;
+    let [cx, cy, cw] = (img.dataset[v916 ? "crop916" : "crop"] || img.dataset.crop).split(",").map(Number);
+    let s = tw / cw;
+    if (img.naturalHeight * s < th) s = th / img.naturalHeight;           // always cover the tile
+    if (img.naturalWidth * s < tw) s = tw / img.naturalWidth;
+    const w = img.naturalWidth * s, h = img.naturalHeight * s;
+    let left = tw / 2 - cx * s, top = th / 2 - cy * s;
+    left = Math.min(0, Math.max(tw - w, left)); top = Math.min(0, Math.max(th - h, top));
+    Object.assign(img.style, { width: w + "px", height: h + "px", left: left + "px", top: top + "px" });
+    img.dataset.scale = s.toFixed(3);
+  }
+  const imgs = [...document.querySelectorAll("img.ph")];
+  Promise.all(imgs.map(i => i.decode().catch(() => {}))).then(() => imgs.forEach(place));
+  imgs.forEach(i => { if (i.complete) place(i); else i.addEventListener("load", () => place(i)); });
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/hoodie-cottoncandy/studio-male-front.png",
+      "x": 262,
+      "y": 42,
+      "w": 620,
+      "h": 2102.953125,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 620,
+      "naturalWidth": 763,
+      "upscale": 0.8125819134993447
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

@@ -70,6 +70,7 @@ for bf in sorted(glob.glob(os.path.join(ROOT, "ads", "*", "brief.json"))):
                 run("ffmpeg", "-y", "-i", f, "-vf", "scale='min(1080,iw)':-2", "-q:v", "3", dp)
             media.append({"kind": "image", "src": "media/" + dst, "w": w, "h": h, "label": name.replace(aid, "").strip("_-") or "still", "master": os.path.relpath(f, ROOT)})
     if not media: print("no media for", aid); continue
+    media.sort(key=lambda m: (m["kind"] != "video", "4x5" not in m["label"], m["label"]))
     is_video = any(m["kind"] == "video" for m in media)
     ai = b.get("ai_generated") or []
     ai_text = as_text(ai).strip()

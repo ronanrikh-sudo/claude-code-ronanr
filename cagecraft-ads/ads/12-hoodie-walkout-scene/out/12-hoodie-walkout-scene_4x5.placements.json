@@ -1,0 +1,33 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/hoodie-diamond/studio-female-back.png",
+      "x": 372,
+      "y": 322,
+      "w": 452,
+      "h": 1012.078125,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 452,
+      "naturalWidth": 874,
+      "upscale": 0.517162471395881
+    }
+  ],
+  "photos": [],
+  "ai": [
+    {
+      "what": "empty arena tunnel background plate (Higgsfield text-to-image; no people, garments or logos)",
+      "x": -40,
+      "y": -330,
+      "w": 1160,
+      "h": 2078.328125
+    }
+  ],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

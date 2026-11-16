@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CAGECRAFT | Walkout Hoodie review + icons</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  html, body { overflow: hidden; background: #E2E1DE; }
+  /* default = 4:5 (1080x1350); body.v916 = 9:16 (1080x1920) */
+  .canvas { position: relative; width: 1080px; height: 1350px; overflow: hidden; color: #0E0F11;
+    background:
+      radial-gradient(120% 75% at 52% 40%, #F1F0EE 0%, #E6E5E2 45%, #D3D2CE 100%); }
+  body.v916 .canvas { height: 1920px; }
+
+  /* very faint paper grain, BEHIND the garment only */
+  .grain { position: absolute; inset: 0; opacity: .35; z-index: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+  /* soft backdrop shadow behind the figure (separate element, never on the product) */
+  .halo { position: absolute; z-index: 1; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(0,0,0,.10), rgba(0,0,0,0)); }
+
+  .model { position: absolute; z-index: 2; height: auto; }
+
+  /* ---------- icon column ---------- */
+  .icons { position: absolute; z-index: 3; display: flex; flex-direction: column; align-items: center; }
+  .feat { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .feat svg { width: 76px; height: 76px; fill: none; stroke: #0E0F11; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 14px; }
+  .feat b { font-family: var(--cc-body); font-weight: 800; font-size: 25px; line-height: 1.02; letter-spacing: .015em; text-transform: uppercase; display: block; }
+  .feat span { font-family: var(--cc-body); font-weight: 500; font-size: 20px; line-height: 1.1; letter-spacing: .05em; text-transform: uppercase; display: block; margin-top: 4px; color: #2A2C30; }
+
+  /* ---------- review block ---------- */
+  .review { position: absolute; z-index: 3; }
+  .pname { font-family: var(--cc-body); font-weight: 700; font-size: 17px; letter-spacing: .12em; text-transform: uppercase; line-height: 1.25; color: #2A2C30; }
+  .stars { display: flex; gap: 6px; margin: 14px 0 18px; }
+  .stars svg { width: 31px; height: 31px; fill: #0E0F11; }
+  .quote { font-family: var(--cc-display); font-weight: 900; font-style: italic; font-stretch: 112%; text-transform: uppercase;
+    font-size: 40px; line-height: .98; letter-spacing: -.012em; margin: 0; }
+  .quote .q { color: #0E0F11; }
+  .who { margin-top: 18px; font-family: var(--cc-body); font-size: 19px; font-weight: 500; color: #2A2C30; letter-spacing: .01em; }
+  .who strong { font-weight: 700; color: #0E0F11; }
+  .rule { width: 46px; height: 5px; background: var(--cc-pink); margin: 18px 0 0; border-radius: 1px; }
+  .agg { margin-top: 10px; font-family: var(--cc-body); font-size: 16px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #4A4D53; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="grain"></div>
+  <div class="halo" id="halo"></div>
+
+  <img class="model" id="model" data-product="cut/hoodie-cottoncandy/studio-male-front.png"
+       src="../../library/cut/hoodie-cottoncandy/studio-male-front.png" alt="Walkout Hoodie Cotton Candy, worn">
+
+  <div class="icons" id="icons">
+    <div class="feat">
+      <!-- 350GSM fleece: thick fabric slab with thickness arrow -->
+      <svg viewBox="0 0 64 64"><path d="M8 26 C16 22, 24 30, 32 26 S48 22, 52 26 L52 40 C44 36, 40 44, 32 40 S16 36, 8 40 Z"/><path d="M8 33 C16 29, 24 37, 32 33 S48 29, 52 33" stroke-dasharray="2 4"/><path d="M58 18 V48 M55 21 L58 18 L61 21 M55 45 L58 48 L61 45"/></svg>
+      <b>350GSM</b><span>Fleece</span>
+    </div>
+    <div class="feat">
+      <!-- mesh applique: patch with mesh grid -->
+      <svg viewBox="0 0 64 64"><rect x="9" y="15" width="46" height="34" rx="5"/><path d="M15 21 L49 43 M15 31 L33 43 M25 21 L49 37 M37 21 L49 29 M49 21 L15 43 M49 31 L31 43 M39 21 L15 37 M27 21 L15 29" stroke-width="1.4"/></svg>
+      <b>Mesh<br>appliqué</b><span>Wordmarks</span>
+    </div>
+    <div class="feat">
+      <!-- embroidered sleeves: sleeve + stitched emblem + needle -->
+      <svg viewBox="0 0 64 64"><path d="M14 8 L36 8 L44 50 L22 54 Z"/><path d="M21 46 L43 42 M22 51 L44 47" stroke-width="1.6"/><circle cx="29" cy="27" r="7" stroke-dasharray="2.5 2.5"/><path d="M47 10 L58 30" /><circle cx="46.2" cy="8.6" r="1.6"/></svg>
+      <b>Embroidered</b><span>Both sleeves</span>
+    </div>
+    <div class="feat">
+      <!-- boxy oversized fit: boxy hoodie silhouette with width arrow -->
+      <svg viewBox="0 0 64 64"><path d="M25 10 C25 5, 39 5, 39 10 L39 14 L52 18 L58 44 L50 46 L47 32 L47 52 L17 52 L17 32 L14 46 L6 44 L12 18 L25 14 Z"/><path d="M25 14 C27 20, 37 20, 39 14"/><path d="M24 40 H40 M27 37 L24 40 L27 43 M37 37 L40 40 L37 43" stroke-width="1.8"/></svg>
+      <b>Boxy</b><span>Oversized fit</span>
+    </div>
+  </div>
+
+  <div class="review" id="review">
+    <div class="pname">Walkout Hoodie<br>Cotton Candy</div>
+    <div class="stars" aria-label="five stars">
+      <svg viewBox="0 0 24 24"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5L7 14.3l-5.3-5 7.2-.9z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5L7 14.3l-5.3-5 7.2-.9z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5L7 14.3l-5.3-5 7.2-.9z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5L7 14.3l-5.3-5 7.2-.9z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5L7 14.3l-5.3-5 7.2-.9z"/></svg>
+    </div>
+    <p class="quote"><span class="q">&ldquo;</span>best hoodie in my closet!!&hellip;<span class="q">&rdquo;</span></p>
+    <div class="who">&ndash; <strong>Sena D.</strong>, verified buyer</div>
+  </div>
+</div>
+
+<script>
+  // layout per placement. Model cutout is 763x2588; placed by uniform width only.
+  const v916 = new URLSearchParams(location.search).get("v") === "916";
+  if (v916) document.body.classList.add("v916");
+  const L = v916
+    ? { model: { left: 238, top: 214, width: 664 }, halo: [180, 300, 780, 1100],
+        icons: { left: 62, top: 330, width: 196, gap: 46 }, review: { left: 704, top: 296, width: 316 } }
+    : { model: { left: 262, top: 42, width: 620 }, halo: [200, 120, 740, 1000],
+        icons: { left: 60, top: 150, width: 200, gap: 50 }, review: { left: 792, top: 104, width: 252 } };
+  const m = document.getElementById("model");
+  Object.assign(m.style, { left: L.model.left + "px", top: L.model.top + "px", width: L.model.width + "px" });
+  const h = document.getElementById("halo");
+  Object.assign(h.style, { left: L.halo[0] + "px", top: L.halo[1] + "px", width: L.halo[2] + "px", height: L.halo[3] + "px" });
+  const ic = document.getElementById("icons");
+  Object.assign(ic.style, { left: L.icons.left + "px", top: L.icons.top + "px", width: L.icons.width + "px", gap: L.icons.gap + "px" });
+  const r = document.getElementById("review");
+  Object.assign(r.style, { left: L.review.left + "px", top: L.review.top + "px", width: L.review.width + "px" });
+</script>
+</body>
+</html>

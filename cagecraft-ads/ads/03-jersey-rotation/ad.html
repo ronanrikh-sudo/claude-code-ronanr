@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CAGECRAFT Fight Jersey 2.0 rotation</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  /* 4:5 is the master layout (1080x1350). The 1:1 version (1080x1080) is the same page at a shorter
+     viewport: the @media block at the bottom tightens it. */
+  html, body { width: 1080px; height: 100vh; overflow: hidden; }
+  body {
+    position: relative;
+    background:
+      radial-gradient(ellipse 620px 520px at 50% 50%, #34363b 0%, #23252a 45%, #121316 78%, #08090a 100%);
+  }
+  .abs { position: absolute; }
+
+  /* ---------- ground: code-drawn studio sweep + floor spotlight ---------- */
+  .wall { inset: 0; background: radial-gradient(ellipse 760px 560px at 50% var(--wall-y, 560px), rgba(78,80,86,.55) 0%, rgba(50,52,57,.35) 38%, rgba(20,21,24,0) 72%); }
+  .floor { left: 50%; top: var(--floor-y, 760px); width: 1180px; height: 300px; transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(92,95,101,.55) 0%, rgba(60,62,67,.35) 40%, rgba(30,31,34,0) 72%); }
+  .vignette { inset: 0; background: radial-gradient(ellipse 85% 75% at 50% 48%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%); }
+  .grain { inset: 0; opacity: .06; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+  /* ---------- top ---------- */
+  .logo { left: 50%; top: 58px; width: 210px; transform: translateX(-50%); }
+  .kicker { left: 0; right: 0; top: 104px; text-align: center; font: 700 19px/1 var(--cc-body); letter-spacing: .34em; color: var(--cc-silver); text-transform: uppercase; }
+  .kicker b { color: var(--cc-teal); font-weight: 700; }
+  .headline { left: 0; right: 0; top: 140px; text-align: center; font-size: 74px; color: var(--cc-white); }
+  .headline span { display: block; }
+  .headline .two { color: var(--cc-bone); }
+  .sub { left: 0; right: 0; top: 308px; text-align: center; font: 500 25px/1.3 var(--cc-body); color: #C9CCD2; }
+
+  /* ---------- the line-up (real cutouts, geometric placement only) ---------- */
+  .lineup { left: 0; top: 0; width: 1080px; height: 100%; }
+  .slot { position: absolute; transform-origin: 50% 100%; }
+  .slot img { width: 100%; height: auto; }
+  .shadow { position: absolute; border-radius: 50%; background: rgba(0,0,0,.62); filter: blur(14px); }
+
+  /* ---------- spec row ---------- */
+  .specs { left: 70px; right: 70px; top: var(--specs-y, 820px); display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; align-items: center; }
+  .specs .rule { height: 92px; background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.28), rgba(255,255,255,0)); }
+  .spec { text-align: center; }
+  .spec svg { width: 46px; height: 46px; display: block; margin: 0 auto 12px; }
+  .spec .t { font: 800 21px/1.12 var(--cc-body); letter-spacing: .06em; text-transform: uppercase; color: var(--cc-white); }
+  .spec .d { font: 500 18px/1.2 var(--cc-body); color: var(--cc-silver); margin-top: 4px; }
+
+  /* ---------- colour strip ---------- */
+  .strip { left: 70px; right: 70px; top: var(--strip-y, 990px); height: 150px; border: 1.5px solid rgba(255,255,255,.18); border-radius: 18px;
+    background: rgba(10,10,12,.55); display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; }
+  .dot-wrap { text-align: center; }
+  .dot { width: 62px; height: 62px; border-radius: 50%; margin: 0 auto 13px; position: relative; box-shadow: 0 0 0 1.5px rgba(255,255,255,.22); }
+  .dot::after { content: ""; position: absolute; inset: 17px; border-radius: 50%; background: var(--ink); }
+  .dot-wrap .n { font: 700 19px/1.15 var(--cc-body); color: var(--cc-white); letter-spacing: .02em; }
+  .dot-wrap .l { font: 500 15px/1.2 var(--cc-body); color: var(--cc-steel); margin-top: 3px; }
+
+  /* ---------- footer ---------- */
+  .footer { left: 70px; right: 70px; top: var(--footer-y, 1186px); display: flex; align-items: center; justify-content: space-between; }
+  .price .p { font: 800 34px/1 var(--cc-body); color: var(--cc-white); }
+  .price .p small { font: 600 22px/1 var(--cc-body); color: var(--cc-silver); margin-left: 4px; }
+  .price .s { font: 500 18px/1.2 var(--cc-body); color: var(--cc-steel); margin-top: 8px; letter-spacing: .02em; }
+  .btn { background: var(--cc-white); color: var(--cc-black); border-radius: 999px; padding: 24px 40px 24px 44px;
+    font: 800 23px/1 var(--cc-body); letter-spacing: .08em; text-transform: uppercase; display: flex; align-items: center; gap: 16px; }
+  .btn svg { width: 14px; height: 22px; }
+
+  /* ---------- 1:1 ---------- */
+  @media (max-height: 1100px) {
+    .logo { top: 44px; width: 180px; }
+    .kicker { top: 82px; font-size: 16px; }
+    .headline { top: 112px; font-size: 58px; }
+    .sub { display: none; }
+    .specs { top: var(--specs-y); }
+    .specs .rule { height: 70px; }
+    .spec svg { width: 36px; height: 36px; margin-bottom: 8px; }
+    .spec .t { font-size: 18px; }
+    .spec .d { font-size: 15px; }
+    .strip { height: 112px; border-radius: 14px; }
+    .dot { width: 44px; height: 44px; margin-bottom: 9px; }
+    .dot::after { inset: 12px; }
+    .dot-wrap .n { font-size: 16px; }
+    .dot-wrap .l { display: none; }
+    .price .p { font-size: 28px; }
+    .price .p small { font-size: 19px; }
+    .price .s { font-size: 15px; margin-top: 6px; }
+    .btn { padding: 19px 32px 19px 36px; font-size: 19px; gap: 12px; }
+    .btn svg { width: 11px; height: 18px; }
+  }
+</style>
+</head>
+<body>
+  <div class="abs wall"></div>
+  <div class="abs floor"></div>
+  <div class="abs vignette"></div>
+  <div class="abs grain"></div>
+
+  <img class="abs logo" src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+  <div class="abs kicker">Fight Jersey 2.0 <b>/</b> The rotation</div>
+  <div class="abs headline cc-display"><span>Pick your corner.</span><span class="two">Then pick another.</span></div>
+  <div class="abs sub">Four colourways. Mats on Monday, street by Friday.</div>
+
+  <div class="abs lineup" id="lineup"></div>
+
+  <div class="abs specs">
+    <div class="spec">
+      <!-- mesh -->
+      <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 6h14l3 6 7 3-3 12h-4v15H14V27h-4L7 15l7-3z"/>
+        <g fill="#fff" stroke="none"><circle cx="20" cy="22" r="1.4"/><circle cx="24" cy="22" r="1.4"/><circle cx="28" cy="22" r="1.4"/><circle cx="22" cy="26" r="1.4"/><circle cx="26" cy="26" r="1.4"/><circle cx="20" cy="30" r="1.4"/><circle cx="24" cy="30" r="1.4"/><circle cx="28" cy="30" r="1.4"/><circle cx="22" cy="34" r="1.4"/><circle cx="26" cy="34" r="1.4"/></g>
+      </svg>
+      <div class="t">190GSM mesh</div>
+      <div class="d">Lightweight polyester</div>
+    </div>
+    <div class="rule"></div>
+    <div class="spec">
+      <!-- airflow / sweat -->
+      <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 16h20a5 5 0 1 0-5-5"/><path d="M5 24h30a5 5 0 1 1-5 5"/><path d="M5 32h12"/>
+        <path d="M38 6c3 4 5 7 5 9.5a5 5 0 0 1-10 0C33 13 35 10 38 6z"/>
+      </svg>
+      <div class="t">Breathable</div>
+      <div class="d">Moisture-wicking</div>
+    </div>
+    <div class="rule"></div>
+    <div class="spec">
+      <!-- four colourways -->
+      <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.2">
+        <circle cx="15" cy="15" r="8.5"/><circle cx="33" cy="15" r="8.5"/><circle cx="15" cy="33" r="8.5"/><circle cx="33" cy="33" r="8.5"/>
+        <circle cx="33" cy="15" r="3.5" fill="#fff" stroke="none"/>
+      </svg>
+      <div class="t">4 colourways</div>
+      <div class="d">One cut, XS to 2XL</div>
+    </div>
+  </div>
+
+  <div class="abs strip">
+    <div class="dot-wrap"><div class="dot" style="background:#C6C6C6;--ink:#0B0B0B"></div><div class="n">Concrete</div><div class="l">Grey / black</div></div>
+    <div class="dot-wrap"><div class="dot" style="background:#050505;--ink:#F09EC0"></div><div class="n">Cotton Candy</div><div class="l">Black / pink</div></div>
+    <div class="dot-wrap"><div class="dot" style="background:#EDEDEC;--ink:#16B3B7"></div><div class="n">Tiffany</div><div class="l">White / teal</div></div>
+    <div class="dot-wrap"><div class="dot" style="background:#050505;--ink:#16B3B7"></div><div class="n">Diamond</div><div class="l">Black / teal</div></div>
+  </div>
+
+  <div class="abs footer">
+    <div class="price"><div class="p">$79.95 <small>each</small></div><div class="s">cagecraftco.com</div></div>
+    <div class="btn">Shop the jerseys <svg viewBox="0 0 14 22" fill="none" stroke="#050506" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l8 8-8 8"/></svg></div>
+  </div>
+
+<script>
+  // Layout numbers per format. Every jersey is the real front cutout, sized by width only,
+  // rotated a few degrees for the fan. Nothing overlaps a garment.
+  const sq = window.innerHeight < 1100;
+  const L = sq ? {
+    top: 228, floorY: 548, wallY: 380, specsY: 600, stripY: 742, footerY: 900,
+    jerseys: [ // order chosen for contrast: grey | black | white | black
+      { slug: "concrete",    cx: 175, w: 196, dy: 12, rot: -5 },
+      { slug: "cottoncandy", cx: 408, w: 212, dy: 0,  rot: -1.5 },
+      { slug: "tiffany",     cx: 672, w: 210, dy: 0,  rot: 1.5 },
+      { slug: "diamond",     cx: 905, w: 200, dy: 12, rot: 5 },
+    ] } : {
+    top: 384, floorY: 768, wallY: 560, specsY: 826, stripY: 994, footerY: 1190,
+    jerseys: [
+      { slug: "concrete",    cx: 166, w: 228, dy: 14, rot: -5 },
+      { slug: "cottoncandy", cx: 404, w: 250, dy: 0,  rot: -1.5 },
+      { slug: "tiffany",     cx: 676, w: 248, dy: 0,  rot: 1.5 },
+      { slug: "diamond",     cx: 914, w: 236, dy: 14, rot: 5 },
+    ] };
+  const R = document.documentElement.style;
+  R.setProperty("--floor-y", L.floorY + "px");
+  R.setProperty("--wall-y", L.wallY + "px");
+  R.setProperty("--specs-y", L.specsY + "px");
+  R.setProperty("--strip-y", L.stripY + "px");
+  R.setProperty("--footer-y", L.footerY + "px");
+  // natural aspect ratios of the cutouts (h / w)
+  const AR = { concrete: 1563/1175, cottoncandy: 1612/1177, tiffany: 1600/1216, diamond: 1648/1231 };
+  const host = document.getElementById("lineup");
+  for (const j of L.jerseys) {
+    const h = j.w * AR[j.slug];
+    const top = L.top + j.dy;
+    // contact shadow (separate element, never on the product layer)
+    const sh = document.createElement("div");
+    sh.className = "shadow";
+    Object.assign(sh.style, { left: (j.cx - j.w * 0.46) + "px", top: (top + h - 16) + "px", width: (j.w * 0.92) + "px", height: "30px" });
+    host.appendChild(sh);
+    const slot = document.createElement("div");
+    slot.className = "slot";
+    Object.assign(slot.style, { left: (j.cx - j.w / 2) + "px", top: top + "px", width: j.w + "px", transform: `rotate(${j.rot}deg)` });
+    const img = document.createElement("img");
+    img.dataset.product = `cut/jersey-${j.slug}/front.png`;
+    img.src = `../../library/cut/jersey-${j.slug}/front.png`;
+    img.alt = `Fight Jersey 2.0 ${j.slug}`;
+    slot.appendChild(img);
+    host.appendChild(slot);
+  }
+</script>
+</body>
+</html>

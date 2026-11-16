@@ -1,0 +1,25 @@
+{
+  "id": "01-jersey-front-back",
+  "title": "Fight Jersey 2.0, front and back",
+  "product": "Fight Jersey 2.0 (Diamond and Cotton Candy)",
+  "hook": "The jersey itself, front and back, nothing else in frame.",
+  "primary_text": "People will ask where you got it.\nFight Jersey 2.0. Lightweight 190GSM mesh, cut to move, FIGHT TEAM 25 on the back.\nMats, beach, street. $79.95.",
+  "headline": "People will ask where you got it.",
+  "garment_source": [
+    "cut/jersey-diamond/front.png",
+    "cut/jersey-diamond/back.png",
+    "cut/jersey-cottoncandy/front.png",
+    "cut/jersey-cottoncandy/back.png"
+  ],
+  "ai_generated": [],
+  "fidelity": "PASS on all four files (mean pixel difference 0.5 to 1.8 of 255). The Cotton Candy 4:5 flags 2.0% because the front jersey overlaps the back one by design.",
+  "notes_for_owner": "In Ads Manager, switch off Advantage+ creative enhancements for this ad so Meta does not alter the image.",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/01-jersey-front-back_cottoncandy_1x1.jpg",
+    "out/01-jersey-front-back_cottoncandy_4x5.jpg",
+    "out/01-jersey-front-back_diamond_1x1.jpg",
+    "out/01-jersey-front-back_diamond_4x5.jpg"
+  ],
+  "format": "static 1:1, 4:5"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "03-jersey-rotation",
+  "title": "Pick your corner: four-colourway rotation",
+  "product": "Fight Jersey 2.0 (all four colourways)",
+  "hook": "Pick your corner. Then pick another.",
+  "primary_text": "Four colourways. One cut.\nFight Jersey 2.0: 190GSM breathable mesh that works on the mats and on the street.\nPick your corner. Then pick another. $79.95 each.",
+  "headline": "Pick your corner.",
+  "garment_source": [
+    "cut/jersey-concrete/front.png",
+    "cut/jersey-cottoncandy/front.png",
+    "cut/jersey-tiffany/front.png",
+    "cut/jersey-diamond/front.png"
+  ],
+  "ai_generated": [],
+  "fidelity": "PASS on all four jerseys (mean pixel difference 1.6 to 1.9 of 255).",
+  "notes_for_owner": "No bundle discount is implied; the price reads '$79.95 each'. In Ads Manager, switch off Advantage+ creative enhancements for this ad so Meta does not alter the image.",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/03-jersey-rotation_4x5.jpg"
+  ],
+  "format": "static 4:5"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "05-hoodie-detail-collage",
+  "title": "Stitched. Not printed. (detail collage)",
+  "product": "Walkout Hoodie Diamond",
+  "hook": "Stitched. Not printed.",
+  "primary_text": "Stitched. Not printed.\nThe Walkout Hoodie: 350GSM fleece, mesh appliqué wordmarks front and back, embroidery on both sleeves.\nCombat sports roots. Built for everywhere else.",
+  "headline": "Walkout Hoodie, Diamond",
+  "garment_source": [
+    "photo/hoodie-diamond/studio-female-back.jpg (cropped)",
+    "photo/hoodie-diamond/closeup-details.jpg (cropped)",
+    "photo/hoodie-cottoncandy/sleeve-logo.jpg (cropped)"
+  ],
+  "ai_generated": [],
+  "fidelity": "Three real photographs, cropped and scaled only. No cutout layers, so nothing for the pixel checker to compare.",
+  "notes_for_owner": "The sleeve close-up is from the Cotton Candy shoot (the sleeve embroidery is the same white-on-black on both). 'Stitched. Not printed.' assumes nothing on this hoodie is printed: confirm. People in the photo are real models: make sure the shoot's release covers paid ads. In Ads Manager, switch off Advantage+ creative enhancements for this ad so Meta does not alter the image.",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/05-hoodie-detail-collage_4x5.jpg"
+  ],
+  "format": "static 4:5"
+}

@@ -1,0 +1,33 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/hoodie-cottoncandy/flat-back.png",
+      "x": 299.5975646972656,
+      "y": -3.988856554031372,
+      "w": 780.804931640625,
+      "h": 789.0714111328125,
+      "rotation": 4.999996052434918,
+      "flipX": false,
+      "drawnWidth": 720.0002138642647,
+      "naturalWidth": 1583,
+      "upscale": 0.4548327314366801
+    }
+  ],
+  "photos": [],
+  "ai": [
+    {
+      "what": "empty concrete gym floor plate (Higgsfield gpt_image_2_6, text-to-image, no garment or logo)",
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 1350
+    }
+  ],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

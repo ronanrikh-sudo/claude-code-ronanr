@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CAGECRAFT | taped note | Walkout Hoodie</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  :root {
+    --W: 1080px; --H: 1350px;
+    --paper: #F3EEE3;
+    --ink: #17171A;
+    --pink: #F09EC0;
+    --noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    --fibre: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.012 .06' numOctaves='4' seed='7'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .3  0 0 0 0 .22  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+  }
+  html, body { width: var(--W); height: var(--H); overflow: hidden; }
+  body { position: relative; background: #3a3a3b; }
+
+  /* ---------- surface (AI plate: empty concrete gym floor, no garment / logo) ---------- */
+  .floor { position: absolute; inset: 0; background: url("assets/floor.jpg") center / cover no-repeat; }
+  .floor-grain { position: absolute; inset: 0; background-image: var(--noise); background-size: 300px; opacity: .10; mix-blend-mode: overlay; }
+  .floor-vignette { position: absolute; inset: 0; background: radial-gradient(120% 95% at 58% 38%, rgba(0,0,0,0) 45%, rgba(0,0,0,.42) 100%); }
+
+  /* ---------- the real hoodie (pure geometric placement) ---------- */
+  .hoodie { position: absolute; left: var(--hx); top: var(--hy); width: var(--hw); transform: rotate(var(--hr)); transform-origin: 50% 50%; }
+  .hoodie img.product { width: 100%; height: auto; position: relative; }
+  .hoodie .shadow { position: absolute; left: 0; top: 0; width: 100%; height: auto; transform: translate(10px, 18px) scale(1.01); filter: blur(16px); opacity: .62; }
+  .hoodie .contact { position: absolute; left: 0; top: 0; width: 100%; height: auto; transform: translate(2px, 4px); filter: blur(3px); opacity: .55; }
+
+  /* ---------- the note ---------- */
+  .note { position: absolute; left: var(--nx); top: var(--ny); width: var(--nw); height: var(--nh); transform: rotate(var(--nr)); transform-origin: 40% 30%; }
+  .note .drop { position: absolute; inset: 10px -4px -14px 12px; background: rgba(0,0,0,.55); filter: blur(18px); border-radius: 4px;
+                clip-path: polygon(0 0, 100% 0, 100% calc(100% - 90px), calc(100% - 90px) 100%, 0 100%); }
+  .note .drop2 { position: absolute; inset: 2px 0 -3px 3px; background: rgba(0,0,0,.35); filter: blur(3px);
+                clip-path: polygon(0 0, 100% 0, 100% calc(100% - 78px), calc(100% - 78px) 100%, 0 100%); }
+  .paper { position: absolute; inset: 0; background: var(--paper); overflow: hidden;
+           clip-path: polygon(0 0, 100% 0, 100% calc(100% - 80px), calc(100% - 80px) 100%, 0 100%); }
+  .paper::before { content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(100deg, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,0) 70%, rgba(80,60,30,.10) 100%),
+      linear-gradient(180deg, rgba(255,255,255,.25), rgba(0,0,0,0) 40%, rgba(90,70,40,.08) 100%); }
+  .paper::after { content: ""; position: absolute; inset: 0; background-image: var(--fibre), var(--noise); background-size: 600px, 260px; opacity: .14; mix-blend-mode: multiply; }
+  /* old fold line: it was folded in half to fit in a pocket */
+  .fold { position: absolute; left: 0; right: 0; top: 49%; height: 2px; background: linear-gradient(180deg, rgba(0,0,0,.07), rgba(255,255,255,.55)); }
+  .fold-shade { position: absolute; left: 0; right: 0; top: 49%; height: 120px; background: linear-gradient(180deg, rgba(0,0,0,.035), rgba(0,0,0,0)); }
+  /* curled bottom-right corner */
+  .curl { position: absolute; right: 0; bottom: 0; width: 80px; height: 80px;
+          background: linear-gradient(135deg, #d9d2c3 0%, #efe9dc 45%, #fbf8f1 70%, #e6dfd0 100%);
+          clip-path: polygon(0 0, 100% 0, 0 100%);
+          filter: drop-shadow(-3px -3px 4px rgba(0,0,0,.25)); }
+
+  .copy { position: absolute; inset: var(--pad); color: var(--ink); mix-blend-mode: multiply; }
+  .head { font-family: "Archivo Variable", "Inter Tight", sans-serif; font-weight: 900; font-stretch: 100%;
+          font-size: var(--hs); line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 var(--g1); }
+  .hl { position: relative; white-space: nowrap; }
+  .hl::before { content: ""; position: absolute; left: -10px; right: -12px; top: 20%; bottom: 2%;
+                background: var(--pink); opacity: .78; transform: rotate(-1.4deg) skewX(-8deg); border-radius: 6px 14px 8px 18px; z-index: -1; }
+  .body { font-family: "Inter Tight", sans-serif; font-weight: 600; font-size: var(--bs); line-height: 1.28; letter-spacing: -0.005em; }
+  .body p { margin: 0 0 var(--g2); }
+  .body ul { list-style: none; margin: 0 0 var(--g2); padding: 0; }
+  .body li { position: relative; padding-left: 1.05em; margin-bottom: 6px; }
+  .body li::before { content: "-"; position: absolute; left: 0; font-weight: 800; }
+  .body b { font-weight: 800; }
+  .sign { display: flex; align-items: flex-end; justify-content: space-between; margin-top: var(--g3); }
+  .sig .cheers { font-family: "Caveat", cursive; font-weight: 600; font-size: calc(var(--bs) * 1.35); line-height: 1; transform: rotate(-3deg); display: block; margin-left: 4px; }
+  .sig .name { font-family: "Permanent Marker", cursive; font-size: calc(var(--bs) * 1.45); line-height: 1.05; transform: rotate(-3deg); display: block; letter-spacing: .02em; }
+
+  .btn { position: absolute; z-index: 5; left: var(--bx); top: var(--by); transform: rotate(var(--nr));
+         font-family: "Inter Tight", sans-serif; font-weight: 800; font-size: 30px; color: #111;
+         background: var(--pink); padding: 15px 30px 16px; border-radius: 999px; box-shadow: 0 6px 16px rgba(0,0,0,.35); white-space: nowrap; }
+
+  /* ---------- masking tape, drawn ---------- */
+  .tape { position: absolute; width: var(--tw, 200px); height: 58px; transform: rotate(var(--tr)); z-index: 4; }
+  .tape i { position: absolute; inset: 0; display: block;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 35%, rgba(0,0,0,0) 70%, rgba(80,60,20,.12)),
+      rgba(226, 210, 168, .80);
+    clip-path: polygon(0% 6%, 2% 0%, 3.5% 9%, 5% 2%, 6% 0%, 94% 0%, 95.5% 7%, 97% 1%, 98.5% 10%, 100% 4%, 98.6% 22%, 100% 35%, 98.8% 50%, 100% 64%, 98.4% 80%, 100% 93%, 98% 100%, 96% 92%, 94.5% 100%, 6% 100%, 4.5% 93%, 3% 100%, 1.2% 91%, 0% 97%, 1.5% 80%, 0% 66%, 1.4% 50%, 0% 36%, 1.6% 21%); }
+  .tape i::after { content: ""; position: absolute; inset: 0; background-image: var(--noise), repeating-linear-gradient(90deg, rgba(120,95,50,.05) 0 2px, rgba(0,0,0,0) 2px 5px); background-size: 200px, auto; opacity: .55; mix-blend-mode: multiply; }
+  .tape b { position: absolute; inset: 4px 2px -4px 4px; background: rgba(0,0,0,.22); filter: blur(4px); display: block; z-index: -1; }
+
+  /* ---------- 1:1 layout ---------- */
+  body.sq { --H: 1080px; }
+</style>
+</head>
+<body>
+  <div class="floor" data-ai="empty concrete gym floor plate (Higgsfield gpt_image_2_6, text-to-image, no garment or logo)"></div>
+  <div class="floor-grain"></div>
+  <div class="floor-vignette"></div>
+
+  <div class="hoodie">
+    <img class="shadow" src="assets/hoodie-back-silhouette.png" alt="">
+    <img class="contact" src="assets/hoodie-back-silhouette.png" alt="">
+    <img class="product" data-product="cut/hoodie-cottoncandy/flat-back.png" src="../../library/cut/hoodie-cottoncandy/flat-back.png" alt="Walkout Hoodie, Cotton Candy, back">
+  </div>
+
+  <div class="note">
+    <div class="drop"></div>
+    <div class="drop2"></div>
+    <div class="paper">
+      <div class="fold-shade"></div><div class="fold"></div>
+      <div class="curl"></div>
+    </div>
+    <div class="copy">
+      <h1 class="head">It's a hoodie.<br>Here's why it's <span class="hl">$109.95.</span></h1>
+      <div class="body">
+        <p>Fair question. Here's what it buys:</p>
+        <ul>
+          <li><b>350gsm fleece.</b> Thick outside, soft inside.</li>
+          <li><b>Mesh applique wordmarks,</b> front and back.</li>
+          <li><b>Embroidery on both sleeves.</b></li>
+          <li><b>A boxy, oversized cut.</b></li>
+        </ul>
+        <p>That's the lot. It still won't do your rounds for you.</p>
+      </div>
+      <div class="sign">
+        <div class="sig"><span class="cheers">Cheers,</span><span class="name">CAGECRAFT</span></div>
+      </div>
+    </div>
+    <div class="tape" style="left:-58px; top:-14px; --tr:-38deg; --tw:190px"><b></b><i></i></div>
+    <div class="tape" style="right:-62px; top:-6px; --tr:33deg; --tw:200px"><b></b><i></i></div>
+  </div>
+  <div class="btn">See the hoodie &rarr;</div>
+
+<script>
+  const sq = new URLSearchParams(location.search).get("v") === "sq";
+  const L = sq ? {
+    // 1:1 1080x1080
+    hx: "455px", hy: "40px", hw: "640px", hr: "6deg",
+    nx: "58px", ny: "92px", nw: "560px", nh: "900px", nr: "-2.4deg", pad: "48px 44px 40px 46px",
+    hs: "56px", bs: "27px", g1: "24px", g2: "16px", g3: "6px", bx: "642px", by: "934px"
+  } : {
+    // 4:5 1080x1350
+    hx: "330px", hy: "26px", hw: "720px", hr: "5deg",
+    nx: "62px", ny: "618px", nw: "740px", nh: "672px", nr: "-2.2deg", pad: "50px 56px 40px 58px",
+    hs: "60px", bs: "28px", g1: "24px", g2: "15px", g3: "4px", bx: "560px", by: "1196px"
+  };
+  if (sq) document.body.classList.add("sq");
+  for (const [k, v] of Object.entries(L)) document.documentElement.style.setProperty("--" + k, v);
+</script>
+</body>
+</html>

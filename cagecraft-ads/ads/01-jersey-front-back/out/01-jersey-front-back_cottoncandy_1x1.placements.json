@@ -6,27 +6,27 @@
   "products": [
     {
       "src": "cut/jersey-cottoncandy/back.png",
-      "x": 516,
-      "y": 40,
-      "w": 498,
-      "h": 713.375,
+      "x": 490,
+      "y": 34,
+      "w": 520,
+      "h": 744.890625,
       "rotation": 0,
       "flipX": false,
-      "drawnWidth": 498,
+      "drawnWidth": 520,
       "naturalWidth": 1163,
-      "upscale": 0.4282029234737747
+      "upscale": 0.4471195184866724
     },
     {
       "src": "cut/jersey-cottoncandy/front.png",
-      "x": 66,
-      "y": 392,
-      "w": 478,
-      "h": 654.65625,
+      "x": 80,
+      "y": 360,
+      "w": 500,
+      "h": 684.78125,
       "rotation": 0,
       "flipX": false,
-      "drawnWidth": 478,
+      "drawnWidth": 500,
       "naturalWidth": 1177,
-      "upscale": 0.40611724723874254
+      "upscale": 0.42480883602378927
     }
   ],
   "photos": [],

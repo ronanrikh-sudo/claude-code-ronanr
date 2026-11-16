@@ -1,0 +1,36 @@
+<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><title>10 legacy flat-lay</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  :root { --W: 1080px; --H: 1350px; }
+  html, body { width: var(--W); height: var(--H); overflow: hidden; }
+  body { position: relative; background: #2a2d31; }
+  /* AI plate: empty concrete floor with cool light spill. Nothing on it. */
+  .plate { position: absolute; left: 0; top: var(--py); width: 1080px; height: auto; }
+  .vig { position: absolute; inset: 0; background: radial-gradient(110% 90% at 50% 46%, rgba(0,0,0,0) 50%, rgba(0,0,0,.38) 100%); }
+  /* each garment: wide soft shadow + tight contact shadow (black silhouettes, separate elements), then the real cutout */
+  .g { position: absolute; transform-origin: 50% 50%; }
+  .g img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
+  .g .soft { transform: translate(16px, 26px); filter: blur(26px); opacity: .55; }
+  .g .tight { transform: translate(4px, 7px); filter: blur(5px); opacity: .6; }
+  .g .real { position: relative; }
+  .logo { position: absolute; left: 60px; top: var(--ly); width: 210px; height: auto; opacity: .92; }
+</style></head><body>
+  <img class="plate" data-ai="empty concrete floor plate with blue light spill (Higgsfield text-to-image; no garments, objects or logos)" src="plates/plate_b.jpg" alt="">
+  <div class="vig"></div>
+  <!-- shadows for BOTH garments sit under both garments, so no shadow is ever drawn across fabric or print -->
+  <div class="g" id="rs"><img class="soft" src="shadow/rashguard-legacy_flat-front_mask.png" alt=""><img class="tight" src="shadow/rashguard-legacy_flat-front_mask.png" alt=""></div>
+  <div class="g" id="ss"><img class="soft" src="shadow/shorts-legacy_flat-front_mask.png" alt=""><img class="tight" src="shadow/shorts-legacy_flat-front_mask.png" alt=""></div>
+  <div class="g" id="r"><img class="real" data-product="cut/rashguard-legacy/flat-front.png" src="../../library/cut/rashguard-legacy/flat-front.png" alt="Legacy Rashguard"></div>
+  <div class="g" id="s"><img class="real" data-product="cut/shorts-legacy/flat-front.png" src="../../library/cut/shorts-legacy/flat-front.png" alt="Legacy 2-in-1 Hybrid MMA Shorts"></div>
+  <img class="logo" src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+<script>
+  const v = new URLSearchParams(location.search).get("v");
+  const L = v === "916"
+    ? { H: 1920, py: 0, ly: 300, r: [70, 330, 900, -9], s: [250, 1090, 760, 9] }
+    : { H: 1350, py: -280, ly: 64, r: [40, 70, 830, -9], s: [330, 740, 700, 9] };
+  document.documentElement.style.setProperty("--H", L.H + "px");
+  document.documentElement.style.setProperty("--py", L.py + "px");
+  document.documentElement.style.setProperty("--ly", L.ly + "px");
+  const put = (id, [x, y, w, rot], aspect) => Object.assign(document.getElementById(id).style, { left: x + "px", top: y + "px", width: w + "px", height: w * aspect + "px", transform: `rotate(${rot}deg)` });
+  put("r", L.r, 1686 / 1748); put("rs", L.r, 1686 / 1748); put("s", L.s, 1172 / 1819); put("ss", L.s, 1172 / 1819);
+</script></body></html>

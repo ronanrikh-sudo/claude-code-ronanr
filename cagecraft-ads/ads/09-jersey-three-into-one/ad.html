@@ -18,7 +18,7 @@
     --logo-top: 70px; --logo-w: 250px;
     --hl-top: 150px; --hl-size: 92px; --pill-size: 76px;
     --cards-top: 300px; --card-h: 830px; --gap: 28px;
-    --tile-h: 556px; --jersey-w: 384px;
+    --tile-h: 556px; --jersey-w: 384px; --j-top: 20px;
     --icon-w: 156px;
     --body-size: 33px; --small-size: 25px; --name-size: 35px; --price-size: 66px;
     --foot-top: 1170px; --foot-size: 34px; --foot2-size: 26px;
@@ -29,7 +29,7 @@
     --logo-top: 52px; --logo-w: 210px;
     --hl-top: 104px; --hl-size: 76px; --pill-size: 63px;
     --cards-top: 230px; --card-h: 664px; --gap: 26px;
-    --tile-h: 412px; --jersey-w: 290px;
+    --tile-h: 412px; --jersey-w: 290px; --j-top: 12px;
     --icon-w: 118px;
     --body-size: 29px; --small-size: 21px; --name-size: 31px; --price-size: 56px;
     --foot-top: 930px; --foot-size: 30px; --foot2-size: 22px;
@@ -71,7 +71,7 @@
   .ic.c { right: 11%; top: 51%; }
 
   /* right tile: the real photograph */
-  .jersey-wrap { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: var(--jersey-w); }
+  .jersey-wrap { position: absolute; left: calc(50% - var(--jersey-w) / 2); top: var(--j-top); width: var(--jersey-w); }
   .shadow { position: absolute; left: 8%; right: 8%; bottom: -14px; height: 34px; border-radius: 50%;
             background: rgba(0,0,0,.28); filter: blur(14px); }
   .jersey-wrap img { position: relative; width: 100%; height: auto; }

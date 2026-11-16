@@ -1,0 +1,21 @@
+{
+  "id": "07-hoodie-taped-note",
+  "title": "It's a hoodie. Here's why it's $109.95. (taped note)",
+  "product": "Walkout Hoodie Cotton Candy",
+  "hook": "It's a hoodie. Here's why it's $109.95.",
+  "primary_text": "It's a hoodie. Here's why it's $109.95.\n350gsm fleece. Mesh appliqué wordmarks, front and back. Embroidery on both sleeves. A boxy, oversized cut.\nThat's the lot.",
+  "headline": "Fair question.",
+  "garment_source": [
+    "cut/hoodie-cottoncandy/flat-back.png"
+  ],
+  "ai_generated": [
+    "Concrete floor behind the hoodie (Higgsfield, text-to-image, nothing on it). The paper, tape and shadows are drawn in code."
+  ],
+  "fidelity": "Garment pixels match (mean difference 0.47 of 255). 13% of the hoodie is covered by the note on purpose: it sits on the plain lower fleece and hem, and the full back embroidery is visible.",
+  "notes_for_owner": "The note does not promise that you never discount. The background is AI-generated (the garment is not): TikTok requires its AI-content label, and Meta may add its own. In Ads Manager, switch off Advantage+ creative enhancements for this ad so Meta does not alter the image.",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/07-hoodie-taped-note_4x5.jpg"
+  ],
+  "format": "static 4:5"
+}

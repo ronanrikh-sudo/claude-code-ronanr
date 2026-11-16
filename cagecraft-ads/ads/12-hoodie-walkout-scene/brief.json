@@ -1,0 +1,22 @@
+{
+  "id": "12-hoodie-walkout-scene",
+  "title": "Walk out in it. (tunnel scene)",
+  "product": "Walkout Hoodie Diamond",
+  "hook": "WALK OUT IN IT.",
+  "primary_text": "Walk out in it.\nThe Walkout Hoodie. 350GSM fleece, mesh appliqué wordmark across the back.\nCombat sports roots. Built for everywhere else.",
+  "headline": "Walkout Hoodie, Diamond",
+  "garment_source": [
+    "cut/hoodie-diamond/studio-female-back.png"
+  ],
+  "ai_generated": [
+    "Arena tunnel behind the model (Higgsfield, text-to-image, empty: no people, garments or logos). The model and hoodie are your studio photograph, untouched; only the tunnel is softly blurred."
+  ],
+  "fidelity": "PASS on both sizes (mean pixel difference 0.5 and 0.9 of 255).",
+  "notes_for_owner": "This is a studio photo placed in an AI setting. The garment is exact, but look at it full size and decide whether the scene reads as real enough for you. People in the photo are real models: make sure the shoot's release covers paid ads. The background is AI-generated (the garment is not): TikTok requires its AI-content label, and Meta may add its own. In Ads Manager, switch off Advantage+ creative enhancements for this ad so Meta does not alter the image.",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/12-hoodie-walkout-scene_4x5.jpg",
+    "out/12-hoodie-walkout-scene_9x16.jpg"
+  ],
+  "format": "static 4:5, 9:16"
+}
