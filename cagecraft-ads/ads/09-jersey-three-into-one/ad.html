@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CAGECRAFT | three tops, one jersey</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  :root {
+    --W: 1080px; --H: 1350px;
+    --ink: #111214;
+    --grey-text: #6B6F76;
+    --grey-soft: #A3A7AE;
+    --tile: #F0F0F2;
+    --accent: #16B3B7;          /* Diamond teal, the one CAGECRAFT accent */
+    --marker: #0E9A9E;          /* same teal, a touch deeper so the hand-drawn mark reads on white */
+    /* layout knobs (4:5) */
+    --pad: 64px;
+    --logo-top: 70px; --logo-w: 250px;
+    --hl-top: 150px; --hl-size: 92px; --pill-size: 76px;
+    --cards-top: 300px; --card-h: 830px; --gap: 28px;
+    --tile-h: 556px; --jersey-w: 384px;
+    --icon-w: 156px;
+    --body-size: 33px; --small-size: 25px; --name-size: 35px; --price-size: 66px;
+    --foot-top: 1170px; --foot-size: 34px; --foot2-size: 26px;
+  }
+  html.sq {
+    --H: 1080px;
+    --pad: 60px;
+    --logo-top: 52px; --logo-w: 210px;
+    --hl-top: 104px; --hl-size: 76px; --pill-size: 63px;
+    --cards-top: 230px; --card-h: 664px; --gap: 26px;
+    --tile-h: 412px; --jersey-w: 290px;
+    --icon-w: 118px;
+    --body-size: 29px; --small-size: 21px; --name-size: 31px; --price-size: 56px;
+    --foot-top: 930px; --foot-size: 30px; --foot2-size: 22px;
+  }
+
+  html, body { width: var(--W); height: var(--H); overflow: hidden; }
+  body { background: #FFFFFF; color: var(--ink); position: relative; font-family: var(--cc-body); }
+
+  .logo { position: absolute; top: var(--logo-top); left: 50%; transform: translateX(-50%); width: var(--logo-w); filter: brightness(0); }
+
+  .headline {
+    position: absolute; top: var(--hl-top); left: 0; right: 0;
+    display: flex; justify-content: center; align-items: center; gap: 22px;
+    font-family: var(--cc-body); font-weight: 400; font-size: var(--hl-size); letter-spacing: -0.035em; line-height: 1;
+  }
+  .headline .word { transform: translateY(-4px); }
+  .pill {
+    display: inline-flex; align-items: center; gap: 14px;
+    background: var(--accent); color: var(--ink);
+    border-radius: 999px; padding: 0.16em 0.5em 0.16em 0.38em;
+    font-size: var(--pill-size);
+  }
+  .pill .cc-display { font-size: 1em; line-height: 1; letter-spacing: 0; transform: translateY(2px); }
+  .pill svg { width: 0.82em; height: 0.82em; display: block; }
+
+  .cards { position: absolute; top: var(--cards-top); left: var(--pad); right: var(--pad); height: var(--card-h);
+           display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+  .card { position: relative; background: #fff; border-radius: 30px; padding: 18px 18px 0;
+          box-shadow: 0 1px 2px rgba(17,18,20,.06), 0 10px 34px rgba(17,18,20,.09); }
+  .tile { position: relative; height: var(--tile-h); background: var(--tile); border-radius: 20px; overflow: hidden; }
+
+  /* left tile: three code-drawn line icons */
+  .icons { position: absolute; inset: 0; }
+  .ic { position: absolute; width: var(--icon-w); text-align: center; }
+  .ic svg { width: 100%; height: auto; display: block; }
+  .ic span { display: block; white-space: nowrap; margin-left: -40px; margin-right: -40px; margin-top: 6px; font-size: calc(var(--small-size) * 0.92); color: var(--grey-text); font-weight: 500; letter-spacing: 0.01em; }
+  .ic.a { left: 50%; top: 7%; transform: translateX(-50%); }
+  .ic.b { left: 11%; top: 51%; }
+  .ic.c { right: 11%; top: 51%; }
+
+  /* right tile: the real photograph */
+  .jersey-wrap { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: var(--jersey-w); }
+  .shadow { position: absolute; left: 8%; right: 8%; bottom: -14px; height: 34px; border-radius: 50%;
+            background: rgba(0,0,0,.28); filter: blur(14px); }
+  .jersey-wrap img { position: relative; width: 100%; height: auto; }
+
+  .dots { display: flex; gap: 12px; margin: 22px 6px 0; }
+  .dot { width: 24px; height: 24px; border-radius: 50%; position: relative; overflow: hidden;
+         box-shadow: inset 0 0 0 1.5px rgba(0,0,0,.12); }
+  .dot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 50%, var(--l) 50%); }
+  .dot.sel { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+  .copy { margin: 18px 6px 0; }
+  .lbody { font-size: var(--body-size); line-height: 1.22; letter-spacing: -0.012em; color: var(--ink); }
+  .lsmall { margin-top: 18px; font-size: var(--small-size); color: var(--grey-soft); }
+  .name { font-size: var(--name-size); font-weight: 700; line-height: 1.16; letter-spacing: -0.015em; }
+  .price { position: relative; display: inline-block; margin-top: 16px; margin-left: 14px;
+           font-size: var(--price-size); font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+  .ellipse { position: absolute; left: -30px; top: -20px; width: calc(100% + 62px); height: calc(100% + 40px); overflow: visible; }
+  .arrow { position: absolute; overflow: visible; }
+
+  .foot { position: absolute; top: var(--foot-top); left: var(--pad); right: var(--pad); text-align: center; }
+  .foot .l1 { font-size: var(--foot-size); letter-spacing: -0.01em; }
+  .foot .l1 b { font-weight: 700; }
+  .foot .l1 .t { color: var(--marker); font-weight: 700; margin: 0 4px 0 6px; }
+  .foot .l1 .sep { color: var(--grey-soft); margin: 0 14px; }
+  .foot .l2 { margin-top: 14px; font-size: var(--foot2-size); color: var(--grey-text); }
+</style>
+</head>
+<body>
+<script>if (new URLSearchParams(location.search).get("v") === "sq") document.documentElement.classList.add("sq");</script>
+
+<img class="logo" src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+
+<div class="headline">
+  <span class="word">three tops</span>
+  <span class="pill">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#111214" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h16M13 5.5 19.5 12 13 18.5"/></svg>
+    <span class="cc-display">ONE</span>
+  </span>
+</div>
+
+<div class="cards">
+  <!-- LEFT: the three tops you would otherwise rotate (code-drawn outlines, no brand) -->
+  <div class="card">
+    <div class="tile">
+      <div class="icons">
+        <div class="ic a">
+          <svg viewBox="0 0 200 190" fill="none" stroke="#1D1E21" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M72 22 Q100 40 128 22 L170 42 L192 86 L160 100 L150 80 L150 178 L50 178 L50 80 L40 100 L8 86 L30 42 Z"/>
+            <path d="M72 22 Q100 52 128 22"/>
+          </svg>
+          <span>gym top</span>
+        </div>
+        <div class="ic b">
+          <svg viewBox="0 0 200 190" fill="none" stroke="#1D1E21" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M70 12 L70 34 Q70 70 46 84 L46 178 L154 178 L154 84 Q130 70 130 34 L130 12 L116 12 Q114 50 100 50 Q86 50 84 12 Z"/>
+          </svg>
+          <span>beach singlet</span>
+        </div>
+        <div class="ic c">
+          <svg viewBox="0 0 200 190" fill="none" stroke="#1D1E21" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M82 18 L100 38 L118 18 L136 24 L172 44 L192 86 L160 98 L152 82 L152 178 L48 178 L48 82 L40 98 L8 86 L28 44 L64 24 Z"/>
+            <path d="M82 18 L74 42 L100 56 L126 42 L118 18"/>
+            <path d="M100 56 L100 178"/>
+            <circle cx="108" cy="80" r="3.2" fill="#1D1E21" stroke="none"/>
+            <circle cx="108" cy="110" r="3.2" fill="#1D1E21" stroke="none"/>
+            <circle cx="108" cy="140" r="3.2" fill="#1D1E21" stroke="none"/>
+            <path d="M120 74 L142 74 L142 96 L120 96 Z" stroke-width="4"/>
+          </svg>
+          <span>going&#8209;out shirt</span>
+        </div>
+      </div>
+    </div>
+    <div class="dots">
+      <div class="dot" style="background:#1D1E21; --l:#1D1E21"></div>
+      <div class="dot" style="background:#B9BCC2; --l:#B9BCC2"></div>
+    </div>
+    <div class="copy">
+      <div class="lbody">Gym top + beach singlet +<br>going&#8209;out shirt</div>
+      <div class="lsmall">three tops, three changes</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: the one product, real photograph -->
+  <div class="card">
+    <div class="tile">
+      <div class="jersey-wrap">
+        <div class="shadow"></div>
+        <img data-product="cut/jersey-diamond/front.png" src="../../library/cut/jersey-diamond/front.png" alt="Fight Jersey 2.0 Diamond, front">
+      </div>
+    </div>
+    <div class="dots">
+      <div class="dot sel" title="Diamond" style="background:#0C0C0D; --l:#16B3B7"></div>
+      <div class="dot" title="Cotton Candy" style="background:#0C0C0D; --l:#F09EC0"></div>
+      <div class="dot" title="Tiffany" style="background:#FFFFFF; --l:#16B3B7"></div>
+      <div class="dot" title="Concrete" style="background:#A9A7A2; --l:#111214"></div>
+    </div>
+    <div class="copy">
+      <div class="name">CAGECRAFT<br>Fight Jersey 2.0</div>
+      <div class="price">$79.95
+        <svg class="ellipse" viewBox="0 0 300 120" preserveAspectRatio="none" fill="none" stroke="var(--marker)" stroke-width="5.5" stroke-linecap="round">
+          <path d="M214 14 C 150 2, 52 6, 18 36 C -6 58, 20 98, 104 108 C 190 118, 288 104, 292 64 C 296 30, 240 10, 160 12 C 120 13, 92 18, 74 24"/>
+        </svg>
+      </div>
+    </div>
+    <svg class="arrow" id="arrow" viewBox="0 0 120 200" fill="none" stroke="var(--marker)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M92 6 C 112 60, 98 140, 18 176"/>
+      <path d="M44 154 L16 177 L50 186"/>
+    </svg>
+  </div>
+</div>
+
+<div class="foot">
+  <div class="l1"><b>Gym</b><span class="t">✓</span><span class="sep">·</span><b>Beach</b><span class="t">✓</span><span class="sep">·</span><b>Street</b><span class="t">✓</span></div>
+  <div class="l2">190GSM breathable mesh · moisture-wicking · four colourways</div>
+</div>
+
+<script>
+  // place the hand-drawn arrow so it lands just right of the circled price
+  (function () {
+    const price = document.querySelector(".price"), card = price.closest(".card"), a = document.getElementById("arrow");
+    const pr = price.getBoundingClientRect(), cr = card.getBoundingClientRect();
+    const h = pr.height * 1.9, w = h * 0.6;
+    a.style.width = w + "px"; a.style.height = h + "px";
+    a.style.left = (pr.right - cr.left + 34) + "px";
+    a.style.top = (pr.bottom - cr.top - h * 0.92) + "px";
+  })();
+</script>
+</body>
+</html>

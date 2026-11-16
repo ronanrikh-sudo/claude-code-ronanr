@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CAGECRAFT Walkout Hoodie type poster</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  /* One file, two canvases: default 4:5 (1080x1350); ?v=9x16 for 1080x1920.
+     Type-only: no product layer. Everything below is code-drawn. */
+  :root {
+    --accent: var(--cc-pink);          /* Cotton Candy colourway */
+    --paper: #070708;
+    --rule: rgba(255,255,255,.22);
+    --rule-strong: rgba(255,255,255,.55);
+    --muted: #8A8E96;
+    --W: 1080px; --H: 1350px;
+    /* content box (all type lives inside it) */
+    --cx: 92px; --cy: 96px; --cw: 896px; --ch: 1158px;
+    --frame: 44px;
+  }
+  body.v916 {
+    --H: 1920px;
+    /* Reels safe zone: no type in top 270, bottom 670, outer 65 each side */
+    --cx: 92px; --cy: 292px; --cw: 896px; --ch: 940px;
+  }
+  html, body { width: var(--W); height: var(--H); overflow: hidden; }
+  body { background: var(--paper); position: relative; }
+
+  /* ---------- ground: paper + print grain, vignette ---------- */
+  .ground, .grain, .mottle, .vignette, .mesh, .frame, .marks { position: absolute; inset: 0; pointer-events: none; }
+  .ground { background:
+      radial-gradient(120% 80% at 50% 38%, #111215 0%, #0A0A0C 55%, #050506 100%); }
+  .mottle { opacity: .55; mix-blend-mode: screen;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='540' height='540'><filter id='m'><feTurbulence type='fractalNoise' baseFrequency='0.006 0.012' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23m)'/></svg>");
+    background-size: 540px 540px; }
+  .grain { opacity: .16; mix-blend-mode: screen;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 -.12'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 256px 256px; z-index: 20; }
+  .grain.dark { mix-blend-mode: multiply; opacity: .5;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='d'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='1' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .7 -.38'/></filter><rect width='100%' height='100%' filter='url(%23d)'/></svg>");
+    background-size: 200px 200px; }
+  .vignette { background: radial-gradient(140% 100% at 50% 45%, transparent 55%, rgba(0,0,0,.55) 100%); z-index: 19; }
+
+  /* chain-link cage mesh, faint, only in the Reels-covered lower band of 9:16 */
+  .mesh { display: none; }
+  body.v916 .mesh { display: block; top: auto; height: 640px; bottom: 0; opacity: .5;
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.35) 55%, transparent 100%);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='72' height='72'><g fill='none' stroke='%23A7ABB3' stroke-width='2.4' stroke-linecap='round'><path d='M0 36 L36 0 M36 72 L72 36'/><path d='M0 36 L36 72 M36 0 L72 36'/></g></svg>");
+    background-size: 72px 72px; background-position: center bottom; }
+
+  /* ---------- bout-sheet frame + corner marks ---------- */
+  .frame { inset: var(--frame); border: 1.5px solid var(--rule); }
+  .frame::before { /* inner hairline, like a printed bout sheet */
+    content: ""; position: absolute; inset: 8px; border: 1px solid rgba(255,255,255,.08); }
+  .marks i { position: absolute; width: 34px; height: 34px; border-color: var(--accent); border-style: solid; border-width: 0; }
+  .marks .tl { left: calc(var(--frame) - 12px); top: calc(var(--frame) - 12px); border-left-width: 4px; border-top-width: 4px; }
+  .marks .tr { right: calc(var(--frame) - 12px); top: calc(var(--frame) - 12px); border-right-width: 4px; border-top-width: 4px; }
+  .marks .bl { left: calc(var(--frame) - 12px); bottom: calc(var(--frame) - 12px); border-left-width: 4px; border-bottom-width: 4px; }
+  .marks .br { right: calc(var(--frame) - 12px); bottom: calc(var(--frame) - 12px); border-right-width: 4px; border-bottom-width: 4px; }
+  /* centre ticks on the frame (registration, not a ruler) */
+  .marks .ct, .marks .cb { position: absolute; left: 50%; width: 2px; height: 22px; background: var(--rule-strong); transform: translateX(-1px); }
+  .marks .ct { top: calc(var(--frame) - 11px); }
+  .marks .cb { bottom: calc(var(--frame) - 11px); }
+  .marks .reg { position: absolute; width: 26px; height: 26px; border: 1.5px solid var(--rule-strong); border-radius: 50%; }
+  .marks .reg::before, .marks .reg::after { content: ""; position: absolute; background: var(--rule-strong); }
+  .marks .reg::before { left: -8px; right: -8px; top: 50%; height: 1.5px; transform: translateY(-50%); }
+  .marks .reg::after { top: -8px; bottom: -8px; left: 50%; width: 1.5px; transform: translateX(-50%); }
+  .marks .reg.l { left: calc(var(--frame) - 13px); top: 50%; transform: translateY(-50%); }
+  .marks .reg.r { right: calc(var(--frame) - 13px); top: 50%; transform: translateY(-50%); }
+  body.v916 .marks .reg { top: calc(var(--cy) + var(--ch) / 2); }
+
+  /* ---------- content ---------- */
+  .content { position: absolute; left: var(--cx); top: var(--cy); width: var(--cw); height: var(--ch);
+    display: flex; flex-direction: column; z-index: 5; }
+
+  .label { font-family: var(--cc-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .18em; }
+
+  /* top strip */
+  .topbar { display: flex; align-items: center; gap: 18px; font-size: 22px; color: var(--muted); }
+  .topbar .me { color: #050506; background: var(--accent); padding: 5px 12px 4px 14px; letter-spacing: .22em; font-weight: 800; }
+  .topbar .line { flex: 1; height: 1.5px; background: var(--rule); }
+  .topbar .r { color: var(--cc-silver); }
+
+  /* headline */
+  .headline { margin: auto 0; padding: 0; font-weight: inherit; font-size: inherit; }
+  .lead { display: block; white-space: nowrap; color: var(--cc-silver); letter-spacing: -.01em; line-height: 1; margin-bottom: 14px; }
+  .payoff { display: block; line-height: .82; }
+  .payoff .fit { display: block; white-space: nowrap; letter-spacing: -.035em; }
+  .payoff .a { color: var(--cc-white); }
+  .payoff .b { color: var(--accent); }
+
+  /* tale of the tape */
+  .tape { }
+  .tape-head { display: flex; align-items: stretch; border-top: 3px solid var(--cc-white); }
+  .tape-head .t { font-size: 22px; color: var(--accent); padding: 12px 0 10px; letter-spacing: .26em; }
+  .tape-head .n { margin-left: auto; font-family: var(--cc-display); font-weight: 900; font-stretch: 125%; font-style: italic;
+    text-transform: uppercase; font-size: 24px; letter-spacing: .01em; padding: 11px 0 8px; color: var(--cc-white); }
+  .tape-head .n em { font-style: italic; color: var(--accent); }
+  .row { display: grid; grid-template-columns: 196px 1fr; align-items: baseline; border-top: 1.5px solid var(--rule); padding: 12px 0 11px; }
+  .row:last-child { border-bottom: 1.5px solid var(--rule); }
+  .row .k { font-size: 22px; color: var(--muted); }
+  .row .v { font-family: var(--cc-body); font-weight: 700; font-size: 30px; letter-spacing: -.005em; color: var(--cc-white); text-transform: uppercase; }
+  .row .v small { font-weight: 500; font-size: 22px; color: var(--cc-silver); letter-spacing: .02em; }
+  .row.price .v { font-family: var(--cc-display); font-weight: 900; font-stretch: 125%; font-style: italic; font-size: 40px; color: var(--accent); letter-spacing: 0; }
+  .row.price .v small { font-family: var(--cc-condensed); font-style: normal; font-weight: 700; font-size: 20px; letter-spacing: .18em; color: var(--muted); margin-left: 10px; }
+
+  /* sign-off */
+  .sign { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; }
+  .sign .s { font-family: var(--cc-display); font-weight: 800; font-stretch: 125%; font-style: italic; text-transform: uppercase; font-size: 28px; color: var(--cc-white); letter-spacing: .005em; }
+  .sign img { width: 300px; height: auto; }
+
+  /* 9:16 sizing tweaks: tighter vertical rhythm inside the safe zone */
+  body.v916 .row { padding: 10px 0 9px; }
+  body.v916 .sign { margin-top: 26px; }
+</style>
+</head>
+<body>
+<script>
+  if (new URLSearchParams(location.search).get("v") === "9x16") document.body.classList.add("v916");
+</script>
+
+<div class="ground"></div>
+<div class="mottle"></div>
+<div class="mesh"></div>
+<div class="frame"></div>
+<div class="marks">
+  <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+  <span class="ct"></span><span class="cb"></span>
+  <span class="reg l"></span><span class="reg r"></span>
+</div>
+
+<main class="content">
+  <div class="topbar label">
+    <span class="me">Main Event</span>
+    <span class="line"></span>
+    <span class="r">In the pink corner</span>
+  </div>
+
+  <h1 class="headline">
+    <span class="cc-display lead fit" data-fit>Not every hoodie is worth</span>
+    <span class="cc-display payoff">
+      <span class="fit a" data-fit>Walking</span>
+      <span class="fit b" data-fit>out in.</span>
+    </span>
+  </h1>
+
+  <section class="tape">
+    <div class="tape-head label">
+      <span class="t">Tale of the tape</span>
+      <span class="n">Walkout Hoodie <em>/ Cotton Candy</em></span>
+    </div>
+    <div class="row"><span class="k label">Weight</span><span class="v">350GSM fleece</span></div>
+    <div class="row"><span class="k label">Build</span><span class="v">52% cotton / 48% poly</span></div>
+    <div class="row"><span class="k label">Fit</span><span class="v">Boxy, oversized</span></div>
+    <div class="row"><span class="k label">Marks</span><span class="v">Mesh applique front + back</span></div>
+    <div class="row"><span class="k label">Sleeves</span><span class="v">Embroidered, both arms</span></div>
+    <div class="row"><span class="k label">Divisions</span><span class="v">S &middot; M &middot; L &middot; XL &middot; 2XL</span></div>
+    <div class="row price"><span class="k label">Price</span><span class="v">$109.95<small>AUD</small></span></div>
+  </section>
+
+  <div class="sign">
+    <span class="s">This one was made for it.</span>
+    <img src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+  </div>
+</main>
+
+<div class="vignette"></div>
+<div class="grain"></div>
+<div class="grain dark"></div>
+
+<script>
+  // Fight-poster justification: scale each headline line so it runs the full measure.
+  function fit() {
+    const W = document.querySelector(".content").clientWidth * 0.985; // leave room for the italic overhang
+    for (const el of document.querySelectorAll("[data-fit]")) {
+      el.style.display = "inline-block"; el.style.fontSize = "100px";
+      const w = el.getBoundingClientRect().width;
+      el.style.fontSize = (100 * W / w).toFixed(2) + "px";
+      el.style.display = "block";
+    }
+  }
+  document.fonts.ready.then(fit);
+</script>
+</body>
+</html>

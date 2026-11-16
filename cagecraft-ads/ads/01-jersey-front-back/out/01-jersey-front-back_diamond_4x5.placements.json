@@ -1,0 +1,37 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/jersey-diamond/back.png",
+      "x": 446,
+      "y": 50,
+      "w": 584,
+      "h": 797.890625,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 584,
+      "naturalWidth": 1245,
+      "upscale": 0.46907630522088356
+    },
+    {
+      "src": "cut/jersey-diamond/front.png",
+      "x": 52,
+      "y": 512,
+      "w": 566,
+      "h": 757.71875,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 566,
+      "naturalWidth": 1231,
+      "upscale": 0.45978878960194963
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

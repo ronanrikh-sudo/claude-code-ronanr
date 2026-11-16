@@ -1,0 +1,37 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/jersey-cottoncandy/back.png",
+      "x": 446,
+      "y": 50,
+      "w": 584,
+      "h": 836.578125,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 584,
+      "naturalWidth": 1163,
+      "upscale": 0.5021496130696474
+    },
+    {
+      "src": "cut/jersey-cottoncandy/front.png",
+      "x": 52,
+      "y": 512,
+      "w": 566,
+      "h": 775.171875,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 566,
+      "naturalWidth": 1177,
+      "upscale": 0.48088360237892946
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

@@ -1,0 +1,25 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/jersey-diamond/front.png",
+      "x": 593,
+      "y": 338.9609375,
+      "w": 384,
+      "h": 514.078125,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 384,
+      "naturalWidth": 1231,
+      "upscale": 0.31194151096669376
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}
