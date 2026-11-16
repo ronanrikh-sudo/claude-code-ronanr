@@ -4,7 +4,7 @@ Rival Gym kit built on the CAGECRAFT **Legacy** fight kit: black base garments, 
 oval rebuilt around the Rival wordmark, and the Legacy circuit pattern at the hem.
 
 ## Concepts
-| Idea | Oval / swoosh / sparkles | RIVAL | GYM + rule | Hem pattern |
+| Idea | Oval / swoosh | RIVAL | GYM | Hem pattern |
 |------|------|------|------|------|
 | **A**   | White | Red | White | Red |
 | **B.1** | Red   | Red | Red   | Red |
@@ -14,8 +14,8 @@ Rival Red sampled from the supplied logo: **#C10212**. Off-white print: #F4F4F2.
 
 ## Products (front only)
 - **Training Tee**: chest oval, no hem pattern.
-- **Rashguard**: chest oval and hem pattern (raglan, mesh side panels, Legacy-style).
-- **Mid-Length MMA Shorts**: single layer (not 2-in-1), longer than Legacy, side slits; oval over the crotch area and pattern at the hem.
+- **Rashguard**: chest oval and hem pattern (raglan, mesh side panels, Legacy-style), drawn to size-chart proportions.
+- **Mid-Length MMA Shorts**: non-velcro curved-cut template (7.5" inseam), single layer (not 2-in-1): elastic waistband with flat front panel, J-stitch faux fly, curved-cut bound hems; oval over the crotch area and pattern at the hem.
 
 ## Deliverables
 - `out/deck/Rival-Gym-Fight-Kit-Concepts.pdf`: 6-slide presentation deck
@@ -26,7 +26,7 @@ Rival Red sampled from the supplied logo: **#C10212**. Off-white print: #F4F4F2.
 ## How it's built
 - `scripts/trace_logo.py`: vectorises RIVAL / GYM / rule from `assets/rival-logo-source.png`
   (un-skews the italic, traces, snaps, re-skews) → `assets/rival_paths.json`
-- `scripts/emblem.mjs`: the oval (crescent ring, comet swoosh, sparkles, wordmark, GYM lockup) and colourways
+- `scripts/emblem.mjs`: the oval (crescent ring, comet swoosh, wordmark, GYM) and colourways (sparkles available behind `opts.sparkles`)
 - `scripts/pattern.mjs`: Legacy-style hem pattern (lane-grid traces, mirrored motifs, hem fringe)
 - `scripts/garments.mjs`: garment templates and fabric shading
 - `scripts/build.mjs`: renders product PNGs and transparent cut-outs (Playwright)

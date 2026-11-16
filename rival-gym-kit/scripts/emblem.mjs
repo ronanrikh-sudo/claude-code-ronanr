@@ -1,6 +1,6 @@
 // Rival Gym oval emblem, built on the Legacy oval geometry:
 // crescent ring (hairline at top-left, heavy on the right), inner comet swoosh
-// peeling off the ring on the right, four sparkles, wordmark breaking out left.
+// peeling off the ring on the right, wordmark breaking out left, GYM beneath.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -90,7 +90,7 @@ function rivalGroup(fill) {
 }
 
 // GYM: same italic, smaller, tracked out; optional rule (their logo's line) to the left
-function gymGroup(fill, { layout = 'rule', scaleRel = 0.44, tracking = 10 } = {}) {
+function gymGroup(fill, { layout = 'plain', scaleRel = 0.44, tracking = 10, shift = -78 } = {}) {
   const gh = RIVAL_H * scaleRel;
   const s = gh / (GYM_BOX[3] - GYM_BOX[1]);
   const glyphs = GLYPHS.GYM;
@@ -100,7 +100,7 @@ function gymGroup(fill, { layout = 'rule', scaleRel = 0.44, tracking = 10 } = {}
   const rivalRightBottom = RIVAL_LEFT + RIVAL_W - 0; // right edge at baseline
   let left;
   if (layout === 'center') left = RIVAL_LEFT + (RIVAL_W - natW) / 2 + 10;
-  else left = rivalRightBottom - natW - 34; // right-aligned under the L foot, like the source logo
+  else left = rivalRightBottom - natW - 34 + shift; // under the right of the wordmark, nudged left
   let out = '';
   glyphs.forEach((g, i) => {
     const tx = left - GYM_BOX[0] * s + i * tracking, ty = top - GYM_BOX[1] * s;
@@ -127,12 +127,13 @@ export function emblem(colours, opts = {}) {
   const { ring, word, gym } = colours;
   const comet = cometPath();
   const [tx, ty] = comet.tip;
-  const sp = [
+  // sparkles removed at Rival's request; set opts.sparkles = true to bring them back
+  const sp = opts.sparkles ? [
     sparkle(-487, -150, 27),           // above-left of the R, beside the ring tip
     sparkle(-598, -40, 19),            // left of the R
     sparkle(tx - 2, ty - 4, 24),       // on the comet tip
     sparkle(318, -44, 15),             // inside, right of the L
-  ];
+  ] : [];
   return `<g>
     <path d="${ringPath()}" fill="${ring}"/>
     <path d="${comet.d}" fill="${ring}"/>

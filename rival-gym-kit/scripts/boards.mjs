@@ -11,6 +11,8 @@ const CUT = path.join(ROOT, 'out/products/cutouts_cropped');
 const OUT = path.join(ROOT, 'out/deck');
 fs.mkdirSync(OUT, { recursive: true });
 const META = JSON.parse(fs.readFileSync(path.join(CUT, 'meta.json'), 'utf8'));
+const MAX_H = Math.max(...Object.values(META).map((m) => m.h));
+const MAX_W = (key) => Math.max(...Object.entries(META).filter(([n]) => n.startsWith(key)).map(([, m]) => m.w));
 const b64 = (p) => `data:image/png;base64,${fs.readFileSync(p).toString('base64')}`;
 const cut = (name) => b64(path.join(CUT, `${name}.png`));
 const CC_LOGO = b64(path.join(ROOT, '../cagecraft-sale/public/img/logo-white.png'));
@@ -19,7 +21,7 @@ const RIVAL_SRC = b64(path.join(ROOT, 'assets/rival-logo-source.png'));
 const PRODUCTS = [
   { key: 'tee', label: 'Training Tee', note: 'Chest emblem only — clean hem' },
   { key: 'rashguard', label: 'Rashguard', note: 'Chest emblem + hem pattern' },
-  { key: 'shorts', label: 'Mid-Length MMA Shorts', note: 'Single layer · longer cut · side slits' },
+  { key: 'shorts', label: 'Mid-Length MMA Shorts', note: 'Non-velcro · curved cut · 7.5" inseam' },
 ];
 const IDEA_LIST = [IDEAS.A, IDEAS.B1, IDEAS.B2];
 const SPEC = {
@@ -110,8 +112,8 @@ function emblemSlide(n) {
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:34px;font:500 17px/1.45 Inter;color:#333;padding-top:8px">
         <div><b style="font-weight:800;color:#111">Your wordmark, redrawn.</b><br>RIVAL is vectorised from your logo — same italic letterforms, matched to Rival Red <b>#C10212</b>.</div>
-        <div><b style="font-weight:800;color:#111">GYM moved inside.</b><br>Lifted out of the lockup and set under RIVAL, keeping the rule line from your logo.</div>
-        <div><b style="font-weight:800;color:#111">Legacy DNA.</b><br>Weighted oval, comet swoosh and sparkles carried over from our Legacy kit.</div>
+        <div><b style="font-weight:800;color:#111">GYM moved inside.</b><br>Lifted out of the lockup and set cleanly under RIVAL, in the same italic.</div>
+        <div><b style="font-weight:800;color:#111">Legacy DNA.</b><br>Weighted oval and comet swoosh carried over from our Legacy kit.</div>
       </div>
     </div>
     ${footer(n)}
@@ -119,11 +121,11 @@ function emblemSlide(n) {
 }
 
 function ideaSlide(idea, n) {
-  const k = 0.36; // px per canvas px, shared so garments keep real relative scale
+  const k = Math.min(0.42, 640 / MAX_H); // px per canvas px, shared so garments keep real relative scale
   const cell = (p) => {
     const m = META[`${p.key}_${idea.key}`];
     return `<div style="display:flex;flex-direction:column;align-items:center">
-      <div style="height:${Math.round(1779 * k)}px;display:flex;align-items:center"><img src="${cut(`${p.key}_${idea.key}`)}" style="width:${Math.round(m.w * k)}px;height:${Math.round(m.h * k)}px;display:block"></div>
+      <div style="height:${Math.round(MAX_H * k)}px;display:flex;align-items:center"><img src="${cut(`${p.key}_${idea.key}`)}" style="width:${Math.round(m.w * k)}px;height:${Math.round(m.h * k)}px;display:block"></div>
       <div class="cap" style="margin-top:20px">${p.label}</div><div class="capn">${p.note}</div></div>`;
   };
   return `<div class="slide light">
@@ -134,14 +136,14 @@ function ideaSlide(idea, n) {
 }
 
 function compareSlide(n) {
-  const k = 0.205;
+  const k = Math.min(0.235, 400 / MAX_H, 540 / (MAX_W('tee') + MAX_W('rashguard')));
   const img = (name) => {
     const m = META[name];
     return `<img src="${cut(name)}" style="width:${Math.round(m.w * k)}px;height:${Math.round(m.h * k)}px;display:block">`;
   };
   const col = (idea) => `<div style="width:560px;display:flex;flex-direction:column;align-items:center">
       <div class="cap" style="font-size:24px">${idea.label}</div><div class="capn" style="margin-top:8px">${idea.sub}</div>
-      <div style="display:flex;align-items:center;gap:18px;margin-top:26px;height:${Math.round(1779 * k)}px">${img(`tee_${idea.key}`)}${img(`rashguard_${idea.key}`)}</div>
+      <div style="display:flex;align-items:center;gap:18px;margin-top:26px;height:${Math.round(MAX_H * k)}px">${img(`tee_${idea.key}`)}${img(`rashguard_${idea.key}`)}</div>
       <div style="margin-top:14px">${img(`shorts_${idea.key}`)}</div>
     </div>`;
   return `<div class="slide light">
