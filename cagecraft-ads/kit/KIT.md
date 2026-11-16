@@ -75,13 +75,18 @@ Look at the actual photographs before designing (Read the image files): crop, po
    that hides no logo or print, re-run with `--allow-cover` and say so.
 5. Read the rendered JPG yourself and critique it like a creative director: hierarchy, legibility at phone
    size (it will be seen ~375px wide), nothing clipped, no text over the logo/print, safe margins (keep
-   key content 60px+ from edges; for 9:16 keep the top 14% and bottom 20% free of key content). Iterate
+   key content 60px+ from edges; for 9:16 keep the top 14% (270px), bottom 35% (670px) and outer 6% (65px)
+   each side free of text, logos and prices, because Reels / TikTok UI covers them; the garment itself may
+   extend into those areas). Iterate
    until it would stop a thumb. Then do it once more.
 
 ## Building a video
 
 9:16, 1080x1920, 30fps, 8 to 20 seconds, built in Remotion. Hook lands in the first 1.5 seconds and must
-read with sound off (burned-in captions for any voice-over).
+read with sound off (burned-in captions for any voice-over). Same 9:16 safe zone as stills: no text, logo
+or price in the top 270px, bottom 670px or outer 65px. Benchmarks say plain beats polished for apparel
+(product image + text and slideshow formats win; glossy "animation" ranks last), so aim for native-feeling,
+fast and clear over motion-graphics showreel.
 
 1. `ads/<id>/src/index.ts` (registerRoot) + your compositions; composition id `Main`.
    Import `../../../kit/remotion/fonts`, `theme`, and use `<Product src="cut/..." width=... />` from
