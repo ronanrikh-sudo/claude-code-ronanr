@@ -1,0 +1,3 @@
+{"gen":"raw/g1.png","out":"work/g1_c1.png","patches":[
+ {"name":"back","flat":"source/cagecraft-heavy-hitters-tee-back.jpg","box":[620,730,1400,1665],"grow":14,"area":true}
+]}
