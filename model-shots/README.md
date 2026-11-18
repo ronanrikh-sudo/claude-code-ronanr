@@ -45,11 +45,24 @@ faces don't drift. Then run steps 3–4 once.
 - **Removal.** Use `thr` ~10 and `mdil` ~6 so the AI print's faint gold halo is removed too.
   `comp.py` protects large skin areas (hands near the print) from removal.
 
+## Real-photo method (preferred)
+
+Start from a real CAGECRAFT shoot photo of the same black blank instead of a generated model:
+
+1. Mask the old print (and sleeve logo) on the shirt only.
+2. Higgsfield `nano_banana_2_1` with `is_inpaint: true` + the mask regenerates just that area as
+   plain black fabric; paste the untouched original back outside the mask.
+3. Placement: SIFT-match the old design's flat lay to the photo (gives flat-lay → photo mapping on
+   the real shirt), register the new tee's flat lay to the old one by shirt silhouette (same
+   blank), and carry the new print through: `comp.py` with a `quad`.
+4. Sleeve embroidery with `tools/place_word.py` at the old sleeve logo's spot, parallel to the cuff.
+
 ## Sets
 
 - `final/`: studio, original models (front, mid, back, female back).
 - `final-new-model/`: studio, second model (front, seated pose, hand-wraps pose).
 - `final-outdoor/`: inner-city laneway, original models (front, mid, back).
+- `final-real/`: real CAGECRAFT shoot photos with the Heavy Hitters print swapped in.
 
 ## Re-running for a new tee
 
