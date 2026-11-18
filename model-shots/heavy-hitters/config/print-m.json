@@ -1,1 +1,1 @@
-{"gen": "raw/t2.png", "out": "work/m3_c1.png", "patches": [{"name": "print", "flat": "source/cagecraft-heavy-hitters-tee-closeup-chest-print.jpg", "box": [0, 0, 2048, 2560], "grow": 10, "area": true, "remove_inset": 400, "noise": 34}]}
+{"gen": "raw/s2.png", "out": "work/m4_c1.png", "patches": [{"name": "print", "flat": "source/cagecraft-heavy-hitters-tee-closeup-chest-print.jpg", "box": [0, 0, 2048, 2560], "grow": 10, "area": true, "remove_inset": 400, "noise": 34}]}

@@ -23,7 +23,7 @@ so no print, embroidery or lettering comes from the AI model.
    tee worn) as the fit reference. The target fit: relaxed heavyweight drape about 20–25% wider than
    the torso, falling straight from the chest; shoulder seam dropped a few cm; sleeves hang DOWN
    along the arm, slightly loose, ending 3–4 cm above the elbow (no sideways flare); hem at the top
-   of the thigh, around wrist level. Then re-run steps 3–4.
+   of the thigh: on a front full-body shot, just below the wrist, about halfway down the hand. Then re-run steps 3–4.
 6. **Check.** Compare against the flat lays at 1:1 and fix any edge, scale or crop errors.
 
 ## Re-running for a new tee
