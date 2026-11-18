@@ -31,6 +31,26 @@ so no print, embroidery or lettering comes from the AI model.
    `python3 tools/headfix.py <first-gen.png> <current.png> <out.png> <x0> <x1> <collar_y>`
 7. **Check.** Compare against the flat lays at 1:1 and fix any edge, scale or crop errors.
 
+## Variations (new model, poses, outdoor)
+
+Generate variations fresh from an approved final as the reference, not by chaining edits, so
+faces don't drift. Then run steps 3–4 once.
+
+- **Chest close-up is clipped.** The Shopify chest close-up cuts off the tip of the S spike. Run
+  `comp.py` twice, once with the close-up (with `valid_trim_right`) and once with the flat lay,
+  then `tools/merge_sources.py` keeps the sharp close-up and fills the spike from the flat lay.
+- **Dark backgrounds.** On outdoor shots with a dark roller door the sleeve-edge search runs into
+  the background; set `"anchor": "ai"` in the sleeve config to place the real embroidery where the
+  AI drew its partial word.
+- **Removal.** Use `thr` ~10 and `mdil` ~6 so the AI print's faint gold halo is removed too.
+  `comp.py` protects large skin areas (hands near the print) from removal.
+
+## Sets
+
+- `final/`: studio, original models (front, mid, back, female back).
+- `final-new-model/`: studio, second model (front, seated pose, hand-wraps pose).
+- `final-outdoor/`: inner-city laneway, original models (front, mid, back).
+
 ## Re-running for a new tee
 
 Configs in `<tee>/config/` use paths relative to a working folder containing `source/`

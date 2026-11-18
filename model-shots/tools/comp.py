@@ -47,6 +47,15 @@ def run(cfg):
         fabg=np.median(gl[ring>0])
         bright=((gl>fabg+p.get('thr',22))&(wr>0)&(shirt>0)).astype(np.uint8)*255
         bright=cv2.dilate(bright,np.ones((3,3),np.uint8),iterations=p.get('mdil',3))
+        hsv=cv2.cvtColor(gen,cv2.COLOR_BGR2HSV)
+        skin=((hsv[...,0]<15)&(hsv[...,1]>40)&(hsv[...,2]>60)).astype(np.uint8)
+        skin=cv2.morphologyEx(skin,cv2.MORPH_OPEN,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(15,15)))
+        n_,lab_,st_,_=cv2.connectedComponentsWithStats(skin)
+        big=np.zeros_like(skin)
+        for i in range(1,n_):
+            if st_[i,4]>4000: big[lab_==i]=1
+        big=cv2.dilate(big,np.ones((3,3),np.uint8),iterations=2)
+        bright[big>0]=0
         cur=out.clip(0,255).astype(np.uint8)
         inp=cv2.inpaint(cur,bright,p.get('inr',7),cv2.INPAINT_TELEA).astype(np.float32)
         # re-texture inpainted area with fabric grain from the surroundings
@@ -59,6 +68,10 @@ def run(cfg):
         shade=np.clip((il+8)/(fabg+8),p.get('smin',0.7),p.get('smax',1.3))**p.get('shade_pow',0.8)
         gain=p.get('gain',1.0)
         res=inp+ws*shade[...,None]*gain
+        if 'valid_trim_right' in p:
+            vm=np.zeros(crop.shape[:2],np.float32); vm[:, :crop.shape[1]-p['valid_trim_right']]=1
+            vm=cv2.warpPerspective(vm,H,(Wh,Hh)); vm=cv2.GaussianBlur(vm,(0,0),6)
+            cv2.imwrite(cfg['out'].replace('.png','_valid.png'),(vm*255).astype(np.uint8))
         out=res
         print(' patch',p.get('name'),'fab_gen',fabg,'fab_flat',fabc)
     out=out.clip(0,255).astype(np.uint8)

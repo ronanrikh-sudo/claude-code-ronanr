@@ -64,7 +64,11 @@ if __name__=='__main__':
         patch,th=words[s['word']]; sig=signal(patch); ph,pw=sig.shape[:2]
         scale=h/th*s.get('size',1.0); W=pw*scale*s.get('wscale',0.92); Hp=ph*scale
         margin=s.get('margin',0.35)*h
-        if s['side']=='left': start=E+d*margin
+        if s.get('anchor')=='ai':
+            E=c+d*(a0 if s['side']=='left' else a1)
+            if s['side']=='left': start=E
+            else: start=E-d*W
+        elif s['side']=='left': start=E+d*margin
         else: start=E-d*margin-d*W
         start=start+n*s.get('nshift',0.0)*h
         q=np.float32([start-n*Hp/2, start+d*W-n*Hp/2, start+d*W+n*Hp/2, start+n*Hp/2])
