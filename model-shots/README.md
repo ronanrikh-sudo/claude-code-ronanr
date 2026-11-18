@@ -24,7 +24,12 @@ so no print, embroidery or lettering comes from the AI model.
    the torso, falling straight from the chest; shoulder seam dropped a few cm; sleeves hang DOWN
    along the arm, slightly loose, ending 3–4 cm above the elbow (no sideways flare); hem at the top
    of the thigh: on a front full-body shot, just below the wrist, about halfway down the hand. Then re-run steps 3–4.
-6. **Check.** Compare against the flat lays at 1:1 and fix any edge, scale or crop errors.
+6. **Restore the face** (`tools/headfix.py`). Every Higgsfield edit re-draws the whole image, so
+   faces drift (warmer skin, harder contrast, changing features) over repeated edits. After the last
+   edit, put the head from the first-round generation back: SIFT-aligned, blended only where both
+   images show head/neck, with arm and leg skin tone matched to the original.
+   `python3 tools/headfix.py <first-gen.png> <current.png> <out.png> <x0> <x1> <collar_y>`
+7. **Check.** Compare against the flat lays at 1:1 and fix any edge, scale or crop errors.
 
 ## Re-running for a new tee
 
