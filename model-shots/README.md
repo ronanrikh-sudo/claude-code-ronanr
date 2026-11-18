@@ -19,9 +19,11 @@ so no print, embroidery or lettering comes from the AI model.
    embroidery crop is placed parallel to the cuff. CAGECRAFT wraps around the outer fold of the
    sleeve, so a front or back view only shows part of the word: front shows `RAFT` (image-left) and
    `CAGE` (image-right); back shows `RAFT` and `CAGEC`, matching the flat lays.
-5. **Fit fixes.** If a shot comes back too narrow or long, edit it in Higgsfield with the generated
-   image as reference plus the Apex back shot for fit: wider body, dropped shoulders, hem at hip.
-   Then re-run steps 3–4.
+5. **Fit.** Edit each shot in Higgsfield with `heavy-hitters/fit-reference-torso.jpg` (the real
+   tee worn) as the fit reference. The target fit: relaxed heavyweight drape about 20–25% wider than
+   the torso, falling straight from the chest; shoulder seam dropped a few cm; sleeves hang DOWN
+   along the arm, slightly loose, ending 3–4 cm above the elbow (no sideways flare); hem at the top
+   of the thigh, around wrist level. Then re-run steps 3–4.
 6. **Check.** Compare against the flat lays at 1:1 and fix any edge, scale or crop errors.
 
 ## Re-running for a new tee
