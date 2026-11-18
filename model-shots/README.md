@@ -19,7 +19,10 @@ so no print, embroidery or lettering comes from the AI model.
    embroidery crop is placed parallel to the cuff. CAGECRAFT wraps around the outer fold of the
    sleeve, so a front or back view only shows part of the word: front shows `RAFT` (image-left) and
    `CAGE` (image-right); back shows `RAFT` and `CAGEC`, matching the flat lays.
-5. **Check.** Compare against the flat lays at 1:1 and fix any edge, scale or crop errors.
+5. **Fit fixes.** If a shot comes back too narrow or long, edit it in Higgsfield with the generated
+   image as reference plus the Apex back shot for fit: wider body, dropped shoulders, hem at hip.
+   Then re-run steps 3–4.
+6. **Check.** Compare against the flat lays at 1:1 and fix any edge, scale or crop errors.
 
 ## Re-running for a new tee
 
@@ -27,11 +30,11 @@ Configs in `<tee>/config/` use paths relative to a working folder containing `so
 (the Shopify flat lays) and `raw/` (the Higgsfield outputs named `g0.png`…).
 
 ```bash
-python3 tools/comp.py heavy-hitters/config/print-g0.json
+python3 tools/comp.py heavy-hitters/config/print-f.json
 ```
 
 ```bash
-python3 tools/sleeve.py heavy-hitters/config/sleeve-g0.json
+python3 tools/sleeve.py heavy-hitters/config/sleeve-f.json
 ```
 
 Needs `opencv-python-headless`, `numpy`, `Pillow`.

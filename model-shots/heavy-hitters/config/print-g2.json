@@ -1,3 +1,0 @@
-{"gen":"raw/g2.png","out":"work/g2_c1.png","patches":[
- {"name":"chest","flat":"source/cagecraft-heavy-hitters-tee-closeup-chest-print.jpg","box":[0,0,2048,2560],"grow":10,"area":true,"remove_inset":400,"noise":34}
-]}
