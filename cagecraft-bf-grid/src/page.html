@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+/* Fonts: local woff2 from @fontsource so renders never depend on system fonts.
+   Archivo variable with the width axis = the extended heavy italic CAGECRAFT voice. */
+@font-face {
+  font-family: "Archivo"; font-style: normal; font-display: block;
+  font-weight: 100 900; font-stretch: 62% 125%;
+  src: url("../node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Archivo"; font-style: italic; font-display: block;
+  font-weight: 100 900; font-stretch: 62% 125%;
+  src: url("../node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-italic.woff2") format("woff2");
+}
+
+:root {
+  --ink: #050506;
+  --white: #ffffff;
+  --teal: #16B3B7;       /* Fight Jersey 2.0 Tiffany */
+  --teal-hi: #7FE6E4;
+  --pink: #F09EC0;       /* Cotton Candy */
+  --pink-hot: #E9579A;
+  --bg-a: #0B3133;
+  --bg-b: #124B4D;
+  --pad: 58px;
+  --gap: 30px;
+  --top: 236px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg-a); }
+body {
+  width: 1080px;
+  font-family: "Archivo", system-ui, sans-serif;
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- page backgrounds ---------- */
+.page {
+  position: relative;
+  width: 1080px;
+  background: linear-gradient(180deg, var(--bg-a) 0%, var(--bg-b) 55%, var(--bg-a) 100%);
+  overflow: hidden;
+}
+.page::after { /* fine grain so flat colour doesn't band in video compression */
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .09; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.story { padding: var(--top) var(--pad) 0; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.hero { margin-bottom: var(--gap); }
+
+/* ---------- the product card ---------- */
+.card {
+  container-type: inline-size;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 3.2cqw;
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 1.6cqw 4cqw rgba(0,0,0,.35);
+}
+.photo { position: absolute; inset: 0 0 0 15cqw; overflow: hidden; background: #1a1a1a; }
+.photo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transform-origin: var(--focus, 50% 50%);
+  transform: scale(var(--zoom, 1));
+}
+
+/* left strip: dark top -> Tiffany teal bottom, text runs bottom-to-top */
+.strip {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 15cqw; z-index: 2;
+  background:
+    linear-gradient(180deg, #070708 0%, #0b1415 22%, #0f3f41 46%, var(--teal) 76%, var(--teal-hi) 100%);
+  box-shadow: .6cqw 0 1.6cqw rgba(0,0,0,.35);
+}
+.strip-inner {
+  position: absolute; left: 0; top: 0;
+  width: 100cqw; height: 15cqw;           /* card is square, so its height = 100cqw */
+  transform-origin: top left;
+  transform: rotate(-90deg) translateX(-100%);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5cqw 0 4cqw;
+}
+.pname {
+  color: var(--ink);
+  font-weight: 800; font-stretch: 100%;
+  font-size: 3.4cqw; line-height: 1.08; letter-spacing: .02em;
+  text-transform: uppercase;
+  max-width: 62cqw;
+}
+.pname .dash { opacity: .75; margin: 0 .25em; }
+.logo { height: 2.7cqw; width: auto; display: block; opacity: .95; }
+
+/* top-right offer badge */
+.badge {
+  position: absolute; z-index: 3; top: 3.4cqw; right: 3.4cqw;
+  display: flex; flex-direction: column; align-items: center;
+  font-style: italic; text-transform: uppercase; white-space: nowrap;
+  filter: drop-shadow(0 .5cqw 1cqw rgba(0,0,0,.35));
+}
+.stroke { -webkit-text-stroke: var(--sw, .9cqw) var(--ink); paint-order: stroke fill; }
+.b-eyebrow {
+  color: var(--teal); font-weight: 900; font-stretch: 100%;
+  font-size: 3.05cqw; line-height: 1; letter-spacing: -.005em; --sw: .7cqw;
+}
+.b-pct { display: flex; align-items: flex-start; line-height: .8; margin-top: .5cqw; }
+.b-num { font-weight: 900; font-stretch: 106%; font-size: 14cqw; letter-spacing: -.05em; --sw: 1.2cqw; }
+.b-side { display: flex; flex-direction: column; align-items: flex-start; margin-left: .1cqw; }
+.b-sym { font-weight: 900; font-stretch: 100%; font-size: 7.4cqw; line-height: .86; --sw: .95cqw; }
+.b-off { font-weight: 900; font-stretch: 100%; font-size: 4.5cqw; line-height: .8; letter-spacing: -.02em; --sw: .8cqw; margin-top: -.2cqw; margin-left: -.8cqw; }
+.b-tag { font-weight: 900; font-stretch: 100%; font-size: 3.3cqw; line-height: 1; letter-spacing: -.015em; --sw: .75cqw; margin-top: .7cqw; }
+.b-pill {
+  margin-top: .9cqw; background: var(--pink-hot); color: var(--white);
+  font-weight: 800; font-stretch: 112%; font-style: normal;
+  font-size: 1.6cqw; letter-spacing: .07em; line-height: 1;
+  padding: .55cqw 1.4cqw .5cqw; border-radius: .5cqw;
+  box-shadow: 0 0 0 .35cqw var(--ink);
+}
+
+/* bottom-right price tags */
+.prices {
+  position: absolute; z-index: 3; right: 3.4cqw; bottom: 3.4cqw;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 1.6cqw;
+}
+.was, .now { display: flex; align-items: baseline; gap: 1.6cqw; border-radius: 1.4cqw; line-height: 1; font-stretch: 112%; }
+.was {
+  background: var(--white); color: var(--ink);
+  padding: 1.2cqw 2cqw 1.1cqw; box-shadow: 0 .6cqw 1.6cqw rgba(0,0,0,.3);
+}
+.was .lbl { font-size: 2.2cqw; font-weight: 800; }
+.was .amt { font-size: 3.3cqw; font-weight: 800; position: relative; }
+.was .amt::after { /* thick strike, like a marker line */
+  content: ""; position: absolute; left: -4%; right: -4%; top: 52%; height: .5cqw;
+  background: var(--ink); border-radius: .3cqw;
+}
+.now {
+  background: var(--ink); color: var(--white);
+  padding: 1.6cqw 2.8cqw 1.5cqw; box-shadow: 0 .8cqw 2cqw rgba(0,0,0,.4);
+}
+.now .lbl { font-size: 3.4cqw; font-weight: 900; }
+.now .amt { font-size: 5.6cqw; font-weight: 900; letter-spacing: -.01em; }
+
+/* ---------- end card in the scrolling story ---------- */
+.cta {
+  text-align: center; padding: 120px 0 0; height: 1240px;
+  display: flex; flex-direction: column; align-items: center;
+  font-style: italic; text-transform: uppercase;
+}
+.cta .c-logo { width: 600px; margin-bottom: 64px; }
+.cta .c-eyebrow { color: var(--teal); font-weight: 900; font-stretch: 125%; font-size: 64px; line-height: 1; --sw: 12px; }
+.cta .c-big { font-weight: 900; font-stretch: 125%; font-size: 168px; line-height: .9; letter-spacing: -.03em; --sw: 22px; margin-top: 18px; }
+.cta .c-tag { font-weight: 900; font-stretch: 112%; font-size: 70px; line-height: 1; --sw: 12px; margin-top: 10px; }
+.cta .c-btn {
+  margin-top: 64px; background: var(--pink-hot); color: var(--white); font-style: normal;
+  font-weight: 800; font-stretch: 112%; font-size: 40px; letter-spacing: .08em;
+  padding: 26px 56px 24px; border-radius: 14px; box-shadow: 0 0 0 6px var(--ink), 0 18px 40px rgba(0,0,0,.4);
+}
+.cta .c-url { margin-top: 30px; font-style: normal; font-weight: 600; font-stretch: 100%; font-size: 30px; letter-spacing: .22em; opacity: .85; }
+
+/* ---------- 4:5 feed post ---------- */
+.feed { width: 1080px; height: 1350px; padding: 44px 44px 0; }
+.feed .grid { gap: 24px; }
+.feed-head {
+  height: 238px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  font-style: italic; text-transform: uppercase; text-align: center;
+}
+.feed-head .f-logo { width: 330px; margin-bottom: 24px; }
+.feed-head .f-line { display: flex; align-items: baseline; gap: 22px; }
+.feed-head .f-eyebrow { color: var(--teal); font-weight: 900; font-stretch: 125%; font-size: 46px; line-height: 1; --sw: 9px; }
+.feed-head .f-big { font-weight: 900; font-stretch: 125%; font-size: 62px; line-height: 1; letter-spacing: -.02em; --sw: 11px; margin-top: 8px; white-space: nowrap; }
+
+/* ---------- single 1:1 card ---------- */
+.single { width: 1080px; height: 1080px; }
+.single .card { border-radius: 0; box-shadow: none; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+// window.__DATA__ is injected by scripts/render.mjs:
+// { mode: "story"|"feed"|"single", bg: [a,b], offer, cta, logo, hero, cards: [...] }
+const D = window.__DATA__;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const money = (n) => D.offer.currency + n.toFixed(2);
+
+function card(p) {
+  const pct = D.offer.percentOff;
+  return `
+  <div class="card">
+    <div class="photo"><img src="${p.src}" style="--focus:${p.focus || "50% 50%"};--zoom:${p.zoom || 1};object-position:${p.focus || "50% 50%"}"></div>
+    <div class="strip"><div class="strip-inner">
+      <div class="pname">${esc(p.name)}<span class="dash">—</span>${esc(p.colour)}</div>
+      <img class="logo" src="${D.logo}">
+    </div></div>
+    <div class="badge">
+      <div class="b-eyebrow stroke">${esc(D.offer.eyebrow)}</div>
+      <div class="b-pct">
+        <div class="b-num stroke">${pct}</div>
+        <div class="b-side"><div class="b-sym stroke">%</div><div class="b-off stroke">Off</div></div>
+      </div>
+      <div class="b-tag stroke">${esc(D.offer.tagline)}</div>
+      <div class="b-pill">${esc(D.offer.pill)}</div>
+    </div>
+    <div class="prices">
+      <div class="was"><span class="lbl">WAS</span><span class="amt">${money(p.price)}</span></div>
+      <div class="now"><span class="lbl">NOW</span><span class="amt">${money(p.now)}</span></div>
+    </div>
+  </div>`;
+}
+
+const root = document.getElementById("root");
+document.documentElement.style.setProperty("--bg-a", D.bg[0]);
+document.documentElement.style.setProperty("--bg-b", D.bg[1]);
+
+if (D.mode === "story") {
+  root.innerHTML = `
+  <div class="page story">
+    ${D.hero ? `<div class="hero">${card(D.hero)}</div>` : ""}
+    <div class="grid">${D.cards.map(card).join("")}</div>
+    <div class="cta" id="cta">
+      <img class="c-logo" src="${D.logo}">
+      <div class="c-eyebrow stroke">${esc(D.offer.eyebrow)}</div>
+      <div class="c-big stroke">${D.offer.percentOff}% Off</div>
+      <div class="c-tag stroke">${esc(D.offer.tagline)}</div>
+      <div class="c-btn">${esc(D.cta.headline)}</div>
+      <div class="c-url">${esc(D.cta.url)}</div>
+    </div>
+  </div>`;
+} else if (D.mode === "feed") {
+  root.innerHTML = `
+  <div class="page feed">
+    <div class="feed-head">
+      <img class="f-logo" src="${D.logo}">
+      <div class="f-line"><span class="f-eyebrow stroke">${esc(D.offer.eyebrow)}</span></div>
+      <div class="f-big stroke">${D.offer.percentOff}% Off ${esc(D.offer.tagline)}</div>
+    </div>
+    <div class="grid">${D.cards.map(card).join("")}</div>
+  </div>`;
+} else {
+  root.innerHTML = `<div class="page single">${card(D.cards[0])}</div>`;
+}
+
+window.__ready = (async () => {
+  await document.fonts.ready;
+  await Promise.all([...document.images].map((im) => im.decode().catch(() => {})));
+  const cta = document.getElementById("cta");
+  return {
+    height: document.querySelector(".page").getBoundingClientRect().height,
+    ctaTop: cta ? cta.offsetTop : null,
+  };
+})();
+</script>
+</body>
+</html>

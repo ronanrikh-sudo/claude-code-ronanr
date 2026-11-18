@@ -1,0 +1,15 @@
+{
+  "name": "cagecraft-bf-grid",
+  "private": true,
+  "type": "module",
+  "description": "Black Friday product-grid ads (9:16 story, scrolling story video, single cards) rendered from Shopify data",
+  "scripts": {
+    "images": "node scripts/fetch-images.mjs",
+    "render": "node scripts/render.mjs",
+    "build": "node scripts/fetch-images.mjs && node scripts/render.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource/inter-tight": "^5.3.0"
+  }
+}

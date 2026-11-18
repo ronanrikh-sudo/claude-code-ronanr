@@ -1,0 +1,57 @@
+{
+  "_note": "PLACEHOLDER OFFER. No Black Friday discount exists in Shopify yet. Change percentOff and the badge lines here, then re-run `npm run render`; every NOW price is recalculated from the live price.",
+  "offer": {
+    "percentOff": 40,
+    "eyebrow": "Black Friday",
+    "tagline": "Everything",
+    "pill": "Now Live",
+    "currency": "$"
+  },
+  "cta": {
+    "headline": "Shop the sale",
+    "url": "cagecraftco.com"
+  },
+  "stories": [
+    {
+      "id": "tiffany",
+      "bg": ["#0B3133", "#124B4D"],
+      "hero": "jersey-tiffany",
+      "grid": [
+        "hoodie-diamond", "jersey-diamond",
+        "shorts-legacy", "tee-menace",
+        "hoodie-concrete", "rash-legacy",
+        "jersey-concrete", "tee-apex-black",
+        "socks", "towel"
+      ]
+    },
+    {
+      "id": "cottoncandy",
+      "bg": ["#3A1828", "#5A2840"],
+      "hero": "hoodie-cottoncandy",
+      "grid": [
+        "jersey-cottoncandy", "tee-pegasus-white",
+        "jersey-tiffany", "rash-champion",
+        "hoodie-diamond", "shorts-legacy",
+        "tee-menace", "hoodie-concrete",
+        "jersey-diamond", "tee-apex-black"
+      ]
+    },
+    {
+      "id": "concrete",
+      "bg": ["#1E2023", "#34373C"],
+      "hero": null,
+      "grid": [
+        "hoodie-concrete", "jersey-tiffany",
+        "shorts-legacy", "jersey-cottoncandy",
+        "tee-menace", "hoodie-diamond",
+        "rash-legacy", "tee-pegasus-white",
+        "jersey-diamond", "tee-apex-black",
+        "rash-champion", "hoodie-cottoncandy"
+      ]
+    }
+  ],
+  "feedCards": [
+    "jersey-tiffany", "hoodie-cottoncandy", "hoodie-diamond", "shorts-legacy",
+    "tee-menace", "jersey-cottoncandy", "rash-legacy", "hoodie-concrete"
+  ]
+}

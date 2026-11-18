@@ -1,0 +1,134 @@
+{
+  "_note": "Prices are the live AUD prices from Shopify (18 Nov 2026). 'image' is a Shopify CDN path under /s/files/1/0643/7358/8030/files/. 'focus' is the CSS object-position used to crop the photo into the card; 'zoom' scales the photo inside the card.",
+  "products": {
+    "jersey-tiffany": {
+      "handle": "fight-jersey-2-0-tiffany",
+      "name": "Fight Jersey 2.0",
+      "colour": "Tiffany",
+      "price": 79.95,
+      "image": "Zane_x_Dunley_Back_1.jpg?v=1788006632",
+      "focus": "50% 38%"
+    },
+    "jersey-diamond": {
+      "handle": "fight-jersey-2-0-diamond",
+      "name": "Fight Jersey 2.0",
+      "colour": "Diamond",
+      "price": 79.95,
+      "image": "Jerseys_City_OB_Pink_back_Diamond_Front.jpg?v=1774485362",
+      "focus": "8% 40%",
+      "zoom": 1.25
+    },
+    "jersey-cottoncandy": {
+      "handle": "fight-jersey-2-0-cotton-candy",
+      "name": "Fight Jersey 2.0",
+      "colour": "Cotton Candy",
+      "price": 79.95,
+      "image": "marwan_hook_cotton_candy.jpg?v=1773793111",
+      "focus": "50% 30%",
+      "zoom": 1.25
+    },
+    "jersey-concrete": {
+      "handle": "fight-jersey-2-0-concrete",
+      "name": "Fight Jersey 2.0",
+      "colour": "Concrete",
+      "price": 79.95,
+      "image": "Close_up_outdoor.png?v=1787962881",
+      "focus": "50% 50%"
+    },
+    "hoodie-concrete": {
+      "handle": "walkout-hoodie-concrete",
+      "name": "Walkout Hoodie",
+      "colour": "Concrete",
+      "price": 109.95,
+      "image": "CONCRETE_HOODIE.jpg?v=1790769992",
+      "focus": "50% 35%"
+    },
+    "hoodie-diamond": {
+      "handle": "walkout-hoodie-diamond",
+      "name": "Walkout Hoodie",
+      "colour": "Diamond",
+      "price": 109.95,
+      "image": "Female_OB_Back_Studio.jpg?v=1778813462",
+      "focus": "50% 30%",
+      "zoom": 1.45
+    },
+    "hoodie-cottoncandy": {
+      "handle": "walkout-hoodie-cotton-candy",
+      "name": "Walkout Hoodie",
+      "colour": "Cotton Candy",
+      "price": 109.95,
+      "image": "Car_Candid.jpg?v=1785560092",
+      "focus": "62% 45%",
+      "zoom": 1.15
+    },
+    "shorts-legacy": {
+      "handle": "legacy-2-in-1-hybrid-mma-shorts",
+      "name": "Legacy 2-in-1 Hybrid MMA Shorts",
+      "colour": "Navy",
+      "price": 89.95,
+      "image": "Shorts_action_OB_Rear.jpg?v=1785900669",
+      "focus": "70% 78%",
+      "zoom": 1.2
+    },
+    "rash-legacy": {
+      "handle": "legacy-rashguard",
+      "name": "Legacy Rashguard",
+      "colour": "Navy",
+      "price": 79.95,
+      "image": "FRONT_CLOSE_UP_OB.jpg?v=1785898973",
+      "focus": "50% 45%"
+    },
+    "rash-champion": {
+      "handle": "champion-gold-rashguard",
+      "name": "Champion Gold Rashguard",
+      "colour": "Black",
+      "price": 79.95,
+      "image": "Both_Front_Model_Lifestyle_70abce7b-0f31-4344-8805-15c71560d5fa.jpg?v=1775171567",
+      "focus": "50% 30%",
+      "zoom": 1.1
+    },
+    "tee-menace": {
+      "handle": "menace-oversized-tee",
+      "name": "MENACE Oversized Tee",
+      "colour": "Black",
+      "price": 64.95,
+      "image": "ON_BODY_BACK.png?v=1787270146",
+      "focus": "50% 40%",
+      "zoom": 1.15
+    },
+    "tee-apex-black": {
+      "handle": "apex-oversized-tee-black",
+      "name": "Apex Oversized Tee",
+      "colour": "Black",
+      "price": 64.95,
+      "image": "APEX_BLACK_BACK_CEM.png?v=1773793953",
+      "focus": "45% 22%",
+      "zoom": 1.6
+    },
+    "tee-pegasus-white": {
+      "handle": "pegasus-oversized-tee-off-white",
+      "name": "Pegasus Oversized Tee",
+      "colour": "Off-White",
+      "price": 64.95,
+      "image": "F_OB_Ring_Side.jpg?v=1777459868",
+      "focus": "40% 72%",
+      "zoom": 1.25
+    },
+    "socks": {
+      "handle": "crew-socks",
+      "name": "Crew Socks",
+      "colour": "White",
+      "price": 19.95,
+      "image": "socks_OB.png?v=1780735465",
+      "focus": "50% 60%"
+    },
+    "towel": {
+      "handle": "training-towel",
+      "name": "Training Towel",
+      "colour": "Black",
+      "price": 19.95,
+      "image": "82d4df25-8aff-41d3-931b-008b5b6b2bdc.jpg?v=1793492609",
+      "focus": "50% 40%"
+    }
+  }
+}
