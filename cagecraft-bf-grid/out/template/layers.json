@@ -1,0 +1,126 @@
+{
+  "_note": "Pixel boxes (on a 1080-wide canvas) for the catalog-field layers of the Meta Commerce Manager image template. Upload frame-<ratio>.png as an image layer above the product layer, then add these catalog fields on top.",
+  "offer": {
+    "percentOff": 40
+  },
+  "1x1": {
+    "canvas": {
+      "w": 1080,
+      "h": 1080
+    },
+    "product_image": {
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 1080,
+      "note": "behind the frame; crop to fill"
+    },
+    "title": {
+      "x": 48,
+      "y": 944,
+      "w": 529,
+      "h": 95,
+      "align": "left",
+      "fontSizePx": 46,
+      "colour": "rgb(255, 255, 255)"
+    },
+    "price": {
+      "x": 709,
+      "y": 915,
+      "w": 324,
+      "h": 36,
+      "align": "right",
+      "fontSizePx": 33,
+      "colour": "rgb(158, 163, 171)"
+    },
+    "sale_price": {
+      "x": 729,
+      "y": 972,
+      "w": 303,
+      "h": 71,
+      "align": "right",
+      "fontSizePx": 79,
+      "colour": "rgb(255, 255, 255)"
+    }
+  },
+  "4x5": {
+    "canvas": {
+      "w": 1080,
+      "h": 1350
+    },
+    "product_image": {
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 1350,
+      "note": "behind the frame; crop to fill"
+    },
+    "title": {
+      "x": 48,
+      "y": 1214,
+      "w": 529,
+      "h": 95,
+      "align": "left",
+      "fontSizePx": 46,
+      "colour": "rgb(255, 255, 255)"
+    },
+    "price": {
+      "x": 709,
+      "y": 1185,
+      "w": 324,
+      "h": 36,
+      "align": "right",
+      "fontSizePx": 33,
+      "colour": "rgb(158, 163, 171)"
+    },
+    "sale_price": {
+      "x": 729,
+      "y": 1242,
+      "w": 303,
+      "h": 71,
+      "align": "right",
+      "fontSizePx": 79,
+      "colour": "rgb(255, 255, 255)"
+    }
+  },
+  "9x16": {
+    "canvas": {
+      "w": 1080,
+      "h": 1920
+    },
+    "product_image": {
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 1920,
+      "note": "behind the frame; crop to fill"
+    },
+    "title": {
+      "x": 48,
+      "y": 1444,
+      "w": 529,
+      "h": 95,
+      "align": "left",
+      "fontSizePx": 46,
+      "colour": "rgb(255, 255, 255)"
+    },
+    "price": {
+      "x": 709,
+      "y": 1415,
+      "w": 324,
+      "h": 36,
+      "align": "right",
+      "fontSizePx": 33,
+      "colour": "rgb(158, 163, 171)"
+    },
+    "sale_price": {
+      "x": 729,
+      "y": 1472,
+      "w": 303,
+      "h": 71,
+      "align": "right",
+      "fontSizePx": 79,
+      "colour": "rgb(255, 255, 255)"
+    }
+  }
+}

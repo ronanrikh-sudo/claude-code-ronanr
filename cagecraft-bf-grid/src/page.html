@@ -3,8 +3,11 @@
 <head>
 <meta charset="utf-8">
 <style>
-/* Fonts: local woff2 from @fontsource so renders never depend on system fonts.
-   Archivo variable with the width axis = the extended heavy italic CAGECRAFT voice. */
+/* CAGECRAFT "Fight Card" look.
+   Octagon (cage) discount badge, full-bleed photo, slanted black nameplate with chain-link mesh,
+   and a "tale of the tape" price box. Tiffany teal + Cotton Candy pink from the Fight Jersey 2.0.
+   Every card size is in container units (cqw), so one design works at grid, hero and 1080 sizes,
+   and anchors to card edges, so it also works at 4:5 and 9:16. */
 @font-face {
   font-family: "Archivo"; font-style: normal; font-display: block;
   font-weight: 100 900; font-stretch: 62% 125%;
@@ -17,206 +20,213 @@
 }
 
 :root {
-  --ink: #050506;
+  --ink: #060607;
   --white: #ffffff;
-  --teal: #16B3B7;       /* Fight Jersey 2.0 Tiffany */
-  --teal-hi: #7FE6E4;
-  --pink: #F09EC0;       /* Cotton Candy */
-  --pink-hot: #E9579A;
-  --bg-a: #0B3133;
-  --bg-b: #124B4D;
-  --pad: 58px;
-  --gap: 30px;
-  --top: 236px;
+  --teal: #16B3B7;
+  --pink: #F09EC0;
+  --grey: #9EA3AB;
+  --glow: #16B3B7;
+  --glow2: #F09EC0;
+  --pad: 58px; --gap: 30px; --top: 236px;
+  /* chain-link lattice, tiled */
+  --mesh: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28'><path d='M14 1 L27 14 L14 27 L1 14 Z' fill='none' stroke='white' stroke-width='1.6'/></svg>");
+  --oct: polygon(29.3% 0, 70.7% 0, 100% 29.3%, 100% 70.7%, 70.7% 100%, 29.3% 100%, 0 70.7%, 0 29.3%);
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: var(--bg-a); }
-body {
-  width: 1080px;
-  font-family: "Archivo", system-ui, sans-serif;
-  color: var(--white);
-  -webkit-font-smoothing: antialiased;
-}
+html, body { background: transparent; }
+body { width: 1080px; font-family: "Archivo", system-ui, sans-serif; color: var(--white); -webkit-font-smoothing: antialiased; }
 
-/* ---------- page backgrounds ---------- */
-.page {
-  position: relative;
-  width: 1080px;
-  background: linear-gradient(180deg, var(--bg-a) 0%, var(--bg-b) 55%, var(--bg-a) 100%);
-  overflow: hidden;
+/* ---------- backgrounds: black cage, coloured light ---------- */
+.page { position: relative; width: 1080px; overflow: hidden; background: #070809; }
+.page::before { /* coloured light from the hero product */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(900px 700px at 85% 4%, color-mix(in srgb, var(--glow) 55%, transparent), transparent 70%),
+    radial-gradient(900px 800px at 0% 55%, color-mix(in srgb, var(--glow2) 30%, transparent), transparent 70%);
 }
-.page::after { /* fine grain so flat colour doesn't band in video compression */
-  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .09; mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+.page::after { /* chain-link fence over everything behind the cards */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: var(--mesh); background-size: 46px 46px; opacity: .07;
 }
-
+.page > * { position: relative; z-index: 1; }
 .story { padding: var(--top) var(--pad) 0; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
 .hero { margin-bottom: var(--gap); }
 
-/* ---------- the product card ---------- */
+/* ---------- the card ---------- */
 .card {
-  container-type: inline-size;
-  position: relative;
-  aspect-ratio: 1 / 1;
-  border-radius: 3.2cqw;
-  overflow: hidden;
-  background: #111;
-  box-shadow: 0 1.6cqw 4cqw rgba(0,0,0,.35);
+  container-type: inline-size; position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+  background: #15171a; border-radius: 1.6cqw;
+  box-shadow: 0 0 0 .25cqw rgba(255,255,255,.08), 0 2cqw 5cqw rgba(0,0,0,.5);
 }
-.photo { position: absolute; inset: 0 0 0 15cqw; overflow: hidden; background: #1a1a1a; }
+.photo { position: absolute; inset: 0; overflow: hidden; }
 .photo img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  transform-origin: var(--focus, 50% 50%);
-  transform: scale(var(--zoom, 1));
+  transform-origin: var(--focus, 50% 50%); transform: scale(var(--zoom, 1));
 }
+.scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 52%; background: linear-gradient(180deg, transparent, rgba(0,0,0,.55)); }
+.toplight { position: absolute; left: 0; right: 0; top: 0; height: 30%; background: linear-gradient(180deg, rgba(0,0,0,.35), transparent); }
 
-/* left strip: dark top -> Tiffany teal bottom, text runs bottom-to-top */
-.strip {
-  position: absolute; left: 0; top: 0; bottom: 0; width: 15cqw; z-index: 2;
-  background:
-    linear-gradient(180deg, #070708 0%, #0b1415 22%, #0f3f41 46%, var(--teal) 76%, var(--teal-hi) 100%);
-  box-shadow: .6cqw 0 1.6cqw rgba(0,0,0,.35);
-}
-.strip-inner {
-  position: absolute; left: 0; top: 0;
-  width: 100cqw; height: 15cqw;           /* card is square, so its height = 100cqw */
-  transform-origin: top left;
-  transform: rotate(-90deg) translateX(-100%);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5cqw 0 4cqw;
-}
-.pname {
-  color: var(--ink);
-  font-weight: 800; font-stretch: 100%;
-  font-size: 3.4cqw; line-height: 1.08; letter-spacing: .02em;
-  text-transform: uppercase;
-  max-width: 62cqw;
-}
-.pname .dash { opacity: .75; margin: 0 .25em; }
-.logo { height: 2.7cqw; width: auto; display: block; opacity: .95; }
+/* safe insets: 0 for square cards, story-safe for 9:16 template frames */
+.card { --st: 0px; --sb: 0px; }
 
-/* top-right offer badge */
+/* octagon badge: BLACK FRIDAY tab / cage with 40% OFF / EVERYTHING tab */
 .badge {
-  position: absolute; z-index: 3; top: 3.4cqw; right: 3.4cqw;
+  position: absolute; z-index: 3; left: 4.2cqw; top: calc(4.2cqw + var(--st)); width: 29cqw;
   display: flex; flex-direction: column; align-items: center;
   font-style: italic; text-transform: uppercase; white-space: nowrap;
-  filter: drop-shadow(0 .5cqw 1cqw rgba(0,0,0,.35));
+  filter: drop-shadow(0 .8cqw 1.6cqw rgba(0,0,0,.45));
 }
-.stroke { -webkit-text-stroke: var(--sw, .9cqw) var(--ink); paint-order: stroke fill; }
-.b-eyebrow {
-  color: var(--teal); font-weight: 900; font-stretch: 100%;
-  font-size: 3.05cqw; line-height: 1; letter-spacing: -.005em; --sw: .7cqw;
+.tab { position: relative; z-index: 2; transform: skewX(-12deg); padding: .9cqw 2.1cqw .8cqw; line-height: 1; }
+.tab > span { display: block; transform: skewX(12deg); font-weight: 900; font-stretch: 112%; letter-spacing: .01em; }
+.tab.t1 { background: var(--ink); box-shadow: 0 0 0 .3cqw var(--teal); margin-bottom: -2.3cqw; }
+.tab.t1 > span { font-size: 2.85cqw; color: var(--white); }
+.tab.t2 { background: var(--pink); margin-top: -2.3cqw; box-shadow: 0 0 0 .3cqw var(--ink); }
+.tab.t2 > span { font-size: 2.6cqw; color: var(--ink); }
+.oct { position: relative; width: 29cqw; aspect-ratio: 1; clip-path: var(--oct); background: var(--ink); }
+.oct::before { content: ""; position: absolute; inset: .9cqw; clip-path: var(--oct); background: var(--teal); }
+.oct::after { /* faint chain-link inside the cage */
+  content: ""; position: absolute; inset: .9cqw; clip-path: var(--oct);
+  background-image: var(--mesh); background-size: 3.4cqw 3.4cqw; opacity: .16;
 }
-.b-pct { display: flex; align-items: flex-start; line-height: .8; margin-top: .5cqw; }
-.b-num { font-weight: 900; font-stretch: 106%; font-size: 14cqw; letter-spacing: -.05em; --sw: 1.2cqw; }
-.b-side { display: flex; flex-direction: column; align-items: flex-start; margin-left: .1cqw; }
-.b-sym { font-weight: 900; font-stretch: 100%; font-size: 7.4cqw; line-height: .86; --sw: .95cqw; }
-.b-off { font-weight: 900; font-stretch: 100%; font-size: 4.5cqw; line-height: .8; letter-spacing: -.02em; --sw: .8cqw; margin-top: -.2cqw; margin-left: -.8cqw; }
-.b-tag { font-weight: 900; font-stretch: 100%; font-size: 3.3cqw; line-height: 1; letter-spacing: -.015em; --sw: .75cqw; margin-top: .7cqw; }
-.b-pill {
-  margin-top: .9cqw; background: var(--pink-hot); color: var(--white);
-  font-weight: 800; font-stretch: 112%; font-style: normal;
-  font-size: 1.6cqw; letter-spacing: .07em; line-height: 1;
-  padding: .55cqw 1.4cqw .5cqw; border-radius: .5cqw;
-  box-shadow: 0 0 0 .35cqw var(--ink);
-}
+.oct-in { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--ink); padding-top: .8cqw; }
+.oct-num { font-weight: 900; font-stretch: 100%; font-size: 12.6cqw; line-height: .8; letter-spacing: -.05em; margin-left: -1cqw; }
+.oct-num small { font-size: .55em; letter-spacing: 0; vertical-align: top; position: relative; top: .1em; margin-left: .04em; }
+.oct-off { font-weight: 900; font-stretch: 125%; font-size: 5.2cqw; line-height: .9; letter-spacing: .02em; margin-top: .6cqw; }
 
-/* bottom-right price tags */
-.prices {
-  position: absolute; z-index: 3; right: 3.4cqw; bottom: 3.4cqw;
-  display: flex; flex-direction: column; align-items: flex-end; gap: 1.6cqw;
+.wordmark { position: absolute; z-index: 3; right: 4.4cqw; top: calc(4.8cqw + var(--st)); width: 25cqw; filter: drop-shadow(0 .3cqw .9cqw rgba(0,0,0,.6)); }
+
+/* slanted nameplate with a teal edge and chain-link mesh */
+.plate { position: absolute; z-index: 2; left: 0; right: 0; bottom: var(--sb); height: 23.5cqw; }
+.plate .edge { position: absolute; inset: 0; background: var(--teal); clip-path: polygon(0 5.2cqw, 100% 0, 100% 100%, 0 100%); }
+.plate .body {
+  position: absolute; inset: 0; clip-path: polygon(0 6.1cqw, 100% .9cqw, 100% 100%, 0 100%);
+  background: var(--ink);
 }
-.was, .now { display: flex; align-items: baseline; gap: 1.6cqw; border-radius: 1.4cqw; line-height: 1; font-stretch: 112%; }
-.was {
-  background: var(--white); color: var(--ink);
-  padding: 1.2cqw 2cqw 1.1cqw; box-shadow: 0 .6cqw 1.6cqw rgba(0,0,0,.3);
+.plate .body::after { content: ""; position: absolute; inset: 0; background-image: var(--mesh); background-size: 3cqw 3cqw; opacity: .06; }
+
+.pinfo { position: absolute; z-index: 3; left: 4.4cqw; bottom: calc(3.8cqw + var(--sb)); width: 49cqw; }
+.pname {
+  font-weight: 900; font-style: italic; font-stretch: 112%; text-transform: uppercase;
+  font-size: 4.3cqw; line-height: 1.02; letter-spacing: -.005em; color: var(--white);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.was .lbl { font-size: 2.2cqw; font-weight: 800; }
-.was .amt { font-size: 3.3cqw; font-weight: 800; position: relative; }
-.was .amt::after { /* thick strike, like a marker line */
-  content: ""; position: absolute; left: -4%; right: -4%; top: 52%; height: .5cqw;
-  background: var(--ink); border-radius: .3cqw;
+.pcolour { margin-top: 1.1cqw; font-weight: 700; font-stretch: 125%; font-size: 2.35cqw; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); }
+
+/* tale-of-the-tape price box: labels at fixed x, values right-aligned, so any price width fits */
+.tape { position: absolute; z-index: 3; left: 57cqw; right: 4.4cqw; bottom: calc(3.4cqw + var(--sb)); }
+.row { display: flex; align-items: baseline; justify-content: space-between; }
+.row .lbl { font-weight: 800; font-stretch: 125%; letter-spacing: .14em; }
+.row.was { padding-bottom: .9cqw; border-bottom: .25cqw solid rgba(255,255,255,.18); margin-bottom: .9cqw; }
+.row.was .lbl { font-size: 2.2cqw; color: var(--grey); }
+.row.was .val { font-size: 3.1cqw; font-weight: 800; font-stretch: 100%; color: var(--grey); position: relative; }
+.row.was .val.struck::after { content: ""; position: absolute; left: -3%; right: -3%; top: 50%; height: .38cqw; background: var(--pink); transform: rotate(-6deg); }
+.row.now .lbl { font-size: 2.6cqw; color: var(--teal); align-self: center; margin-right: 1.6cqw; }
+.row.now .val { font-size: 7.3cqw; font-weight: 900; font-style: italic; font-stretch: 100%; letter-spacing: -.02em; line-height: .9; }
+
+/* ---------- template frame + guide modes (for Meta Commerce Manager image templates) ---------- */
+.frame .card { background: transparent; border-radius: 0; box-shadow: none; }
+.frame .dyn { visibility: hidden; }
+.guide .slot { outline: .35cqw dashed var(--pink); outline-offset: .3cqw; background: rgba(240,158,192,.18); }
+.guide .slot-tag {
+  position: absolute; z-index: 9; font: 600 2.1cqw/1.5 "Archivo"; color: var(--ink);
+  background: var(--pink); padding: .8cqw 1.2cqw; border-radius: .5cqw; white-space: nowrap;
 }
-.now {
-  background: var(--ink); color: var(--white);
-  padding: 1.6cqw 2.8cqw 1.5cqw; box-shadow: 0 .8cqw 2cqw rgba(0,0,0,.4);
-}
-.now .lbl { font-size: 3.4cqw; font-weight: 900; }
-.now .amt { font-size: 5.6cqw; font-weight: 900; letter-spacing: -.01em; }
+.guide .slot-tag.num { font-weight: 900; font-size: 2.2cqw; line-height: 1; padding: .6cqw .9cqw; border-radius: 50%; }
+.guide .slot-tag.legend { background: rgba(255,255,255,.92); box-shadow: 0 0 0 .3cqw var(--pink); }
 
 /* ---------- end card in the scrolling story ---------- */
-.cta {
-  text-align: center; padding: 120px 0 0; height: 1240px;
-  display: flex; flex-direction: column; align-items: center;
-  font-style: italic; text-transform: uppercase;
-}
-.cta .c-logo { width: 600px; margin-bottom: 64px; }
-.cta .c-eyebrow { color: var(--teal); font-weight: 900; font-stretch: 125%; font-size: 64px; line-height: 1; --sw: 12px; }
-.cta .c-big { font-weight: 900; font-stretch: 125%; font-size: 168px; line-height: .9; letter-spacing: -.03em; --sw: 22px; margin-top: 18px; }
-.cta .c-tag { font-weight: 900; font-stretch: 112%; font-size: 70px; line-height: 1; --sw: 12px; margin-top: 10px; }
+.cta { text-align: center; padding: 120px 0 0; height: 1240px; display: flex; flex-direction: column; align-items: center; font-style: italic; text-transform: uppercase; }
+.cta .c-logo { width: 560px; margin-bottom: 60px; }
+.cta .c-badge { container-type: inline-size; width: 380px; }
+.cta .c-badge .badge { position: static; width: 100cqw; }
+.cta .c-badge .oct { width: 100cqw; }
+.cta .c-badge .oct-num { font-size: 43cqw; }
+.cta .c-badge .oct-off { font-size: 18cqw; }
+.cta .c-badge .tab.t1 > span { font-size: 9.6cqw; }
+.cta .c-badge .tab.t2 > span { font-size: 8.8cqw; }
+.cta .c-badge .tab.t1 { margin-bottom: -7cqw; padding: 3cqw 7cqw 2.8cqw; box-shadow: 0 0 0 1cqw var(--teal); }
+.cta .c-badge .tab.t2 { margin-top: -7cqw; padding: 3cqw 7cqw 2.8cqw; box-shadow: 0 0 0 1cqw var(--ink); }
+.cta .c-badge .oct::before, .cta .c-badge .oct::after { inset: 3cqw; }
 .cta .c-btn {
-  margin-top: 64px; background: var(--pink-hot); color: var(--white); font-style: normal;
-  font-weight: 800; font-stretch: 112%; font-size: 40px; letter-spacing: .08em;
-  padding: 26px 56px 24px; border-radius: 14px; box-shadow: 0 0 0 6px var(--ink), 0 18px 40px rgba(0,0,0,.4);
+  margin-top: 70px; background: var(--white); color: var(--ink); font-style: italic;
+  font-weight: 900; font-stretch: 125%; font-size: 40px; letter-spacing: .04em;
+  padding: 26px 60px 24px; transform: skewX(-12deg); box-shadow: 10px 10px 0 var(--teal);
 }
-.cta .c-url { margin-top: 30px; font-style: normal; font-weight: 600; font-stretch: 100%; font-size: 30px; letter-spacing: .22em; opacity: .85; }
+.cta .c-btn span { display: block; transform: skewX(12deg); }
+.cta .c-url { margin-top: 34px; font-style: normal; font-weight: 600; font-stretch: 100%; font-size: 30px; letter-spacing: .22em; opacity: .85; }
 
 /* ---------- 4:5 feed post ---------- */
-.feed { width: 1080px; height: 1350px; padding: 44px 44px 0; }
+.feed { width: 1080px; height: 1350px; padding: 26px 44px 0; }
 .feed .grid { gap: 24px; }
-.feed-head {
-  height: 238px; display: flex; flex-direction: column; justify-content: center; align-items: center;
-  font-style: italic; text-transform: uppercase; text-align: center;
-}
-.feed-head .f-logo { width: 330px; margin-bottom: 24px; }
-.feed-head .f-line { display: flex; align-items: baseline; gap: 22px; }
-.feed-head .f-eyebrow { color: var(--teal); font-weight: 900; font-stretch: 125%; font-size: 46px; line-height: 1; --sw: 9px; }
-.feed-head .f-big { font-weight: 900; font-stretch: 125%; font-size: 62px; line-height: 1; letter-spacing: -.02em; --sw: 11px; margin-top: 8px; white-space: nowrap; }
+.feed-head { height: 290px; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; }
+.feed-head .f-left { display: flex; flex-direction: column; gap: 18px; font-style: italic; text-transform: uppercase; }
+.feed-head .f-logo { width: 330px; }
+.feed-head .f-big { font-weight: 900; font-stretch: 125%; font-size: 70px; line-height: .95; letter-spacing: -.02em; }
+.feed-head .f-big em { color: var(--teal); font-style: italic; }
+.feed-head .f-badge { container-type: inline-size; width: 230px; }
+.feed-head .f-badge .badge { position: static; width: 100cqw; }
+.feed-head .f-badge .oct { width: 100cqw; }
+.feed-head .f-badge .oct-num { font-size: 43cqw; }
+.feed-head .f-badge .oct-off { font-size: 18cqw; }
+.feed-head .f-badge .tab.t1 > span { font-size: 9.6cqw; }
+.feed-head .f-badge .tab.t2 > span { font-size: 8.8cqw; }
+.feed-head .f-badge .tab.t1 { margin-bottom: -7cqw; padding: 3cqw 7cqw 2.8cqw; box-shadow: 0 0 0 1cqw var(--teal); }
+.feed-head .f-badge .tab.t2 { margin-top: -7cqw; padding: 3cqw 7cqw 2.8cqw; box-shadow: 0 0 0 1cqw var(--ink); }
+.feed-head .f-badge .oct::before, .feed-head .f-badge .oct::after { inset: 3cqw; }
 
-/* ---------- single 1:1 card ---------- */
-.single { width: 1080px; height: 1080px; }
-.single .card { border-radius: 0; box-shadow: none; }
+/* ---------- single card (carousel card or template frame) at any aspect ---------- */
+.single { width: 1080px; }
+.single .card { aspect-ratio: auto; height: var(--h); border-radius: 0; box-shadow: none; }
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script>
 // window.__DATA__ is injected by scripts/render.mjs:
-// { mode: "story"|"feed"|"single", bg: [a,b], offer, cta, logo, hero, cards: [...] }
+// { mode: "story"|"feed"|"single"|"frame"|"guide", height?, safe?: {top,bottom}, bg: [glow, glow2],
+//   offer, cta, logo, hero, cards: [...] }
 const D = window.__DATA__;
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const money = (n) => D.offer.currency + n.toFixed(2);
 
+const badge = () => `
+  <div class="badge">
+    <div class="tab t1"><span>${esc(D.offer.eyebrow)}</span></div>
+    <div class="oct"><div class="oct-in">
+      <div class="oct-num">${D.offer.percentOff}<small>%</small></div>
+      <div class="oct-off">Off</div>
+    </div></div>
+    <div class="tab t2"><span>${esc(D.offer.tagline)}</span></div>
+  </div>`;
+
+// p is a product, or null for template frames (dynamic text is then a placeholder that guide mode labels)
 function card(p) {
-  const pct = D.offer.percentOff;
+  const ph = !p;
+  p = p || { name: "Product title from catalog", colour: "", price: 79.95, now: 47.97 };
   return `
   <div class="card">
-    <div class="photo"><img src="${p.src}" style="--focus:${p.focus || "50% 50%"};--zoom:${p.zoom || 1};object-position:${p.focus || "50% 50%"}"></div>
-    <div class="strip"><div class="strip-inner">
-      <div class="pname">${esc(p.name)}<span class="dash">—</span>${esc(p.colour)}</div>
-      <img class="logo" src="${D.logo}">
-    </div></div>
-    <div class="badge">
-      <div class="b-eyebrow stroke">${esc(D.offer.eyebrow)}</div>
-      <div class="b-pct">
-        <div class="b-num stroke">${pct}</div>
-        <div class="b-side"><div class="b-sym stroke">%</div><div class="b-off stroke">Off</div></div>
-      </div>
-      <div class="b-tag stroke">${esc(D.offer.tagline)}</div>
-      <div class="b-pill">${esc(D.offer.pill)}</div>
+    ${ph ? "" : `<div class="photo"><img src="${p.src}" style="--focus:${p.focus || "50% 50%"};--zoom:${p.zoom || 1};object-position:${p.focus || "50% 50%"}"></div>`}
+    <div class="toplight"></div>
+    <div class="scrim"></div>
+    ${badge()}
+    <img class="wordmark" src="${D.logo}">
+    <div class="plate"><div class="edge"></div><div class="body"></div></div>
+    <div class="pinfo">
+      <div class="pname dyn ${ph ? "slot" : ""}" data-slot="title">${esc(p.name)}</div>
+      ${ph ? "" : `<div class="pcolour">${esc(p.colour)}</div>`}
     </div>
-    <div class="prices">
-      <div class="was"><span class="lbl">WAS</span><span class="amt">${money(p.price)}</span></div>
-      <div class="now"><span class="lbl">NOW</span><span class="amt">${money(p.now)}</span></div>
+    <div class="tape">
+      <div class="row was"><span class="lbl">WAS</span><span class="val dyn ${ph ? "slot" : "struck"}" data-slot="price">${money(p.price)}</span></div>
+      <div class="row now"><span class="lbl">NOW</span><span class="val dyn ${ph ? "slot" : ""}" data-slot="sale_price">${money(p.now)}</span></div>
     </div>
   </div>`;
 }
 
 const root = document.getElementById("root");
-document.documentElement.style.setProperty("--bg-a", D.bg[0]);
-document.documentElement.style.setProperty("--bg-b", D.bg[1]);
+const css = document.documentElement.style;
+css.setProperty("--glow", D.bg[0]);
+css.setProperty("--glow2", D.bg[1]);
 
 if (D.mode === "story") {
   root.innerHTML = `
@@ -225,10 +235,8 @@ if (D.mode === "story") {
     <div class="grid">${D.cards.map(card).join("")}</div>
     <div class="cta" id="cta">
       <img class="c-logo" src="${D.logo}">
-      <div class="c-eyebrow stroke">${esc(D.offer.eyebrow)}</div>
-      <div class="c-big stroke">${D.offer.percentOff}% Off</div>
-      <div class="c-tag stroke">${esc(D.offer.tagline)}</div>
-      <div class="c-btn">${esc(D.cta.headline)}</div>
+      <div class="c-badge">${badge()}</div>
+      <div class="c-btn"><span>${esc(D.cta.headline)}</span></div>
       <div class="c-url">${esc(D.cta.url)}</div>
     </div>
   </div>`;
@@ -236,24 +244,70 @@ if (D.mode === "story") {
   root.innerHTML = `
   <div class="page feed">
     <div class="feed-head">
-      <img class="f-logo" src="${D.logo}">
-      <div class="f-line"><span class="f-eyebrow stroke">${esc(D.offer.eyebrow)}</span></div>
-      <div class="f-big stroke">${D.offer.percentOff}% Off ${esc(D.offer.tagline)}</div>
+      <div class="f-left">
+        <img class="f-logo" src="${D.logo}">
+        <div class="f-big"><em>${esc(D.offer.eyebrow)}</em><br>${D.offer.percentOff}% off<br>${esc(D.offer.tagline)}</div>
+      </div>
+      <div class="f-badge">${badge()}</div>
     </div>
     <div class="grid">${D.cards.map(card).join("")}</div>
   </div>`;
 } else {
-  root.innerHTML = `<div class="page single">${card(D.cards[0])}</div>`;
+  // single / frame / guide: one card filling the viewport at any aspect
+  css.setProperty("--h", D.height + "px");
+  root.innerHTML = `<div class="single ${D.mode === "single" ? "" : "frame"} ${D.mode === "guide" ? "guide" : ""}">${card(D.mode === "single" ? D.cards[0] : null)}</div>`;
+  if (D.safe) {
+    const c = document.querySelector(".card");
+    c.style.setProperty("--st", D.safe.top + "px");
+    c.style.setProperty("--sb", D.safe.bottom + "px");
+  }
+  if (D.mode === "guide") {
+    // guide = frame + labelled boxes where the Meta template's dynamic layers go
+    document.querySelectorAll(".dyn").forEach((el) => (el.style.visibility = "visible"));
+    const card = document.querySelector(".card");
+    const add = (txt, x, y, cls = "") => { const t = document.createElement("div"); t.className = "slot-tag " + cls; t.innerHTML = txt; t.style.left = x + "px"; t.style.top = y + "px"; card.appendChild(t); return t; };
+    const cr = card.getBoundingClientRect();
+    const names = { title: "Catalog field: <b>title</b> (left-aligned)", price: "Catalog field: <b>price</b> (right-aligned)", sale_price: "Catalog field: <b>current / sale price</b> (right-aligned)" };
+    const legend = ["<b>0</b> Product layer: full frame, behind this PNG"];
+    let n = 1;
+    for (const el of document.querySelectorAll("[data-slot]")) {
+      const r = el.getBoundingClientRect();
+      add(String(n), r.left - cr.left - 8, r.top - cr.top - 8, "num");
+      legend.push(`<b>${n}</b> ${names[el.dataset.slot]}`);
+      n++;
+    }
+    add(legend.join("<br>"), cr.width * 0.38, cr.height * 0.44, "legend");
+  }
 }
 
 window.__ready = (async () => {
   await document.fonts.ready;
   await Promise.all([...document.images].map((im) => im.decode().catch(() => {})));
   const cta = document.getElementById("cta");
-  return {
-    height: document.querySelector(".page").getBoundingClientRect().height,
-    ctaTop: cta ? cta.offsetTop : null,
-  };
+  const card0 = document.querySelector(".card");
+  const slots = {};
+  if (card0) {
+    const cr = card0.getBoundingClientRect();
+    for (const el of card0.querySelectorAll("[data-slot]")) {
+      const r = el.getBoundingClientRect();
+      let left = r.left, width = r.width;
+      if (el.dataset.slot === "title") {
+        const p = el.parentElement.getBoundingClientRect(); left = p.left; width = p.width;
+      } else { // price values: the space between the baked label and the right edge, right-aligned
+        const row = el.parentElement.getBoundingClientRect();
+        const lbl = el.parentElement.querySelector(".lbl").getBoundingClientRect();
+        left = lbl.right + cr.width * 0.012; width = row.right - left;
+      }
+      slots[el.dataset.slot] = {
+        x: Math.round(left - cr.left), y: Math.round(r.top - cr.top),
+        w: Math.round(width), h: Math.round(r.height),
+        align: el.dataset.slot === "title" ? "left" : "right",
+        fontSizePx: Math.round(parseFloat(getComputedStyle(el).fontSize)),
+        colour: getComputedStyle(el).color,
+      };
+    }
+  }
+  return { height: document.querySelector(".page, .single").getBoundingClientRect().height, ctaTop: cta ? cta.offsetTop : null, slots };
 })();
 </script>
 </body>

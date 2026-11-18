@@ -4,7 +4,6 @@
     "percentOff": 40,
     "eyebrow": "Black Friday",
     "tagline": "Everything",
-    "pill": "Now Live",
     "currency": "$"
   },
   "cta": {
@@ -14,44 +13,75 @@
   "stories": [
     {
       "id": "tiffany",
-      "bg": ["#0B3133", "#124B4D"],
+      "bg": [
+        "#16B3B7",
+        "#0F5E60"
+      ],
       "hero": "jersey-tiffany",
       "grid": [
-        "hoodie-diamond", "jersey-diamond",
-        "shorts-legacy", "tee-menace",
-        "hoodie-concrete", "rash-legacy",
-        "jersey-concrete", "tee-apex-black",
-        "socks", "towel"
+        "hoodie-diamond",
+        "jersey-diamond",
+        "shorts-legacy",
+        "tee-menace",
+        "hoodie-concrete",
+        "rash-legacy",
+        "jersey-concrete",
+        "tee-apex-black",
+        "socks",
+        "towel"
       ]
     },
     {
       "id": "cottoncandy",
-      "bg": ["#3A1828", "#5A2840"],
+      "bg": [
+        "#F09EC0",
+        "#8A2F5A"
+      ],
       "hero": "hoodie-cottoncandy",
       "grid": [
-        "jersey-cottoncandy", "tee-pegasus-white",
-        "jersey-tiffany", "rash-champion",
-        "hoodie-diamond", "shorts-legacy",
-        "tee-menace", "hoodie-concrete",
-        "jersey-diamond", "tee-apex-black"
+        "jersey-cottoncandy",
+        "tee-pegasus-white",
+        "jersey-tiffany",
+        "rash-champion",
+        "hoodie-diamond",
+        "shorts-legacy",
+        "tee-menace",
+        "hoodie-concrete",
+        "jersey-diamond",
+        "tee-apex-black"
       ]
     },
     {
       "id": "concrete",
-      "bg": ["#1E2023", "#34373C"],
+      "bg": [
+        "#8C9199",
+        "#3A3D42"
+      ],
       "hero": null,
       "grid": [
-        "hoodie-concrete", "jersey-tiffany",
-        "shorts-legacy", "jersey-cottoncandy",
-        "tee-menace", "hoodie-diamond",
-        "rash-legacy", "tee-pegasus-white",
-        "jersey-diamond", "tee-apex-black",
-        "rash-champion", "hoodie-cottoncandy"
+        "hoodie-concrete",
+        "jersey-tiffany",
+        "shorts-legacy",
+        "jersey-cottoncandy",
+        "tee-menace",
+        "hoodie-diamond",
+        "rash-legacy",
+        "tee-pegasus-white",
+        "jersey-diamond",
+        "tee-apex-black",
+        "rash-champion",
+        "hoodie-cottoncandy"
       ]
     }
   ],
   "feedCards": [
-    "jersey-tiffany", "hoodie-cottoncandy", "hoodie-diamond", "shorts-legacy",
-    "tee-menace", "jersey-cottoncandy", "rash-legacy", "hoodie-concrete"
+    "jersey-tiffany",
+    "hoodie-cottoncandy",
+    "hoodie-diamond",
+    "shorts-legacy",
+    "tee-menace",
+    "jersey-cottoncandy",
+    "rash-legacy",
+    "hoodie-concrete"
   ]
 }
