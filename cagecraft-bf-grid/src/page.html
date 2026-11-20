@@ -190,11 +190,11 @@ const D = window.__DATA__;
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const money = (n) => D.offer.currency + n.toFixed(2);
 
-const badge = () => `
+const badge = (pct = D.offer.percentOff) => `
   <div class="badge">
     <div class="tab t1"><span>${esc(D.offer.eyebrow)}</span></div>
     <div class="oct"><div class="oct-in">
-      <div class="oct-num">${D.offer.percentOff}<small>%</small></div>
+      <div class="oct-num">${pct}<small>%</small></div>
       <div class="oct-off">Off</div>
     </div></div>
     <div class="tab t2"><span>${esc(D.offer.tagline)}</span></div>
@@ -209,12 +209,12 @@ function card(p) {
     ${ph ? "" : `<div class="photo"><img src="${p.src}" style="--focus:${p.focus || "50% 50%"};--zoom:${p.zoom || 1};object-position:${p.focus || "50% 50%"}"></div>`}
     <div class="toplight"></div>
     <div class="scrim"></div>
-    ${badge()}
+    ${badge(ph ? D.offer.percentOff : p.pct)}
     <img class="wordmark" src="${D.logo}">
     <div class="plate"><div class="edge"></div><div class="body"></div></div>
     <div class="pinfo">
       <div class="pname dyn ${ph ? "slot" : ""}" data-slot="title">${esc(p.name)}</div>
-      ${ph ? "" : `<div class="pcolour">${esc(p.colour)}</div>`}
+      ${ph || !p.colour ? "" : `<div class="pcolour">${esc(p.colour)}</div>`}
     </div>
     <div class="tape">
       <div class="row was"><span class="lbl">WAS</span><span class="val dyn ${ph ? "slot" : "struck"}" data-slot="price">${money(p.price)}</span></div>
@@ -246,7 +246,7 @@ if (D.mode === "story") {
     <div class="feed-head">
       <div class="f-left">
         <img class="f-logo" src="${D.logo}">
-        <div class="f-big"><em>${esc(D.offer.eyebrow)}</em><br>${D.offer.percentOff}% off<br>${esc(D.offer.tagline)}</div>
+        <div class="f-big"><em>${esc(D.offer.eyebrow)}</em><br>${esc(D.offer.headline || D.offer.percentOff + '% off')}<br>${esc(D.offer.tagline)}</div>
       </div>
       <div class="f-badge">${badge()}</div>
     </div>

@@ -45,9 +45,11 @@ async function product(id) {
     if (await exists(f)) { src = fileUrl(f); break; }
   }
   if (!src) throw new Error(`No image for "${id}". Run: npm run images`);
-  // integer cents so 79.95 * 60% = 47.97 exactly
-  const now = Math.round(p.price * (100 - offer.percentOff)) / 100;
-  return { ...p, id, src, now };
+  // `sale` is the live sale price from Shopify; without it, apply the config percentage
+  // in integer cents so 79.95 * 60% = 47.97 exactly.
+  const now = p.sale ?? Math.round(p.price * (100 - offer.percentOff)) / 100;
+  const pct = Math.round(((p.price - now) / p.price) * 100);
+  return { ...p, id, src, now, pct };
 }
 
 function run(cmd, argv) {

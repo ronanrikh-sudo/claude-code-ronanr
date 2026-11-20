@@ -1,0 +1,97 @@
+{
+  "_note": "Meta static carousel spec for the BFCM SALE | NOV 20 campaign. Each card links to its own product page.",
+  "ad_account_id": "1352534789671603",
+  "campaign_id": "120253868775770730",
+  "page_id": "639726185901204",
+  "instagram_user_id": "17841471928368610",
+  "creative_name": "BFCM26 | BF Fight Cards | Carousel",
+  "message": "BLACK FRIDAY IS LIVE. 30% off fightwear, 25% off hoodies and tees. Tap any product to shop it. Ends Sunday 29 November.",
+  "link_url": "https://www.cagecraftco.com/collections/shop-all",
+  "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=bfcm26&utm_content={{ad.name}}",
+  "cards": [
+    {
+      "image": "out/meta/cagecraft-bfcm26-01-jersey-tiffany.jpg",
+      "link": "https://www.cagecraftco.com/products/fight-jersey-2-0-tiffany",
+      "headline": "Fight Jersey Tiffany",
+      "description": "Now $55.96 (was $79.95)",
+      "call_to_action_type": "SHOP_NOW"
+    },
+    {
+      "image": "out/meta/cagecraft-bfcm26-02-hoodie-cottoncandy.jpg",
+      "link": "https://www.cagecraftco.com/products/walkout-hoodie-cotton-candy",
+      "headline": "Walkout Hoodie Cotton Candy",
+      "description": "Now $82.46 (was $109.95)",
+      "call_to_action_type": "SHOP_NOW"
+    },
+    {
+      "image": "out/meta/cagecraft-bfcm26-03-shorts-legacy.jpg",
+      "link": "https://www.cagecraftco.com/products/legacy-2-in-1-hybrid-mma-shorts",
+      "headline": "Legacy 2-in-1 MMA Shorts",
+      "description": "Now $62.96 (was $89.95)",
+      "call_to_action_type": "SHOP_NOW"
+    },
+    {
+      "image": "out/meta/cagecraft-bfcm26-04-hoodie-diamond.jpg",
+      "link": "https://www.cagecraftco.com/products/walkout-hoodie-diamond",
+      "headline": "Walkout Hoodie Diamond",
+      "description": "Now $82.46 (was $109.95)",
+      "call_to_action_type": "SHOP_NOW"
+    },
+    {
+      "image": "out/meta/cagecraft-bfcm26-05-jersey-cottoncandy.jpg",
+      "link": "https://www.cagecraftco.com/products/fight-jersey-2-0-cotton-candy",
+      "headline": "Fight Jersey Cotton Candy",
+      "description": "Now $55.96 (was $79.95)",
+      "call_to_action_type": "SHOP_NOW"
+    },
+    {
+      "image": "out/meta/cagecraft-bfcm26-06-tee-menace.jpg",
+      "link": "https://www.cagecraftco.com/products/menace-oversized-tee",
+      "headline": "MENACE Oversized Tee",
+      "description": "Now $48.71 (was $64.95)",
+      "call_to_action_type": "SHOP_NOW"
+    },
+    {
+      "image": "out/meta/cagecraft-bfcm26-07-rash-champion.jpg",
+      "link": "https://www.cagecraftco.com/products/champion-gold-rashguard",
+      "headline": "Champion Gold Rashguard",
+      "description": "Now $55.96 (was $79.95)",
+      "call_to_action_type": "SHOP_NOW"
+    },
+    {
+      "image": "out/meta/cagecraft-bfcm26-08-hoodie-concrete.jpg",
+      "link": "https://www.cagecraftco.com/products/walkout-hoodie-concrete",
+      "headline": "Walkout Hoodie Concrete",
+      "description": "Now $82.46 (was $109.95)",
+      "call_to_action_type": "SHOP_NOW"
+    },
+    {
+      "image": "out/meta/cagecraft-bfcm26-09-jersey-diamond.jpg",
+      "link": "https://www.cagecraftco.com/products/fight-jersey-2-0-diamond",
+      "headline": "Fight Jersey Diamond",
+      "description": "Now $55.96 (was $79.95)",
+      "call_to_action_type": "SHOP_NOW"
+    },
+    {
+      "image": "out/meta/cagecraft-bfcm26-10-rash-legacy.jpg",
+      "link": "https://www.cagecraftco.com/products/legacy-rashguard",
+      "headline": "Legacy Rashguard",
+      "description": "Now $55.96 (was $79.95)",
+      "call_to_action_type": "SHOP_NOW"
+    }
+  ],
+  "ads": [
+    {
+      "ad_set_id": "120253868794740730",
+      "ad_name": "CAROUSEL | BF Fight Cards | BFCM"
+    },
+    {
+      "ad_set_id": "120253868795500730",
+      "ad_name": "CAROUSEL | BF Fight Cards | LAL BFCM"
+    },
+    {
+      "ad_set_id": "120253868795150730",
+      "ad_name": "CAROUSEL | BF Fight Cards | RT BFCM"
+    }
+  ]
+}

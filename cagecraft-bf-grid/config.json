@@ -1,9 +1,10 @@
 {
-  "_note": "PLACEHOLDER OFFER. No Black Friday discount exists in Shopify yet. Change percentOff and the badge lines here, then re-run `npm run render`; every NOW price is recalculated from the live price.",
+  "_note": "Live BFCM offer (20-29 Nov 2026): 30% off fightwear (jerseys, rashguards, shorts), 25% off hoodies and tees, set as Shopify price/compare-at. Each card shows its own product's discount; percentOff is only used for the generic story/feed badges and for products without a sale price.",
   "offer": {
-    "percentOff": 40,
+    "percentOff": 30,
     "eyebrow": "Black Friday",
-    "tagline": "Everything",
+    "tagline": "Ends Sun 29 Nov",
+    "headline": "Up to 30% off",
     "currency": "$"
   },
   "cta": {
@@ -83,5 +84,20 @@
     "jersey-cottoncandy",
     "rash-legacy",
     "hoodie-concrete"
-  ]
+  ],
+  "carousel": {
+    "_note": "Static carousel ad: one card per product, each linking to its product page. Order = card order.",
+    "cards": [
+      "jersey-tiffany",
+      "hoodie-cottoncandy",
+      "shorts-legacy",
+      "hoodie-diamond",
+      "jersey-cottoncandy",
+      "tee-menace",
+      "rash-champion",
+      "hoodie-concrete",
+      "jersey-diamond",
+      "rash-legacy"
+    ]
+  }
 }
