@@ -150,3 +150,65 @@ export const IDEAS = {
   B1: { key: 'B1', label: 'Idea B.1', sub: 'All red', ring: RED, word: RED, gym: RED, pattern: RED },
   B2: { key: 'B2', label: 'Idea B.2', sub: 'All white', ring: WHITE, word: WHITE, gym: WHITE, pattern: WHITE },
 };
+
+// ---------------------------------------------------------------------------
+// Co-branded back lockups
+// ---------------------------------------------------------------------------
+const CC = JSON.parse(fs.readFileSync(path.join(here, '../assets/cagecraft_paths.json'), 'utf8')).CAGECRAFT;
+const CC_BOX = CC.bbox; // [x0,y0,x1,y1] in source px
+const CC_AR = (CC_BOX[2] - CC_BOX[0]) / (CC_BOX[3] - CC_BOX[1]);
+
+// CAGECRAFT wordmark with its top-left at (x, y), given width
+export function cagecraft(fill, x, y, width) {
+  const s = width / (CC_BOX[2] - CC_BOX[0]);
+  return { svg: `<path transform="translate(${f2(x - CC_BOX[0] * s)} ${f2(y - CC_BOX[1] * s)}) scale(${f2(s)})" d="${CC.d}" fill="${fill}" fill-rule="evenodd"/>`, h: width / CC_AR };
+}
+// a clean multiplication cross, centred at (cx, cy)
+export function cross(fill, cx, cy, size) {
+  const r = size / 2, w = size * 0.15;
+  const bar = (a) => `<rect x="${f2(cx - r)}" y="${f2(cy - w / 2)}" width="${f2(size)}" height="${f2(w)}" transform="rotate(${a} ${f2(cx)} ${f2(cy)})" fill="${fill}"/>`;
+  return bar(45) + bar(-45);
+}
+// "RIVAL GYM" on one line in the Rival italic, cap height h, top-left (x, y); returns svg + width
+export function rivalGymLine(colours, x, y, h) {
+  const sr = h / (RIVAL_BOX[3] - RIVAL_BOX[1]);
+  const sg = h / (GYM_BOX[3] - GYM_BOX[1]);
+  const rw = (RIVAL_BOX[2] - RIVAL_BOX[0]) * sr, gap = h * 0.42;
+  const r = `<path transform="translate(${f2(x - RIVAL_BOX[0] * sr)} ${f2(y - RIVAL_BOX[1] * sr)}) scale(${f2(sr)})" d="${GLYPHS.RIVAL.map((g) => g.d).join(' ')}" fill="${colours.word}" fill-rule="evenodd"/>`;
+  const gx = x + rw + gap;
+  const g = `<path transform="translate(${f2(gx - GYM_BOX[0] * sg)} ${f2(y - GYM_BOX[1] * sg)}) scale(${f2(sg)})" d="${GLYPHS.GYM.map((q) => q.d).join(' ')}" fill="${colours.gym}" fill-rule="evenodd"/>`;
+  return { svg: r + g, w: rw + gap + (GYM_BOX[2] - GYM_BOX[0]) * sg };
+}
+
+// colour of the "× CAGECRAFT" partner line for an idea (white on the black kit)
+const partner = (idea) => idea.ring;
+
+/** Tops (tee + rashguard) back-neck lockup: Rival oval, then × and the CAGECRAFT wordmark.
+ *  Units: oval emblem units; returns { svg, box:[x0,y0,x1,y1] } with x centred on 0. */
+export function topsLockup(idea, layout = 'stack') {
+  const cx = -24; // visual centre of the oval + breakout wordmark
+  const ovalSvg = `<g transform="translate(${-cx} 0)">${emblem(idea)}</g>`;
+  const ccW = 760;
+  if (layout === 'stack') {
+    const xY = 205 + 78, xS = 62;
+    const ccTop = xY + 66;
+    const cc = cagecraft(partner(idea), -ccW / 2, ccTop, ccW);
+    return { svg: ovalSvg + cross(partner(idea), 0, xY, xS) + cc.svg, box: [-560, -210, 560, ccTop + cc.h] };
+  }
+  // one line: × CAGECRAFT
+  const lineTop = 205 + 70, ccW2 = 700, xS = 58;
+  const cc = cagecraft(partner(idea), -ccW2 / 2 + 50, lineTop, ccW2);
+  return { svg: ovalSvg + cross(partner(idea), -ccW2 / 2 - 30, lineTop + cc.h / 2, xS) + cc.svg, box: [-560, -210, 560, lineTop + cc.h] };
+}
+
+/** Shorts back lockup: CAGECRAFT wordmark, "× RIVAL GYM" beneath (Legacy "FIGHTWEAR CO." slot).
+ *  Units: px of the wordmark width W; returns { svg, box } centred on x=0, top at y=0. */
+export function shortsLockup(idea, Wd = 1000) {
+  const cc = cagecraft(partner(idea), -Wd / 2, 0, Wd);
+  const h2 = cc.h * 0.5, y2 = cc.h + cc.h * 0.42, xS = h2 * 0.78, gap = h2 * 0.55;
+  const probe = rivalGymLine({ word: idea.word, gym: idea.gym }, 0, 0, h2);
+  const total = xS + gap + probe.w;
+  const x0 = -total / 2;
+  const line = rivalGymLine({ word: idea.word, gym: idea.gym }, x0 + xS + gap, y2, h2);
+  return { svg: cc.svg + cross(partner(idea), x0 + xS / 2, y2 + h2 / 2, xS) + line.svg, box: [-Wd / 2, 0, Wd / 2, y2 + h2] };
+}

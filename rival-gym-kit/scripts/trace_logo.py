@@ -8,17 +8,7 @@ import json, sys, re
 import numpy as np
 from PIL import Image
 
-SRC, OUT = sys.argv[1], sys.argv[2]
 S = 8  # upscale factor
-
-im = np.asarray(Image.open(SRC).convert("RGB")).astype(np.float32)
-r, g, b = im[..., 0], im[..., 1], im[..., 2]
-# redness coverage: 0 on white (r=g), 1 on full red (r-g ~ 191)
-red_cov = np.clip((r - (g + b) / 2) / 180.0, 0, 1)
-# darkness coverage (non-red): 1 on black, 0 on white
-lum = 0.299 * r + 0.587 * g + 0.114 * b
-dark_cov = np.clip((255 - lum) / 245.0, 0, 1) * (red_cov < 0.3)
-
 
 K = 24.0 / 68.0          # italic slant (tan) measured from the I stem
 PAD = 40                 # px (logo units) left pad so unskewed glyphs stay in frame
@@ -193,30 +183,41 @@ def to_path(polys, base):
     return " ".join(out)
 
 
-result = {}
-for name, cov, xr in (("RIVAL", red_cov, (0, 447)), ("GYM", dark_cov, (222, 447)), ("RULE", dark_cov, (0, 222))):
-    c = cov.copy()
-    c[:, : xr[0]] = 0
-    c[:, xr[1] :] = 0
-    base = baseline_for(name)
-    up = upscale(c, base)
-    mask = up > 0.5
-    loops = trace(mask)
-    polys = [smooth_curves(snap(straighten(snap(simplify_closed(l, 3.2))))) for l in loops]
-    polys = [p for p in polys if abs(signed_area(p)) > 40 * S]
-    # group into glyphs: outer loops (positive area in this orientation) + holes inside them
-    outers = [p for p in polys if signed_area(p) < 0]
-    holes = [p for p in polys if signed_area(p) >= 0]
-    glyphs = []
-    for o in sorted(outers, key=lambda p: p[:, 0].min()):
-        x0, x1 = o[:, 0].min() - 1, o[:, 0].max() + 1
-        y0, y1 = o[:, 1].min() - 1, o[:, 1].max() + 1
-        hs = [h for h in holes if h[:, 0].min() >= x0 and h[:, 0].max() <= x1 and h[:, 1].min() >= y0 and h[:, 1].max() <= y1]
-        ob = to_path([o], base)
-        bx = [float(v) for v in re.findall(r"[ML]([\d.]+),", ob)]
-        by = [float(v) for v in re.findall(r",([\d.]+)", ob)]
-        glyphs.append({"bbox": [min(bx), min(by), max(bx), max(by)], "d": to_path([o] + hs, base), "nv": int(sum(len(q) for q in [o] + hs))})
-    result[name] = glyphs
-    print(name, len(glyphs), "glyphs", [g["nv"] for g in glyphs], [tuple(round(v, 1) for v in g["bbox"]) for g in glyphs])
+if __name__ == "__main__":
+    SRC, OUT = sys.argv[1], sys.argv[2]
+    im = np.asarray(Image.open(SRC).convert("RGB")).astype(np.float32)
+    r, g, b = im[..., 0], im[..., 1], im[..., 2]
+    # redness coverage: 0 on white (r=g), 1 on full red (r-g ~ 191)
+    red_cov = np.clip((r - (g + b) / 2) / 180.0, 0, 1)
+    # darkness coverage (non-red): 1 on black, 0 on white
+    lum = 0.299 * r + 0.587 * g + 0.114 * b
+    dark_cov = np.clip((255 - lum) / 245.0, 0, 1) * (red_cov < 0.3)
 
-json.dump(result, open(OUT, "w"), indent=1)
+
+    result = {}
+    for name, cov, xr in (("RIVAL", red_cov, (0, 447)), ("GYM", dark_cov, (222, 447)), ("RULE", dark_cov, (0, 222))):
+        c = cov.copy()
+        c[:, : xr[0]] = 0
+        c[:, xr[1] :] = 0
+        base = baseline_for(name)
+        up = upscale(c, base)
+        mask = up > 0.5
+        loops = trace(mask)
+        polys = [smooth_curves(snap(straighten(snap(simplify_closed(l, 3.2))))) for l in loops]
+        polys = [p for p in polys if abs(signed_area(p)) > 40 * S]
+        # group into glyphs: outer loops (positive area in this orientation) + holes inside them
+        outers = [p for p in polys if signed_area(p) < 0]
+        holes = [p for p in polys if signed_area(p) >= 0]
+        glyphs = []
+        for o in sorted(outers, key=lambda p: p[:, 0].min()):
+            x0, x1 = o[:, 0].min() - 1, o[:, 0].max() + 1
+            y0, y1 = o[:, 1].min() - 1, o[:, 1].max() + 1
+            hs = [h for h in holes if h[:, 0].min() >= x0 and h[:, 0].max() <= x1 and h[:, 1].min() >= y0 and h[:, 1].max() <= y1]
+            ob = to_path([o], base)
+            bx = [float(v) for v in re.findall(r"[ML]([\d.]+),", ob)]
+            by = [float(v) for v in re.findall(r",([\d.]+)", ob)]
+            glyphs.append({"bbox": [min(bx), min(by), max(bx), max(by)], "d": to_path([o] + hs, base), "nv": int(sum(len(q) for q in [o] + hs))})
+        result[name] = glyphs
+        print(name, len(glyphs), "glyphs", [g["nv"] for g in glyphs], [tuple(round(v, 1) for v in g["bbox"]) for g in glyphs])
+
+    json.dump(result, open(OUT, "w"), indent=1)

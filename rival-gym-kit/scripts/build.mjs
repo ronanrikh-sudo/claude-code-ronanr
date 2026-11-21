@@ -13,6 +13,7 @@ const page = await browser.newPage({ viewport: { width: W, height: H }, deviceSc
 for (const p of Object.values(PRODUCTS)) {
   for (const idea of Object.values(IDEAS)) {
     const name = `${p.key}_${idea.key}`;
+    if (p.ideas && !p.ideas.includes(idea.key)) continue;
     if (only && !name.includes(only)) continue;
     RENDER.transparent = false;
     const svg = p.fn(idea);

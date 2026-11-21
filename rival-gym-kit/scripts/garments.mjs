@@ -2,7 +2,7 @@
 // black rashguard (raglan, mesh side panels), training tee (set-in sleeve),
 // mid-length MMA shorts (single layer, side slits). Print is drawn under a
 // fold/shading pass so graphics sit in the fabric.
-import { emblem } from './emblem.mjs';
+import { emblem, topsLockup, shortsLockup } from './emblem.mjs';
 import { patternPath } from './pattern.mjs';
 
 export const W = 2000, H = 2500;
@@ -126,6 +126,27 @@ function mirrorD(d) {
 }
 const both = (fn, d, opts) => fn(d, opts) + fn(mirrorD(d), opts && opts.dx !== undefined ? { ...opts, dx: -opts.dx } : opts);
 
+// lockup placement: centred on cx, top edge at y, scale s
+function placeLockup(l, cx, top, s) {
+  return `<g transform="translate(${f(cx)} ${f(top - l.box[1] * s)}) scale(${s})">${l.svg}</g>`;
+}
+// back neck band (tee rib / rash binding) between the back neckline arc and a parallel arc below it
+function backNeckBand({ cx = 1000, cy, rx, ry, x0, y0, band, rib = false }) {
+  const x1 = 2 * cx - x0;
+  const d = `M${x0},${y0} A${rx},${ry} 0 0 1 ${x1},${y0} L${x1},${y0 + band} A${rx},${ry} 0 0 0 ${x0},${y0 + band} Z`;
+  const ribs = rib ? Array.from({ length: 90 }, (_, i) => {
+    const t = Math.PI + (i / 89) * Math.PI; // upper half of the ellipse
+    const x = cx + rx * Math.cos(t) * 0.985, y = cy + ry * Math.sin(t);
+    return `<line x1="${f(x)}" y1="${f(y + 2)}" x2="${f(x)}" y2="${f(y + band - 2)}" stroke="#0d0d0d" stroke-width="2.2" opacity="0.85"/>`;
+  }).join('') : '';
+  return `<path d="M${x0},${y0 + band} A${rx},${ry} 0 0 1 ${x1},${y0 + band}" fill="none" stroke="#000" stroke-width="16" opacity="0.5" filter="url(#b10)" transform="translate(0 8)"/>
+    <path d="${d}" fill="${rib ? '#1a1a1a' : '#191919'}"/>
+    ${rib ? `<g clip-path="url(#bandclip)">${ribs}</g>` : ''}
+    ${stitch(`M${x0 + 4},${y0 + band * 0.55} A${rx},${ry} 0 0 1 ${x1 - 4},${y0 + band * 0.55}`, { color: '#333', w: 2, dash: '5 5' })}
+    <path d="M${x0},${y0 + band} A${rx},${ry} 0 0 1 ${x1},${y0 + band}" fill="none" stroke="#060606" stroke-width="3"/>
+    <clipPath id="bandclip"><path d="${d}"/></clipPath>`;
+}
+
 // emblem placement: emblem units -> px (oval centre at cx, cy; scale s)
 function placeEmblem(idea, cx, cy, s) {
   return `<g transform="translate(${f(cx)} ${f(cy)}) scale(${s})">${emblem(idea)}</g>`;
@@ -150,9 +171,10 @@ const RASH_HALF = {
 };
 const RASH_SIL = symOutline(RASH_HALF);
 
-export function rashguard(idea) {
+export function rashguard(idea, view = 'front') {
   const sil = RASH_SIL;
-  const rag = 'M862,570 C800,710 690,900 624,1024';
+  const back = view === 'back';
+  const rag = back ? 'M868,588 C800,710 690,900 624,1024' : 'M862,570 C800,710 690,900 624,1024';
   const meshSeam = 'M630,1040 C692,1110 718,1200 714,1268 C710,1316 690,1338 642,1350';
   const mesh = meshSeam + ' C642,1250 636,1140 630,1040 Z';
   const sleeve = 'M853,561 C730,596 572,660 458,738 C432,850 410,960 396,1052 Q500,1088 604,1112 L624,1024 C690,900 800,710 862,570 Z';
@@ -192,7 +214,7 @@ export function rashguard(idea) {
     <g transform="translate(610 ${pY})">
       <path d="${pat}" fill="none" stroke="${idea.pattern}" stroke-width="${f(unit * 0.3)}" mask="url(#rfade)"/>
     </g>
-    ${placeEmblem(idea, 1010, 878, 0.47)}
+    ${back ? placeLockup(topsLockup(idea), 1000, 612, 0.19) : placeEmblem(idea, 1010, 878, 0.47)}
   </g>
   ${shadingPass(sil, { folds })}
   <g clip-path="url(#sil)">
@@ -202,7 +224,7 @@ export function rashguard(idea) {
     ${stitch('M640,1864 Q819,1876 1000,1877 Q1181,1876 1360,1864')}
     ${stitch('M640,1874 Q819,1886 1000,1887 Q1181,1886 1360,1874', { op: 0.7 })}
   </g>
-  ${collar}`;
+  ${back ? backNeckBand({ cy: 600, rx: 170, ry: 78, x0: 853, y0: 561, band: 24 }) : collar}`;
   return frame(inner, sil, fadeMask('rfade', -10, 800, pH));
 }
 
@@ -224,8 +246,9 @@ const TEE_SIL = `M1000,522 A168,80 0 0 0 855,562
     C1350,610 1240,584 1145,562
     A168,80 0 0 0 1000,522 Z`;
 
-export function tee(idea) {
+export function tee(idea, view = 'front') {
   const sil = TEE_SIL;
+  const back = view === 'back';
   const armL = 'M566,636 C576,780 582,900 582,1022';
   const armR = 'M1434,636 C1424,780 1418,900 1418,1022';
   const folds = [
@@ -266,7 +289,7 @@ export function tee(idea) {
   const inner = `
   <g clip-path="url(#sil)">
     <rect width="${W}" height="${H}" fill="#181818"/>
-    ${placeEmblem(idea, 1012, 930, 0.5)}
+    ${back ? placeLockup(topsLockup(idea), 1000, 620, 0.19) : placeEmblem(idea, 1012, 930, 0.5)}
   </g>
   ${shadingPass(sil, { folds, grain: 'weave', grainOp: 0.07 })}
   <g clip-path="url(#sil)">
@@ -277,7 +300,7 @@ export function tee(idea) {
     ${stitch('M594,1898 Q795,1905 1000,1906 Q1205,1905 1406,1898')}
     ${stitch('M594,1908 Q795,1915 1000,1916 Q1205,1915 1406,1908', { op: 0.7 })}
   </g>
-  ${collar}`;
+  ${back ? backNeckBand({ cy: 602, rx: 168, ry: 80, x0: 855, y0: 562, band: 30, rib: true }) : collar}`;
   return frame(inner, sil, `<clipPath id="ribclip"><path d="${ribPath}" clip-rule="evenodd"/></clipPath>`);
 }
 
@@ -300,12 +323,13 @@ const SH_HALF = {
 const SH_SIL = symOutline(SH_HALF);
 const SH_WB = symOutline({ start: [1000, 652], segs: [['Q', 760, 654, 526, 642], ['C', 524, 700, 524, 760, 526, 806], ['Q', 760, 814, 1000, 814]] });
 
-export function shorts(idea) {
+export function shorts(idea, view = 'front') {
   const sil = SH_SIL;
+  const back = view === 'back';
   const unit = 17;
-  const pivot = [524, 1774], pTop = 1170, legH = pivot[1] - pTop, back = 220;
+  const pivot = [524, 1774], pTop = 1170, legH = pivot[1] - pTop, lead = 220;
   const ang = (Math.atan2(1850 - 1804, 946 - 524) * 180) / Math.PI;
-  const pat = patternPath({ width: 900, height: legH, unit, cx: back + 440 - 5 * unit, vStretch: legH / (31 * unit) });
+  const pat = patternPath({ width: 900, height: legH, unit, cx: lead + 440 - 5 * unit, vStretch: legH / (31 * unit) });
   const legL = 'M1000,812 L526,812 C500,1100 444,1440 416,1672 C410,1738 444,1790 524,1804 Q740,1824 946,1850 C962,1700 986,1520 1000,1432 Z';
 
   // waistband: gathered side sections, flat front panel
@@ -324,7 +348,7 @@ export function shorts(idea) {
   }).join('');
 
   const folds = [
-    gathers(540, 820, 1), gathers(1180, 1460, 5),
+    back ? gathers(540, 1460, 2) : gathers(540, 820, 1) + gathers(1180, 1460, 5),
     glow(700, 1430, 160, 380, 0.06, 70, 6), glow(1300, 1430, 160, 380, 0.06, 70, -6),
     glow(1000, 990, 380, 120, 0.03, 70),
     fold('M1000,830 L1000,1420', { color: '#000', op: 0.22, w: 50, blur: 26 }),
@@ -332,7 +356,8 @@ export function shorts(idea) {
     both(crease, 'M770,1380 C786,1500 792,1640 784,1780', { w: 16, dx: 8, dy: 0, dark: 0.4 }),
     both(crease, 'M562,1160 C594,1360 586,1560 552,1700', { w: 12, dx: 9, dy: 0, dark: 0.3, light: 0.06 }),
     both(crease, 'M640,900 C760,925 880,922 960,895', { w: 16, dark: 0.3, light: 0.05, blur: 10 }),
-    crease('M1160,822 L1160,1262 C1160,1326 1110,1360 1006,1362', { w: 8, dark: 0.4, light: 0.07, dx: -7, dy: 0, blur: 3 }),
+    back ? both(crease, 'M1000,1300 C940,1250 880,1230 820,1236', { w: 14, dark: 0.35, light: 0.05, blur: 10 })
+         : crease('M1160,822 L1160,1262 C1160,1326 1110,1360 1006,1362', { w: 8, dark: 0.4, light: 0.07, dx: -7, dy: 0, blur: 3 }),
   ].join('');
 
   // leg-opening edge (outer leg below the slit point, curved cut, hem, inseam)
@@ -343,21 +368,21 @@ export function shorts(idea) {
   const inner = `
   <g clip-path="url(#sil)">
     <rect width="${W}" height="${H}" fill="${FABRIC}"/>
-    <g clip-path="url(#legL)"><g transform="translate(${pivot[0] - back} ${pivot[1] - legH}) rotate(${f(ang)} ${back} ${legH})">
+    <g clip-path="url(#legL)"><g transform="translate(${pivot[0] - lead} ${pivot[1] - legH}) rotate(${f(ang)} ${lead} ${legH})">
       <path d="${pat}" fill="none" stroke="${idea.pattern}" stroke-width="${f(unit * 0.3)}" mask="url(#sfade)"/></g></g>
-    <g clip-path="url(#legR)"><g transform="translate(${W - pivot[0] + back} ${pivot[1] - legH}) scale(-1 1) rotate(${f(ang)} ${back} ${legH})">
+    <g clip-path="url(#legR)"><g transform="translate(${W - pivot[0] + lead} ${pivot[1] - legH}) scale(-1 1) rotate(${f(ang)} ${lead} ${legH})">
       <path d="${pat}" fill="none" stroke="${idea.pattern}" stroke-width="${f(unit * 0.3)}" mask="url(#sfade)"/></g></g>
     <!-- solid binding strip around each leg opening -->
     <path d="${edge}" fill="none" stroke="${FABRIC}" stroke-width="50"/><path d="${mirrorD(edge)}" fill="none" stroke="${FABRIC}" stroke-width="50"/>
-    ${placeEmblem(idea, 1012, 1088, 0.72)}
+    ${back ? placeLockup(shortsLockup(idea, 500), 1000, 884, 1) : placeEmblem(idea, 1012, 1088, 0.72)}
     <g clip-path="url(#wb)">
       <path d="${SH_WB}" fill="#161616"/>
-      ${ruche(532, 830, 3)}${ruche(1170, 1470, 9)}
+      ${back ? ruche(532, 1470, 4) : `${ruche(532, 830, 3)}${ruche(1170, 1470, 9)}
       <path d="${panel}" fill="#181818"/>
       <path d="M836,640 L836,816 M1164,640 L1164,816" stroke="#050505" stroke-width="4"/>
       <path d="M836,640 L836,816" stroke="#000" stroke-width="14" opacity="0.5" filter="url(#b6)" transform="translate(-6 0)"/>
       <path d="M1164,640 L1164,816" stroke="#000" stroke-width="14" opacity="0.5" filter="url(#b6)" transform="translate(6 0)"/>
-      ${stitch('M846,660 L846,800 M1154,660 L1154,800', { color: '#333' })}
+      ${stitch('M846,660 L846,800 M1154,660 L1154,800', { color: '#333' })}`}
       <path d="M526,808 Q760,816 1000,816 Q1240,816 1474,808" fill="none" stroke="#000" stroke-width="18" opacity="0.5" filter="url(#b6)"/>
     </g>
   </g>
@@ -368,7 +393,7 @@ export function shorts(idea) {
     ${stitch('M528,796 Q760,804 1000,804 Q1240,804 1472,796', { color: '#363636' })}
     <path d="M1000,818 L1000,1432" stroke="#000" stroke-width="3.5" opacity="0.7"/>
     ${stitch('M990,822 L990,1420', { color: '#2e2e2e', op: 0.7 })}
-    ${stitch('M1150,818 L1150,1266 C1150,1320 1104,1348 1004,1350', { color: '#3a3a3a' })}
+    ${back ? stitch('M1010,822 L1010,1420', { color: '#2e2e2e', op: 0.7 }) : stitch('M1150,818 L1150,1266 C1150,1320 1104,1348 1004,1350', { color: '#3a3a3a' })}
     <path d="${bind}" fill="none" stroke="#070707" stroke-width="3.5"/><path d="${mirrorD(bind)}" fill="none" stroke="#070707" stroke-width="3.5"/>
     <path d="${bind}" transform="translate(2 -3)" fill="none" stroke="#fff" stroke-width="3" opacity="0.06"/><path d="${mirrorD(bind)}" transform="translate(-2 -3)" fill="none" stroke="#fff" stroke-width="3" opacity="0.06"/>
     ${both(stitch, 'M452,1626 C446,1702 476,1748 536,1762 Q744,1782 914,1806 C930,1680 952,1526 970,1462', { color: '#353535' })}
@@ -383,4 +408,8 @@ export const PRODUCTS = {
   tee: { key: 'tee', label: 'Training Tee', fn: tee },
   rashguard: { key: 'rashguard', label: 'Rashguard', fn: rashguard },
   shorts: { key: 'shorts', label: 'Mid-Length MMA Shorts', fn: shorts },
+  // backs: final colourways only (B.1 all-red was dropped)
+  'tee-back': { key: 'tee-back', label: 'Training Tee — Back', fn: (i) => tee(i, 'back'), ideas: ['A', 'B2'] },
+  'rashguard-back': { key: 'rashguard-back', label: 'Rashguard — Back', fn: (i) => rashguard(i, 'back'), ideas: ['A', 'B2'] },
+  'shorts-back': { key: 'shorts-back', label: 'Mid-Length MMA Shorts — Back', fn: (i) => shorts(i, 'back'), ideas: ['A', 'B2'] },
 };

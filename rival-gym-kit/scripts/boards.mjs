@@ -3,13 +3,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from './pw.mjs';
-import { emblem, IDEAS, RED } from './emblem.mjs';
+import { emblem, topsLockup, shortsLockup, IDEAS, RED } from './emblem.mjs';
 import { patternPath } from './pattern.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CUT = path.join(ROOT, 'out/products/cutouts_cropped');
 const OUT = path.join(ROOT, 'out/deck');
 fs.mkdirSync(OUT, { recursive: true });
+for (const f of fs.readdirSync(OUT)) fs.unlinkSync(path.join(OUT, f)); // no stale slides
 const META = JSON.parse(fs.readFileSync(path.join(CUT, 'meta.json'), 'utf8'));
 const MAX_H = Math.max(...Object.values(META).map((m) => m.h));
 const MAX_W = (key) => Math.max(...Object.entries(META).filter(([n]) => n.startsWith(key)).map(([, m]) => m.w));
@@ -18,12 +19,19 @@ const cut = (name) => b64(path.join(CUT, `${name}.png`));
 const CC_LOGO = b64(path.join(ROOT, '../cagecraft-sale/public/img/logo-white.png'));
 const RIVAL_SRC = b64(path.join(ROOT, 'assets/rival-logo-source.png'));
 
-const PRODUCTS = [
-  { key: 'tee', label: 'Training Tee', note: 'Chest emblem only — clean hem' },
-  { key: 'rashguard', label: 'Rashguard', note: 'Chest emblem + hem pattern' },
-  { key: 'shorts', label: 'Mid-Length MMA Shorts', note: 'Non-velcro · curved cut · 7.5" inseam' },
-];
-const IDEA_LIST = [IDEAS.A, IDEAS.B1, IDEAS.B2];
+const PRODUCTS = {
+  Front: [
+    { key: 'tee', label: 'Training Tee', note: 'Chest emblem only — clean hem' },
+    { key: 'rashguard', label: 'Rashguard', note: 'Chest emblem + hem pattern' },
+    { key: 'shorts', label: 'Mid-Length MMA Shorts', note: 'Non-velcro · curved cut · 7.5" inseam' },
+  ],
+  Back: [
+    { key: 'tee-back', label: 'Training Tee', note: 'Rival oval × CAGECRAFT under the neckline' },
+    { key: 'rashguard-back', label: 'Rashguard', note: 'Rival oval × CAGECRAFT + hem pattern' },
+    { key: 'shorts-back', label: 'Mid-Length MMA Shorts', note: 'CAGECRAFT × RIVAL GYM under the waistband' },
+  ],
+};
+const IDEA_LIST = [IDEAS.A, IDEAS.B2]; // final colourways (all-red B.1 dropped)
 const SPEC = {
   A: [['Oval', 'White'], ['RIVAL', 'Red'], ['GYM', 'White'], ['Hem pattern', 'Red']],
   B1: [['Oval', 'Red'], ['RIVAL', 'Red'], ['GYM', 'Red'], ['Hem pattern', 'Red']],
@@ -91,15 +99,15 @@ function cover() {
     <div style="position:absolute;left:0;right:0;top:210px;display:flex;justify-content:center">${emblemSVG(IDEAS.A, 980)}</div>
     <div style="position:absolute;left:0;right:0;top:668px;text-align:center">
       <div style="font:900 44px/1 'Inter Display';letter-spacing:.2em;text-transform:uppercase">Custom <span class="red">Fight Kit</span></div>
-      <div class="sub" style="margin-top:20px;font-size:22px">Training Tee · Rashguard · Mid-Length MMA Shorts — front designs in three colourways</div>
+      <div class="sub" style="margin-top:20px;font-size:22px">Training Tee · Rashguard · Mid-Length MMA Shorts — front &amp; back in two colourways</div>
     </div>
     <div class="foot"><div class="pg" style="color:#777">BUILT ON THE CAGECRAFT LEGACY FIGHT KIT</div><div class="pg" style="color:#777">NOVEMBER 2026</div></div>
   </div>`;
 }
 
 function emblemSlide(n) {
-  const tile = (idea) => `<div style="width:553px">
-      <div style="background:#121212;border-radius:18px;height:310px;display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px rgba(0,0,0,.18)">${emblemSVG(idea, 460)}</div>
+  const tile = (idea) => `<div style="width:853px">
+      <div style="background:#121212;border-radius:18px;height:310px;display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px rgba(0,0,0,.18)">${emblemSVG(idea, 520)}</div>
       <div class="cap" style="margin-top:22px;text-align:left">${idea.label}</div>
       <div class="capn" style="text-align:left">${idea.sub}</div></div>`;
   return `<div class="slide light">
@@ -120,7 +128,23 @@ function emblemSlide(n) {
   </div>`;
 }
 
-function ideaSlide(idea, n) {
+function backLockupSlide(n) {
+  const tops = (idea) => { const l = topsLockup(idea); return `<svg viewBox="-600 -240 1200 700" height="232" style="display:block">${l.svg}</svg>`; };
+  const shorts = (idea) => { const l = shortsLockup(idea, 1000); return `<svg viewBox="-560 -40 1120 260" width="560" style="display:block">${l.svg}</svg>`; };
+  const tile = (inner, label) => `<div style="position:relative;background:#121212;border-radius:18px;height:300px;display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px rgba(0,0,0,.18)">
+      <div class="kicker" style="position:absolute;left:24px;top:22px;font-size:11px;color:#7a7a7a">${label}</div>${inner}</div>`;
+  const col = (idea) => `<div style="width:853px;display:flex;flex-direction:column;gap:22px">
+      <div><span class="cap" style="font-size:22px">${idea.label}</span><span class="capn" style="margin-left:14px">${idea.sub}</span></div>
+      ${tile(tops(idea), 'Tee &amp; rashguard · back neck')}
+      ${tile(shorts(idea), 'Shorts · below the back waistband')}</div>`;
+  return `<div class="slide light">
+    ${header('The back', 'Co-branded <span class="red">backs</span>', 'Your oval leads on the tops; our Legacy back-wordmark slot on the shorts — each signed off with the other.')}
+    <div style="position:absolute;left:84px;right:84px;top:262px;display:flex;justify-content:space-between">${IDEA_LIST.map(col).join('')}</div>
+    ${footer(n)}
+  </div>`;
+}
+
+function ideaSlide(idea, n, view, idx) {
   const k = Math.min(0.42, 640 / MAX_H); // px per canvas px, shared so garments keep real relative scale
   const cell = (p) => {
     const m = META[`${p.key}_${idea.key}`];
@@ -128,33 +152,41 @@ function ideaSlide(idea, n) {
       <div style="height:${Math.round(MAX_H * k)}px;display:flex;align-items:center"><img src="${cut(`${p.key}_${idea.key}`)}" style="width:${Math.round(m.w * k)}px;height:${Math.round(m.h * k)}px;display:block"></div>
       <div class="cap" style="margin-top:20px">${p.label}</div><div class="capn">${p.note}</div></div>`;
   };
+  const sub = idea.sub + (idea.key === 'A' ? ' — your logo colours, inverted for a black kit' : ' — one-colour, high-contrast');
   return `<div class="slide light">
-    ${header(`Concept ${n - 2} of 3 · Front`, `${idea.label.replace('Idea ', 'Idea <span class="red">')}</span>`, idea.sub + (idea.key === 'A' ? ' — your logo colours, inverted for a black kit' : idea.key === 'B1' ? ' — one-colour, high-intensity' : ' — one-colour, high-contrast'))}
-    <div style="position:absolute;left:60px;right:60px;top:250px;display:flex;justify-content:space-around;align-items:flex-start">${PRODUCTS.map(cell).join('')}</div>
+    ${header(`Concept ${idx} of 2 · ${view}`, `${idea.label.replace('Idea ', 'Idea <span class="red">')}</span><span style="color:#8f8f8d"> · ${view}</span>`, sub)}
+    <div style="position:absolute;left:60px;right:60px;top:250px;display:flex;justify-content:space-around;align-items:flex-start">${PRODUCTS[view].map(cell).join('')}</div>
     ${footer(n, specChips(idea.key))}
   </div>`;
 }
 
 function compareSlide(n) {
-  const k = Math.min(0.235, 400 / MAX_H, 540 / (MAX_W('tee') + MAX_W('rashguard')));
+  const widths = (keys) => keys.reduce((a, key) => a + MAX_W(key + '_'), 0);
+  const k = Math.min(0.215, 300 / MAX_H, (850 - 36) / Math.max(widths(['tee', 'rashguard', 'shorts']), widths(['tee-back', 'rashguard-back', 'shorts-back'])));
   const img = (name) => {
     const m = META[name];
     return `<img src="${cut(name)}" style="width:${Math.round(m.w * k)}px;height:${Math.round(m.h * k)}px;display:block">`;
   };
-  const col = (idea) => `<div style="width:560px;display:flex;flex-direction:column;align-items:center">
+  const row = (idea, view) => `<div style="display:flex;align-items:center;justify-content:center;gap:18px;height:${Math.round(MAX_H * k)}px">${PRODUCTS[view].map((p) => img(`${p.key}_${idea.key}`)).join('')}</div>`;
+  const col = (idea) => `<div style="width:853px;display:flex;flex-direction:column;align-items:center">
       <div class="cap" style="font-size:24px">${idea.label}</div><div class="capn" style="margin-top:8px">${idea.sub}</div>
-      <div style="display:flex;align-items:center;gap:18px;margin-top:26px;height:${Math.round(MAX_H * k)}px">${img(`tee_${idea.key}`)}${img(`rashguard_${idea.key}`)}</div>
-      <div style="margin-top:14px">${img(`shorts_${idea.key}`)}</div>
+      <div class="kicker" style="font-size:11px;margin-top:22px;align-self:flex-start">Front</div>${row(idea, 'Front')}
+      <div class="kicker" style="font-size:11px;margin-top:10px;align-self:flex-start">Back</div>${row(idea, 'Back')}
     </div>`;
   return `<div class="slide light">
-    ${header('Side by side', 'Pick your <span class="red">direction</span>', '')}
-    <div style="position:absolute;left:84px;right:84px;top:238px;display:flex;justify-content:space-between">${IDEA_LIST.map(col).join('')}</div>
-    ${footer(n, '<div class="sub" style="font-size:17px">Next: once a direction is chosen we\'ll build the back designs and sleeve details to match.</div>')}
+    ${header('Side by side', 'Choose your <span class="red">colourway</span>', '')}
+    <div style="position:absolute;left:84px;right:84px;top:212px;display:flex;justify-content:space-between">${IDEA_LIST.map(col).join('')}</div>
+    ${footer(n, '<div class="sub" style="font-size:17px">Next: confirm A or B.2, plus sizes and quantities per item, and we\'ll send through the invoice.</div>')}
   </div>`;
 }
 
-const slides = [cover(), emblemSlide(2), ideaSlide(IDEAS.A, 3), ideaSlide(IDEAS.B1, 4), ideaSlide(IDEAS.B2, 5), compareSlide(6)];
-const names = ['01_cover', '02_the-oval', '03_idea-A', '04_idea-B1', '05_idea-B2', '06_side-by-side'];
+const slides = [
+  cover(), emblemSlide(2), backLockupSlide(3),
+  ideaSlide(IDEAS.A, 4, 'Front', 1), ideaSlide(IDEAS.A, 5, 'Back', 1),
+  ideaSlide(IDEAS.B2, 6, 'Front', 2), ideaSlide(IDEAS.B2, 7, 'Back', 2),
+  compareSlide(8),
+];
+const names = ['01_cover', '02_the-oval', '03_co-branded-backs', '04_idea-A-front', '05_idea-A-back', '06_idea-B2-front', '07_idea-B2-back', '08_side-by-side'];
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 2 });
@@ -181,7 +213,7 @@ const pdfHtml = `<!doctype html><html><head><style>@page{size:1920px 1080px;marg
   .join('')}</body></html>`;
 const pdfPage = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
 await pdfPage.setContent(pdfHtml, { waitUntil: 'load' });
-await pdfPage.pdf({ path: path.join(OUT, 'Rival-Gym-Fight-Kit-Concepts.pdf'), width: '1920px', height: '1080px', printBackground: true });
+await pdfPage.pdf({ path: path.join(OUT, 'Rival-Gym-Fight-Kit-Designs.pdf'), width: '1920px', height: '1080px', printBackground: true });
 for (const j of jpgs) fs.unlinkSync(j);
 await browser.close();
 console.log('pdf done');
