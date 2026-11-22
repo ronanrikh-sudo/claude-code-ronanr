@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Zane Basi VK8 posters</title>
+<!-- One template, four outputs: ?poster=fightweek|winner & format=story|post.
+     Look: CAGECRAFT "Cube Noir" (see cagecraft-sale/src/theme.ts): black world, white type,
+     one teal accent, extended heavy italic display, tracked Inter Tight labels. -->
+<style>
+@font-face { font-family: "Archivo"; src: url("assets/fonts/archivo-latin-wdth-italic.woff2") format("woff2");
+  font-style: italic; font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: "Archivo"; src: url("assets/fonts/archivo-latin-wdth-normal.woff2") format("woff2");
+  font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: "Inter Tight"; src: url("assets/fonts/inter-tight-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900; }
+
+:root { --bg:#050506; --teal:#16B3B7; --tealSoft:#8EDFDF; --text:#fff; --muted:#A7ABB3; --line:rgba(255,255,255,.16); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); }
+#poster { position: relative; overflow: hidden; background: var(--bg); color: var(--text); width: 1080px; height: var(--h); }
+.story { --h: 1920px; } .post { --h: 1350px; }
+
+.photo { position: absolute; background-repeat: no-repeat; background-size: 100% 100%; }
+.layer { position: absolute; inset: 0; pointer-events: none; }
+.grain { opacity: .07; mix-blend-mode: overlay; }
+.frame { border: 2px solid rgba(255,255,255,.10); inset: 28px; }
+
+.display { font-family: "Archivo", sans-serif; font-weight: 900; font-stretch: 125%; font-style: italic;
+  text-transform: uppercase; letter-spacing: -.01em; line-height: .9; }
+.label { font-family: "Inter Tight", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .22em; }
+.teal { color: var(--teal); }
+.outline { color: transparent; -webkit-text-stroke: 2.5px var(--teal); }
+
+.top { position: absolute; left: 72px; right: 72px; display: flex; align-items: center; justify-content: space-between; }
+.top img { display: block; height: auto; }
+.block { position: absolute; left: 72px; right: 72px; }
+.tick { display: inline-block; width: 64px; height: 6px; background: var(--teal); transform: skewX(-18deg); margin-right: 22px; vertical-align: middle; }
+.row { display: flex; align-items: flex-end; justify-content: space-between; border-top: 2px solid var(--line); }
+.row .k { color: var(--muted); }
+.tag { color: var(--muted); letter-spacing: .04em; text-transform: none; font-weight: 500; }
+.credit { position: absolute; color: rgba(255,255,255,.42); font-size: 15px; letter-spacing: .18em; }
+
+/* ---------- FIGHT WEEK ---------- */
+.fightweek .photo { background-image: url("assets/DSC02316.jpg"); filter: grayscale(.82) contrast(1.16) brightness(1.06); }
+.fightweek.story .photo { width: 1920px; height: 1280px; left: -334px; top: 250px; }
+.fightweek.post  .photo { width: 1560px; height: 1040px; left: -170px; top: 20px; }
+.fightweek .shade { background:
+  radial-gradient(ellipse 70% 38% at 50% 34%, rgba(22,179,183,.16), transparent 70%),
+  linear-gradient(180deg, var(--bg) 0%, rgba(5,5,6,.0) 22%, rgba(5,5,6,0) 46%, rgba(5,5,6,.82) 63%, var(--bg) 76%); }
+.fightweek.post .shade { background:
+  radial-gradient(ellipse 70% 40% at 50% 30%, rgba(22,179,183,.16), transparent 70%),
+  linear-gradient(180deg, rgba(5,5,6,.75) 0%, rgba(5,5,6,0) 16%, rgba(5,5,6,0) 40%, rgba(5,5,6,.85) 58%, var(--bg) 72%); }
+
+.story .top { top: 262px; } .post .top { top: 64px; }
+.story .top img { width: 330px; } .post .top img { width: 280px; }
+.story .top .label { font-size: 21px; } .post .top .label { font-size: 19px; }
+
+.fightweek.story .block { top: 1010px; }
+.fightweek.post  .block { top: 690px; }
+.fightweek .name { font-size: 64px; }
+.fightweek .head { font-size: 214px; margin: 14px 0 0 -8px; }
+.fightweek.post .name { font-size: 54px; }
+.fightweek.post .head { font-size: 178px; }
+.fightweek .row { margin-top: 36px; padding-top: 26px; }
+.fightweek.post .row { margin-top: 26px; padding-top: 20px; }
+.row .v { font-size: 46px; } .row .k { font-size: 19px; margin-bottom: 10px; }
+.post .row .v { font-size: 40px; } .post .row .k { font-size: 17px; }
+.row .r { text-align: right; }
+.fightweek .tag { font-size: 30px; margin-top: 34px; }
+.fightweek.post .tag { font-size: 26px; margin-top: 22px; }
+
+/* ---------- WINNER ---------- */
+.winner .photo { background-image: url("assets/DSC02622.jpg"); filter: grayscale(.72) contrast(1.14) brightness(1.08); }
+.winner.story .photo { width: 2400px; height: 1600px; left: -984px; top: 300px; }
+.winner.post  .photo { width: 2250px; height: 1500px; left: -805px; top: -40px; }
+.winner .shade { background:
+  radial-gradient(ellipse 60% 30% at 55% 32%, rgba(22,179,183,.14), transparent 70%),
+  linear-gradient(180deg, var(--bg) 0%, var(--bg) 15%, rgba(5,5,6,0) 27%, rgba(5,5,6,0) 46%, rgba(5,5,6,.80) 62%, var(--bg) 80%); }
+.winner.post .shade { background:
+  radial-gradient(ellipse 60% 36% at 60% 22%, rgba(22,179,183,.14), transparent 70%),
+  linear-gradient(180deg, rgba(5,5,6,.72) 0%, rgba(5,5,6,0) 18%, rgba(5,5,6,0) 40%, rgba(5,5,6,.82) 58%, var(--bg) 76%); }
+.winner.story .block { top: 1040px; }
+.winner.post  .block { top: 760px; }
+.winner .head { font-size: 172px; margin-left: -8px; white-space: nowrap; }
+.winner .echo { margin-bottom: -68px; }
+.winner .echo.e1 { opacity: .22; } .winner .echo.e2 { opacity: .55; }
+.winner.post .echo.e1 { display: none; }
+.winner .name { font-size: 92px; margin-top: 18px; }
+.winner.post .name { font-size: 78px; margin-top: 12px; }
+.winner .row { margin-top: 34px; padding-top: 26px; }
+.winner.post .row { margin-top: 22px; padding-top: 20px; }
+.winner .tag { font-size: 30px; margin-top: 34px; }
+.winner.post .tag { font-size: 26px; margin-top: 20px; }
+
+.story .credit { left: 72px; top: 1740px; } .post .credit { left: 72px; bottom: 44px; font-size: 13px; }
+.story .url { right: 72px; left: auto; } .post .url { right: 72px; left: auto; }
+.url { color: rgba(255,255,255,.7); }
+</style>
+</head>
+<body>
+<div id="poster">
+  <div class="photo"></div>
+  <div class="layer shade"></div>
+  <svg class="layer grain" width="100%" height="100%"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <div class="layer frame"></div>
+
+  <div class="top">
+    <img src="assets/logo-white.png" alt="CAGECRAFT">
+    <div class="label teal" id="toplabel"></div>
+  </div>
+
+  <div class="block" id="block"></div>
+
+  <div class="credit label">Photo: Atta Pix</div>
+  <div class="credit label url">cagecraftco.com</div>
+</div>
+
+<script>
+const q = new URLSearchParams(location.search);
+const poster = q.get("poster") || "fightweek";
+const format = q.get("format") || "story";
+const el = document.getElementById("poster");
+el.classList.add(poster, format);
+
+const row = `
+  <div class="row">
+    <div><div class="label k">The event</div><div class="display v">Vital Kombat 8</div></div>
+    <div class="r"><div class="label k">Fight night</div><div class="display v teal">Sat 28 Nov</div></div>
+  </div>`;
+
+if (poster === "fightweek") {
+  document.getElementById("toplabel").textContent = "Athlete";
+  document.getElementById("block").innerHTML = `
+    <div class="display name"><span class="tick"></span>Zane Basi</div>
+    <div class="display head">Fight<br><span class="teal">Week</span></div>
+    ${row}
+    <div class="label tag">Camp is done. The cage is waiting.</div>`;
+} else {
+  document.getElementById("toplabel").textContent = "Athlete";
+  document.getElementById("block").innerHTML = `
+    <div class="display head outline echo e1">Winner</div>
+    <div class="display head outline echo e2">Winner</div>
+    <div class="display head">Winner</div>
+    <div class="display name"><span class="tick"></span><span class="teal">Zane Basi</span></div>
+    <div class="row">
+      <div><div class="label k">The event</div><div class="display v">Vital Kombat 8</div></div>
+      <div class="r"><div class="label k">Fight night</div><div class="display v">28 Nov 2026</div></div>
+    </div>
+    <div class="label tag">Walked in ready. Walked out with his hand raised.</div>`;
+}
+</script>
+</body>
+</html>
