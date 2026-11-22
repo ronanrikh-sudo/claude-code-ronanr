@@ -13,7 +13,7 @@ The working pipeline that produced it is bundled in `scripts/` (Node + Playwrigh
 
 | File | Read it when |
 | --- | --- |
-| `references/design-direction.md` | Before designing anything: house style, Legacy oval + pattern specs, logo integration, garment templates and proportions, rendering lessons, what clients pushed back on |
+| `references/design-direction.md` | Before designing anything: house style, Legacy oval + pattern specs, logo integration, garment templates and proportions, rendering lessons, what clients pushed back on, and §10 event / promotion fight shorts (WAR FC: textured grounds, waistband logo rectangle, sashes) |
 | `references/deck-format.md` | Before building the presentation: slide list, layout, typography, file outputs, delivery message |
 | `references/invoicing.md` | When the client approves and the user wants to invoice, quote, or set up an in-kind sponsorship |
 | `scripts/README.md` | When scaffolding a new client project from the bundled pipeline |

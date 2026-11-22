@@ -1,4 +1,4 @@
-# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 1)
+# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 2)
 
 Pitch to WAR Fighting Championships for official event fight shorts, built in the
 `cagecraft-wholesale-process` format (see `.claude/skills/cagecraft-wholesale-process`).
@@ -10,22 +10,24 @@ Pitch to WAR Fighting Championships for official event fight shorts, built in th
 - Inspiration: professional promotion uniforms (Eternal MMA, Venum UFC); logos integrated, on-brand pattern
 - Commercial: in-kind sponsorship (CAGECRAFT on posters, venue access, social features)
 
-## Design system
-- **Two corner colourways**: Black Corner (black base, red panels) and Red Corner (red base, black panels), so opponents are instantly distinguishable
-- **Tonal crown monogram** background (geometric crown from the logo plus its spear bars)
-- **Brush-streak side panels** echoing the logo's distressed speed streaks, with quiet zones around every logo
-- **Logo slots**: WAR FC primary on the front leg; AX Carpentry on the opposite front leg and the back of the leg; CAGECRAFT on the waistband (front and back; repeated band on compression); vertical WAR on both side panels; full WAR FC crest with PROVE YOU BELONG on the back; crown on the waistband
+## Round 2 (current)
+Round 1 (crown monogram, corner colourways, lace tie) was rejected on style. The user's references were Eternal MMA, Venum UFC Fight Night / Adrenaline and Venum UFC custom fighter shorts. Changes:
+- **No external drawstring.** A raised **waistband logo rectangle** at centre front carries the **CAGECRAFT emblem** (traced from the store's back-neck print: `assets/cagecraft_emblem.json`).
+- **Concept A, Smoke & Stone**: stone-flake black with red and white smoke rising from the hems and side splits; Greek-key waistband band.
+- **Concept B, War Streaks**: tonal claw-streak black with white and red dry-brush sweeps (from the WAR FC logo's streaks); PROVE YOU BELONG sash with red keylines; twin red waistband stripes.
+- Placement: WAR FC upper front leg; AX Carpentry lower front leg and back of leg; CAGECRAFT emblem on the waistband panel and wordmark on the back waistband; full WAR FC crest across the back. Textures are cleared behind the logos.
 
 ## Outputs
-- `out/deck/WAR-FC-Fight-Shorts-Proposal.pdf`: 9 slides (cover, design system, logo placement map, 4 product boards, full set, partnership and next steps)
-- `out/products/{fight-short,compression}_{black,red}_{front,back}.png`: 2000×2500 mockups
+- `out/deck/WAR-FC-Fight-Shorts-Proposal.pdf`: 10 slides (cover, two directions, logo placement, 4 product boards, details, full set, partnership)
+- `out/products/{fight-short,compression}_{A,B}_{front,back}.png`: 2000×2500 mockups
 
 ## Build
 ```bash
 cd war-fc-kit
 node scripts/measure_logos.mjs
+python3 scripts/textures.py assets/texture_spec.json
 node scripts/build.mjs out/products
 python3 scripts/crop_cutouts.py
 node scripts/boards.mjs
 ```
-Scripts: `brand.mjs` (logo groups, recolouring, crown motif), `kit.mjs` (shared rendering kit from the Rival pipeline), `shorts.mjs` (both cuts, colourways, pattern, panels, logo slots), `boards.mjs` (deck).
+Scripts: `brand.mjs` (logo groups, recolouring, CAGECRAFT emblem), `kit.mjs` (shared rendering kit from the Rival pipeline), `textures.py` (smoke and stone), `shorts.mjs` (both cuts, both concepts, waistband panel, sash, streaks, logo slots), `boards.mjs` (deck), `trace_emblem.py` (emblem vectorising).

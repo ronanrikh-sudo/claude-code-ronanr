@@ -80,3 +80,9 @@ export const CROWN_D = [
 export const CROWN_BOX = [28, 0, 912, 452];
 // spear bar from the logo's FIGHTING CHAMPIONSHIPS flanks: long tapered point
 export const SPEAR_D = 'M0,0 L220,-9 L232,0 L220,9 Z';
+
+// --- CAGECRAFT emblem (oval, CAGE over CRAFT, sparkles), traced from the store's back-neck print --
+const EMB = JSON.parse(fs.readFileSync(A('cagecraft_emblem.json'), 'utf8')).EMBLEM;
+export function emblemLogo(fill = WHITE) {
+  return { svg: `<path d="${EMB.d}" fill="${fill}" fill-rule="evenodd"/>`, box: EMB.bbox };
+}

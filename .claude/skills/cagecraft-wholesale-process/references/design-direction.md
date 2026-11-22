@@ -93,3 +93,13 @@ Order of layers inside the silhouette clip: base fabric → panel tones/mesh →
 ## 9. What the client changed on Rival (expect similar asks)
 Round 1 (fronts): remove the stars; rashguard looked stretched; remove the rule before GYM and move GYM a little left; shorts mockup looked bad → rebuild on the supplied template.
 Round 2: backs = small client oval under the neckline × CAGECRAFT on tops; CAGECRAFT wordmark below the back waistband × RIVAL GYM on shorts; final colourways A and B.2 only (red dropped). The client was "pretty happy" → invoice next.
+
+## 10. Event / promotion fight shorts (learned on WAR FC)
+Round 1 for WAR FC used a flat tonal monogram, side panels and a lace tie. The user rejected the style and sent references: Eternal MMA (Engage), Venum UFC Fight Night/Adrenaline, and Venum UFC custom fighter shorts. For promotion and event kits, the bar is **rich, full-bleed artwork**, not a pattern plus panels:
+- **Texture-led grounds**: stone-flake black, billowing **red and white smoke** rising from the hems and side splits (Eternal), **dry-brush / claw streaks** (Venum), illustrated motifs. Generate them procedurally: `scripts/textures.py` (domain-warped fractal noise smoke, stone flakes; numpy only) and the `brush()` dry-brush helper in the WAR FC `shorts.mjs`. Keep smoke translucent and soft-edged. Hard thresholds read as molten liquid.
+- **Logos on clean ground**: clear the texture behind every logo (`clear` ellipses in the smoke spec), or place a white logo on red smoke. Never put a white logo on white smoke.
+- **Waistband**: **no external drawstring.** Use a raised **waistband logo rectangle** at centre front carrying the **CAGECRAFT emblem** (`assets/cagecraft_emblem.json`, traced from the store's back-neck print; production should use the original vector). Add a band either side (Greek-key band, or twin red stripes). On the back waistband, centre the CAGECRAFT wordmark.
+- **Sash**: a diagonal band with keylines carrying a tagline or fighter name (Venum). Size the text to the **visible** length of the band on each cut, or it runs off the leg.
+- **Placement map** (UFC convention): promotion logo upper front leg, presenting sponsor lower front leg (and the back of the leg), kit-maker emblem on the waistband panel, promotion crest across the back below the waistband.
+- Offer **two named directions** (e.g. Concept A Smoke & Stone, Concept B War Streaks) on every cut, front and back, plus a **details slide** of full-res crops (waistband panel, texture, sash).
+- Client logo packs on Google Drive often include an Illustrator SVG with named groups (crown / wordmark / tagline). Split and recolour those instead of tracing.

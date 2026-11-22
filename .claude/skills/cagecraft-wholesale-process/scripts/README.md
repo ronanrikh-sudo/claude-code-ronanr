@@ -42,3 +42,9 @@ node scripts/artwork.mjs
 7. Run the QA loop from `SKILL.md` after every render.
 
 `assets/rival-logo-source.png` and `assets/rival_paths.json` are kept as example data so the pipeline renders the Rival kit out of the box; replace them for a new client.
+
+
+## Added from WAR FC
+- `textures.py`: procedural smoke plumes and stone flakes as RGBA PNGs on the 2000×2500 canvas (spec JSON: plumes with source polylines, reach, ramp and clear ellipses). Embed them as `<image>` under the logos and the shading pass.
+- `trace_emblem.py`: traces a white-on-black photographed print (used for the CAGECRAFT emblem, `assets/cagecraft_emblem.json`).
+- The WAR FC project (`war-fc-kit/`) is the reference for event shorts: two cuts (fight short, compression), the waistband logo rectangle, the sash and dry-brush streaks.
