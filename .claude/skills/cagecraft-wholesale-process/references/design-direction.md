@@ -103,3 +103,13 @@ Round 1 for WAR FC used a flat tonal monogram, side panels and a lace tie. The u
 - **Placement map** (UFC convention): promotion logo upper front leg, presenting sponsor lower front leg (and the back of the leg), kit-maker emblem on the waistband panel, promotion crest across the back below the waistband.
 - Offer **two named directions** (e.g. Concept A Smoke & Stone, Concept B War Streaks) on every cut, front and back, plus a **details slide** of full-res crops (waistband panel, texture, sash).
 - Client logo packs on Google Drive often include an Illustrator SVG with named groups (crown / wordmark / tagline). Split and recolour those instead of tracing.
+
+### WAR FC round 3 feedback (apply by default on event shorts)
+- **Emblems must be perfectly level.** A logo traced from a product photo inherits the camera tilt. Level the image first (rotate by the angle measured from the letter baselines; WAR FC needed 8.1°), then clean the letters as straight italic glyphs and the ring as smooth curves (`trace_emblem.py`).
+- **Waistband logo panel is flat**, set inside the waistband height, like the Rival shorts. It does not protrude above or below the band. Use the CAGECRAFT **emblem** there, never the wordmark.
+- **Back waistband**: no boxed logo. Run the CAGECRAFT wordmark large and wide across the band.
+- **Waistband pattern must come from the client's brand** (WAR FC: crown centred with spear bars pointing out to each end, between red rules). Generic ornament (Greek key) reads off-brand.
+- **Sash lettering**: use a premium sport italic (Saira Black Italic, OFL, embedded as woff2), letter-spaced, flanked by brand spear bars. Measure the text width in the browser so the bars clear it, and keep the text inside a single panel, clear of flatlock seams.
+- **Corners**: once a direction is chosen, offer an **inverted opposite-corner** version (black ↔ red ground) rather than more concepts.
+- **Accents stay clean**: big white brush splashes looked out of place. Use a few slim tapered streaks that follow the flow, and stop every streak before it reaches a logo (`clearLen` against logo boxes).
+- **Front vs back**: the big promotion crest goes across the upper front, with the presenting sponsor on the lower leg opposite the sash. The back carries a matched crest + sponsor pair on the hips.

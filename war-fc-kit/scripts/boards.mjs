@@ -82,7 +82,7 @@ function cover() {
     <div style="position:absolute;left:0;right:0;top:230px;display:flex;justify-content:center">${svgOf(logo, 960)}</div>
     <div style="position:absolute;left:0;right:0;top:668px;text-align:center">
       <div style="font:900 44px/1 'Inter Display';letter-spacing:.2em;text-transform:uppercase">Official <span class="red">Fight Shorts</span></div>
-      <div class="sub" style="margin-top:20px;font-size:22px">Fight Short &amp; Compression Short — two design directions, front and back</div>
+      <div class="sub" style="margin-top:20px;font-size:22px">Fight Short &amp; Compression Short — Black Corner and Red Corner, front and back</div>
     </div>
     <div class="foot"><div class="pg" style="color:#777;display:flex;align-items:center;gap:14px">PRESENTING SPONSOR ${svgOf(axLogo('#9a9a98'), 44)}</div><div class="pg" style="color:#777">NOVEMBER 2026</div></div>
   </div>`;
@@ -94,11 +94,11 @@ function directionsSlide(n) {
     const nm = `fight-short_${c.key}_front`, m = META[nm];
     return `<div style="display:flex;flex-direction:column;align-items:center;width:820px">
       <img src="${cut(nm)}" style="width:${Math.round(m.w * k)}px;height:${Math.round(m.h * k)}px;display:block">
-      <div class="cap" style="margin-top:18px;font-size:22px">${c.label} · ${c.name}</div>
+      <div class="cap" style="margin-top:18px;font-size:22px">${c.label}</div>
       <div class="capn" style="max-width:640px">${c.sub}</div></div>`;
   };
   return `<div class="slide light">
-    ${header('Two directions', 'Pick your <span class="red">war paint</span>', 'Both built for the cage: no external drawstring, a raised waistband logo panel, and every logo on clean ground.')}
+    ${header('War Streaks', 'One design. <span class="red">Two corners.</span>', 'Brushed streaks from the WAR FC logo, inverted for the red corner so opponents are instantly distinguishable.')}
     <div style="position:absolute;left:84px;right:84px;top:262px;display:flex;justify-content:space-around">${Object.values(CONCEPTS).map(tile).join('')}</div>
     ${footer(n)}
   </div>`;
@@ -114,18 +114,18 @@ function placementSlide(n) {
       <img src="${cut(name)}" style="width:100%;height:100%;display:block">${pins.map(([x, y, i]) => pin(name, x, y, i)).join('')}
       <div class="kicker" style="position:absolute;left:0;right:0;bottom:-34px;text-align:center;font-size:12px">${label}</div></div>`;
   };
-  const front = fig('fight-short_A_front', [[770, 1112, 1], [1290, 1705, 2], [1205, 735, 3], [600, 717, 5]], 'Front');
-  const back = fig('fight-short_A_back', [[1350, 1030, 4], [720, 1712, 2], [1170, 721, 3], [600, 717, 5]], 'Back');
+  const front = fig('fight-short_black_front', [[648, 985, 1], [866, 1530, 2], [1186, 716, 3], [556, 716, 5], [1250, 1580, 6]], 'Front');
+  const back = fig('fight-short_black_back', [[750, 1108, 4], [1262, 1108, 2], [1310, 716, 3]], 'Back');
   const rows = [
-    ['WAR FC primary logo', 'Upper front leg: crown, wordmark and FIGHTING CHAMPIONSHIPS on clean ground.'],
-    ['AX Carpentry, presenting sponsor', 'Lower front leg, and again on the back of the leg for walkouts and cage-side shots.'],
-    ['CAGECRAFT', 'Emblem on the raised waistband logo panel at the front; wordmark centred on the back waistband.'],
-    ['WAR FC back crest', 'Full logo with PROVE YOU BELONG across the back, below the waistband.'],
-    ['Waistband band', 'Key-pattern band (A) or twin red stripes (B) either side of the logo panel.'],
-    ['PROVE YOU BELONG sash', 'Concept B only: a diagonal sash across the lower outer leg.'],
+    ['WAR FC crest', 'Large across the upper front: crown, wordmark and FIGHTING CHAMPIONSHIPS.'],
+    ['AX Carpentry, presenting sponsor', 'Lower front leg, opposite the sash; paired with the WAR FC crest on the back.'],
+    ['CAGECRAFT', 'Emblem on the flat waistband panel at the front; wide wordmark across the back waistband.'],
+    ['WAR FC back crest', 'Back hip, matched in height with AX Carpentry.'],
+    ['Crest bar', 'The WAR crown and spear bars between red rules, either side of the waistband panel.'],
+    ['PROVE YOU BELONG sash', 'Diagonal sash across the lower outer leg, wrapping to the back.'],
   ];
   return `<div class="slide light">
-    ${header('Logo placement', 'Every logo has a <span class="red">home</span>', 'Shown on the Concept A Fight Short; the Compression Short and Concept B follow the same map.')}
+    ${header('Logo placement', 'Every logo has a <span class="red">home</span>', 'Shown on the Black Corner Fight Short; the Compression Short and Red Corner follow the same map.')}
     <div style="position:absolute;left:70px;top:236px;display:flex;gap:30px">${front}${back}</div>
     <div style="position:absolute;left:1170px;right:84px;top:270px;display:flex;flex-direction:column;gap:22px">
       ${rows.map(([h, t], i) => `<div style="display:flex;gap:16px;align-items:flex-start"><span class="num">${i + 1}</span><div class="note"><b>${h}</b><br>${t}</div></div>`).join('')}
@@ -143,7 +143,7 @@ function productSlide(p, c, n) {
       <div class="cap" style="margin-top:20px">${view}</div></div>`;
   };
   return `<div class="slide light">
-    ${header(`${c.label} · ${p.label} · ${p.sub}`, `${c.name} <span class="red">·</span> ${p.label}`, c.sub)}
+    ${header(`War Streaks · ${p.label} · ${p.sub}`, `${c.label} <span class="red">·</span> ${p.label}`, c.sub)}
     <div style="position:absolute;left:120px;right:120px;top:236px;display:flex;justify-content:space-around;align-items:flex-start">${cell('front')}${cell('back')}</div>
     ${footer(n, `<div class="chips"><div class="chip"><i style="background:#141414"></i>Black</div><div class="chip"><i style="background:${WAR_RED}"></i>WAR Red #ED1C24</div><div class="chip"><i style="background:#F4F4F2"></i>White</div></div>`)}
   </div>`;
@@ -160,10 +160,10 @@ function detailsSlide(n) {
   return `<div class="slide light">
     ${header('Up close', 'The <span class="red">details</span>', '')}
     <div style="position:absolute;left:84px;right:84px;top:240px;display:flex;justify-content:space-between">
-      ${crop('fight-short_A_front', 720, 580, 560, 644, 'Waistband logo panel', 'Raised panel with the CAGECRAFT emblem; key-pattern band either side. No external drawstring.')}
-      ${crop('fight-short_A_front', 1150, 1270, 520, 598, 'Smoke &amp; stone', 'Stone-flake black with red and white smoke rising from the hem and side splits.')}
-      ${crop('fight-short_B_front', 1100, 1150, 520, 598, 'PROVE YOU BELONG sash', 'Diagonal sash with red keylines across the lower outer leg.')}
-      ${crop('fight-short_B_front', 380, 1290, 520, 598, 'Brushed war streaks', 'Dry-brush streaks drawn from the WAR FC logo, tonal across the whole short.')}
+      ${crop('fight-short_black_front', 760, 600, 480, 552, 'Waistband logo panel', 'CAGECRAFT emblem on a flat panel set into the waistband. No external drawstring.')}
+      ${crop('fight-short_black_front', 500, 600, 290, 334, 'WAR crest bar', 'The crown and spear bars from the WAR FC logo, between red rules.')}
+      ${crop('fight-short_black_front', 1100, 1150, 520, 598, 'PROVE YOU BELONG sash', 'Black italic lettering flanked by the WAR spear bars, with red keylines.')}
+      ${crop('fight-short_red_front', 400, 1080, 520, 598, 'Red Corner', 'The same design inverted: WAR Red ground, black streaks and sash, clean white accents.')}
     </div>
     ${footer(n)}
   </div>`;
@@ -173,12 +173,12 @@ function lineupSlide(n) {
   const k = Math.min(0.25, 330 / MAX_H);
   const img = (name) => { const m = META[name]; return `<img src="${cut(name)}" style="width:${Math.round(m.w * k)}px;height:${Math.round(m.h * k)}px;display:block">`; };
   const col = (c) => `<div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-      <div class="cap" style="font-size:22px">${c.label} · ${c.name}</div><div class="capn" style="margin:0 0 14px">Front and back</div>
+      <div class="cap" style="font-size:22px">${c.label}</div><div class="capn" style="margin:0 0 14px">Front and back</div>
       ${Object.values(PRODUCTS).map((p) => `<div style="display:flex;gap:16px;align-items:center;height:${Math.round(MAX_H * k)}px">${img(`${p.key}_${c.key}_front`)}${img(`${p.key}_${c.key}_back`)}</div>
         <div class="kicker" style="font-size:11px;margin-bottom:8px">${p.label}</div>`).join('')}
     </div>`;
   return `<div class="slide light">
-    ${header('The full set', 'Two cuts. <span class="red">Two directions.</span>', '')}
+    ${header('The full set', 'Two cuts. <span class="red">Two corners.</span>', '')}
     <div style="position:absolute;left:84px;right:84px;top:200px;display:flex;justify-content:space-around">${Object.values(CONCEPTS).map(col).join('')}</div>
     ${footer(n)}
   </div>`;
@@ -190,13 +190,13 @@ function partnershipSlide(n) {
   return `<div class="slide light">
     ${header('The partnership', 'In-kind <span class="red">sponsorship</span>', 'As discussed with Benny.')}
     <div style="position:absolute;left:84px;right:84px;top:300px;display:flex;gap:28px">
-      ${card('CAGECRAFT provides', 'Official WAR FC fight shorts in the Fight Short and/or Compression cut, in the chosen direction, branded with WAR FC, AX Carpentry and CAGECRAFT.')}
+      ${card('CAGECRAFT provides', 'Official WAR FC fight shorts in the Fight Short and/or Compression cut, in Black Corner and Red Corner, branded with WAR FC, AX Carpentry and CAGECRAFT.')}
       ${card('WAR FC provides', 'CAGECRAFT on WAR FC fight posters, venue access, and CAGECRAFT featured across WAR FC social media branding and collaborations.')}
     </div>
     <div style="position:absolute;left:84px;right:84px;top:640px">
       <div class="kicker">Next steps</div>
       <div style="display:flex;gap:40px;margin-top:22px" class="note">
-        ${[['1', 'Pick a direction: Smoke &amp; Stone or War Streaks.'], ['2', 'Pick the cut(s): Fight Short, Compression, or both.'], ['3', 'Fighter roster: sizes and event date.'], ['4', 'We lock production and the sponsorship schedule.']]
+        ${[['1', 'Confirm the War Streaks design and any logo tweaks.'], ['2', 'Pick the cut(s): Fight Short, Compression, or both.'], ['3', 'Fighter roster: sizes per corner and event date.'], ['4', 'We lock production and the sponsorship schedule.']]
           .map(([i, t]) => `<div style="display:flex;gap:14px;align-items:flex-start;flex:1"><span class="num">${i}</span><div>${t}</div></div>`).join('')}
       </div>
     </div>
@@ -207,11 +207,11 @@ function partnershipSlide(n) {
 const P = PRODUCTS, C = CONCEPTS;
 const slides = [
   cover(), directionsSlide(2), placementSlide(3),
-  productSlide(P['fight-short'], C.A, 4), productSlide(P.compression, C.A, 5),
-  productSlide(P['fight-short'], C.B, 6), productSlide(P.compression, C.B, 7),
+  productSlide(P['fight-short'], C.black, 4), productSlide(P['fight-short'], C.red, 5),
+  productSlide(P.compression, C.black, 6), productSlide(P.compression, C.red, 7),
   detailsSlide(8), lineupSlide(9), partnershipSlide(10),
 ];
-const names = ['01_cover', '02_two-directions', '03_logo-placement', '04_A-fight-short', '05_A-compression', '06_B-fight-short', '07_B-compression', '08_details', '09_full-set', '10_partnership'];
+const names = ['01_cover', '02_two-corners', '03_logo-placement', '04_fight-short-black', '05_fight-short-red', '06_compression-black', '07_compression-red', '08_details', '09_full-set', '10_partnership'];
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 2 });
