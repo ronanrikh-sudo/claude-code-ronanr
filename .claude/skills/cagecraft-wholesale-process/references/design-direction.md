@@ -1,0 +1,95 @@
+# Design direction — the CAGECRAFT premium house style
+
+Distilled from the Rival Gym job (approved by the client). Coordinates and numbers below refer to the bundled pipeline (`scripts/`), where every garment is drawn on a 2000×2500 canvas.
+
+## Contents
+1. Principles
+2. Colour
+3. The Legacy oval (centrepiece device)
+4. The Legacy circuit hem pattern
+5. Logo integration and co-branded lockups
+6. Garment templates and proportions
+7. Rendering realism (how the mockups look photographic)
+8. Failure → fix log
+9. What the client changed on Rival
+
+---
+
+## 1. Principles
+- **Black base garments, brand colour in the graphics.** The kit reads premium because the base is quiet and the graphics are crisp.
+- **The client's brand inside CAGECRAFT's language.** Client wordmark + client colours, set in Legacy devices (oval, hem pattern). It should feel like a CAGECRAFT product made for them, not a blank with logos on it.
+- **One system across the kit.** Same chest graphic on tee and rashguard; same pattern on rashguard and shorts, front and back; same lockup logic on every back.
+- **Restraint.** No more than one hero graphic per face. Secondary logos are small and placed where teamwear puts them (back neck, below back waistband).
+- **Truthful mockups.** Real garment proportions, real construction (seams, binding, waistband, fly), real relative scale between products.
+
+## 2. Colour
+- Sample the client colour from their logo: build a mask of the coloured pixels and take the median RGB. Rival Red = **#C10212** (193, 2, 18).
+- Print white is off-white **#F4F4F2** (pure white looks digital on fabric).
+- Fabric: base #171717 (tee #181818), sleeve/raglan panels a hair darker (#151515), mesh #1c1c1c with #080808 holes, binding/waistband #161616.
+- Studio background (product shots and light boards): radial #dcdcda → #cdcdcb → #b3b3b1 with 3 % grain.
+- Concept naming: **Idea A** = logo colours inverted for black (Rival: white oval, red RIVAL, white GYM, red pattern); **Idea B.1** = all client colour; **Idea B.2** = all white. On Rival, B.1 (all red) was dropped: red-on-black loses contrast — say so when you show it.
+
+## 3. The Legacy oval (centrepiece device)
+Emblem units: ellipse RX 500, RY 205, centred at 0,0 (`scripts/emblem.mjs`).
+- **Crescent ring**: drawn from −149° (top-left tip) clockwise to +142° (bottom-left tip); thickness `WMIN 5 → WMAX 54` weighted to the right (`((1+cos t)/2)^1.7`), tapered to points at both tips. The ring is open on the left where the wordmark breaks out.
+- **Comet swoosh**: a second crescent peeling off the inside of the ring from +66° (merging at bottom right) to −50° (pointed tip at top right); gap 15 → 35, peak width 31.
+- **Wordmark**: client's traced letterforms, 860 units wide, left edge at −548 (breaks out past the ring on the left), top at −112.
+- **Secondary word** (Rival's GYM): same italic at 0.44 × wordmark height, tracking 10, under the right half of the wordmark, nudged left (−78) so it centres under the oval. No rule line (client removed it).
+- **Sparkles**: four 4-point stars from the Legacy oval — available behind `opts.sparkles`, off by default (client removed them).
+- Placement: chest of tee/rashguard ≈ 70 % of chest width, centred ~25 % down the body; shorts front centred over the crotch area, ≈ 84 % of the width at that height, top ~120 px below the waistband.
+
+## 4. The Legacy circuit hem pattern
+`scripts/pattern.mjs` — a mirrored motif on a lane grid (1 unit = lane spacing; period 10 lanes; motif height 31 lanes):
+- **Bus traces**: groups of parallel lines that step 45° together, run up, step back in and converge to **nested chevrons** at the motif centre (arches), with a centre spine and an arrow shaft above.
+- **Edge traces** merge with the neighbouring motif into a shared stem and split again into **Y-chevrons** — the Legacy "M / Y" rhythm.
+- **Broken traces** (small gaps) and short ticks in open pockets add the Legacy texture.
+- **Hem fringe**: even short dashes on half-lanes along the hem.
+- Stroke width 0.3 × unit; unit ≈ 17–18.5 px on the 2000 canvas.
+- **Fade**: opacity 1 at the hem → 0.92 (30 %) → 0.5 (60 %) → 0.13 (84 %) → 0 at the top; the band covers the bottom ~40 % of a top and rises to just under the oval on shorts.
+- Rashguard: one band centred on the body (motif centre on the centre line). Shorts: one band per leg, rotated to sit square to that leg's hem and mirrored for the other leg, so it's symmetric across the centre seam.
+
+## 5. Logo integration and co-branded lockups
+- **Never a logo dump.** Each logo has a role: hero (inside the oval on the chest / over the crotch), signature (back lockups), maker's mark (neck print).
+- **Neck print** inside the collar: CAGECRAFT + fabric/size line in grey, like the Legacy.
+- **Tops back lockup** (`topsLockup`): client oval, small ×, CAGECRAFT wordmark — stacked and centred just below the back neck band (oval ≈ 12 cm wide). Stacked beats side by side because two ovals compete at small size.
+- **Shorts back lockup** (`shortsLockup`): CAGECRAFT wordmark (≈ 500 px wide) just below the back waistband, with "× CLIENT NAME" beneath in the client's own italic at half height — the Legacy "CAGECRAFT / FIGHTWEAR CO." slot. In Idea A the client word keeps its brand colour.
+- Drop ® marks at back-neck size (too small to print); keep them where a logo is large.
+- Sponsor logos (if any) run in a kit colour (usually white), never their native off-palette colour, unless the sponsor insists.
+
+## 6. Garment templates and proportions
+All garments are drawn as half outlines mirrored with `symOutline` / `mirrorD`, so they're perfectly symmetric.
+
+**Rashguard** (short sleeve, raglan): chest ≈ 752 px, HPS → hem ≈ 1320 px (≈ 1 : 1.75 laid flat; size chart M = 45.5 cm half-chest × 69.5 cm length). Raglan flatlock seams from neck to underarm, mesh side panels from the armpit to ~1350, collar binding, sleeve and hem twin stitching, pattern band from ~1346 to the hem.
+
+**Training tee**: set-in sleeves angled down, rib crew neck (radial rib lines), body ≈ 836 px wide, HPS → hem ≈ 1370 px, twin-needle hems, weave grain (matte cotton feel). Chest graphic only — no hem pattern.
+
+**Mid-length MMA shorts** — factory template "NON VELCRO CURVED CUT (7.5″ INSEAM)": single layer (not 2-in-1); wide elastic waistband (~160 px) with a flat front panel (x 836–1164) and gathered sides (irregular ruching); J-stitch faux fly offset right of centre; narrow crotch notch; long, slightly flared legs, ~1 : 1 height to width; curved-cut side hems rounding into the hem; a solid binding strip (~25 px) around each leg opening with a seam line and stitching inside it; the print stops above the binding. Back: fully gathered waistband, centre-back seam, no fly.
+
+**Legacy 2-in-1 shorts** (house reference only): shorter, compression liner, side slits.
+
+New product types (compression shorts, fight shorts with velcro fly, spats, long-sleeve rashguards): get the factory template from the user if possible, then follow the same construction-first approach — silhouette → panels/seams → waistband/hems → print → shading.
+
+## 7. Rendering realism
+Order of layers inside the silhouette clip: base fabric → panel tones/mesh → **print (pattern, emblem)** → **shading pass** (folds, creases, edge darkening, grain) → seams/stitching on top → collar/neck details. The print sits under the shading so it bends with the fabric.
+- **Folds**: broad soft highlights (`glow`, white 4–7 %, blur 40–70) on chest/legs; a soft dark centre valley; **creases** = dark valley (black 35–55 %, blur 6–10) plus a lit ridge offset 7–10 px (white 4–7 %).
+- **Edges**: inner edge darkening (black stroke 110 px, blur 26, 50 %) + tight edge shadow + a 3 px light rim (7 %).
+- **Shadow** on the background: blurred silhouette offset (12, 30) at 32 % + contact shadow (3, 7) at 42 %.
+- **Grain**: feTurbulence noise at 3–7 % (`weave` with anisotropic frequency for cotton tees).
+- **Seams**: flatlock = dark core + dashed zig either side; twin-needle hems = two dashed lines; binding = solid strip + dark seam line + lit ridge + stitch.
+
+## 8. Failure → fix log
+| Symptom | Cause | Fix |
+| --- | --- | --- |
+| Hard horizontal bands across the shading | blur filter region clipped to each stroke's bbox | every blur filter `filterUnits="userSpaceOnUse"` covering the whole canvas |
+| Jaggy, aliased print edges | `feDisplacementMap` "fabric warp" | don't displace print; let the shading pass do the realism |
+| Garment looks flat charcoal | too little tonal range | stronger glows + crease pairs + edge darkening |
+| Rashguard "weirdly stretched" | copied a flat-lay photo's aspect | redraw from the size chart |
+| Shorts look like boxer briefs / "bad" | generic silhouette, crotch too low, short legs | rebuild on the factory template, ~1 : 1, real waistband/fly/hem construction |
+| Pattern fringe runs under the hem binding | print drawn to the edge | paint a solid binding strip over the print, lift the pattern baseline above it |
+| Captions collide with the footer on boards | fixed scale factor | `k = min(0.42, 640 / tallest cut-out)` |
+| Garments look wrong next to each other on boards | per-product scaling | one shared scale factor; crop cut-outs to alpha bbox + 12 px |
+| Traced logo has notches on diagonals | narrow gaps between glyphs blur together | un-skew, straighten long near-straight runs, snap axis-aligned edges |
+
+## 9. What the client changed on Rival (expect similar asks)
+Round 1 (fronts): remove the stars; rashguard looked stretched; remove the rule before GYM and move GYM a little left; shorts mockup looked bad → rebuild on the supplied template.
+Round 2: backs = small client oval under the neckline × CAGECRAFT on tops; CAGECRAFT wordmark below the back waistband × RIVAL GYM on shorts; final colourways A and B.2 only (red dropped). The client was "pretty happy" → invoice next.
