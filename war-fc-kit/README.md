@@ -1,4 +1,4 @@
-# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 3)
+# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 4)
 
 Pitch to WAR Fighting Championships for official event fight shorts, built in the
 `cagecraft-wholesale-process` format (see `.claude/skills/cagecraft-wholesale-process`).
@@ -10,7 +10,12 @@ Pitch to WAR Fighting Championships for official event fight shorts, built in th
 - Inspiration: professional promotion uniforms (Eternal MMA, Venum UFC); logos integrated, on-brand pattern
 - Commercial: in-kind sponsorship (CAGECRAFT on posters, venue access, social features)
 
-## Round 3 (current): War Streaks, Black Corner and Red Corner
+## Round 4 (current): War Streaks, Black Corner and White Corner
+- Front waistband emblem made smaller so it sits inside the flat panel with even margins
+- Back: CAGECRAFT wordmark reduced; WAR FC crest and AX Carpentry (presenting sponsor) enlarged as a large pair
+- Red Corner replaced by a **White Corner**: white base, soft grey streaks, dark red (#8E0B13) brushes and sash, black marks; light-fabric shading and seams
+
+## Round 3: War Streaks, Black Corner and Red Corner
 Round 1 (monogram) and round 2 (Smoke & Stone vs War Streaks) led here. The client chose War Streaks; this round adds an inverted Red Corner and these fixes:
 - CAGECRAFT emblem re-traced **level** (the source photo was ~8° off), with clean italic letters
 - **Flat** waistband logo panel (like Rival's) with the emblem; no external drawstring
@@ -22,7 +27,7 @@ Round 1 (monogram) and round 2 (Smoke & Stone vs War Streaks) led here. The clie
 
 ## Outputs
 - `out/deck/WAR-FC-Fight-Shorts-Proposal.pdf`: 10 slides (cover, two corners, logo placement, 4 product boards, details, full set, partnership)
-- `out/products/{fight-short,compression}_{black,red}_{front,back}.png`: 2000×2500 mockups
+- `out/products/{fight-short,compression}_{black,white}_{front,back}.png`: 2000×2500 mockups
 
 ## Build
 ```bash

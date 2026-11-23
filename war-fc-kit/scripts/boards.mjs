@@ -82,7 +82,7 @@ function cover() {
     <div style="position:absolute;left:0;right:0;top:230px;display:flex;justify-content:center">${svgOf(logo, 960)}</div>
     <div style="position:absolute;left:0;right:0;top:668px;text-align:center">
       <div style="font:900 44px/1 'Inter Display';letter-spacing:.2em;text-transform:uppercase">Official <span class="red">Fight Shorts</span></div>
-      <div class="sub" style="margin-top:20px;font-size:22px">Fight Short &amp; Compression Short — Black Corner and Red Corner, front and back</div>
+      <div class="sub" style="margin-top:20px;font-size:22px">Fight Short &amp; Compression Short — Black Corner and White Corner, front and back</div>
     </div>
     <div class="foot"><div class="pg" style="color:#777;display:flex;align-items:center;gap:14px">PRESENTING SPONSOR ${svgOf(axLogo('#9a9a98'), 44)}</div><div class="pg" style="color:#777">NOVEMBER 2026</div></div>
   </div>`;
@@ -98,7 +98,7 @@ function directionsSlide(n) {
       <div class="capn" style="max-width:640px">${c.sub}</div></div>`;
   };
   return `<div class="slide light">
-    ${header('War Streaks', 'One design. <span class="red">Two corners.</span>', 'Brushed streaks from the WAR FC logo, inverted for the red corner so opponents are instantly distinguishable.')}
+    ${header('War Streaks', 'One design. <span class="red">Two corners.</span>', 'Brushed streaks from the WAR FC logo, with a white alternate for the opposite corner so opponents are instantly distinguishable.')}
     <div style="position:absolute;left:84px;right:84px;top:262px;display:flex;justify-content:space-around">${Object.values(CONCEPTS).map(tile).join('')}</div>
     ${footer(n)}
   </div>`;
@@ -115,17 +115,17 @@ function placementSlide(n) {
       <div class="kicker" style="position:absolute;left:0;right:0;bottom:-34px;text-align:center;font-size:12px">${label}</div></div>`;
   };
   const front = fig('fight-short_black_front', [[648, 985, 1], [866, 1530, 2], [1186, 716, 3], [556, 716, 5], [1250, 1580, 6]], 'Front');
-  const back = fig('fight-short_black_back', [[750, 1108, 4], [1262, 1108, 2], [1310, 716, 3]], 'Back');
+  const back = fig('fight-short_black_back', [[760, 1130, 4], [1258, 1205, 2], [1200, 716, 3]], 'Back');
   const rows = [
     ['WAR FC crest', 'Large across the upper front: crown, wordmark and FIGHTING CHAMPIONSHIPS.'],
     ['AX Carpentry, presenting sponsor', 'Lower front leg, opposite the sash; paired with the WAR FC crest on the back.'],
-    ['CAGECRAFT', 'Emblem on the flat waistband panel at the front; wide wordmark across the back waistband.'],
-    ['WAR FC back crest', 'Back hip, matched in height with AX Carpentry.'],
+    ['CAGECRAFT', 'Emblem sized to sit inside the flat front waistband panel; modest wordmark on the back waistband.'],
+    ['WAR FC back crest', 'Large on the back hip, paired with a large AX Carpentry mark.'],
     ['Crest bar', 'The WAR crown and spear bars between red rules, either side of the waistband panel.'],
     ['PROVE YOU BELONG sash', 'Diagonal sash across the lower outer leg, wrapping to the back.'],
   ];
   return `<div class="slide light">
-    ${header('Logo placement', 'Every logo has a <span class="red">home</span>', 'Shown on the Black Corner Fight Short; the Compression Short and Red Corner follow the same map.')}
+    ${header('Logo placement', 'Every logo has a <span class="red">home</span>', 'Shown on the Black Corner Fight Short; the Compression Short and White Corner follow the same map.')}
     <div style="position:absolute;left:70px;top:236px;display:flex;gap:30px">${front}${back}</div>
     <div style="position:absolute;left:1170px;right:84px;top:270px;display:flex;flex-direction:column;gap:22px">
       ${rows.map(([h, t], i) => `<div style="display:flex;gap:16px;align-items:flex-start"><span class="num">${i + 1}</span><div class="note"><b>${h}</b><br>${t}</div></div>`).join('')}
@@ -145,7 +145,9 @@ function productSlide(p, c, n) {
   return `<div class="slide light">
     ${header(`War Streaks · ${p.label} · ${p.sub}`, `${c.label} <span class="red">·</span> ${p.label}`, c.sub)}
     <div style="position:absolute;left:120px;right:120px;top:236px;display:flex;justify-content:space-around;align-items:flex-start">${cell('front')}${cell('back')}</div>
-    ${footer(n, `<div class="chips"><div class="chip"><i style="background:#141414"></i>Black</div><div class="chip"><i style="background:${WAR_RED}"></i>WAR Red #ED1C24</div><div class="chip"><i style="background:#F4F4F2"></i>White</div></div>`)}
+    ${footer(n, c.key === 'white'
+      ? `<div class="chips"><div class="chip"><i style="background:#EEEEEC"></i>Base: White</div><div class="chip"><i style="background:#8E0B13"></i>Accents: Dark red #8E0B13</div><div class="chip"><i style="background:#151515"></i>Marks: Black</div><div class="chip"><i style="background:${WAR_RED}"></i>WAR Red #ED1C24</div></div>`
+      : `<div class="chips"><div class="chip"><i style="background:#141414"></i>Base: Black</div><div class="chip"><i style="background:${WAR_RED}"></i>Accents: WAR Red #ED1C24</div><div class="chip"><i style="background:#F4F4F2"></i>Marks: White</div></div>`)}
   </div>`;
 }
 
@@ -163,7 +165,7 @@ function detailsSlide(n) {
       ${crop('fight-short_black_front', 760, 600, 480, 552, 'Waistband logo panel', 'CAGECRAFT emblem on a flat panel set into the waistband. No external drawstring.')}
       ${crop('fight-short_black_front', 500, 600, 290, 334, 'WAR crest bar', 'The crown and spear bars from the WAR FC logo, between red rules.')}
       ${crop('fight-short_black_front', 1100, 1150, 520, 598, 'PROVE YOU BELONG sash', 'Black italic lettering flanked by the WAR spear bars, with red keylines.')}
-      ${crop('fight-short_red_front', 400, 1080, 520, 598, 'Red Corner', 'The same design inverted: WAR Red ground, black streaks and sash, clean white accents.')}
+      ${crop('fight-short_white_front', 400, 1080, 520, 598, 'White Corner', 'White ground with soft grey streaks, dark red brushed accents and a dark red sash.')}
     </div>
     ${footer(n)}
   </div>`;
@@ -190,7 +192,7 @@ function partnershipSlide(n) {
   return `<div class="slide light">
     ${header('The partnership', 'In-kind <span class="red">sponsorship</span>', 'As discussed with Benny.')}
     <div style="position:absolute;left:84px;right:84px;top:300px;display:flex;gap:28px">
-      ${card('CAGECRAFT provides', 'Official WAR FC fight shorts in the Fight Short and/or Compression cut, in Black Corner and Red Corner, branded with WAR FC, AX Carpentry and CAGECRAFT.')}
+      ${card('CAGECRAFT provides', 'Official WAR FC fight shorts in the Fight Short and/or Compression cut, in Black Corner and White Corner, branded with WAR FC, AX Carpentry and CAGECRAFT.')}
       ${card('WAR FC provides', 'CAGECRAFT on WAR FC fight posters, venue access, and CAGECRAFT featured across WAR FC social media branding and collaborations.')}
     </div>
     <div style="position:absolute;left:84px;right:84px;top:640px">
@@ -207,11 +209,11 @@ function partnershipSlide(n) {
 const P = PRODUCTS, C = CONCEPTS;
 const slides = [
   cover(), directionsSlide(2), placementSlide(3),
-  productSlide(P['fight-short'], C.black, 4), productSlide(P['fight-short'], C.red, 5),
-  productSlide(P.compression, C.black, 6), productSlide(P.compression, C.red, 7),
+  productSlide(P['fight-short'], C.black, 4), productSlide(P['fight-short'], C.white, 5),
+  productSlide(P.compression, C.black, 6), productSlide(P.compression, C.white, 7),
   detailsSlide(8), lineupSlide(9), partnershipSlide(10),
 ];
-const names = ['01_cover', '02_two-corners', '03_logo-placement', '04_fight-short-black', '05_fight-short-red', '06_compression-black', '07_compression-red', '08_details', '09_full-set', '10_partnership'];
+const names = ['01_cover', '02_two-corners', '03_logo-placement', '04_fight-short-black', '05_fight-short-white', '06_compression-black', '07_compression-white', '08_details', '09_full-set', '10_partnership'];
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 2 });

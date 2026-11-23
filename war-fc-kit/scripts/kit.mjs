@@ -44,10 +44,11 @@ export function stitch(d, { color = '#383838', w = 2.2, dash = '7 6', op = 1 } =
   return `<path d="${d}" fill="none" stroke="${color}" stroke-width="${w}" stroke-dasharray="${dash}" stroke-linecap="round" opacity="${op}"/>`;
 }
 // flatlock seam: dark core with zig stitching either side
-export function flatlock(d, gap = 7) {
-  return `<path d="${d}" fill="none" stroke="#2e2e2e" stroke-width="${gap * 2 + 3}" stroke-dasharray="2.5 4.5" opacity="0.95"/>
-  <path d="${d}" fill="none" stroke="#161616" stroke-width="${gap * 2 - 4}"/>
-  <path d="${d}" fill="none" stroke="#060606" stroke-width="4"/>`;
+export function flatlock(d, gap = 7, light = false) {
+  const [zig, fill, core] = light ? ['#b2b2b0', '#e2e2e0', '#9a9a98'] : ['#2e2e2e', '#161616', '#060606'];
+  return `<path d="${d}" fill="none" stroke="${zig}" stroke-width="${gap * 2 + 3}" stroke-dasharray="2.5 4.5" opacity="0.95"/>
+  <path d="${d}" fill="none" stroke="${fill}" stroke-width="${gap * 2 - 4}"/>
+  <path d="${d}" fill="none" stroke="${core}" stroke-width="${light ? 3 : 4}"/>`;
 }
 // soft fold: broad tonal shift
 export function fold(d, { w = 30, color = '#fff', op = 0.05, blur = 16 } = {}) {
@@ -74,15 +75,16 @@ export function frame(inner, sil, extraDefs = '') {
 }
 
 // standard fabric shading pass, clipped to the silhouette
-export function shadingPass(sil, { folds = '', grain = 'grain', grainOp = 0.05 } = {}) {
+// light = true for white / pale fabrics: softer edge darkening and a grey outline
+export function shadingPass(sil, { folds = '', grain = 'grain', grainOp = 0.05, light = false } = {}) {
   return `<g clip-path="url(#sil)">
     ${folds}
-    <path d="${sil}" fill="none" stroke="#000" stroke-width="110" opacity="0.5" filter="url(#b26)"/>
-    <path d="${sil}" fill="none" stroke="#000" stroke-width="18" opacity="0.55" filter="url(#b6)"/>
+    <path d="${sil}" fill="none" stroke="#000" stroke-width="110" opacity="${light ? 0.13 : 0.5}" filter="url(#b26)"/>
+    <path d="${sil}" fill="none" stroke="#000" stroke-width="18" opacity="${light ? 0.2 : 0.55}" filter="url(#b6)"/>
     <path d="${sil}" fill="none" stroke="#fff" stroke-width="3" opacity="0.07" filter="url(#b3)"/>
     <rect width="${W}" height="${H}" filter="url(#${grain})" opacity="${grainOp}"/>
   </g>
-  <path d="${sil}" fill="none" stroke="#0b0b0b" stroke-width="2.5"/>`;
+  <path d="${sil}" fill="none" stroke="${light ? '#8c8c8a' : '#0b0b0b'}" stroke-width="2.5"/>`;
 }
 
 

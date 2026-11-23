@@ -113,3 +113,10 @@ Round 1 for WAR FC used a flat tonal monogram, side panels and a lace tie. The u
 - **Corners**: once a direction is chosen, offer an **inverted opposite-corner** version (black ↔ red ground) rather than more concepts.
 - **Accents stay clean**: big white brush splashes looked out of place. Use a few slim tapered streaks that follow the flow, and stop every streak before it reaches a logo (`clearLen` against logo boxes).
 - **Front vs back**: the big promotion crest goes across the upper front, with the presenting sponsor on the lower leg opposite the sash. The back carries a matched crest + sponsor pair on the hips.
+
+### WAR FC round 4 feedback: logo hierarchy and alternate colourway
+- **Logo hierarchy on event kit**: the promotion leads and the paying sponsor gets big credit. CAGECRAFT stays modest. The back waistband wordmark is about a third of the waistband width (320 px on the 2000 px fight short), not a full-width banner.
+- **Front waistband emblem** must sit *inside* the panel with even margins (fight short ≈172 px wide in a 276 × 160 panel; compression ≈122 px in a 216 × 106 panel). If it nearly touches the edges, it's too big.
+- **Back pair**: promotion crest about 440 px wide and sponsor mark about 280 px wide on the fight short, so both read from the cage.
+- **Alternate corner**: a red-ground inversion was rejected. The approved alternate is a **white base** (#EEEEEC) with soft grey streaks, **dark red accents** (#8E0B13 brushes and sash), black marks and the brand red kept for the logo. The black waistband stays on both corners.
+- White fabric needs its own rendering: `shadingPass(..., { light: true })`, `flatlock(..., light)`, creases and gathers at about 40 % strength, grey seams and split linings. Black-fabric shading on white reads as dirt.

@@ -1,7 +1,7 @@
 // WAR FC event fight shorts — round 3: "War Streaks" in two corner colourways.
 // Two cuts (Fight Short: loose, side splits | Compression: tight vale-tudo), front and back.
 //  - Black Corner: black ground with tonal claw streaks, red + white brushed accents, black sash
-//  - Red Corner (inverted): red ground with tonal deep-red streaks, black + white accents, black sash
+//  - White Corner: white ground with soft grey streaks, dark red + black accents, dark red sash
 // Waistband: flat front panel inside the band (like Rival's) with the CAGECRAFT emblem; crown/spear
 // band either side; CAGECRAFT wordmark large on the back waistband. No external drawstring.
 // Front: big WAR FC crest across the upper front, AX Carpentry on the lower leg opposite the sash.
@@ -20,12 +20,14 @@ export const CONCEPTS = {
   black: {
     key: 'black', label: 'Black Corner', name: 'War Streaks', sub: 'Black ground, tonal claw streaks, red and white brushed accents',
     base: '#121212', tones: ['#1b1b1b', '#202020', '#262626', '#2c2c2c'], accent: WAR_RED, accent2: WHITE,
-    sash: '#0b0b0b', keyline: WAR_RED, spear: WAR_RED, logo: { red: WAR_RED, white: WHITE },
+    sash: '#0b0b0b', keyline: WAR_RED, spear: WAR_RED, logo: { red: WAR_RED, white: WHITE }, ax: WHITE,
+    light: false, shade: 1, splitFill: '#050505', stitch: '#3a3a3a', seamOp: 0.6,
   },
-  red: {
-    key: 'red', label: 'Red Corner', name: 'War Streaks (inverted)', sub: 'WAR Red ground, tonal deep-red streaks, black and white brushed accents',
-    base: '#D3141C', tones: ['#c51219', '#b90f17', '#ca161e', '#ad0d15'], accent: '#111111', accent2: WHITE,
-    sash: '#0d0d0d', keyline: '#0d0d0d', spear: WAR_RED, logo: { red: '#121212', white: WHITE },
+  white: {
+    key: 'white', label: 'White Corner', name: 'War Streaks (white)', sub: 'White ground, soft grey streaks, dark red brushed accents',
+    base: '#EEEEEC', tones: ['#e2e2e0', '#dadad8', '#e7e7e5', '#d3d3d1'], accent: '#8E0B13', accent2: '#151515',
+    sash: '#8E0B13', keyline: '#151515', spear: WHITE, logo: { red: WAR_RED, white: '#151515' }, ax: '#151515',
+    light: true, shade: 0.42, splitFill: '#c9c9c7', stitch: '#a2a2a0', seamOp: 0.2,
   },
 };
 
@@ -93,12 +95,12 @@ function slim(x, y, angle, len, t, color, op) {
 // logo marks per cut and view: [logo, cx, cy, width]
 const MARKS = {
   'fight-short': {
-    front: [['crest', 1000, 985, 600], ['ax', 720, 1560, 205]],
-    back: [['crest', 750, 1000, 320], ['ax', 1262, 1000, 150]],
+    front: [['crest', 1000, 985, 600], ['ax', 712, 1560, 250]],
+    back: [['crest', 760, 1010, 440], ['ax', 1258, 1040, 280]],
   },
   compression: {
-    front: [['crest', 1000, 980, 470], ['ax', 790, 1540, 160]],
-    back: [['crest', 850, 1010, 240], ['ax', 1172, 1010, 100]],
+    front: [['crest', 1000, 980, 470], ['ax', 800, 1530, 205]],
+    back: [['crest', 845, 1000, 280], ['ax', 1150, 1050, 210]],
   },
 };
 const ART = {
@@ -106,7 +108,7 @@ const ART = {
   compression: { hipL: [612, 1160], hipR: [1330, 1020] },
 };
 function logoOf(c, k) {
-  return k === 'crest' ? warLogo(c.logo, ['Crown', 'WAR', 'FIGHTING_CHAMPIONSHIPS']) : axLogo(WHITE);
+  return k === 'crest' ? warLogo(c.logo, ['Crown', 'WAR', 'FIGHTING_CHAMPIONSHIPS']) : axLogo(c.ax);
 }
 function marks(c, cut, view) {
   return MARKS[cut][view].map(([k, x, y, w]) => place(logoOf(c, k), x, y, w)).join('');
@@ -140,7 +142,7 @@ function art(c, cut, view) {
   const boxes = avoidBoxes(c, cut, view);
   // brushed accent at the outer hip (red on black / black on red), kept clear of the logos
   let accent = '';
-  const ay = hipR[1] + (mir ? 110 : 0);
+  const ay = hipR[1] + (mir ? 190 : 0);
   for (let i = 0; i < 9; i++) accent += brush(X(hipR[0] - r() * 110), ay + i * 30 + r() * 24, A(-30 + (r() - 0.5) * 6), 200 + r() * 260, 20 + r() * 30, c.accent, 3000 + i, 0.95);
   // clean white accents: slim tapered streaks off the other hip, stopping short of every logo
   let lines = '';
@@ -195,7 +197,7 @@ export function fightShort(c, view = 'front') {
   const gathers = Array.from({ length: 26 }, (_, i) => {
     const x = 540 + i * 36 + ((i * 37) % 11);
     const len = 36 + ((i * 53) % 5) * 12;
-    return fold(`M${x},806 L${x + (i % 2 ? 5 : -5)},${806 + len}`, { color: i % 2 ? '#000' : '#fff', op: i % 2 ? 0.4 : 0.05, w: 9, blur: 6 });
+    return fold(`M${x},806 L${x + (i % 2 ? 5 : -5)},${806 + len}`, { color: i % 2 ? '#000' : '#fff', op: i % 2 ? (c.light ? 0.16 : 0.4) : 0.05, w: 9, blur: 6 });
   }).join('');
   const folds = [
     gathers,
@@ -213,13 +215,13 @@ export function fightShort(c, view = 'front') {
   const hemStitch = 'M478,1808 Q708,1822 936,1836';
 
   const band = back
-    ? `${crownBand(536, 712, 716, 34)}${crownBand(1288, 1464, 716, 34)}${place(cagecraftLogo(WHITE), 1000, 716, 540)}`
-    : `${crownBand(536, 830, 716, 34)}${crownBand(1170, 1464, 716, 34)}${flatPanel(846, 1154, 632, 800, 236)}`;
+    ? `${crownBand(536, 820, 716, 34)}${crownBand(1180, 1464, 716, 34)}${place(cagecraftLogo(WHITE), 1000, 716, 320)}`
+    : `${crownBand(536, 846, 716, 34)}${crownBand(1154, 1464, 716, 34)}${flatPanel(862, 1138, 632, 800, 172)}`;
 
   const inner = `
   <g clip-path="url(#sil)">
     ${art(c, 'fight-short', view)}${sash(c, 'fight-short', view)}
-    <path d="${split}" fill="#050505"/><path d="${mirrorD(split)}" fill="#050505"/>
+    <path d="${split}" fill="${c.splitFill}"/><path d="${mirrorD(split)}" fill="${c.splitFill}"/>
     ${marks(c, 'fight-short', view)}
     <g clip-path="url(#wb)">
       <path d="${FS_WB}" fill="#0f0f0f"/>
@@ -227,19 +229,19 @@ export function fightShort(c, view = 'front') {
       <path d="M522,794 Q760,804 1000,804 Q1240,804 1478,794" fill="none" stroke="#000" stroke-width="18" opacity="0.5" filter="url(#b6)"/>
     </g>
   </g>
-  ${shadingPass(sil, { folds })}
+  ${shadingPass(sil, { folds: `<g opacity="${c.shade}">${folds}</g>`, light: c.light })}
   <g clip-path="url(#sil)">
     <path d="M522,796 Q760,806 1000,806 Q1240,806 1478,796" fill="none" stroke="#060606" stroke-width="4"/>
     ${stitch('M524,652 Q760,660 1000,658 Q1240,660 1476,652', { color: '#3a3a3a' })}
     ${stitch('M524,782 Q760,790 1000,790 Q1240,790 1476,782', { color: '#3a3a3a' })}
-    <path d="M1000,808 L1000,1432" stroke="#000" stroke-width="3.5" opacity="0.6"/>
-    ${stitch('M990,812 L990,1420', { color: '#2e2e2e', op: 0.6 })}
-    <path d="${frontEdge}" stroke="#000" stroke-width="14" opacity="0.5" filter="url(#b6)" transform="translate(4 0)"/>
-    <path d="${frontEdge}" stroke="#000" stroke-width="3"/><path d="${mirrorD(frontEdge)}" stroke="#000" stroke-width="3"/>
-    <path d="${mirrorD(frontEdge)}" stroke="#000" stroke-width="14" opacity="0.5" filter="url(#b6)" transform="translate(-4 0)"/>
+    <path d="M1000,808 L1000,1432" stroke="#000" stroke-width="3.5" opacity="${c.seamOp}"/>
+    ${stitch('M990,812 L990,1420', { color: c.stitch, op: 0.6 })}
+    <path d="${frontEdge}" stroke="#000" stroke-width="14" opacity="${c.light ? 0.18 : 0.5}" filter="url(#b6)" transform="translate(4 0)"/>
+    <path d="${frontEdge}" stroke="${c.light ? '#8c8c8a' : '#000'}" stroke-width="3"/><path d="${mirrorD(frontEdge)}" stroke="${c.light ? '#8c8c8a' : '#000'}" stroke-width="3"/>
+    <path d="${mirrorD(frontEdge)}" stroke="#000" stroke-width="14" opacity="${c.light ? 0.18 : 0.5}" filter="url(#b6)" transform="translate(-4 0)"/>
     <rect x="420" y="1592" width="26" height="10" rx="3" fill="#2e2e2e" transform="rotate(10 433 1597)"/>
     <rect x="1554" y="1592" width="26" height="10" rx="3" fill="#2e2e2e" transform="rotate(-10 1567 1597)"/>
-    ${both(stitch, hemStitch, { color: '#3a3a3a' })}
+    ${both(stitch, hemStitch, { color: c.stitch })}
   </g>`;
   return frame(inner, sil, `${FONT_CSS}<clipPath id="wb"><path d="${FS_WB}"/></clipPath>`);
 }
@@ -277,8 +279,8 @@ export function compression(c, view = 'front') {
   const hemBand = 'M572,1764 Q760,1780 950,1794';
 
   const band = back
-    ? `${crownBand(622, 774, 754, 28)}${crownBand(1226, 1378, 754, 28)}${place(cagecraftLogo(WHITE), 1000, 754, 440)}`
-    : `${crownBand(622, 866, 754, 28)}${crownBand(1134, 1378, 754, 28)}${flatPanel(880, 1120, 698, 810, 184)}`;
+    ? `${crownBand(622, 858, 754, 28)}${crownBand(1142, 1378, 754, 28)}${place(cagecraftLogo(WHITE), 1000, 754, 262)}`
+    : `${crownBand(622, 878, 754, 28)}${crownBand(1122, 1378, 754, 28)}${flatPanel(892, 1108, 698, 810, 122)}`;
 
   const inner = `
   <g clip-path="url(#sil)">
@@ -290,14 +292,14 @@ export function compression(c, view = 'front') {
       <path d="M613,808 Q800,816 1000,816 Q1200,816 1387,808" fill="none" stroke="#000" stroke-width="18" opacity="0.5" filter="url(#b6)"/>
     </g>
   </g>
-  ${shadingPass(sil, { folds })}
+  ${shadingPass(sil, { folds: `<g opacity="${c.shade}">${folds}</g>`, light: c.light })}
   <g clip-path="url(#sil)">
     <path d="M613,810 Q800,818 1000,818 Q1200,818 1387,810" fill="none" stroke="#060606" stroke-width="4"/>
     ${stitch('M615,714 Q800,722 1000,720 Q1200,722 1385,714', { color: '#3a3a3a' })}
     ${stitch('M615,798 Q800,806 1000,806 Q1200,806 1385,798', { color: '#3a3a3a' })}
-    ${flatlock('M1000,822 L1000,1290', 6)}
-    ${flatlock(CP_SIDE, 6)}${flatlock(mirrorD(CP_SIDE), 6)}
-    ${flatlock(hemBand, 5)}${flatlock(mirrorD(hemBand), 5)}
+    ${flatlock('M1000,822 L1000,1290', 6, c.light)}
+    ${flatlock(CP_SIDE, 6, c.light)}${flatlock(mirrorD(CP_SIDE), 6, c.light)}
+    ${flatlock(hemBand, 5, c.light)}${flatlock(mirrorD(hemBand), 5, c.light)}
   </g>`;
   return frame(inner, sil, `${FONT_CSS}<clipPath id="wb"><path d="${CP_WB}"/></clipPath>`);
 }
