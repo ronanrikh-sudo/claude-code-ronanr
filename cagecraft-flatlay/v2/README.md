@@ -3,7 +3,7 @@
 This version reworks v1 based on feedback: the layout now follows the brand's own court flat lay, accessories are added, the opening shot is no wider than the reference, the look is photoreal with texture and stitching up front, and the teal is greener.
 
 - `out/cagecraft-flatlay-v2-1080x1920.mp4`: 21.4 s, 1080×1920, 24 fps, for social upload
-- `out/cagecraft-flatlay-v2-2160x3840.mp4`: the same cut as a 4K master
+- `out/cagecraft-flatlay-v2-2160x3840.mp4`: the same cut in 4K (2160×3840, ~33 Mbps, sized under GitHub's 100 MB limit). The full-quality 4K master (~69 Mbps, 185 MB) is in the Higgsfield media library as `cagecraft-flatlay-v2-2160x3840-master.mp4`.
 - `out/contact-sheet.jpg`: one frame per second
 
 ## What changed from v1
