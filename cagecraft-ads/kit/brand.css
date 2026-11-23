@@ -1,0 +1,57 @@
+/* CAGECRAFT shared brand tokens + locally bundled fonts (no network at render time).
+   Link from an ad page with:  <link rel="stylesheet" href="../../kit/brand.css">  */
+@import url("../node_modules/@fontsource-variable/archivo/wdth.css");
+@import url("../node_modules/@fontsource-variable/archivo/wdth-italic.css");
+@import url("../node_modules/@fontsource/inter-tight/400.css");
+@import url("../node_modules/@fontsource/inter-tight/500.css");
+@import url("../node_modules/@fontsource/inter-tight/600.css");
+@import url("../node_modules/@fontsource/inter-tight/700.css");
+@import url("../node_modules/@fontsource/inter-tight/800.css");
+@import url("../node_modules/@fontsource/inter/400.css");
+@import url("../node_modules/@fontsource/inter/500.css");
+@import url("../node_modules/@fontsource/inter/600.css");
+@import url("../node_modules/@fontsource/inter/700.css");
+@import url("../node_modules/@fontsource/anton/400.css");
+@import url("../node_modules/@fontsource/bebas-neue/400.css");
+@import url("../node_modules/@fontsource/barlow-condensed/500.css");
+@import url("../node_modules/@fontsource/barlow-condensed/600.css");
+@import url("../node_modules/@fontsource/barlow-condensed/700.css");
+@import url("../node_modules/@fontsource/barlow-condensed/800.css");
+@import url("../node_modules/@fontsource/caveat/600.css");
+@import url("../node_modules/@fontsource/permanent-marker/400.css");
+
+:root {
+  /* core */
+  --cc-black: #050506;
+  --cc-ink: #0E0F11;
+  --cc-graphite: #1B1D21;
+  --cc-steel: #6E737C;
+  --cc-silver: #A7ABB3;
+  --cc-bone: #F2F3F5;
+  --cc-white: #FFFFFF;
+  /* colourway accents, sampled from the garments */
+  --cc-teal: #16B3B7;        /* Diamond / Tiffany print */
+  --cc-teal-soft: #8EDFDF;
+  --cc-pink: #F09EC0;        /* Cotton Candy print */
+  --cc-pink-soft: #F8CFE0;
+  --cc-concrete: #B4B1AB;    /* Concrete fleece / mesh */
+  --cc-navy: #1E2F5C;        /* Legacy shorts + rashguard */
+  --cc-studio: #C9C9C9;      /* the brand's own flat-lay backdrop grey */
+  /* type */
+  --cc-display: "Archivo Variable", "Inter Tight", system-ui, sans-serif; /* use font-stretch:125%; font-weight:900; font-style:italic for the wordmark voice */
+  --cc-body: "Inter Tight", "Inter", system-ui, sans-serif;
+  --cc-condensed: "Barlow Condensed", "Anton", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--cc-black); color: var(--cc-white); font-family: var(--cc-body); -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
+img { display: block; }
+
+/* the wordmark voice: extended heavy italic */
+.cc-display { font-family: var(--cc-display); font-weight: 900; font-stretch: 125%; font-style: italic; letter-spacing: -0.01em; line-height: 0.92; text-transform: uppercase; }
+
+/* PRODUCT LAYER RULES — an <img data-product="..."> must stay a pure geometric placement of the real
+   photograph: translate / uniform scale / rotate only. Never put filter, mix-blend-mode, mask,
+   opacity < 1, non-uniform scale, or object-fit cropping on it. Shadows go on a SEPARATE element. */
+img[data-product] { filter: none !important; mix-blend-mode: normal !important; opacity: 1 !important; }

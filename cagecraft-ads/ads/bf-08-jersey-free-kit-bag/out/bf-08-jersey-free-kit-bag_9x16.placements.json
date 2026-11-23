@@ -1,0 +1,73 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1920
+  },
+  "products": [
+    {
+      "src": "cut/jersey-concrete/front.png",
+      "x": 33.11616516113281,
+      "y": 604.0731201171875,
+      "w": 246.8119659423828,
+      "h": 321.9669189453125,
+      "rotation": -1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 236.00004082578403,
+      "naturalWidth": 1175,
+      "upscale": 0.20085109857513533
+    },
+    {
+      "src": "cut/jersey-cottoncandy/front.png",
+      "x": 296.0718688964844,
+      "y": 604.0787353515625,
+      "w": 247.13644409179688,
+      "h": 331.2581787109375,
+      "rotation": 1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 236.00004082578403,
+      "naturalWidth": 1177,
+      "upscale": 0.20050980528953613
+    },
+    {
+      "src": "cut/jersey-tiffany/front.png",
+      "x": 537.2350463867188,
+      "y": 604.071044921875,
+      "w": 246.69305419921875,
+      "h": 318.562744140625,
+      "rotation": -1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 236.00004082578403,
+      "naturalWidth": 1216,
+      "upscale": 0.1940789809422566
+    },
+    {
+      "src": "cut/jersey-diamond/front.png",
+      "x": 800.0718994140625,
+      "y": 604.0743408203125,
+      "w": 246.88232421875,
+      "h": 323.9813232421875,
+      "rotation": 1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 236.00004082578403,
+      "naturalWidth": 1231,
+      "upscale": 0.19171408677967833
+    },
+    {
+      "src": "cut/kit-bag/front.png",
+      "x": 94,
+      "y": 963.46875,
+      "w": 100,
+      "h": 87.0625,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 100,
+      "naturalWidth": 1656,
+      "upscale": 0.06038647342995169
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

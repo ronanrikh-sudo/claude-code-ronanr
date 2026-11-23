@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CAGECRAFT Black Friday jersey: pick your colourway</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  /* 4:5 master (1080x1350). ?v=916 switches to the 1080x1920 layout (text kept inside y 270-1250, 65px sides). */
+  html, body { width: 1080px; height: 100vh; overflow: hidden; }
+  body { position: relative; background: #050506; }
+  .abs { position: absolute; }
+  :root { --pink: #F09EC0; --grey: #A7ABB3; --hair: rgba(255,255,255,.16); --side: 64px; }
+
+  /* ---------- world: near-black, restrained floor spotlight, fine grain ---------- */
+  .floor { left: 50%; top: var(--floor-y); width: 1240px; height: var(--floor-h, 360px); transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(74,76,82,.50) 0%, rgba(44,46,50,.30) 42%, rgba(20,21,24,0) 74%); }
+  .grain { inset: 0; opacity: .05; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+  /* ---------- label row ---------- */
+  .labels { left: var(--side); right: var(--side); top: var(--labels-y); display: flex; align-items: center; justify-content: space-between; }
+  .campaign { display: flex; align-items: center; gap: 18px; }
+  .tag { background: var(--pink); color: #050506; font: 800 19px/1 var(--cc-body); letter-spacing: .16em; text-transform: uppercase; padding: 10px 10px 9px 13px; }
+  .lab { font: 700 19px/1 var(--cc-body); letter-spacing: .2em; text-transform: uppercase; color: #fff; }
+  .logo { width: 200px; height: auto; display: block; }
+
+  /* ---------- headline ---------- */
+  .headline { left: var(--side); right: var(--side); top: var(--head-y); color: #fff; }
+  .headline .l1 { display: block; font-size: var(--h1, 196px); line-height: .9; white-space: nowrap; }
+  .headline .l1 em { font-style: inherit; color: var(--pink); }
+  .headline .l2 { display: block; font-size: var(--h2, 62px); line-height: .9; margin-top: var(--h-gap, 14px); white-space: nowrap; }
+
+  /* ---------- line-up (real cutouts, translate/rotate only) ---------- */
+  .lineup { left: 0; top: 0; width: 1080px; height: 100%; }
+  .slot { position: absolute; transform-origin: 50% 100%; }
+  .slot img { width: 100%; height: auto; display: block; }
+  .shadow { position: absolute; border-radius: 50%; background: rgba(0,0,0,.6); filter: blur(14px); }
+
+  /* ---------- price row ---------- */
+  .price-row { left: var(--side); right: var(--side); top: var(--price-y); border-top: 1px solid var(--hair); padding-top: var(--price-pad, 30px);
+    display: flex; align-items: center; justify-content: space-between; }
+  .price { display: flex; align-items: baseline; gap: 18px; }
+  .price .now { font-size: var(--price, 110px); line-height: .82; color: var(--pink); }
+  .price .was { font: 600 24px/1 var(--cc-body); color: var(--grey); white-space: nowrap; }
+  .price .was s { text-decoration: none; position: relative; }
+  .price .was s::after { content: ""; position: absolute; left: -2px; right: -2px; top: 52%; height: 1.5px; background: var(--grey); }
+  .btn { background: #fff; color: #050506; border-radius: 999px; padding: 22px 28px 22px 32px; font: 800 20px/1 var(--cc-body); letter-spacing: .06em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 14px; white-space: nowrap; }
+  .btn svg { width: 12px; height: 20px; }
+
+  /* ---------- facts line ---------- */
+  .facts { left: var(--side); right: var(--side); top: var(--facts-y); display: flex; align-items: center; gap: 12px;
+    font: 700 18px/1 var(--cc-body); letter-spacing: .15em; text-transform: uppercase; color: var(--grey); white-space: nowrap; }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 15px; height: 15px; border-radius: 50%; position: relative; box-shadow: 0 0 0 1px rgba(255,255,255,.28); }
+  .dot::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--ink); }
+  .facts i { font-style: normal; color: rgba(167,171,179,.55); margin: 0 -2px; }
+
+  /* ---------- 9:16 ---------- */
+  .v916 { --side: 65px; }
+
+  /* ---------- variant additions ---------- */
+  .headline .l2 { word-spacing: .1em; }
+  .name { font: 700 17px/1 var(--cc-body); letter-spacing: .16em; text-transform: uppercase; color: #fff; text-align: center; white-space: nowrap; }
+  .name.dim { color: var(--grey); }
+  .name.left { text-align: left; }
+</style>
+</head>
+<body>
+  <div class="abs floor"></div>
+  <div class="abs grain"></div>
+  <div class="abs labels">
+    <div class="campaign"><span class="tag">Black Friday</span><span class="lab">Fight Jersey 2.0</span></div>
+    <img class="logo" src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+  </div>
+  <div class="abs headline cc-display">
+    <span class="l1"><em>30%</em> off</span>
+    <span class="l2">Pick your colourway.</span>
+  </div>
+  <div class="abs lineup" id="lineup"></div>
+  <div class="abs price-row">
+    <div class="price"><span class="now cc-display">$55.97</span><span class="was">was <s>$79.95</s></span></div>
+    <div class="btn">Shop the jerseys <svg viewBox="0 0 14 22" fill="none" stroke="#050506" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l8 8-8 8"/></svg></div>
+  </div>
+  <div class="abs facts">
+    <span class="dots">
+      <span class="dot" style="background:#C6C6C6;--ink:#0B0B0B"></span>
+      <span class="dot" style="background:#050505;--ink:#F09EC0"></span>
+      <span class="dot" style="background:#EDEDEC;--ink:#16B3B7"></span>
+      <span class="dot" style="background:#050505;--ink:#16B3B7"></span>
+    </span>
+    <span>XS to 2XL <i>·</i> 190GSM mesh <i>·</i> Free kit bag over $50 <i>·</i> Ends Sun 29 Nov</span>
+  </div>
+<script>
+  const tall = new URLSearchParams(location.search).get("v") === "916";
+  if (tall) document.body.classList.add("v916");
+  const AR = { concrete: 1563/1175, cottoncandy: 1612/1177, tiffany: 1600/1216, diamond: 1648/1231 };
+  const NAME = { concrete: "Concrete", cottoncandy: "Cotton Candy", tiffany: "Tiffany", diamond: "Diamond" };
+  const R = document.documentElement.style;
+  const setVars = (o) => { for (const [k, v] of Object.entries(o)) R.setProperty(k, v + "px"); };
+  const host = document.getElementById("lineup");
+  // Real front cutout, sized by width only, translate/rotate only. Shadow is a separate element.
+  function jersey(slug, cx, top, w, rot) {
+    const h = w * AR[slug];
+    const sh = document.createElement("div"); sh.className = "shadow";
+    Object.assign(sh.style, { left: (cx - w * 0.44) + "px", top: (top + h - 18 * w / 256) + "px", width: (w * 0.88) + "px", height: (32 * w / 256) + "px" });
+    host.appendChild(sh);
+    const slot = document.createElement("div"); slot.className = "slot";
+    Object.assign(slot.style, { left: (cx - w / 2) + "px", top: top + "px", width: w + "px", transform: `rotate(${rot}deg)` });
+    const img = document.createElement("img");
+    img.dataset.product = `cut/jersey-${slug}/front.png`; img.src = `../../library/cut/jersey-${slug}/front.png`; img.alt = `Fight Jersey 2.0 ${NAME[slug]}`;
+    slot.appendChild(img); host.appendChild(slot);
+    return h;
+  }
+  function label(text, cx, y, cls) {
+    const d = document.createElement("div"); d.className = "abs name " + (cls || ""); d.textContent = text;
+    Object.assign(d.style, { left: (cx - 150) + "px", width: "300px", top: y + "px" }); host.appendChild(d);
+  }
+  const L = tall ? { labelsY: 278, headY: 352, priceY: 1084, factsY: 1230, top: 622, floorY: 975, floorH: 400, w: 258, step: 264, rot: 2 }
+                 : { labelsY: 80, headY: 184, priceY: 1000, factsY: 1200, top: 498, floorY: 850, floorH: 360, w: 256, step: 262, rot: 2 };
+  setVars({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": 166, "--h2": 56, "--price-y": L.priceY, "--facts-y": L.factsY, "--floor-y": L.floorY, "--floor-h": L.floorH });
+  const hmax = L.w * AR.diamond;
+  ["concrete", "cottoncandy", "tiffany", "diamond"].forEach((slug, i) => {
+    const cx = 540 + (i - 1.5) * L.step;
+    jersey(slug, cx, L.top, L.w, (i % 2 ? 1 : -1) * L.rot);
+    label(NAME[slug], cx, L.top + hmax + 30);
+  });
+</script>
+</body>
+</html>

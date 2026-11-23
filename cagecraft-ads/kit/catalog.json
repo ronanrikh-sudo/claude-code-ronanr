@@ -1,0 +1,106 @@
+{
+  "brand": {
+    "name": "CAGECRAFT", "tagline_lines": ["Combat sports roots. Built for everywhere else.", "Built for dominance. Made to withstand."],
+    "url": "cagecraftco.com", "country": "Australia", "currency": "AUD", "designed_in": "Australia",
+    "audience": "MMA / BJJ / Muay Thai / boxing people and gym-goers 18-34 who also wear fight culture as streetwear; Australia first",
+    "shipping_truth": "Ships Australia-wide via AusPost (standard from $4.95) and internationally. There is NO free-shipping offer and NO sitewide discount right now, so never show one.",
+    "logo": "logo/logo-white.png (white wordmark, transparent, 1200x116)"
+  },
+  "truth_rules": [
+    "Every product claim must come from this file. Do not invent specs, awards, athlete endorsements, customer counts, star ratings, press quotes, discounts, free shipping, guarantees or scarcity.",
+    "Reviews: only the verbatim review quotes listed under a product may be shown as customer reviews, attributed as written here. Do not write new ones or edit their wording (trimming with an ellipsis is fine).",
+    "Prices are AUD. Show as $109.95 or A$109.95. No compare-at / was-now pricing exists."
+  ],
+  "products": {
+    "walkout-hoodie": {
+      "title": "Walkout Hoodie", "price": 109.95, "sizes": "S-2XL", "rank": "Bestselling product line (#1, #2, #3 by revenue, last 90 days)",
+      "line": "Not every hoodie is worth walking out in. This one was made for it.",
+      "facts": ["350GSM fleece with ultra-soft interior", "52% cotton / 48% polyester", "Premium embroidery throughout", "Mesh applique wordmarks front and back", "Embroidered emblems on both sleeves", "Boxy oversized fit (true to size; size up for more oversized)", "Fleece-lined for warmth", "Kangaroo pocket, ribbed cuffs and hem", "Built to wear beyond the gym"],
+      "colourways": {
+        "hoodie-cottoncandy": { "name": "Cotton Candy", "look": "black fleece, pink + white embroidery", "accent": "#F09EC0", "url": "cagecraftco.com/products/walkout-hoodie-cotton-candy" },
+        "hoodie-diamond": { "name": "Diamond", "look": "black fleece, teal + white embroidery", "accent": "#16B3B7", "url": "cagecraftco.com/products/walkout-hoodie-diamond" },
+        "hoodie-concrete": { "name": "Concrete", "look": "concrete grey fleece, black + white embroidery", "accent": "#B4B1AB", "url": "cagecraftco.com/products/walkout-hoodie-concrete" }
+      },
+      "rating": { "product": "Walkout Hoodie Cotton Candy", "average": 5.0, "count": 8, "how_to_cite": "5.0 from 8 reviews (small number: never imply hundreds or thousands)" },
+      "reviews_verbatim": [
+        { "quote": "best hoodie in my closet!! amazing quality and overall just amazing", "by": "Sena D.", "verified_buyer": true },
+        { "quote": "Unreal quality of this hoodie and the support from the team is even better", "by": "Brock", "verified_buyer": true },
+        { "quote": "Super thick, great quality", "by": "Verified buyer", "verified_buyer": true },
+        { "quote": "Perfect daily for winter, tuff print on back as well", "by": "Verified buyer", "verified_buyer": true },
+        { "quote": "This looks hectic and feel great", "by": "Ayden", "verified_buyer": true },
+        { "quote": "Great quality super warm and light weight great for training", "by": "Kit", "verified_buyer": false },
+        { "quote": "Solid hoodie! looks great, feels great.. can't wait to see more products from these guys!", "by": "Nate", "verified_buyer": false }
+      ]
+    },
+    "fight-jersey-2": {
+      "title": "Fight Jersey 2.0", "price": 79.95, "sizes": "XS-2XL", "rank": "#4-#7 by revenue; deepest stock, so the best product to scale ads on",
+      "line": "Not every jersey belongs in a gym. This one just happens to work there too.",
+      "facts": ["Lightweight 190GSM performance polyester mesh", "Breathable, moisture-wicking", "Athletic fight-ready fit (size up one for relaxed)", "Durable graphics, reinforced neckline", "Chain-link (cage) side panels", "FIGHT TEAM 25 on the back", "Beach-to-gym: mats, street, errands, over boardshorts", "100% polyester"],
+      "colourways": {
+        "jersey-cottoncandy": { "name": "Cotton Candy", "look": "black mesh, pink lettering", "accent": "#F09EC0", "url": "cagecraftco.com/products/fight-jersey-2-0-cotton-candy" },
+        "jersey-diamond": { "name": "Diamond", "look": "black mesh, teal lettering", "accent": "#16B3B7", "url": "cagecraftco.com/products/fight-jersey-2-0-diamond" },
+        "jersey-tiffany": { "name": "Tiffany", "look": "white mesh, teal lettering", "accent": "#16B3B7", "url": "cagecraftco.com/products/fight-jersey-2-0-tiffany" },
+        "jersey-concrete": { "name": "Concrete", "look": "grey mesh, black lettering", "accent": "#B4B1AB", "url": "cagecraftco.com/products/fight-jersey-2-0-concrete" }
+      }
+    },
+    "legacy-shorts": {
+      "title": "Legacy 2-in-1 Hybrid MMA Shorts", "slug": "shorts-legacy", "price": 89.95, "sizes": "XS-3XL", "rank": "#8 by revenue; low stock, so use as a supporting / kit product",
+      "facts": ["2-in-1: outer short + built-in compression underlayer", "4-way stretch (95% polyester / 5% spandex)", "Mid-length side slit for unrestricted movement", "Anti-slip waistband, internal drawstrings", "Designed in Australia"],
+      "url": "cagecraftco.com/products/legacy-2-in-1-hybrid-mma-shorts"
+    },
+    "legacy-rashguard": {
+      "title": "Legacy Rashguard", "slug": "rashguard-legacy", "price": 79.95, "sizes": "XS-3XL", "rank": "#9 by revenue; low stock, supporting / kit product",
+      "facts": ["Compression fit (85% polyester / 15% spandex)", "Breathable mesh underarm panels", "Anti-slip waistband", "Sublimated artwork that won't crack or peel", "Designed in Australia"],
+      "url": "cagecraftco.com/products/legacy-rashguard"
+    }
+  },
+  "library": {
+    "note": "All paths are relative to cagecraft-ads/library/. cut/ = real photo cut off its backdrop (alpha only; interior pixels byte-identical to the photo). photo/ = original photographs. video/ = real footage.",
+    "cut_flat": ["cut/hoodie-cottoncandy/flat-front.png", "cut/hoodie-cottoncandy/flat-back.png", "cut/hoodie-diamond/flat-front.png", "cut/hoodie-diamond/flat-back.png", "cut/hoodie-concrete/flat-front.png", "cut/hoodie-concrete/flat-back.png", "cut/jersey-cottoncandy/front.png", "cut/jersey-cottoncandy/back.png", "cut/jersey-diamond/front.png", "cut/jersey-diamond/back.png", "cut/jersey-tiffany/front.png", "cut/jersey-tiffany/back.png", "cut/jersey-concrete/front.png", "cut/jersey-concrete/back.png", "cut/shorts-legacy/flat-front.png", "cut/shorts-legacy/flat-back.png", "cut/rashguard-legacy/flat-front.png", "cut/rashguard-legacy/flat-back.png"],
+    "cut_on_model": {
+      "cut/hoodie-cottoncandy/studio-male-front.png": "man standing, hood up, full body, hoodie front",
+      "cut/hoodie-diamond/studio-male-front.png": "man standing, hood up, full body, hoodie front",
+      "cut/hoodie-diamond/studio-female-back.png": "woman standing from behind, full body, big back embroidery visible",
+      "cut/hoodie-diamond/studio-male-back-female-front.png": "couple: man from behind (Diamond back), woman facing (Cotton Candy front)",
+      "cut/hoodie-concrete/studio-model-front.png": "man standing, full body, hoodie front",
+      "cut/hoodie-concrete/studio-model-back.png": "man from behind, full body, back embroidery",
+      "cut/jersey-cottoncandy/lifestyle-hook.png": "man mid-punch (hook), jersey front, cropped at shin",
+      "cut/jersey-cottoncandy/female-model.png": "woman posing in sunglasses, jersey front, full body",
+      "cut/jersey-diamond/front-back.png": "woman facing + man flexing from behind: jersey front and back together",
+      "cut/jersey-diamond/model-front.png": "woman and man standing, both jersey fronts",
+      "cut/hoodie-cottoncandy/studio-female-back-sitting.png": "woman sitting from behind (her seat was removed, so only usable if you draw a seat/ledge under her)"
+    },
+    "photo_highlights": {
+      "photo/hoodie-cottoncandy/closeup-details.jpg": "macro of back embroidery with the brand's own MESH APPLIQUE / PREMIUM EMBROIDERY callouts baked in",
+      "photo/hoodie-diamond/closeup-details.jpg": "same macro, teal colourway, callouts baked in",
+      "photo/hoodie-cottoncandy/sleeve-logo.jpg": "sleeve embroidery macro with EMBROIDERY ON BOTH SLEEVES text baked in",
+      "photo/hoodie-cottoncandy/car-candid.jpg": "woman in car at night wearing Cotton Candy hoodie (lifestyle)",
+      "photo/hoodie-cottoncandy/lifestyle-1.jpg": "studio: man from behind (pink back print) + woman on beanbag",
+      "photo/hoodie-concrete/hero.jpg": "moody gym: man kneeling on mats from behind, big back embroidery (best hero photo)",
+      "photo/hoodie-concrete/closeup-back.jpg": "macro of grey hoodie back embroidery, no text",
+      "photo/hoodie-concrete/closeup-front.jpg": "macro of grey hoodie chest embroidery, no text",
+      "photo/hoodie-concrete/sleeves.jpg": "sleeve + cuff embroidery macro on model",
+      "photo/jersey-cottoncandy/city-diamondback-pinkfront.jpg": "two men by a pole, palm trees: Diamond back + Cotton Candy front (beach-to-gym lifestyle)",
+      "photo/jersey-cottoncandy/city-pinkback-diamondfront.jpg": "same location, colourways swapped",
+      "photo/jersey-diamond/lifestyle-athlete.jpg": "bearded athlete in a gym wearing Diamond jersey. Shows an identifiable athlete: do NOT use (no confirmed endorsement).",
+      "photo/jersey-tiffany/closeup.png": "macro of white Tiffany jersey chest lettering on a court",
+      "photo/jersey-tiffany/top-view-both.png": "top-down flat-lay on a court: Tiffany + Concrete jerseys with gloves, ball, wraps",
+      "photo/jersey-tiffany/lifestyle-back-1.jpg": "fighter in headgear from behind, FIGHT TEAM 25 (gym)",
+      "photo/jersey-tiffany/lifestyle-back-3.jpg": "sparring, from behind (gym)",
+      "photo/jersey-tiffany/lifestyle-front-1.jpg": "fighter in headgear gloving up, jersey front (gym)",
+      "photo/jersey-concrete/closeup-outdoor.png": "macro of grey jersey lettering on a court",
+      "photo/shorts-legacy/kick-underlayer.jpg": "macro: side slit open showing the white compression underlayer",
+      "photo/shorts-legacy/model-front.jpg": "pad work, knee strike, shorts + rashguard in action",
+      "photo/shorts-legacy/full-kit-front.jpg": "athlete standing, full Legacy kit, dark background",
+      "photo/shorts-legacy/action-rear.jpg": "striking from behind, shorts rear",
+      "photo/rashguard-legacy/closeup-front.jpg": "athlete close, rashguard chest logo",
+      "photo/rashguard-legacy/left-arm.jpg": "sleeve logo macro",
+      "photo/rashguard-legacy/right-arm.jpg": "LEGACY sleeve emblem macro"
+    },
+    "size_guides": "photo/<slug>/size-guide.(jpg|png) are the brand's own size-chart graphics",
+    "video": {
+      "video/jersey-concrete.mp4": "16s, 606x1080, 25fps: cinematic gym footage, fighter hitting the heavy bag in the Concrete jersey (several angles). Real b-roll; low-ish resolution so keep it at or below ~60% of a 1080-wide frame or accept softness.",
+      "video/jersey-cottoncandy.mp4": "33s, 606x1080: creator unboxing with burned-in captions ('POV: you found the most underrated brand'). Real UGC; shows a creator's face, already published on the store."
+    }
+  }
+}

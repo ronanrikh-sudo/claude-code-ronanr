@@ -1,0 +1,12 @@
+node_modules/
+library/
+.build/
+scratch/
+ads/*/work/
+ads/*/out/*.png
+ads/*/out/frames/
+refs/
+gallery/
+ads/*/public/lib/
+ads/*/scratch/
+ads/*/tmp/
