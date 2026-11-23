@@ -22,7 +22,19 @@ Type system (all SIL Open Font License):
 Archivo Extra Condensed Black (surnames, event numeral), Mona Sans Expanded (information),
 Instrument Serif Italic (first names, "vs", "presented by").
 
-Re-render after editing `poster.html`:
+## UFC-level version (`poster_ufc.html`)
+
+- `out/WARFC01_Issa-vs-White_poster_UFC.png` / `.jpg`
+- `scripts/sr.py` — 3× EDSR super-resolution of the photo (no generative face changes), so the fighters
+  can be shown 1.2× larger and overlapping.
+- `scripts/fighters_ufc.py` — harder grade: mask-aware multi-band definition (no halos), sweat sheen,
+  stronger S-curve, red kicker + rim from the centre, cool back-rim on the hair.
+- `scripts/chrome.py` — machined chrome "01" (bevel normals, environment reflection, extrusion);
+  mask rendered from `scripts/num_mask.html`.
+- `scripts/atmo.py` — arena background (out-of-focus cage mesh, rig beams, smoke) and ember FX layer.
+- Single type family: Archivo, extra-condensed and condensed cuts.
+
+Re-render after editing `poster.html` (or `poster_ufc.html`):
 
 ```
 cd src && node scripts/shot.js poster.html ../out/WARFC01_Issa-vs-White_poster.png 1080 1440 2
