@@ -1,0 +1,143 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --teal:#7fd8cc; --ink:#080808; --card:#111; --line:#1f1f1f; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:#2a2a2a; padding:30px 0; }
+  .slice { width:600px; margin:0 auto 18px; background:var(--ink); color:#fff; overflow:hidden; position:relative; }
+  .bebas { font-family:'Bebas Neue', Impact, sans-serif; }
+  .cond { font-family:'Barlow Condensed', Arial, sans-serif; }
+  .barlow { font-family:'Barlow', Arial, sans-serif; }
+
+  /* 01 header + hero */
+  .bar { background:#111; border-bottom:1px solid #1a1a1a; text-align:center; padding:11px 16px; font:600 11px/1 'Barlow Condensed'; letter-spacing:2.4px; color:#b5b5b5; text-transform:uppercase; }
+  .bar b { color:var(--teal); font-weight:700; }
+  .logo { padding:24px 0 20px; text-align:center; }
+  .logo img { width:250px; display:block; margin:0 auto; }
+  .logo .sub { margin-top:8px; font:600 9.5px/1 'Barlow Condensed'; letter-spacing:5px; color:#666; }
+  .hero { position:relative; height:610px; }
+  .hero .ph { position:absolute; inset:0; background:url(hi_hero_ryan.jpg) center 30%/cover no-repeat; filter:grayscale(.15) contrast(1.05) brightness(.9); }
+  .hero .fade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,8,8,.15) 0%, rgba(8,8,8,0) 30%, rgba(8,8,8,.55) 58%, #080808 92%); }
+  .hero .copy { position:absolute; left:0; right:0; bottom:34px; text-align:center; padding:0 40px; }
+  .eyebrow { display:inline-block; font:700 12px/1 'Barlow Condensed'; letter-spacing:5px; color:var(--teal); text-transform:uppercase; margin-bottom:14px; }
+  .h1 { font:400 84px/.9 'Bebas Neue'; letter-spacing:2px; color:#fff; }
+  .h1 span { color:var(--teal); }
+  .lede { margin:18px auto 0; max-width:440px; font:400 17px/1.55 'Barlow'; color:#d4d4d4; }
+
+  /* 02 CTA */
+  .cta { padding:6px 0 34px; text-align:center; }
+  .btn { display:inline-block; background:var(--teal); color:#071312; font:400 24px/1 'Bebas Neue'; letter-spacing:2.5px; padding:20px 46px 17px; border-radius:3px; }
+  .btn .ar { display:inline-block; margin-left:10px; transform:translateY(1px); }
+  .trust { margin-top:16px; font:600 11px/1 'Barlow Condensed'; letter-spacing:2.6px; color:#8a8a8a; text-transform:uppercase; }
+  .trust i { color:#444; font-style:normal; padding:0 7px; }
+
+  /* 03 cart label */
+  .label { padding:26px 40px 14px; text-align:center; border-top:1px solid #161616; }
+  .label .t { font:400 34px/1 'Bebas Neue'; letter-spacing:1.5px; }
+
+  /* 04 gifts */
+  .gifts { padding:40px 24px 34px; text-align:center; background:radial-gradient(ellipse at 50% 0%, #0d1c1b 0%, #080808 62%); }
+  .gifts .t { font:400 40px/.98 'Bebas Neue'; letter-spacing:1.5px; }
+  .gifts .t span { color:var(--teal); }
+  .gifts .s { margin:12px auto 26px; max-width:420px; font:400 15px/1.55 'Barlow'; color:#a9a9a9; }
+  .tiles { display:grid; grid-template-columns:repeat(5,1fr); gap:9px; }
+  .tile { background:var(--card); border:1px solid var(--line); border-radius:4px; overflow:hidden; }
+  .tile .im { height:118px; background:#c9c9c9 center/cover no-repeat; }
+  .tile .im.ship { background:#0f1e1c; display:flex; align-items:center; justify-content:center; }
+  .tile .amt { padding:11px 0 2px; font:400 26px/1 'Bebas Neue'; color:var(--teal); letter-spacing:1px; }
+  .tile .nm { padding:0 4px 12px; font:700 10.5px/1.25 'Barlow Condensed'; letter-spacing:1.2px; text-transform:uppercase; color:#fff; min-height:38px; }
+  .pp { margin-top:22px; display:inline-flex; align-items:center; gap:12px; background:#0b1716; border:1px solid var(--teal); border-radius:6px; padding:12px 18px; text-align:left; }
+  .pp .z { font-size:22px; }
+  .pp .a { font:400 19px/1 'Bebas Neue'; letter-spacing:1px; }
+  .pp .b { margin-top:3px; font:400 12.5px/1.35 'Barlow'; color:#aab; color:#a9b4b2; }
+
+  /* 05 close */
+  .close { padding:40px 40px 38px; text-align:center; border-top:1px solid #161616; }
+  .close .t { font:400 44px/.95 'Bebas Neue'; letter-spacing:1.5px; }
+  .close .t span { color:var(--teal); }
+  .close .s { margin:14px auto 26px; max-width:420px; font:400 15.5px/1.6 'Barlow'; color:#b9b9b9; }
+  .close .s b { color:#fff; font-weight:500; }
+  .perks { margin-top:30px; display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--line); border-radius:4px; background:var(--card); }
+  .perk { padding:16px 10px 15px; border-right:1px solid var(--line); }
+  .perk:last-child { border-right:0; }
+  .perk .a { font:400 18px/1 'Bebas Neue'; letter-spacing:1.2px; }
+  .perk .b { margin-top:5px; font:400 11.5px/1.35 'Barlow'; color:#8f8f8f; }
+
+  /* 06 team */
+  .team { padding:28px 34px 30px; text-align:center; background:#0d0d0d; border-top:1px solid #1a1a1a; }
+  .team .k { font:600 10px/1 'Barlow Condensed'; letter-spacing:4.5px; color:#666; text-transform:uppercase; }
+  .team .n { margin-top:12px; font:600 12.5px/1.9 'Barlow Condensed'; letter-spacing:2px; color:#cfcfcf; text-transform:uppercase; }
+  .team .n i { color:var(--teal); font-style:normal; padding:0 6px; }
+</style></head>
+<body>
+
+<!-- 01: header + hero (links to checkout) -->
+<div class="slice" id="s01">
+  <div class="bar">Black Friday <b>·</b> Up to 40% off <b>·</b> A free gift with every $50</div>
+  <div class="logo"><img src="logo-white.png" alt=""><div class="sub">FIGHTWEAR CO.</div></div>
+  <div class="hero">
+    <div class="ph"></div><div class="fade"></div>
+    <div class="copy">
+      <div class="eyebrow">Black Friday is on</div>
+      <div class="h1">YOUR CART'S<br><span>STILL HERE.</span></div>
+      <div class="lede">You picked it for a reason. Finish your order and your free gifts are added automatically.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: primary CTA (links to checkout) -->
+<div class="slice" id="s02">
+  <div class="cta">
+    <div class="btn">Complete your order<span class="ar">→</span></div>
+    <div class="trust">Secure checkout<i>/</i>Tracked shipping<i>/</i>Afterpay</div>
+  </div>
+</div>
+
+<!-- 03: label above the live cart products -->
+<div class="slice" id="s03">
+  <div class="label"><div class="eyebrow" style="margin-bottom:10px">Saved for you</div><div class="t">STILL IN YOUR CART</div></div>
+</div>
+
+<!-- 04: gift ladder (links to shop) -->
+<div class="slice" id="s04">
+  <div class="gifts">
+    <div class="eyebrow">Black Friday bonus</div>
+    <div class="t">EVERY $50 UNLOCKS<br><span>A FREE GIFT.</span></div>
+    <div class="s">They stack. Gifts drop into your cart automatically at each level, while stocks last.</div>
+    <div class="tiles">
+      <div class="tile"><div class="im" style="background-image:url(hi_kit_bag_0.jpg)"></div><div class="amt">$50</div><div class="nm">Kit<br>Bag</div></div>
+      <div class="tile"><div class="im" style="background-image:url(hi_crew_socks_3.jpg)"></div><div class="amt">$100</div><div class="nm">Crew<br>Socks</div></div>
+      <div class="tile"><div class="im ship">
+        <svg width="54" height="40" viewBox="0 0 54 40" fill="none" stroke="#7fd8cc" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"><path d="M3 6h28v22H3z"/><path d="M31 14h10l9 9v5H31z"/><circle cx="13" cy="31" r="4.5" fill="#0f1e1c"/><circle cx="41" cy="31" r="4.5" fill="#0f1e1c"/></svg>
+      </div><div class="amt">$150</div><div class="nm">Free<br>Shipping</div></div>
+      <div class="tile"><div class="im" style="background-image:url(hi_towel.jpg)"></div><div class="amt">$200</div><div class="nm">Training<br>Towel</div></div>
+      <div class="tile"><div class="im" style="background-image:url(hi_tee.jpg)"></div><div class="amt">$250</div><div class="nm">Essentials<br>Tee</div></div>
+    </div>
+    <div class="pp"><span class="z">⚡</span><div><div class="a">A FEW DOLLARS SHORT? POWERPLAY YOUR CART.</div><div class="b">One tap tops up the difference and unlocks the next gift.</div></div></div>
+  </div>
+</div>
+
+<!-- 05: close + final CTA (links to checkout) -->
+<div class="slice" id="s05">
+  <div class="close">
+    <div class="t">ONE STEP LEFT.<br><span>WE'LL DO THE REST.</span></div>
+    <div class="s">Black Friday ends <b>Sunday 29 November, 11:59pm AEDT</b>. Your size might not last that long.</div>
+    <div class="btn">Complete my order<span class="ar">→</span></div>
+    <div class="perks">
+      <div class="perk"><div class="a">Free shipping</div><div class="b">On AU orders over $150</div></div>
+      <div class="perk"><div class="a">Afterpay</div><div class="b">4 interest-free payments</div></div>
+      <div class="perk"><div class="a">Tracked</div><div class="b">Every order, door to door</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 06: fight team -->
+<div class="slice" id="s06">
+  <div class="team">
+    <div class="k">Fight Team &amp; Partners</div>
+    <div class="n"><span>Daniel Amari</span><i>·</i><span>Ali Sharrad</span><i>·</i><span>Daniel Morris</span><i>·</i><span>Shane "Showtime" Parker</span><br><span>Ryan "Rook" Castle</span><i>·</i><span>Lucas "Spartan" Cannon</span></div>
+  </div>
+</div>
+
+</body></html>
