@@ -99,17 +99,17 @@ function slim(x, y, angle, len, t, color, op) {
 //  axWord  AX Carpentry horizontal wordmark (AX monogram + CARPENTRY), run up the outer side of the leg
 const MARKS = {
   'fight-short': {
-    front: [['crest', 1000, 1000, 800]],
-    back: [['warWide', 1000, 905, 560], ['crown', 1272, 1250, 230]],
+    front: [['crest', 740, 1175, 500, -10]],
+    back: [['warWide', 1000, 905, 470], ['crown', 1272, 1250, 230]],
   },
   compression: {
-    front: [['crest', 1000, 990, 560]],
-    back: [['warWide', 1000, 885, 420], ['crown', 1172, 1180, 180]],
+    front: [['crest', 808, 1120, 360, -10]],
+    back: [['warWide', 1000, 885, 330], ['crown', 1172, 1180, 180]],
   },
 };
 const ART = {
-  'fight-short': { sideL: [452, 1560], hipR: [1455, 1185] },
-  compression: { sideL: [676, 1500], hipR: [1336, 1110] },
+  'fight-short': { sideL: [452, 1560], hipR: [1440, 1000] },
+  compression: { sideL: [676, 1500], hipR: [1330, 1020] },
 };
 function logoOf(c, k) {
   switch (k) {
@@ -163,9 +163,9 @@ function art(c, cut, view) {
   for (let i = 0; i < 6; i++) {
     const x = X(sideL[0] + r() * 16 - 8), y = sideL[1] + i * 30 + r() * 10, ang = A(-30 + (r() - 0.5) * 4);
     const L = clearLen(x, y, ang, 240 + r() * 260, boxes);
-    if (L > 120) lines += slim(x, y, ang, L, 3 + r() * 5, c.accent2, 0.55 + r() * 0.3);
+    if (L > 120 && mir) lines += slim(x, y, ang, L, 3 + r() * 5, c.accent2, 0.55 + r() * 0.3);
   }
-  return `<rect width="${W}" height="${H}" fill="${c.base}"/>${ground}${accent}${lines}`;
+  return `<rect width="${W}" height="${H}" fill="${c.base}"/>${ground}${accent}${lines}${mir ? '' : stripe2(c, cut)}`;
 }
 
 // diagonal PROVE YOU BELONG sash across the lower outer leg; text sized to the visible stretch
@@ -185,6 +185,21 @@ function sash(c, cut, view) {
       <rect x="0" y="${-w / 2 - 13}" width="${len}" height="6" fill="${c.keyline}"/>
       <rect x="0" y="${w / 2 + 7}" width="${len}" height="6" fill="${c.keyline}"/>
       <g transform="${mir ? `translate(${s.mid} 0) rotate(180) translate(${-s.mid} 0)` : ''}">${inner}</g>
+    </g>`;
+}
+
+// repeat stripe on the front's other leg: echoes the sash (mirrored angle), narrower, no lettering,
+// finishing in a WAR spear tip toward the outer side
+const STRIPE2 = {
+  'fight-short': { x0: 846, y0: 1960, ang: -122, w: 58, len: 560 },
+  compression: { x0: 930, y0: 1850, ang: -108, w: 46, len: 420 },
+};
+function stripe2(c, cut) {
+  const s = STRIPE2[cut], w = s.w, tip = w * 2.2;
+  return `<g transform="translate(${s.x0} ${s.y0}) rotate(${s.ang})">
+      <path d="M-40,${-w / 2} L${s.len},${-w / 2} L${s.len + tip},0 L${s.len},${w / 2} L-40,${w / 2} Z" fill="${c.sash}"/>
+      <path d="M-40,${-w / 2 - 12} L${s.len},${-w / 2 - 12} L${s.len + tip + 20},0" fill="none" stroke="${c.keyline}" stroke-width="5"/>
+      <path d="M-40,${w / 2 + 12} L${s.len},${w / 2 + 12} L${s.len + tip + 20},0" fill="none" stroke="${c.keyline}" stroke-width="5"/>
     </g>`;
 }
 
@@ -275,7 +290,7 @@ const CP_HALF = {
 };
 const CP_SIL = symOutline(CP_HALF);
 const CP_WB = symOutline({ start: [1000, 700], segs: [['Q', 800, 704, 612, 694], ['C', 611, 740, 611, 780, 613, 806], ['Q', 800, 814, 1000, 814]] });
-const CP_SIDE = 'M700,812 L686,1000 L672,1250 L664,1500 L666,1830';
+const CP_SIDE = 'M652,812 L632,1000 L614,1250 L606,1500 L608,1830';
 
 export function compression(c, view = 'front') {
   if (view.startsWith('side')) return sideView(c, 'compression', view);
@@ -339,10 +354,9 @@ const SIDE = {
     seam: 'M1012,812 C1022,1000 1030,1300 1035,1640',
     split: 'M1035,1640 L980,1854 L1092,1850 Z',
     hemStitch: 'M676,1826 Q1036,1846 1396,1810',
-    word: [1030, 1230, 730],
-    emblem: [1050, 1470, 210],
-    sash: { x: 700, y: 1300, ang: -19, len: 1040, w: 112 },
-    swipe: { x: 724, y: 1000, n: 7, len: [200, 300] },
+    word: [1105, 1230, 730],
+    sash: { x: 700, y: 1300, ang: -19, len: 1040, w: 112, a: 300, b: 560 },
+    swipe: { x: 724, y: 1000, n: 7, len: [150, 220] },
     streaks: { x: 900, y: 1480, n: 6, len: [170, 250] },
     folds: (M, X, s) => [
       glow(X(860), 1320, 130, 460, 0.07, 70, s * 3), glow(X(1300), 1000, 110, 220, 0.07, 70, s * -18),
@@ -363,9 +377,8 @@ const SIDE = {
     seams: ['M912,826 C906,1100 900,1450 898,1806', 'M1118,812 C1140,1050 1132,1450 1118,1798'],
     hemBand: 'M752,1764 Q1008,1780 1264,1756',
     word: [1012, 1285, 690],
-    emblem: [1012, 1370, 165],
-    sash: { x: 745, y: 1028, ang: -5, len: 620, w: 90 },
-    swipe: { x: 790, y: 905, n: 5, len: [130, 200] },
+    sash: { x: 745, y: 1028, ang: -5, len: 620, w: 90, a: 140, b: 410 },
+    swipe: { x: 790, y: 905, n: 5, len: [110, 160] },
     streaks: { x: 892, y: 1430, n: 4, len: [110, 150] },
     folds: (M, X, s) => [
       glow(X(1010), 1300, 95, 430, 0.08, 70, 0), glow(X(1250), 980, 70, 200, 0.07, 40, s * -14),
@@ -397,18 +410,20 @@ function sideView(c, cut, view) {
     const [wx, wy, ww] = g.word;
     prints += place(axWordmark(c.ax), X(wx), wy, ww, -90);
   } else {
-    // red hip swipe continues from the front, the sash wraps round, emblem sits outside (below) the sash
+    // red hip swipe continues from the front; the sash comes round from the front and the back and stops
+    // in spear tips either side of the side panel, leaving the full height for the AX wordmark
     for (let i = 0; i < g.swipe.n; i++) {
       const L = g.swipe.len[0] + r() * (g.swipe.len[1] - g.swipe.len[0]);
       prints += brush(g.swipe.x + r() * 60, g.swipe.y + i * 22 + r() * 16, -30 + (r() - 0.5) * 6, L, 18 + r() * 26, c.accent, 6000 + i, 0.95);
     }
-    const b = g.sash;
+    const b = g.sash, hw = b.w / 2, tip = b.w * 1.1, end = b.len + 160;
     prints += `<g transform="translate(${b.x} ${b.y}) rotate(${b.ang})">
-        <rect x="-140" y="${-b.w / 2}" width="${b.len + 140}" height="${b.w}" fill="${c.sash}"/>
-        <rect x="-140" y="${-b.w / 2 - 13}" width="${b.len + 140}" height="6" fill="${c.keyline}"/>
-        <rect x="-140" y="${b.w / 2 + 7}" width="${b.len + 140}" height="6" fill="${c.keyline}"/></g>`;
-    const [ex, ey, ew] = g.emblem;
-    prints += place(axEmblem(c.ax), ex, ey, ew);
+        <path d="M-160,${-hw} L${b.a - tip},${-hw} L${b.a},0 L${b.a - tip},${hw} L-160,${hw} Z" fill="${c.sash}"/>
+        <path d="M${end},${-hw} L${b.b + tip},${-hw} L${b.b},0 L${b.b + tip},${hw} L${end},${hw} Z" fill="${c.sash}"/>
+        <path d="M-160,${-hw - 10} L${b.a - tip},${-hw - 10} L${b.a + 22},0 L${b.a - tip},${hw + 10} L-160,${hw + 10}" fill="none" stroke="${c.keyline}" stroke-width="6"/>
+        <path d="M${end},${-hw - 10} L${b.b + tip},${-hw - 10} L${b.b - 22},0 L${b.b + tip},${hw + 10} L${end},${hw + 10}" fill="none" stroke="${c.keyline}" stroke-width="6"/></g>`;
+    const [wx, wy, ww] = g.word;
+    prints += place(axWordmark(c.ax), wx, wy, ww, -90);
   }
   const [kx, ky, kw] = g.crown;
   const band = `<path d="${M(g.wb)}" fill="#0f0f0f"/>

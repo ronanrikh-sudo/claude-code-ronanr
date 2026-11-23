@@ -114,13 +114,13 @@ function logoSystemSlide(n) {
     ${header('Logo system', 'Every logo, <span class="red">two ways</span>', 'Each brand gets a primary and a secondary lockup, so the logos look designed into the kit, not stuck on.')}
     <div style="position:absolute;left:84px;right:84px;top:250px;display:flex;flex-direction:column;gap:34px">
       ${row('WAR Fighting Championships', [
-        tile(svgOf(warLogo(L, ['Crown', 'WAR', 'FIGHTING_CHAMPIONSHIPS']), 400), 'Crest · front (hero)', 'The hero: the largest logo on the kit, across the upper front.'),
+        tile(svgOf(warLogo(L, ['Crown', 'WAR', 'FIGHTING_CHAMPIONSHIPS']), 400), 'Crest · front (hero)', 'The hero: angled across the left front leg.'),
         tile(svgOf(warLogo(L, ['WAR', 'FIGHTING_CHAMPIONSHIPS']), 480), 'Wide wordmark · back (supporting)', 'Crown lifted off for a wide lockup below the back waistband, smaller than the front.'),
         tile(svgOf(warLogo(L, ['Crown']), 190), 'Crown emblem · back leg', 'The crown on its own, on the open back leg.'),
       ])}
       ${row('AX Carpentry · presenting sponsor  /  CAGECRAFT · kit partner', [
-        tile(svgOf(axWordmark(WHITE), 470), 'AX horizontal wordmark · side', 'Runs the full height of one side. Built from AX’s own monogram and lettering; for AX’s sign-off.'),
-        tile(svgOf(axEmblem(WHITE), 190), 'AX emblem · other side', 'House and AX monogram on the other side, outside the PROVE YOU BELONG sash.'),
+        tile(svgOf(axLogo(WHITE), 200), 'AX logo · as supplied', 'Their primary logo, for posters and socials.'),
+        tile(svgOf(axWordmark(WHITE), 470), 'AX wordmark · both sides', 'The same wordmark runs the full height of both sides. Built from AX’s own monogram and lettering; for AX’s sign-off.'),
         tile(`<div style="display:flex;align-items:center;gap:40px">${svgOf(emblemLogo(WHITE), 170)}${svgOf(cagecraftLogo(WHITE), 230)}</div>`, 'CAGECRAFT · waistband', 'Emblem on the front panel; wordmark at the back.'),
       ])}
     </div>
@@ -128,7 +128,7 @@ function logoSystemSlide(n) {
   </div>`;
 }
 
-const VIEWS = [['front', 'Front'], ['back', 'Back'], ['side-wordmark', 'Side · AX wordmark'], ['side-sash', 'Side · sash + AX emblem']];
+const VIEWS = [['front', 'Front'], ['back', 'Back'], ['side-wordmark', 'Side · right'], ['side-sash', 'Side · left (sash)']];
 
 function placementSlide(n) {
   const base = 'fight-short_black_';
@@ -143,20 +143,20 @@ function placementSlide(n) {
       <div class="kicker" style="position:absolute;left:-20px;right:-20px;bottom:-30px;text-align:center;font-size:11px">${label}</div></div>`;
   };
   const figs = [
-    fig('front', [[1452, 900, 1], [1186, 716, 6], [556, 716, 7], [1132, 1730, 8]], 'Front'),
-    fig('back', [[1335, 905, 2], [1272, 1370, 3], [1200, 716, 6]], 'Back'),
-    fig('side-wordmark', [[1092, 880, 4]], 'Side · wearer’s right'),
-    fig('side-sash', [[1196, 1470, 5], [1300, 1094, 8]], 'Side · wearer’s left'),
+    fig('front', [[905, 1345, 1], [1132, 1730, 5], [575, 1780, 6], [1186, 716, 7], [556, 716, 8]], 'Front'),
+    fig('back', [[1290, 905, 2], [1272, 1370, 3], [1200, 716, 7]], 'Back'),
+    fig('side-wordmark', [[1045, 880, 4]], 'Side · wearer’s right'),
+    fig('side-sash', [[1240, 860, 4], [1330, 1060, 5]], 'Side · wearer’s left'),
   ];
   const rows = [
-    ['WAR FC crest (hero)', 'The largest logo on the kit, across the upper front.'],
+    ['WAR FC crest (hero)', 'Angled across the left front leg.'],
     ['WAR FC wide wordmark', 'Supporting mark across the back, below the waistband.'],
     ['WAR crown', 'The crown emblem on the open back leg.'],
-    ['AX Carpentry wordmark', 'Presenting sponsor: runs the full height of one side.'],
-    ['AX Carpentry emblem', 'On the other side, below (outside) the sash.'],
+    ['AX Carpentry wordmark', 'Presenting sponsor: the same wordmark runs the full height of both sides.'],
+    ['PROVE YOU BELONG sash', 'Across the right front leg, wrapping round the side.'],
+    ['Repeat stripe', 'A slimmer echo of the sash on the left leg, ending in a WAR spear tip.'],
     ['CAGECRAFT', 'Emblem in the front waistband panel; modest wordmark at the back.'],
     ['Crest bar', 'WAR crown and spear bars between red rules on the waistband.'],
-    ['PROVE YOU BELONG sash', 'Across the front leg, wrapping round the side.'],
   ];
   const top = 230, figH = MAX_H * k;
   return `<div class="slide light">
@@ -198,10 +198,10 @@ function detailsSlide(n) {
   return `<div class="slide light">
     ${header('Up close', 'The <span class="red">details</span>', '')}
     <div style="position:absolute;left:84px;right:84px;top:240px;display:flex;justify-content:space-between">
-      ${crop('fight-short_black_front', 760, 600, 480, 552, 'Waistband logo panel', 'CAGECRAFT emblem on a flat panel set into the waistband. No external drawstring.')}
+      ${crop('fight-short_black_front', 430, 960, 600, 690, 'Crest across the leg', 'The WAR FC crest angled across the left leg, over the repeat stripe.')}
       ${crop('fight-short_black_side-wordmark', 700, 830, 600, 690, 'AX side wordmark', 'AX monogram and CARPENTRY run the full height of the side, made for side-on and action shots.')}
       ${crop('fight-short_black_front', 1100, 1150, 520, 598, 'PROVE YOU BELONG sash', 'Black italic lettering flanked by the WAR spear bars, with red keylines.')}
-      ${crop('fight-short_black_side-sash', 690, 1050, 600, 690, 'Sash side', 'The sash wraps round the side; the AX emblem sits below it on the side panel.')}
+      ${crop('fight-short_black_side-sash', 760, 900, 600, 690, 'Sash side', 'The sash wraps round and stops in spear tips either side of the AX wordmark.')}
     </div>
     ${footer(n)}
   </div>`;
