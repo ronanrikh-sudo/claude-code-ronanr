@@ -1,4 +1,4 @@
-# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 4)
+# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 5)
 
 Pitch to WAR Fighting Championships for official event fight shorts, built in the
 `cagecraft-wholesale-process` format (see `.claude/skills/cagecraft-wholesale-process`).
@@ -10,7 +10,13 @@ Pitch to WAR Fighting Championships for official event fight shorts, built in th
 - Inspiration: professional promotion uniforms (Eternal MMA, Venum UFC); logos integrated, on-brand pattern
 - Commercial: in-kind sponsorship (CAGECRAFT on posters, venue access, social features)
 
-## Round 4 (current): War Streaks, Black Corner and White Corner
+## Round 5 (current): logo variations
+- Researched AX Carpentry: axcarpentry.com.au ("AX Carpentry Constructions") is an unfinished site template with no logo or fonts, so all AX variations are built from the supplied logo's own vector parts.
+- **AX Carpentry**: stacked logo on the lower front leg; new **horizontal wordmark** (AX monogram + CARPENTRY) running up the outer side of the same leg (`axWordmark` in `brand.mjs`; needs AX's sign-off)
+- **WAR FC**: full crest on the front; **wide wordmark** (WAR + FIGHTING CHAMPIONSHIPS, no crown) across the back below the waistband; **crown emblem** on the open back leg
+- New deck slide: Logo system (primary and secondary lockups per brand)
+
+## Round 4: War Streaks, Black Corner and White Corner
 - Front waistband emblem made smaller so it sits inside the flat panel with even margins
 - Back: CAGECRAFT wordmark reduced; WAR FC crest and AX Carpentry (presenting sponsor) enlarged as a large pair
 - Red Corner replaced by a **White Corner**: white base, soft grey streaks, dark red (#8E0B13) brushes and sash, black marks; light-fabric shading and seams
@@ -26,7 +32,7 @@ Round 1 (monogram) and round 2 (Smoke & Stone vs War Streaks) led here. The clie
 - Layout: big WAR FC crest across the upper front with AX on the lower leg; the back carries a matched WAR FC + AX pair on the hips
 
 ## Outputs
-- `out/deck/WAR-FC-Fight-Shorts-Proposal.pdf`: 10 slides (cover, two corners, logo placement, 4 product boards, details, full set, partnership)
+- `out/deck/WAR-FC-Fight-Shorts-Proposal.pdf`: 11 slides (cover, two corners, logo system, logo placement, 4 product boards, details, full set, partnership)
 - `out/products/{fight-short,compression}_{black,white}_{front,back}.png`: 2000×2500 mockups
 
 ## Build

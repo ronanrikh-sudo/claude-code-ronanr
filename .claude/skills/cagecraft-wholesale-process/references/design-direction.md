@@ -120,3 +120,9 @@ Round 1 for WAR FC used a flat tonal monogram, side panels and a lace tie. The u
 - **Back pair**: promotion crest about 440 px wide and sponsor mark about 280 px wide on the fight short, so both read from the cage.
 - **Alternate corner**: a red-ground inversion was rejected. The approved alternate is a **white base** (#EEEEEC) with soft grey streaks, **dark red accents** (#8E0B13 brushes and sash), black marks and the brand red kept for the logo. The black waistband stays on both corners.
 - White fabric needs its own rendering: `shadingPass(..., { light: true })`, `flatlock(..., light)`, creases and gathers at about 40 % strength, grey seams and split linings. Black-fabric shading on white reads as dirt.
+
+### WAR FC round 5 feedback: logo variations per brand
+- **Give each important brand two different lockups**, never the same badge repeated. WAR FC: the full crest on the front, a **wide wordmark** (crown removed: WAR + FIGHTING CHAMPIONSHIPS) across the back below the waistband, and the **crown emblem** on its own on the open back leg. Presenting sponsor: their **stacked logo** on the lower front leg plus a **horizontal wordmark** running up the **outer side of the leg** (rotated to follow the side edge or side panel).
+- **Research the sponsor's branding** (website, socials) before inventing anything. AX Carpentry's site was an unfinished template with no logo or fonts, so the supplied logo file was the only real asset. Build variations **only from the sponsor's own vector parts** (monogram, roofline, letter paths). Never retype their name in a guessed font. Flag derived lockups for the sponsor's sign-off.
+- Add a **Logo system** slide to the deck (each brand's primary and secondary lockups on dark tiles, labelled with where each goes) before the placement map.
+- When a new mark lands where the accent streaks start, move the streak origin. `clearLen` silently drops streaks whose origin sits inside a logo's clear zone.

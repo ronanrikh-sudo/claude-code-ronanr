@@ -4,13 +4,14 @@
 //  - White Corner: white ground with soft grey streaks, dark red + black accents, dark red sash
 // Waistband: flat front panel inside the band (like Rival's) with the CAGECRAFT emblem; crown/spear
 // band either side; CAGECRAFT wordmark large on the back waistband. No external drawstring.
-// Front: big WAR FC crest across the upper front, AX Carpentry on the lower leg opposite the sash.
-// Back: WAR FC and AX as a matched pair on the hips.
+// Front: big WAR FC crest across the upper front; AX Carpentry stacked logo on the lower leg and
+// its horizontal wordmark up the outer side of the same leg. Back: wide WAR FC wordmark below the
+// waistband, WAR crown emblem on the open leg.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { W, H, f, frame, shadingPass, stitch, flatlock, fold, crease, glow, symOutline, mirrorD, both } from './kit.mjs';
-import { warLogo, axLogo, cagecraftLogo, emblemLogo, place, heightAt, CROWN_D, CROWN_BOX, WAR_RED, WHITE } from './brand.mjs';
+import { warLogo, axLogo, axWordmark, cagecraftLogo, emblemLogo, place, heightAt, CROWN_D, CROWN_BOX, WAR_RED, WHITE } from './brand.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const SAIRA = fs.readFileSync(path.join(here, '../assets/fonts/saira-italic-latin.woff2')).toString('base64');
@@ -92,31 +93,41 @@ function slim(x, y, angle, len, t, color, op) {
   return `<path d="M${f(x)},${f(y)} L${f(x + ca * len * 0.3 - sa * t)},${f(y + sa * len * 0.3 + ca * t)} L${f(x2)},${f(y2)} L${f(x + ca * len * 0.3 + sa * t)},${f(y + sa * len * 0.3 - ca * t)} Z" fill="${color}" opacity="${op}"/>`;
 }
 
-// logo marks per cut and view: [logo, cx, cy, width]
+// logo marks per cut and view: [logo, cx, cy, width, rotation]
+//  crest   WAR FC full crest            | warWide  WAR + FIGHTING CHAMPIONSHIPS (wide, no crown)
+//  crown   WAR crown emblem             | ax       AX Carpentry stacked logo
+//  axWord  AX Carpentry horizontal wordmark (AX monogram + CARPENTRY), run up the outer side of the leg
 const MARKS = {
   'fight-short': {
-    front: [['crest', 1000, 985, 600], ['ax', 712, 1560, 250]],
-    back: [['crest', 760, 1010, 440], ['ax', 1258, 1040, 280]],
+    front: [['crest', 1000, 985, 600], ['ax', 720, 1562, 250], ['axWord', 562, 1122, 540, -83.5]],
+    back: [['warWide', 1000, 935, 800], ['crown', 1288, 1560, 230]],
   },
   compression: {
-    front: [['crest', 1000, 980, 470], ['ax', 800, 1530, 205]],
-    back: [['crest', 845, 1000, 280], ['ax', 1150, 1050, 210]],
+    front: [['crest', 1000, 980, 470], ['ax', 805, 1530, 200], ['axWord', 620, 1225, 410, -88.2]],
+    back: [['warWide', 1000, 905, 560], ['crown', 1200, 1500, 180]],
   },
 };
 const ART = {
-  'fight-short': { hipL: [500, 1200], hipR: [1440, 1000] },
-  compression: { hipL: [612, 1160], hipR: [1330, 1020] },
+  'fight-short': { hipL: [708, 1250], hipR: [1440, 1000] },
+  compression: { hipL: [726, 1214], hipR: [1330, 1020] },
 };
 function logoOf(c, k) {
-  return k === 'crest' ? warLogo(c.logo, ['Crown', 'WAR', 'FIGHTING_CHAMPIONSHIPS']) : axLogo(c.ax);
+  switch (k) {
+    case 'crest': return warLogo(c.logo, ['Crown', 'WAR', 'FIGHTING_CHAMPIONSHIPS']);
+    case 'warWide': return warLogo(c.logo, ['WAR', 'FIGHTING_CHAMPIONSHIPS']);
+    case 'crown': return warLogo(c.logo, ['Crown']);
+    case 'axWord': return axWordmark(c.ax);
+    default: return axLogo(c.ax);
+  }
 }
 function marks(c, cut, view) {
-  return MARKS[cut][view].map(([k, x, y, w]) => place(logoOf(c, k), x, y, w)).join('');
+  return MARKS[cut][view].map(([k, x, y, w, rot = 0]) => place(logoOf(c, k), x, y, w, rot)).join('');
 }
 function avoidBoxes(c, cut, view, m = 34) {
-  return MARKS[cut][view].map(([k, x, y, w]) => {
-    const h = heightAt(logoOf(c, k), w);
-    return [x - w / 2 - m, y - h / 2 - m, x + w / 2 + m, y + h / 2 + m];
+  return MARKS[cut][view].map(([k, x, y, w, rot = 0]) => {
+    const h = heightAt(logoOf(c, k), w), a = (rot * Math.PI) / 180;
+    const bw = Math.abs(w * Math.cos(a)) + Math.abs(h * Math.sin(a)), bh = Math.abs(w * Math.sin(a)) + Math.abs(h * Math.cos(a));
+    return [x - bw / 2 - m, y - bh / 2 - m, x + bw / 2 + m, y + bh / 2 + m];
   });
 }
 // longest length (<= len) a straight streak can run before entering any box

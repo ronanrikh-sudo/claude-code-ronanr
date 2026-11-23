@@ -86,3 +86,19 @@ const EMB = JSON.parse(fs.readFileSync(A('cagecraft_emblem.json'), 'utf8')).EMBL
 export function emblemLogo(fill = WHITE) {
   return { svg: `<path d="${EMB.d}" fill="${fill}" fill-rule="evenodd"/>`, box: EMB.bbox };
 }
+
+// --- logo variations ----------------------------------------------------------------------
+// AX Carpentry horizontal wordmark: their AX monogram + their CARPENTRY lettering, set to the right
+// and sitting on the monogram's baseline (built only from the supplied vector paths).
+// AX_PATHS: [0] AX monogram, [1] house roofline, [2..10] C A R P E N T R Y
+export function axWordmark(fill = WHITE, { k = 3.3, gap = 24 } = {}) {
+  const mono = [16.9, 27.8, 137, 110.2], letters = [30.4, 115.6, 146.9, 124.5];
+  const x0 = mono[2] + gap, tx = x0 - letters[0] * k, ty = mono[3] - letters[3] * k;
+  const svg = `<path d="${AX_PATHS[0]}" fill="${fill}"/>
+    <g transform="translate(${f2(tx)} ${f2(ty)}) scale(${k})">${AX_PATHS.slice(2).map((d) => `<path d="${d}" fill="${fill}"/>`).join('')}</g>`;
+  return { svg, box: [mono[0], mono[1], x0 + (letters[2] - letters[0]) * k, mono[3]] };
+}
+// AX emblem only: house roofline + AX monogram (no lettering)
+export function axEmblem(fill = WHITE) {
+  return { svg: AX_PATHS.slice(0, 2).map((d) => `<path d="${d}" fill="${fill}"/>`).join(''), box: [4.4, 2.9, 137, 110.2] };
+}
