@@ -1,4 +1,4 @@
-# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 10)
+# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 11)
 
 Pitch to WAR Fighting Championships for official event fight shorts, built in the
 `cagecraft-wholesale-process` format (see `.claude/skills/cagecraft-wholesale-process`).
@@ -10,7 +10,14 @@ Pitch to WAR Fighting Championships for official event fight shorts, built in th
 - Inspiration: professional promotion uniforms (Eternal MMA, Venum UFC); logos integrated, on-brand pattern
 - Commercial: in-kind sponsorship (CAGECRAFT on posters, venue access, social features)
 
-## Round 10 (current): WAR band
+## Round 11 (current): three front directions
+Benny rejected the diagonal WAR band, so the front is now presented as three options; the back, sides, sash and waistband are unchanged:
+- **A · Fight Night** (recommended): full WAR crest, big and level on the lower left leg, with claw streaks above
+- **B · Vertical**: long WAR wordmark up the outer edge of the left leg, red crown beside it
+- **C · Back-matched**: long wordmark on the upper left leg, crown lower, claw streaks, mirroring the approved back
+Renders: `*_front-{A,B,C}.png`; `*_front.png` = the recommended option (`REC` in `shorts.mjs`). Side bands removed from the right side; the back wordmark is set at 470 / 330 px so the front stays the hero.
+
+## Round 10: WAR band (rejected)
 - The front hero is now the long WAR FC wordmark running diagonally in a band on the left leg, mirroring the PROVE YOU BELONG sash so the front reads as a V (replaces the angled crest and the repeat stripe). White Corner uses a black band so the logo keeps its true colours.
 - Both bands wrap round to the sides and stop in spear tips either side of the AX wordmarks.
 - Back wordmark restored to its full supporting size (fight short 560 px, compression 420 px).
@@ -56,7 +63,7 @@ Round 1 (monogram) and round 2 (Smoke & Stone vs War Streaks) led here. The clie
 - Layout: big WAR FC crest across the upper front with AX on the lower leg; the back carries a matched WAR FC + AX pair on the hips
 
 ## Outputs
-- `out/deck/WAR-FC-Fight-Shorts-Proposal.pdf`: 11 slides (cover, two corners, logo system, logo placement, 4 product boards, details, full set, partnership)
+- `out/deck/WAR-FC-Fight-Shorts-Proposal.pdf`: 14 slides (cover, 3 front-direction slides, two corners, logo system, logo placement, 4 product boards, details, full set, partnership)
 - `out/products/{fight-short,compression}_{black,white}_{front,back,side-wordmark,side-sash}.png`: 2000×2500 mockups
 
 ## Build

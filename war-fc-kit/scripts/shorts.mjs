@@ -99,15 +99,34 @@ function slim(x, y, angle, len, t, color, op) {
 //  crest   WAR FC full crest            | warWide  WAR + FIGHTING CHAMPIONSHIPS (wide, no crown)
 //  crown   WAR crown emblem             | ax       AX Carpentry stacked logo
 //  axWord  AX Carpentry horizontal wordmark (AX monogram + CARPENTRY), run up the outer side of the leg
+// Front directions (round 11, after the diagonal WAR band was rejected):
+//  A Fight Night  : full WAR crest, big and level on the lower left leg (UFC / PFL event-short convention)
+//  B Vertical     : long WAR wordmark up the outer edge of the left leg, red crown on the leg
+//  C Back-matched : mirrors the approved back - long wordmark on the upper leg, crown lower, white streaks
+export const FRONT_OPTIONS = {
+  A: { key: 'A', label: 'Option A', name: 'Fight Night', sub: 'Full WAR crest, big and level on the lower leg, the event-shorts convention' },
+  B: { key: 'B', label: 'Option B', name: 'Vertical', sub: 'Long WAR wordmark up the outer edge of the leg, red crown beside it' },
+  C: { key: 'C', label: 'Option C', name: 'Back-matched', sub: 'Mirrors the back layout: long wordmark on the upper leg, crown lower, claw streaks' },
+};
+export const REC = 'A'; // recommended front, used on the product boards
 const MARKS = {
   'fight-short': {
-    front: [],
-    back: [['warWide', 1000, 905, 560], ['crown', 1272, 1250, 230]],
+    'front-A': [['crest', 712, 1530, 480]],
+    'front-B': [['warWide', 574, 1250, 720, -83.4], ['crown', 806, 1520, 200]],
+    'front-C': [['warWide', 748, 960, 450], ['crown', 700, 1420, 210]],
+    back: [['warWide', 1000, 905, 470], ['crown', 1272, 1250, 230]],
   },
   compression: {
-    front: [],
-    back: [['warWide', 1000, 885, 420], ['crown', 1172, 1180, 180]],
+    'front-A': [['crest', 790, 1480, 340]],
+    'front-B': [['warWide', 690, 1280, 560, -87], ['crown', 852, 1560, 150]],
+    'front-C': [['warWide', 808, 960, 340], ['crown', 790, 1430, 160]],
+    back: [['warWide', 1000, 885, 330], ['crown', 1172, 1180, 180]],
   },
+};
+// white claw-streak origins on the front per option (null = none)
+const FRONT_STREAKS = {
+  'fight-short': { A: [470, 1170], B: null, C: [460, 1660] },
+  compression: { A: [650, 1180], B: null, C: [650, 1580] },
 };
 const ART = {
   'fight-short': { sideL: [452, 1560], hipR: [1440, 1000] },
@@ -152,7 +171,8 @@ function art(c, cut, view) {
   const mir = view === 'back';
   const X = (x) => (mir ? W - x : x);
   const A = (a) => (mir ? 180 - a : a);
-  const { sideL, hipR } = ART[cut];
+  const { hipR } = ART[cut];
+  const sideL = mir ? ART[cut].sideL : FRONT_STREAKS[cut][view.split('-')[1]];
   const boxes = avoidBoxes(c, cut, view);
   // brushed accent at the outer hip (red on black / black on red), kept clear of the logos
   let accent = '';
@@ -163,11 +183,12 @@ function art(c, cut, view) {
   // sash (one diagonal gesture with the hip swipe), stopping short of every logo
   let lines = '';
   for (let i = 0; i < 6; i++) {
+    if (!sideL) { r(); r(); r(); r(); r(); r(); continue; }
     const x = X(sideL[0] + r() * 16 - 8), y = sideL[1] + i * 30 + r() * 10, ang = A(-30 + (r() - 0.5) * 4);
     const L = clearLen(x, y, ang, 240 + r() * 260, boxes);
-    if (L > 120 && mir) lines += slim(x, y, ang, L, 3 + r() * 5, c.accent2, 0.55 + r() * 0.3);
+    if (L > 120) lines += slim(x, y, ang, L, 3 + r() * 5, c.accent2, 0.55 + r() * 0.3);
   }
-  return `<rect width="${W}" height="${H}" fill="${c.base}"/>${ground}${accent}${lines}${mir ? '' : warBand(c, cut)}`;
+  return `<rect width="${W}" height="${H}" fill="${c.base}"/>${ground}${accent}${lines}`;
 }
 
 // diagonal PROVE YOU BELONG sash across the lower outer leg; text sized to the visible stretch
@@ -241,6 +262,7 @@ const FS_WB = symOutline({ start: [1000, 640], segs: [['Q', 760, 644, 520, 632],
 
 export function fightShort(c, view = 'front') {
   if (view.startsWith('side')) return sideView(c, 'fight-short', view);
+  if (view === 'front') view = `front-${REC}`;
   const back = view === 'back';
   const sil = FS_SIL;
 
@@ -314,6 +336,7 @@ const CP_SIDE = 'M652,812 L632,1000 L614,1250 L606,1500 L608,1830';
 
 export function compression(c, view = 'front') {
   if (view.startsWith('side')) return sideView(c, 'compression', view);
+  if (view === 'front') view = `front-${REC}`;
   const back = view === 'back';
   const sil = CP_SIL;
 
@@ -432,12 +455,11 @@ function sideView(c, cut, view) {
     return mir ? `<g transform="translate(${W} 0) scale(-1 1)">${body}</g>` : body;
   };
   if (mir) {
-    // wearer's right: the WAR band wraps round; white streaks continue from the back
+    // wearer's right: white streaks continue from the back; AX wordmark runs the full side
     for (let i = 0; i < g.streaks.n; i++) {
       const L = g.streaks.len[0] + r() * (g.streaks.len[1] - g.streaks.len[0]);
       prints += slim(X(g.streaks.x + r() * 10), g.streaks.y + i * 30 + r() * 10, A(210 + (r() - 0.5) * 4), L, 3 + r() * 4, c.accent2, 0.55 + r() * 0.3);
     }
-    prints += pieces(c.warBand.fill, c.warBand.keyline);
     const [wx, wy, ww] = g.word;
     prints += place(axWordmark(c.ax), X(wx), wy, ww, -90);
   } else {

@@ -11,7 +11,7 @@ const only = process.argv[3] || '';
 fs.mkdirSync(path.join(outDir, 'cutouts'), { recursive: true });
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
-for (const p of Object.values(PRODUCTS)) for (const c of Object.values(CONCEPTS)) for (const view of ['front', 'back', 'side-wordmark', 'side-sash']) {
+for (const p of Object.values(PRODUCTS)) for (const c of Object.values(CONCEPTS)) for (const view of ['front', 'front-A', 'front-B', 'front-C', 'back', 'side-wordmark', 'side-sash']) {
   const name = `${p.key}_${c.key}_${view}`;
   if (only && !name.includes(only)) continue;
   for (const transparent of [false, true]) {
