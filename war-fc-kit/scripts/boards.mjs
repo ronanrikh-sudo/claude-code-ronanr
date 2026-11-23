@@ -114,8 +114,8 @@ function logoSystemSlide(n) {
     ${header('Logo system', 'Every logo, <span class="red">two ways</span>', 'Each brand gets a primary and a secondary lockup, so the logos look designed into the kit, not stuck on.')}
     <div style="position:absolute;left:84px;right:84px;top:250px;display:flex;flex-direction:column;gap:34px">
       ${row('WAR Fighting Championships', [
-        tile(svgOf(warLogo(L, ['Crown', 'WAR', 'FIGHTING_CHAMPIONSHIPS']), 400), 'Crest · front', 'Primary logo across the upper front.'),
-        tile(svgOf(warLogo(L, ['WAR', 'FIGHTING_CHAMPIONSHIPS']), 480), 'Wide wordmark · back', 'Crown lifted off for a wide lockup below the back waistband.'),
+        tile(svgOf(warLogo(L, ['Crown', 'WAR', 'FIGHTING_CHAMPIONSHIPS']), 400), 'Crest · front (hero)', 'The hero: the largest logo on the kit, across the upper front.'),
+        tile(svgOf(warLogo(L, ['WAR', 'FIGHTING_CHAMPIONSHIPS']), 480), 'Wide wordmark · back (supporting)', 'Crown lifted off for a wide lockup below the back waistband, smaller than the front.'),
         tile(svgOf(warLogo(L, ['Crown']), 190), 'Crown emblem · back leg', 'The crown on its own, on the open back leg.'),
       ])}
       ${row('AX Carpentry · presenting sponsor  /  CAGECRAFT · kit partner', [
@@ -143,14 +143,14 @@ function placementSlide(n) {
       <div class="kicker" style="position:absolute;left:-20px;right:-20px;bottom:-30px;text-align:center;font-size:11px">${label}</div></div>`;
   };
   const figs = [
-    fig('front', [[1345, 935, 1], [1186, 716, 6], [556, 716, 7], [1132, 1730, 8]], 'Front'),
-    fig('back', [[1458, 935, 2], [1272, 1370, 3], [1200, 716, 6]], 'Back'),
+    fig('front', [[1452, 900, 1], [1186, 716, 6], [556, 716, 7], [1132, 1730, 8]], 'Front'),
+    fig('back', [[1335, 905, 2], [1272, 1370, 3], [1200, 716, 6]], 'Back'),
     fig('side-wordmark', [[1092, 880, 4]], 'Side · wearer’s right'),
     fig('side-sash', [[1196, 1470, 5], [1300, 1094, 8]], 'Side · wearer’s left'),
   ];
   const rows = [
-    ['WAR FC crest', 'Large across the upper front.'],
-    ['WAR FC wide wordmark', 'Across the back, just below the waistband.'],
+    ['WAR FC crest (hero)', 'The largest logo on the kit, across the upper front.'],
+    ['WAR FC wide wordmark', 'Supporting mark across the back, below the waistband.'],
     ['WAR crown', 'The crown emblem on the open back leg.'],
     ['AX Carpentry wordmark', 'Presenting sponsor: runs the full height of one side.'],
     ['AX Carpentry emblem', 'On the other side, below (outside) the sash.'],

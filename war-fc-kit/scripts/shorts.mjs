@@ -99,17 +99,17 @@ function slim(x, y, angle, len, t, color, op) {
 //  axWord  AX Carpentry horizontal wordmark (AX monogram + CARPENTRY), run up the outer side of the leg
 const MARKS = {
   'fight-short': {
-    front: [['crest', 1000, 985, 600]],
-    back: [['warWide', 1000, 935, 800], ['crown', 1272, 1250, 230]],
+    front: [['crest', 1000, 1000, 800]],
+    back: [['warWide', 1000, 905, 560], ['crown', 1272, 1250, 230]],
   },
   compression: {
-    front: [['crest', 1000, 980, 470]],
-    back: [['warWide', 1000, 905, 560], ['crown', 1172, 1180, 180]],
+    front: [['crest', 1000, 990, 560]],
+    back: [['warWide', 1000, 885, 420], ['crown', 1172, 1180, 180]],
   },
 };
 const ART = {
-  'fight-short': { sideL: [452, 1560], hipR: [1440, 1000] },
-  compression: { sideL: [676, 1500], hipR: [1330, 1020] },
+  'fight-short': { sideL: [452, 1560], hipR: [1455, 1185] },
+  compression: { sideL: [676, 1500], hipR: [1336, 1110] },
 };
 function logoOf(c, k) {
   switch (k) {
@@ -171,7 +171,7 @@ function art(c, cut, view) {
 // diagonal PROVE YOU BELONG sash across the lower outer leg; text sized to the visible stretch
 const SASH = {
   'fight-short': { x0: 1080, y0: 1960, ang: -58, w: 112, mid: 525, font: 0.42, spear: 110 },
-  compression: { x0: 1072, y0: 1850, ang: -72, w: 90, mid: 345, font: 0.42, spear: 96 },
+  compression: { x0: 1090, y0: 1850, ang: -72, w: 90, mid: 345, font: 0.42, spear: 96 },
 };
 function sash(c, cut, view) {
   const s = SASH[cut];

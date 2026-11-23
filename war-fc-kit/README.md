@@ -1,4 +1,4 @@
-# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 7)
+# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 8)
 
 Pitch to WAR Fighting Championships for official event fight shorts, built in the
 `cagecraft-wholesale-process` format (see `.claude/skills/cagecraft-wholesale-process`).
@@ -10,7 +10,10 @@ Pitch to WAR Fighting Championships for official event fight shorts, built in th
 - Inspiration: professional promotion uniforms (Eternal MMA, Venum UFC); logos integrated, on-brand pattern
 - Commercial: in-kind sponsorship (CAGECRAFT on posters, venue access, social features)
 
-## Round 7 (current): side views
+## Round 8 (current): logo hierarchy
+- Front WAR FC crest is the hero: about 33 % larger (fight short 800 px, compression 560 px wide). The back wide wordmark is supporting: about 30 % smaller (560 / 420 px). Hip swipe and compression sash nudged to clear the bigger crest.
+
+## Round 7: side views
 - New **turned side views** for both cuts: wearer's right side carries the **AX Carpentry wordmark** running the full height of the side; wearer's left side shows the **sash wrapping round** with the **AX emblem** below it on the side panel.
 - Front is now just the WAR FC crest, sash and swipes; back unchanged.
 - Product boards show four views (front, back, both sides); the placement map covers all four.
