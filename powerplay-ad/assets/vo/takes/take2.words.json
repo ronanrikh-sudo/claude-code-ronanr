@@ -1,0 +1,272 @@
+[
+ {
+  "w": "three",
+  "start": 0.0,
+  "end": 0.35
+ },
+ {
+  "w": "dollars",
+  "start": 0.35,
+  "end": 0.71
+ },
+ {
+  "w": "forty",
+  "start": 0.71,
+  "end": 1.06
+ },
+ {
+  "w": "one",
+  "start": 1.06,
+  "end": 1.27
+ },
+ {
+  "w": "away",
+  "start": 1.27,
+  "end": 1.56
+ },
+ {
+  "w": "from",
+  "start": 1.56,
+  "end": 1.74
+ },
+ {
+  "w": "a",
+  "start": 1.74,
+  "end": 1.8
+ },
+ {
+  "w": "free",
+  "start": 1.8,
+  "end": 2.16
+ },
+ {
+  "w": "t",
+  "start": 2.16,
+  "end": 2.44
+ },
+ {
+  "w": "shirt",
+  "start": 2.44,
+  "end": 2.88
+ },
+ {
+  "w": "don't(2)",
+  "start": 3.19,
+  "end": 3.59
+ },
+ {
+  "w": "add",
+  "start": 3.59,
+  "end": 3.77
+ },
+ {
+  "w": "another",
+  "start": 3.77,
+  "end": 4.12
+ },
+ {
+  "w": "item",
+  "start": 4.12,
+  "end": 4.66
+ },
+ {
+  "w": "one",
+  "start": 5.06,
+  "end": 5.27
+ },
+ {
+  "w": "tap",
+  "start": 5.27,
+  "end": 5.54
+ },
+ {
+  "w": "power",
+  "start": 5.54,
+  "end": 5.87
+ },
+ {
+  "w": "plays",
+  "start": 5.87,
+  "end": 6.29
+ },
+ {
+  "w": "your(2)",
+  "start": 6.29,
+  "end": 6.41
+ },
+ {
+  "w": "cart",
+  "start": 6.41,
+  "end": 6.85
+ },
+ {
+  "w": "and(2)",
+  "start": 6.85,
+  "end": 7.06
+ },
+ {
+  "w": "tops",
+  "start": 7.06,
+  "end": 7.35
+ },
+ {
+  "w": "up",
+  "start": 7.35,
+  "end": 7.49
+ },
+ {
+  "w": "the",
+  "start": 7.49,
+  "end": 7.57
+ },
+ {
+  "w": "difference",
+  "start": 7.57,
+  "end": 8.24
+ },
+ {
+  "w": "free",
+  "start": 8.6,
+  "end": 8.9
+ },
+ {
+  "w": "tee",
+  "start": 8.9,
+  "end": 9.33
+ },
+ {
+  "w": "unlocked",
+  "start": 9.52,
+  "end": 10.21
+ },
+ {
+  "w": "you",
+  "start": 10.51,
+  "end": 10.79
+ },
+ {
+  "w": "earned",
+  "start": 10.79,
+  "end": 11.13
+ },
+ {
+  "w": "it",
+  "start": 11.13,
+  "end": 11.34
+ },
+ {
+  "w": "black",
+  "start": 11.82,
+  "end": 12.1
+ },
+ {
+  "w": "friday(2)",
+  "start": 12.1,
+  "end": 12.58
+ },
+ {
+  "w": "is",
+  "start": 12.58,
+  "end": 12.69
+ },
+ {
+  "w": "up",
+  "start": 12.69,
+  "end": 12.82
+ },
+ {
+  "w": "to(2)",
+  "start": 12.82,
+  "end": 12.92
+ },
+ {
+  "w": "forty",
+  "start": 12.92,
+  "end": 13.38
+ },
+ {
+  "w": "percent",
+  "start": 13.38,
+  "end": 13.77
+ },
+ {
+  "w": "off",
+  "start": 13.77,
+  "end": 14.14
+ },
+ {
+  "w": "plus",
+  "start": 14.14,
+  "end": 14.67
+ },
+ {
+  "w": "a",
+  "start": 14.67,
+  "end": 14.78
+ },
+ {
+  "w": "free",
+  "start": 14.78,
+  "end": 15.18
+ },
+ {
+  "w": "gift",
+  "start": 15.18,
+  "end": 15.49
+ },
+ {
+  "w": "with(2)",
+  "start": 15.49,
+  "end": 15.62
+ },
+ {
+  "w": "every(2)",
+  "start": 15.62,
+  "end": 16.06
+ },
+ {
+  "w": "fifty",
+  "start": 16.06,
+  "end": 16.4
+ },
+ {
+  "w": "dollars",
+  "start": 16.4,
+  "end": 16.96
+ },
+ {
+  "w": "ends",
+  "start": 17.23,
+  "end": 17.49
+ },
+ {
+  "w": "sunday",
+  "start": 17.49,
+  "end": 18.05
+ },
+ {
+  "w": "shop",
+  "start": 18.38,
+  "end": 18.67
+ },
+ {
+  "w": "now",
+  "start": 18.67,
+  "end": 18.99
+ },
+ {
+  "w": "at",
+  "start": 18.99,
+  "end": 19.26
+ },
+ {
+  "w": "cage",
+  "start": 19.26,
+  "end": 19.56
+ },
+ {
+  "w": "craft",
+  "start": 19.56,
+  "end": 20.15
+ }
+]

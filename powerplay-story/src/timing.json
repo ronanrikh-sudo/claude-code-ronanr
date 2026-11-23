@@ -1,0 +1,626 @@
+{
+ "provider": "elevenlabs:Amelia - Young Australian Female",
+ "fps": 30,
+ "totalSeconds": 29.2,
+ "speechEnd": 26.36,
+ "segments": [
+  {
+   "id": "S1",
+   "start": 0.45,
+   "end": 2.74,
+   "clauses": [
+    {
+     "text": "We all know PowerPlay from Sportsbet.",
+     "start": 0.45,
+     "end": 2.74,
+     "words": [
+      {
+       "w": "We",
+       "start": 0.45,
+       "end": 0.74
+      },
+      {
+       "w": "all",
+       "start": 0.74,
+       "end": 0.97
+      },
+      {
+       "w": "know",
+       "start": 0.97,
+       "end": 1.16
+      },
+      {
+       "w": "PowerPlay",
+       "start": 1.16,
+       "end": 1.8
+      },
+      {
+       "w": "from",
+       "start": 1.8,
+       "end": 1.99
+      },
+      {
+       "w": "Sportsbet",
+       "start": 1.99,
+       "end": 2.74
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "start": 3.12,
+   "end": 5.21,
+   "clauses": [
+    {
+     "text": "Now, you can PowerPlay your cart.",
+     "start": 3.12,
+     "end": 5.21,
+     "words": [
+      {
+       "w": "Now",
+       "start": 3.12,
+       "end": 3.67
+      },
+      {
+       "w": "you",
+       "start": 3.77,
+       "end": 3.92
+      },
+      {
+       "w": "can",
+       "start": 3.92,
+       "end": 4.13
+      },
+      {
+       "w": "PowerPlay",
+       "start": 4.13,
+       "end": 4.66
+      },
+      {
+       "w": "your",
+       "start": 4.66,
+       "end": 4.81
+      },
+      {
+       "w": "cart",
+       "start": 4.81,
+       "end": 5.21
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S3",
+   "start": 5.76,
+   "end": 10.09,
+   "clauses": [
+    {
+     "text": "Get within five dollars of a free gift,",
+     "start": 5.76,
+     "end": 8.11,
+     "words": [
+      {
+       "w": "Get",
+       "start": 5.76,
+       "end": 5.94
+      },
+      {
+       "w": "within",
+       "start": 5.94,
+       "end": 6.23
+      },
+      {
+       "w": "five",
+       "start": 6.23,
+       "end": 6.62
+      },
+      {
+       "w": "dollars",
+       "start": 6.62,
+       "end": 7.06
+      },
+      {
+       "w": "of",
+       "start": 7.06,
+       "end": 7.17
+      },
+      {
+       "w": "a",
+       "start": 7.17,
+       "end": 7.21
+      },
+      {
+       "w": "free",
+       "start": 7.21,
+       "end": 7.65
+      },
+      {
+       "w": "gift",
+       "start": 7.65,
+       "end": 8.11
+      }
+     ]
+    },
+    {
+     "text": "and the PowerPlay button lights up.",
+     "start": 8.11,
+     "end": 10.09,
+     "words": [
+      {
+       "w": "and",
+       "start": 8.11,
+       "end": 8.29
+      },
+      {
+       "w": "the",
+       "start": 8.29,
+       "end": 8.36
+      },
+      {
+       "w": "PowerPlay",
+       "start": 8.36,
+       "end": 8.96
+      },
+      {
+       "w": "button",
+       "start": 8.96,
+       "end": 9.37
+      },
+      {
+       "w": "lights",
+       "start": 9.37,
+       "end": 9.75
+      },
+      {
+       "w": "up",
+       "start": 9.75,
+       "end": 10.09
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S4",
+   "start": 10.43,
+   "end": 13.65,
+   "clauses": [
+    {
+     "text": "One tap adds a boost,",
+     "start": 10.43,
+     "end": 12.02,
+     "words": [
+      {
+       "w": "One",
+       "start": 10.43,
+       "end": 10.78
+      },
+      {
+       "w": "tap",
+       "start": 10.78,
+       "end": 11.09
+      },
+      {
+       "w": "adds",
+       "start": 11.09,
+       "end": 11.41
+      },
+      {
+       "w": "a",
+       "start": 11.41,
+       "end": 11.47
+      },
+      {
+       "w": "boost",
+       "start": 11.47,
+       "end": 12.02
+      }
+     ]
+    },
+    {
+     "text": "for exactly what you're short.",
+     "start": 12.14,
+     "end": 13.65,
+     "words": [
+      {
+       "w": "for",
+       "start": 12.14,
+       "end": 12.31
+      },
+      {
+       "w": "exactly",
+       "start": 12.31,
+       "end": 12.91
+      },
+      {
+       "w": "what",
+       "start": 12.91,
+       "end": 13.1
+      },
+      {
+       "w": "you're",
+       "start": 13.1,
+       "end": 13.23
+      },
+      {
+       "w": "short",
+       "start": 13.23,
+       "end": 13.65
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S5",
+   "start": 14.09,
+   "end": 17.16,
+   "clauses": [
+    {
+     "text": "A dollar twenty-nine,",
+     "start": 14.09,
+     "end": 15.14,
+     "words": [
+      {
+       "w": "A",
+       "start": 14.09,
+       "end": 14.14
+      },
+      {
+       "w": "dollar",
+       "start": 14.14,
+       "end": 14.46
+      },
+      {
+       "w": "twenty-nine",
+       "start": 14.46,
+       "end": 15.14
+      }
+     ]
+    },
+    {
+     "text": "and the free Kit Bag is yours.",
+     "start": 15.14,
+     "end": 17.16,
+     "words": [
+      {
+       "w": "and",
+       "start": 15.14,
+       "end": 15.33
+      },
+      {
+       "w": "the",
+       "start": 15.33,
+       "end": 15.39
+      },
+      {
+       "w": "free",
+       "start": 15.39,
+       "end": 15.75
+      },
+      {
+       "w": "Kit",
+       "start": 15.75,
+       "end": 16.0
+      },
+      {
+       "w": "Bag",
+       "start": 16.0,
+       "end": 16.33
+      },
+      {
+       "w": "is",
+       "start": 16.33,
+       "end": 16.54
+      },
+      {
+       "w": "yours",
+       "start": 16.54,
+       "end": 17.16
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S6",
+   "start": 17.45,
+   "end": 22.92,
+   "clauses": [
+    {
+     "text": "It works on every tier.",
+     "start": 17.45,
+     "end": 19.13,
+     "words": [
+      {
+       "w": "It",
+       "start": 17.45,
+       "end": 17.58
+      },
+      {
+       "w": "works",
+       "start": 17.58,
+       "end": 17.95
+      },
+      {
+       "w": "on",
+       "start": 17.95,
+       "end": 18.06
+      },
+      {
+       "w": "every",
+       "start": 18.06,
+       "end": 18.58
+      },
+      {
+       "w": "tier",
+       "start": 18.58,
+       "end": 19.13
+      }
+     ]
+    },
+    {
+     "text": "Socks, free shipping, a towel, even a free tee.",
+     "start": 19.36,
+     "end": 22.92,
+     "words": [
+      {
+       "w": "Socks",
+       "start": 19.36,
+       "end": 20.01
+      },
+      {
+       "w": "free",
+       "start": 20.12,
+       "end": 20.36
+      },
+      {
+       "w": "shipping",
+       "start": 20.36,
+       "end": 20.94
+      },
+      {
+       "w": "a",
+       "start": 21.01,
+       "end": 21.1
+      },
+      {
+       "w": "towel",
+       "start": 21.1,
+       "end": 21.66
+      },
+      {
+       "w": "even",
+       "start": 21.83,
+       "end": 22.08
+      },
+      {
+       "w": "a",
+       "start": 22.08,
+       "end": 22.14
+      },
+      {
+       "w": "free",
+       "start": 22.14,
+       "end": 22.42
+      },
+      {
+       "w": "tee",
+       "start": 22.42,
+       "end": 22.92
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S7",
+   "start": 23.24,
+   "end": 26.36,
+   "clauses": [
+    {
+     "text": "PowerPlay your cart.",
+     "start": 23.24,
+     "end": 24.47,
+     "words": [
+      {
+       "w": "PowerPlay",
+       "start": 23.24,
+       "end": 23.81
+      },
+      {
+       "w": "your",
+       "start": 23.81,
+       "end": 24.09
+      },
+      {
+       "w": "cart",
+       "start": 24.09,
+       "end": 24.47
+      }
+     ]
+    },
+    {
+     "text": "Only at CAGECRAFT.",
+     "start": 24.81,
+     "end": 26.36,
+     "words": [
+      {
+       "w": "Only",
+       "start": 24.81,
+       "end": 25.21
+      },
+      {
+       "w": "at",
+       "start": 25.21,
+       "end": 25.46
+      },
+      {
+       "w": "CAGECRAFT",
+       "start": 25.46,
+       "end": 26.36
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "ticks": [],
+ "captions": [
+  {
+   "text": "We all know",
+   "start": 0.45,
+   "end": 1.16
+  },
+  {
+   "text": "PowerPlay from Sportsbet",
+   "start": 1.16,
+   "end": 2.74
+  },
+  {
+   "text": "Now you can",
+   "start": 3.12,
+   "end": 4.13
+  },
+  {
+   "text": "PowerPlay your cart",
+   "start": 4.13,
+   "end": 5.21
+  },
+  {
+   "text": "Get within five",
+   "start": 5.76,
+   "end": 6.62
+  },
+  {
+   "text": "dollars of a",
+   "start": 6.62,
+   "end": 7.21
+  },
+  {
+   "text": "free gift",
+   "start": 7.21,
+   "end": 8.11
+  },
+  {
+   "text": "and the PowerPlay",
+   "start": 8.11,
+   "end": 8.96
+  },
+  {
+   "text": "button lights up",
+   "start": 8.96,
+   "end": 10.09
+  },
+  {
+   "text": "One tap adds",
+   "start": 10.43,
+   "end": 11.41
+  },
+  {
+   "text": "a boost",
+   "start": 11.41,
+   "end": 12.02
+  },
+  {
+   "text": "for exactly what",
+   "start": 12.14,
+   "end": 13.1
+  },
+  {
+   "text": "you're short",
+   "start": 13.1,
+   "end": 13.65
+  },
+  {
+   "text": "A dollar twenty-nine",
+   "start": 14.09,
+   "end": 15.14
+  },
+  {
+   "text": "and the free",
+   "start": 15.14,
+   "end": 15.75
+  },
+  {
+   "text": "Kit Bag is",
+   "start": 15.75,
+   "end": 16.54
+  },
+  {
+   "text": "yours",
+   "start": 16.54,
+   "end": 17.16
+  },
+  {
+   "text": "It works on",
+   "start": 17.45,
+   "end": 18.06
+  },
+  {
+   "text": "every tier",
+   "start": 18.06,
+   "end": 19.13
+  },
+  {
+   "text": "Socks free shipping",
+   "start": 19.36,
+   "end": 20.94
+  },
+  {
+   "text": "a towel even",
+   "start": 21.01,
+   "end": 22.08
+  },
+  {
+   "text": "a free tee",
+   "start": 22.08,
+   "end": 22.92
+  },
+  {
+   "text": "PowerPlay your cart",
+   "start": 23.24,
+   "end": 24.47
+  },
+  {
+   "text": "Only at CAGECRAFT",
+   "start": 24.81,
+   "end": 26.36
+  }
+ ],
+ "marks": {
+  "now": 3.12,
+  "bar2": 3.1,
+  "hit": 27.1,
+  "bar": 1.7142857142857142,
+  "sfx": [
+   {
+    "word": "now",
+    "at": 2.87
+   },
+   {
+    "word": "tap",
+    "at": 10.78
+   },
+   {
+    "word": "yours",
+    "at": 16.49
+   },
+   {
+    "word": "socks",
+    "at": 19.26
+   },
+   {
+    "word": "only",
+    "at": 24.71
+   }
+  ]
+ },
+ "mix": {
+  "lufs": -16.0,
+  "truePeak": -1.5
+ }
+}

@@ -1,0 +1,114 @@
+{
+  "title": "CAGECRAFT PowerPlay Meta Ad",
+  "output": "cagecraft-powerplay-meta-ad",
+  "voice": {
+    "elevenlabs_voice_id": "nBoLwpO4PAjQaQwVKPI1",
+    "elevenlabs_voice_name": "Amelia - Young Australian Female",
+    "model": "eleven_v4"
+  },
+  "respell": {},
+  "segments": [
+    {
+      "id": "S1",
+      "clauses": [
+        "Three dollars forty-one away from a free t-shirt?"
+      ]
+    },
+    {
+      "id": "S2",
+      "clauses": [
+        "Don't add another item.",
+        "One tap PowerPlays your cart,",
+        "and tops up the difference."
+      ]
+    },
+    {
+      "id": "S3",
+      "clauses": [
+        "Free tee, unlocked.",
+        "You earned it."
+      ]
+    },
+    {
+      "id": "S4",
+      "clauses": [
+        "Black Friday is up to forty percent off,",
+        "plus a free gift with every fifty dollars."
+      ]
+    },
+    {
+      "id": "S5",
+      "clauses": [
+        "Ends Sunday.",
+        "Shop now at CAGECRAFT."
+      ]
+    }
+  ],
+  "music": {
+    "mode": "ad",
+    "file": "../cagecraft-sale/assets/music/track.mp3",
+    "note": "Groove (bar 2) hits on frame 0 for the hook; bars cut on bar lines; final hit (bar 10) after the CTA.",
+    "level_db": -14
+  },
+  "sfx": [
+    {
+      "file": "../cagecraft-sale/assets/sfx/impact-9T2wFF5hFD76UKTsHmzn.mp3",
+      "at": 0.02,
+      "db": -15
+    },
+    {
+      "file": "../cagecraft-sale/assets/sfx/whoosh-dz6EyD6c0E8E3UPAmFL8.mp3",
+      "word": "Don't",
+      "offset": -0.2,
+      "db": -16
+    },
+    {
+      "file": "../cagecraft-sale/assets/sfx/button-RpUTWOqENCgyQ00SW5pV.mp3",
+      "word": "tap",
+      "offset": 0.0,
+      "db": -11
+    },
+    {
+      "file": "../cagecraft-sale/assets/sfx/slam-89Gjyv7ZWHt2cs5IFSxM.mp3",
+      "word": "unlocked",
+      "offset": -0.04,
+      "db": -14
+    },
+    {
+      "file": "../cagecraft-sale/assets/sfx/whoosh-dz6EyD6c0E8E3UPAmFL8.mp3",
+      "word": "Black",
+      "offset": -0.2,
+      "db": -16
+    },
+    {
+      "file": "../cagecraft-sale/assets/sfx/assemble-CYdMe99hRsHs075xduBA.mp3",
+      "word": "plus",
+      "offset": -0.05,
+      "db": -18
+    },
+    {
+      "file": "../cagecraft-sale/assets/sfx/button-Ry72jq7sFN1yuPfpcNHY.mp3",
+      "word": "Shop",
+      "offset": 0.05,
+      "db": -11
+    },
+    {
+      "file": "../cagecraft-sale/assets/sfx/logo-8akkxMReMBQSRxTsERPN.mp3",
+      "word": "CAGECRAFT",
+      "offset": -0.05,
+      "db": -14
+    },
+    {
+      "file": "../cagecraft-sale/assets/sfx/shatter-LAsL864Ya0mGgRhrqTKJ.mp3",
+      "word": "unlocked",
+      "offset": 0.05,
+      "db": -17
+    },
+    {
+      "file": "../cagecraft-sale/assets/sfx/slam-wxc7nbV7XISQVuc5QscQ.mp3",
+      "word": "earned",
+      "offset": -0.03,
+      "db": -15
+    }
+  ]
+}

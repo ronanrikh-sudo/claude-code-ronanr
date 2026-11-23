@@ -1,0 +1,7 @@
+node_modules/
+.build/
+out/frames/
+out/final/
+out/qc-sheet-*.jpg
+out/final/
+out/ad-qc-*.jpg

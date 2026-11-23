@@ -1,0 +1,34 @@
+{
+  "title": "CAGECRAFT PowerPlay Story",
+  "output": "cagecraft-powerplay-story",
+  "voice": {
+    "elevenlabs_voice_id": "nBoLwpO4PAjQaQwVKPI1",
+    "elevenlabs_voice_name": "Amelia - Young Australian Female",
+    "model": "eleven_v4",
+    "flow": "zGOauzyHIMp4GmiUmWmJ",
+    "piper_voice": "en-us-lessac-medium"
+  },
+  "respell": {},
+  "segments": [
+    { "id": "S1", "clauses": ["We all know PowerPlay from Sportsbet."] },
+    { "id": "S2", "clauses": ["Now, you can PowerPlay your cart."] },
+    { "id": "S3", "clauses": ["Get within five dollars of a free gift,", "and the PowerPlay button lights up."] },
+    { "id": "S4", "clauses": ["One tap adds a boost,", "for exactly what you're short."] },
+    { "id": "S5", "clauses": ["A dollar twenty-nine,", "and the free Kit Bag is yours."] },
+    { "id": "S6", "clauses": ["It works on every tier.", "Socks, free shipping, a towel, even a free tee."] },
+    { "id": "S7", "clauses": ["PowerPlay your cart.", "Only at CAGECRAFT."] }
+  ],
+  "music": {
+    "mood": "brand",
+    "file": "../cagecraft-sale/assets/music/track.mp3",
+    "note": "CAGECRAFT's own ElevenLabs Music bed from the sale ad (140 BPM), looped under the voice and ducked.",
+    "level_db": -15
+  },
+  "sfx": [
+    { "file": "../cagecraft-sale/assets/sfx/whoosh-dz6EyD6c0E8E3UPAmFL8.mp3", "word": "now", "offset": -0.25, "db": -14 },
+    { "file": "../cagecraft-sale/assets/sfx/button-RpUTWOqENCgyQ00SW5pV.mp3", "word": "tap", "offset": 0.0, "db": -11 },
+    { "file": "../cagecraft-sale/assets/sfx/slam-89Gjyv7ZWHt2cs5IFSxM.mp3", "word": "yours", "offset": -0.05, "db": -16 },
+    { "file": "../cagecraft-sale/assets/sfx/assemble-CYdMe99hRsHs075xduBA.mp3", "word": "socks", "offset": -0.1, "db": -18 },
+    { "file": "../cagecraft-sale/assets/sfx/logo-8akkxMReMBQSRxTsERPN.mp3", "word": "only", "offset": -0.1, "db": -13 }
+  ]
+}

@@ -1,0 +1,517 @@
+{
+ "provider": "elevenlabs:Amelia - Young Australian Female",
+ "fps": 30,
+ "totalSeconds": 22.3,
+ "speechEnd": 20.37,
+ "segments": [
+  {
+   "id": "S1",
+   "start": 0.22,
+   "end": 3.1,
+   "clauses": [
+    {
+     "text": "Three dollars forty-one away from a free t-shirt?",
+     "start": 0.22,
+     "end": 3.1,
+     "words": [
+      {
+       "w": "Three",
+       "start": 0.22,
+       "end": 0.57
+      },
+      {
+       "w": "dollars",
+       "start": 0.57,
+       "end": 0.93
+      },
+      {
+       "w": "forty-one",
+       "start": 0.93,
+       "end": 1.49
+      },
+      {
+       "w": "away",
+       "start": 1.49,
+       "end": 1.78
+      },
+      {
+       "w": "from",
+       "start": 1.78,
+       "end": 1.96
+      },
+      {
+       "w": "a",
+       "start": 1.96,
+       "end": 2.02
+      },
+      {
+       "w": "free",
+       "start": 2.02,
+       "end": 2.38
+      },
+      {
+       "w": "t-shirt",
+       "start": 2.38,
+       "end": 3.1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "start": 3.41,
+   "end": 8.46,
+   "clauses": [
+    {
+     "text": "Don't add another item.",
+     "start": 3.41,
+     "end": 4.88,
+     "words": [
+      {
+       "w": "Don't",
+       "start": 3.41,
+       "end": 3.81
+      },
+      {
+       "w": "add",
+       "start": 3.81,
+       "end": 3.99
+      },
+      {
+       "w": "another",
+       "start": 3.99,
+       "end": 4.34
+      },
+      {
+       "w": "item",
+       "start": 4.34,
+       "end": 4.88
+      }
+     ]
+    },
+    {
+     "text": "One tap PowerPlays your cart,",
+     "start": 5.28,
+     "end": 7.07,
+     "words": [
+      {
+       "w": "One",
+       "start": 5.28,
+       "end": 5.49
+      },
+      {
+       "w": "tap",
+       "start": 5.49,
+       "end": 5.76
+      },
+      {
+       "w": "PowerPlays",
+       "start": 5.76,
+       "end": 6.51
+      },
+      {
+       "w": "your",
+       "start": 6.51,
+       "end": 6.63
+      },
+      {
+       "w": "cart",
+       "start": 6.63,
+       "end": 7.07
+      }
+     ]
+    },
+    {
+     "text": "and tops up the difference.",
+     "start": 7.07,
+     "end": 8.46,
+     "words": [
+      {
+       "w": "and",
+       "start": 7.07,
+       "end": 7.28
+      },
+      {
+       "w": "tops",
+       "start": 7.28,
+       "end": 7.57
+      },
+      {
+       "w": "up",
+       "start": 7.57,
+       "end": 7.71
+      },
+      {
+       "w": "the",
+       "start": 7.71,
+       "end": 7.79
+      },
+      {
+       "w": "difference",
+       "start": 7.79,
+       "end": 8.46
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S3",
+   "start": 8.82,
+   "end": 11.56,
+   "clauses": [
+    {
+     "text": "Free tee, unlocked.",
+     "start": 8.82,
+     "end": 10.43,
+     "words": [
+      {
+       "w": "Free",
+       "start": 8.82,
+       "end": 9.12
+      },
+      {
+       "w": "tee",
+       "start": 9.12,
+       "end": 9.55
+      },
+      {
+       "w": "unlocked",
+       "start": 9.74,
+       "end": 10.43
+      }
+     ]
+    },
+    {
+     "text": "You earned it.",
+     "start": 10.73,
+     "end": 11.56,
+     "words": [
+      {
+       "w": "You",
+       "start": 10.73,
+       "end": 11.01
+      },
+      {
+       "w": "earned",
+       "start": 11.01,
+       "end": 11.35
+      },
+      {
+       "w": "it",
+       "start": 11.35,
+       "end": 11.56
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S4",
+   "start": 12.04,
+   "end": 17.18,
+   "clauses": [
+    {
+     "text": "Black Friday is up to forty percent off,",
+     "start": 12.04,
+     "end": 14.36,
+     "words": [
+      {
+       "w": "Black",
+       "start": 12.04,
+       "end": 12.32
+      },
+      {
+       "w": "Friday",
+       "start": 12.32,
+       "end": 12.8
+      },
+      {
+       "w": "is",
+       "start": 12.8,
+       "end": 12.91
+      },
+      {
+       "w": "up",
+       "start": 12.91,
+       "end": 13.04
+      },
+      {
+       "w": "to",
+       "start": 13.04,
+       "end": 13.14
+      },
+      {
+       "w": "forty",
+       "start": 13.14,
+       "end": 13.6
+      },
+      {
+       "w": "percent",
+       "start": 13.6,
+       "end": 13.99
+      },
+      {
+       "w": "off",
+       "start": 13.99,
+       "end": 14.36
+      }
+     ]
+    },
+    {
+     "text": "plus a free gift with every fifty dollars.",
+     "start": 14.36,
+     "end": 17.18,
+     "words": [
+      {
+       "w": "plus",
+       "start": 14.36,
+       "end": 14.89
+      },
+      {
+       "w": "a",
+       "start": 14.89,
+       "end": 15.0
+      },
+      {
+       "w": "free",
+       "start": 15.0,
+       "end": 15.4
+      },
+      {
+       "w": "gift",
+       "start": 15.4,
+       "end": 15.71
+      },
+      {
+       "w": "with",
+       "start": 15.71,
+       "end": 15.84
+      },
+      {
+       "w": "every",
+       "start": 15.84,
+       "end": 16.28
+      },
+      {
+       "w": "fifty",
+       "start": 16.28,
+       "end": 16.62
+      },
+      {
+       "w": "dollars",
+       "start": 16.62,
+       "end": 17.18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S5",
+   "start": 17.45,
+   "end": 20.37,
+   "clauses": [
+    {
+     "text": "Ends Sunday.",
+     "start": 17.45,
+     "end": 18.27,
+     "words": [
+      {
+       "w": "Ends",
+       "start": 17.45,
+       "end": 17.71
+      },
+      {
+       "w": "Sunday",
+       "start": 17.71,
+       "end": 18.27
+      }
+     ]
+    },
+    {
+     "text": "Shop now at CAGECRAFT.",
+     "start": 18.6,
+     "end": 20.37,
+     "words": [
+      {
+       "w": "Shop",
+       "start": 18.6,
+       "end": 18.89
+      },
+      {
+       "w": "now",
+       "start": 18.89,
+       "end": 19.21
+      },
+      {
+       "w": "at",
+       "start": 19.21,
+       "end": 19.48
+      },
+      {
+       "w": "CAGECRAFT",
+       "start": 19.48,
+       "end": 20.37
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "ticks": [],
+ "captions": [
+  {
+   "text": "Three dollars forty-one",
+   "start": 0.22,
+   "end": 1.49
+  },
+  {
+   "text": "away from a",
+   "start": 1.49,
+   "end": 2.02
+  },
+  {
+   "text": "free t-shirt",
+   "start": 2.02,
+   "end": 3.1
+  },
+  {
+   "text": "Don't add another",
+   "start": 3.41,
+   "end": 4.34
+  },
+  {
+   "text": "item",
+   "start": 4.34,
+   "end": 4.88
+  },
+  {
+   "text": "One tap PowerPlays",
+   "start": 5.28,
+   "end": 6.51
+  },
+  {
+   "text": "your cart",
+   "start": 6.51,
+   "end": 7.07
+  },
+  {
+   "text": "and tops up",
+   "start": 7.07,
+   "end": 7.71
+  },
+  {
+   "text": "the difference",
+   "start": 7.71,
+   "end": 8.46
+  },
+  {
+   "text": "Free tee unlocked",
+   "start": 8.82,
+   "end": 10.43
+  },
+  {
+   "text": "You earned it",
+   "start": 10.73,
+   "end": 11.56
+  },
+  {
+   "text": "Black Friday is",
+   "start": 12.04,
+   "end": 12.91
+  },
+  {
+   "text": "up to forty",
+   "start": 12.91,
+   "end": 13.6
+  },
+  {
+   "text": "percent off",
+   "start": 13.6,
+   "end": 14.36
+  },
+  {
+   "text": "plus a free",
+   "start": 14.36,
+   "end": 15.4
+  },
+  {
+   "text": "gift with every",
+   "start": 15.4,
+   "end": 16.28
+  },
+  {
+   "text": "fifty dollars",
+   "start": 16.28,
+   "end": 17.18
+  },
+  {
+   "text": "Ends Sunday",
+   "start": 17.45,
+   "end": 18.27
+  },
+  {
+   "text": "Shop now at",
+   "start": 18.6,
+   "end": 19.48
+  },
+  {
+   "text": "CAGECRAFT",
+   "start": 19.48,
+   "end": 20.37
+  }
+ ],
+ "marks": {
+  "bar2": 0.048571428571431596,
+  "hit": 20.62,
+  "bar": 1.7142857142857142,
+  "sfx": [
+   {
+    "word": "-",
+    "at": 0.02
+   },
+   {
+    "word": "Don't",
+    "at": 3.21
+   },
+   {
+    "word": "tap",
+    "at": 5.49
+   },
+   {
+    "word": "unlocked",
+    "at": 9.7
+   },
+   {
+    "word": "Black",
+    "at": 11.84
+   },
+   {
+    "word": "plus",
+    "at": 14.31
+   },
+   {
+    "word": "Shop",
+    "at": 18.65
+   },
+   {
+    "word": "CAGECRAFT",
+    "at": 19.43
+   },
+   {
+    "word": "unlocked",
+    "at": 9.79
+   },
+   {
+    "word": "earned",
+    "at": 10.98
+   }
+  ]
+ },
+ "mix": {
+  "lufs": -15.98,
+  "truePeak": -1.76
+ }
+}
