@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CAGECRAFT Black Friday jersey: buy two, two free gifts</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  /* 4:5 master (1080x1350). ?v=916 switches to the 1080x1920 layout (text kept inside y 270-1250, 65px sides). */
+  html, body { width: 1080px; height: 100vh; overflow: hidden; }
+  body { position: relative; background: #050506; }
+  .abs { position: absolute; }
+  :root { --pink: #F09EC0; --grey: #A7ABB3; --hair: rgba(255,255,255,.16); --side: 64px; }
+
+  /* ---------- world: near-black, restrained floor spotlight, fine grain ---------- */
+  .floor { left: 50%; top: var(--floor-y); width: 1240px; height: var(--floor-h, 360px); transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(74,76,82,.50) 0%, rgba(44,46,50,.30) 42%, rgba(20,21,24,0) 74%); }
+  .grain { inset: 0; opacity: .05; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+  /* ---------- label row ---------- */
+  .labels { left: var(--side); right: var(--side); top: var(--labels-y); display: flex; align-items: center; justify-content: space-between; }
+  .campaign { display: flex; align-items: center; gap: 18px; }
+  .tag { background: var(--pink); color: #050506; font: 800 19px/1 var(--cc-body); letter-spacing: .16em; text-transform: uppercase; padding: 10px 10px 9px 13px; }
+  .lab { font: 700 19px/1 var(--cc-body); letter-spacing: .2em; text-transform: uppercase; color: #fff; }
+  .logo { width: 200px; height: auto; display: block; }
+
+  /* ---------- headline ---------- */
+  .headline { left: var(--side); right: var(--side); top: var(--head-y); color: #fff; }
+  .headline .l1 { display: block; font-size: var(--h1, 196px); line-height: .9; white-space: nowrap; }
+  .headline .l1 em { font-style: inherit; color: var(--pink); }
+  .headline .l2 { display: block; font-size: var(--h2, 62px); line-height: .9; margin-top: var(--h-gap, 14px); white-space: nowrap; }
+
+  /* ---------- line-up (real cutouts, translate/rotate only) ---------- */
+  .lineup { left: 0; top: 0; width: 1080px; height: 100%; }
+  .slot { position: absolute; transform-origin: 50% 100%; }
+  .slot img { width: 100%; height: auto; display: block; }
+  .shadow { position: absolute; border-radius: 50%; background: rgba(0,0,0,.6); filter: blur(14px); }
+
+  /* ---------- price row ---------- */
+  .price-row { left: var(--side); right: var(--side); top: var(--price-y); border-top: 1px solid var(--hair); padding-top: var(--price-pad, 30px);
+    display: flex; align-items: center; justify-content: space-between; }
+  .price { display: flex; align-items: baseline; gap: 18px; }
+  .price .now { font-size: var(--price, 110px); line-height: .82; color: var(--pink); }
+  .price .was { font: 600 24px/1 var(--cc-body); color: var(--grey); white-space: nowrap; }
+  .price .was s { text-decoration: none; position: relative; }
+  .price .was s::after { content: ""; position: absolute; left: -2px; right: -2px; top: 52%; height: 1.5px; background: var(--grey); }
+  .btn { background: #fff; color: #050506; border-radius: 999px; padding: 22px 28px 22px 32px; font: 800 20px/1 var(--cc-body); letter-spacing: .06em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 14px; white-space: nowrap; }
+  .btn svg { width: 12px; height: 20px; }
+
+  /* ---------- facts line ---------- */
+  .facts { left: var(--side); right: var(--side); top: var(--facts-y); display: flex; align-items: center; gap: 12px;
+    font: 700 18px/1 var(--cc-body); letter-spacing: .15em; text-transform: uppercase; color: var(--grey); white-space: nowrap; }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 15px; height: 15px; border-radius: 50%; position: relative; box-shadow: 0 0 0 1px rgba(255,255,255,.28); }
+  .dot::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--ink); }
+  .facts i { font-style: normal; color: rgba(167,171,179,.55); margin: 0 -2px; }
+
+  /* ---------- 9:16 ---------- */
+  .v916 { --side: 65px; }
+
+  /* ---------- variant additions ---------- */
+  .headline .l2 { word-spacing: .08em; }
+  .plus { font-size: 84px; line-height: 1; color: var(--pink); }
+  .gifts { border: 1px solid var(--hair); border-radius: 16px; background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04)); padding: 22px 22px 20px; box-sizing: border-box; display: flex; flex-direction: column; }
+  .gifts .gh { font: 800 17px/1 var(--cc-body); letter-spacing: .16em; text-transform: uppercase; color: var(--pink); white-space: nowrap; }
+  .gifts .row { display: flex; gap: 14px; margin-top: 16px; flex: 1; }
+  .gifts .tile { flex: 1; border-radius: 12px; background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center; padding: 12px; }
+  .gifts .tile img { display: block; height: auto; }
+  .gifts .caps { display: flex; gap: 14px; margin-top: 12px; }
+  .gifts .caps span { flex: 1; text-align: center; font: 700 15px/1 var(--cc-body); letter-spacing: .14em; text-transform: uppercase; color: #fff; white-space: nowrap; }
+  .gifts .caps span b { color: var(--grey); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="abs floor"></div>
+  <div class="abs grain"></div>
+  <div class="abs labels">
+    <div class="campaign"><span class="tag">Black Friday</span><span class="lab">Nov 20 – 29</span></div>
+    <img class="logo" src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+  </div>
+  <div class="abs headline cc-display">
+    <span class="l1"><em>30%</em> off</span>
+    <span class="l2">Buy two. Get two free gifts.</span>
+  </div>
+  <div class="abs lineup" id="lineup"></div>
+  <div class="abs plus cc-display" id="plus">+</div>
+  <div class="abs gifts" id="gifts">
+    <div class="gh">Free with two jerseys</div>
+    <div class="row">
+      <div class="tile"><img id="bag" data-product="cut/kit-bag/front.png" src="../../library/cut/kit-bag/front.png" alt="Kit bag"></div>
+      <div class="tile"><img id="socks" data-product="cut/crew-socks/white.png" src="../../library/cut/crew-socks/white.png" alt="Crew socks"></div>
+    </div>
+    <div class="caps"><span>Kit bag</span><span>Crew socks</span></div>
+  </div>
+  <div class="abs price-row">
+    <div class="price"><span class="now cc-display">$111.94</span><span class="was">was <s>$159.90</s></span></div>
+    <div class="btn">Shop the jerseys <svg viewBox="0 0 14 22" fill="none" stroke="#050506" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l8 8-8 8"/></svg></div>
+  </div>
+  <div class="abs facts">
+    <span class="dots">
+      <span class="dot" style="background:#C6C6C6;--ink:#0B0B0B"></span>
+      <span class="dot" style="background:#050505;--ink:#F09EC0"></span>
+      <span class="dot" style="background:#EDEDEC;--ink:#16B3B7"></span>
+      <span class="dot" style="background:#050505;--ink:#16B3B7"></span>
+    </span>
+    <span>Mix any colourways <i>·</i> XS to 2XL <i>·</i> No code needed <i>·</i> Ends Sun 29 Nov</span>
+  </div>
+<script>
+  const tall = new URLSearchParams(location.search).get("v") === "916";
+  if (tall) document.body.classList.add("v916");
+  const AR = { concrete: 1563/1175, cottoncandy: 1612/1177, tiffany: 1600/1216, diamond: 1648/1231 };
+  const NAME = { concrete: "Concrete", cottoncandy: "Cotton Candy", tiffany: "Tiffany", diamond: "Diamond" };
+  const R = document.documentElement.style;
+  const setVars = (o) => { for (const [k, v] of Object.entries(o)) R.setProperty(k, v + "px"); };
+  const host = document.getElementById("lineup");
+  // Real front cutout, sized by width only, translate/rotate only. Shadow is a separate element.
+  function jersey(slug, cx, top, w, rot) {
+    const h = w * AR[slug];
+    const sh = document.createElement("div"); sh.className = "shadow";
+    Object.assign(sh.style, { left: (cx - w * 0.44) + "px", top: (top + h - 18 * w / 256) + "px", width: (w * 0.88) + "px", height: (32 * w / 256) + "px" });
+    host.appendChild(sh);
+    const slot = document.createElement("div"); slot.className = "slot";
+    Object.assign(slot.style, { left: (cx - w / 2) + "px", top: top + "px", width: w + "px", transform: `rotate(${rot}deg)` });
+    const img = document.createElement("img");
+    img.dataset.product = `cut/jersey-${slug}/front.png`; img.src = `../../library/cut/jersey-${slug}/front.png`; img.alt = `Fight Jersey 2.0 ${NAME[slug]}`;
+    slot.appendChild(img); host.appendChild(slot);
+    return h;
+  }
+  function label(text, cx, y, cls) {
+    const d = document.createElement("div"); d.className = "abs name " + (cls || ""); d.textContent = text;
+    Object.assign(d.style, { left: (cx - 150) + "px", width: "300px", top: y + "px" }); host.appendChild(d);
+  }
+  // shrink a line's font-size until it fits the content width
+  function fit(sel, maxW) { document.querySelectorAll(sel).forEach((el) => { let fs = parseFloat(getComputedStyle(el).fontSize);
+    el.style.display = "inline-block";
+    while (el.getBoundingClientRect().width > maxW && fs > 20) { fs -= 1; el.style.fontSize = fs + "px"; }
+    el.style.display = ""; }); }
+  const L = tall ? { labelsY: 278, headY: 352, priceY: 1090, factsY: 1232, top: 640, floorY: 960, floorH: 360, w: 240, cx: [186, 440], gx: 640, gy: 640, gw: 375, gh: 330, bagW: 118, sockW: 62, plusX: 574, plusY: 760 }
+                 : { labelsY: 80, headY: 184, priceY: 1002, factsY: 1200, top: 486, floorY: 870, floorH: 360, w: 286, cx: [208, 500], gx: 706, gy: 500, gw: 310, gh: 372, bagW: 104, sockW: 62, plusX: 652, plusY: 640 };
+  setVars({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": 166, "--h2": 62, "--price-y": L.priceY, "--facts-y": L.factsY, "--floor-y": L.floorY, "--floor-h": L.floorH, "--price": 92 });
+  document.querySelector(".floor").style.left = "360px";
+  jersey("tiffany", L.cx[0], L.top, L.w, -2);
+  jersey("cottoncandy", L.cx[1], L.top, L.w, 2);
+  Object.assign(document.getElementById("gifts").style, { left: L.gx + "px", top: L.gy + "px", width: L.gw + "px", height: L.gh + "px" });
+  Object.assign(document.getElementById("plus").style, { left: L.plusX + "px", top: L.plusY + "px" });
+  document.getElementById("bag").style.width = L.bagW + "px";
+  document.getElementById("socks").style.width = L.sockW + "px";
+  document.fonts.ready.then(() => { fit(".headline .l2", 1080 - 2 * (tall ? 65 : 64)); });
+</script>
+</body>
+</html>

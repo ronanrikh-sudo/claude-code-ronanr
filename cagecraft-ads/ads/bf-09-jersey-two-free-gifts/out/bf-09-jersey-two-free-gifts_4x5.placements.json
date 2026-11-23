@@ -1,0 +1,61 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/jersey-tiffany/front.png",
+      "x": 51.95399475097656,
+      "y": 481.2386169433594,
+      "w": 298.95892333984375,
+      "h": 386.0644836425781,
+      "rotation": -1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 286.00004947531454,
+      "naturalWidth": 1216,
+      "upscale": 0.23519740910798892
+    },
+    {
+      "src": "cut/jersey-cottoncandy/front.png",
+      "x": 357.08709716796875,
+      "y": 481.24798583984375,
+      "w": 299.4954833984375,
+      "h": 401.43011474609375,
+      "rotation": 1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 286.00004947531454,
+      "naturalWidth": 1177,
+      "upscale": 0.24299069624070904
+    },
+    {
+      "src": "cut/kit-bag/front.png",
+      "x": 741,
+      "y": 644.71875,
+      "w": 104,
+      "h": 90.546875,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 104,
+      "naturalWidth": 1656,
+      "upscale": 0.06280193236714976
+    },
+    {
+      "src": "cut/crew-socks/white.png",
+      "x": 901,
+      "y": 625.1875,
+      "w": 62,
+      "h": 129.609375,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 62,
+      "naturalWidth": 851,
+      "upscale": 0.07285546415981199
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}
