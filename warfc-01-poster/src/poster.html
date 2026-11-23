@@ -1,0 +1,138 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Archivo";src:url(fonts/archivo.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%}
+@font-face{font-family:"Mona";src:url(fonts/mona.woff2) format("woff2");font-weight:200 900;font-stretch:75% 125%}
+@font-face{font-family:"Instrument";src:url(fonts/instrument-italic.woff2) format("woff2");font-style:italic}
+
+:root{
+  --ink:#070708;
+  --bone:#EEE9E1;
+  --bone-2:#C9C2B6;
+  --mute:#8C867D;
+  --red:#D61921;          /* sampled from the WAR FC crown */
+  --red-deep:#6E0A10;
+  --m:60px;               /* outer margin */
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1440px;background:var(--ink);overflow:hidden}
+#poster{position:relative;width:1080px;height:1440px;overflow:hidden;background:var(--ink);
+  -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;font-kerning:normal}
+.abs{position:absolute}
+
+/* ---------- atmosphere ---------- */
+.glow{inset:0;background:
+   radial-gradient(48% 34% at 50% 40%, rgba(214,25,33,.30) 0%, rgba(214,25,33,.10) 45%, transparent 75%),
+   radial-gradient(30% 16% at 50% 2%, rgba(255,240,225,.10) 0%, transparent 100%),
+   radial-gradient(70% 22% at 50% 100%, rgba(110,10,16,.16) 0%, transparent 70%)}
+.bignum{left:0;right:0;top:150px;text-align:center;font-family:"Archivo";font-weight:900;font-stretch:62%;
+  font-size:800px;line-height:.78;letter-spacing:.02em;color:rgba(214,25,33,.07);-webkit-text-stroke:1.5px rgba(214,25,33,.42);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 80%);mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 80%)}
+.smoke{inset:0;background:url(smoke.png) center/1080px 1440px;mix-blend-mode:screen;opacity:.16}
+.vignette{inset:0;background:
+   radial-gradient(120% 85% at 50% 42%, transparent 55%, rgba(0,0,0,.65) 100%)}
+
+/* ---------- fighters ---------- */
+.fighter{top:80px;width:600px;height:1000px}
+.fighter img{width:100%;height:100%;display:block}
+.fL{left:0;transform-origin:210px 250px;transform:scale(1.04)}
+.fR{left:480px;transform-origin:405px 270px;transform:scale(1.04)}
+.floor{left:0;right:0;top:700px;bottom:0;background:linear-gradient(180deg, rgba(7,7,8,0) 0%, rgba(7,7,8,.55) 30%, rgba(7,7,8,.92) 55%, var(--ink) 75%)}
+
+/* ---------- header ---------- */
+.meta{left:var(--m);right:var(--m);top:44px;display:flex;justify-content:space-between;align-items:center;
+  font-family:"Mona";font-stretch:125%;font-weight:600;font-size:10.5px;letter-spacing:.42em;color:rgba(238,233,225,.62)}
+.meta span:last-child{margin-right:-.42em}
+.meta .tag{color:var(--bone)}
+.war{left:50%;top:88px;width:344px;transform:translateX(-50%);filter:drop-shadow(0 6px 24px rgba(0,0,0,.6))}
+
+.presented{left:50%;top:272px;transform:translateX(-50%);text-align:center;width:220px}
+.presented .by{font-family:"Instrument";font-style:italic;font-size:21px;color:rgba(238,233,225,.78);letter-spacing:.01em}
+.presented img{display:block;width:98px;margin:10px auto 0;opacity:.92}
+
+/* ---------- names ---------- */
+.first{font-family:"Instrument";font-style:italic;font-size:54px;line-height:1;color:var(--bone);letter-spacing:-.005em}
+.sur{font-family:"Archivo";font-weight:900;font-stretch:62%;font-size:206px;line-height:.74;letter-spacing:-.012em;
+  text-transform:uppercase;color:var(--bone);
+  background:linear-gradient(180deg,#FFFFFF 0%,#EEE9E1 45%,#BDB5A8 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 10px 30px rgba(0,0,0,.55))}
+.nameL{left:calc(var(--m) - 6px);top:780px}
+.nameR{right:calc(var(--m) - 6px);top:780px;text-align:right}
+.nameL .first{margin:0 0 10px 8px}
+.nameR .first{margin:0 8px 10px 0}
+.vs{left:0;right:0;top:784px;text-align:center;font-family:"Instrument";font-style:italic;font-size:62px;line-height:1;color:var(--red)}
+.vs:before,.vs:after{content:"";display:inline-block;width:64px;height:1px;background:rgba(214,25,33,.7);vertical-align:middle;margin:0 18px 8px}
+
+/* ---------- bout + info ---------- */
+.bout{left:var(--m);right:var(--m);top:1040px;display:flex;align-items:center;gap:22px;
+  font-family:"Mona";font-stretch:125%;font-weight:700;font-size:13px;letter-spacing:.5em;color:var(--red);white-space:nowrap}
+.bout i{flex:1;height:1px;background:linear-gradient(90deg,rgba(214,25,33,0),rgba(214,25,33,.75))}
+.bout i:last-child{background:linear-gradient(270deg,rgba(214,25,33,0),rgba(214,25,33,.75))}
+.bout b{font-weight:700;margin-right:-.5em}
+
+.info{left:var(--m);right:var(--m);top:1092px;display:grid;grid-template-columns:1fr 1.55fr 1fr;
+  border-top:1px solid rgba(238,233,225,.12);border-bottom:1px solid rgba(238,233,225,.12)}
+.info>div{padding:20px 0 19px;text-align:center}
+.info>div+div{border-left:1px solid rgba(238,233,225,.12)}
+.info .k{line-height:1;font-family:"Mona";font-stretch:125%;font-weight:500;font-size:9.5px;letter-spacing:.42em;color:var(--mute);margin-bottom:9px}
+.info .v{line-height:1;font-family:"Mona";font-stretch:125%;font-weight:700;font-size:17px;letter-spacing:.06em;color:var(--bone);white-space:nowrap}
+.info .v small{font-size:11px;letter-spacing:.12em;font-weight:600;color:var(--bone-2)}
+
+.cta{left:50%;top:1200px;transform:translateX(-50%);height:46px;padding:0 30px;display:flex;align-items:center;gap:16px;
+  background:var(--red);color:#fff;font-family:"Mona";font-stretch:125%;font-weight:700;font-size:13px;letter-spacing:.32em;white-space:nowrap}
+.cta em{font-style:normal;font-weight:500;opacity:.85}
+.cta span:last-child{margin-right:-.32em}
+
+/* ---------- partners ---------- */
+.partners{left:var(--m);right:var(--m);top:1292px}
+.partners .k{text-align:center;font-family:"Mona";font-stretch:125%;font-weight:500;font-size:9px;letter-spacing:.5em;color:var(--mute);margin-bottom:20px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:0 6px}
+.row img{display:block;opacity:.86}
+
+/* ---------- finish ---------- */
+.grain{inset:0;background:url(grain.png) 0 0/512px 512px;mix-blend-mode:overlay;opacity:.55;pointer-events:none}
+.frame{inset:22px;border:1px solid rgba(238,233,225,.09)}
+</style></head>
+<body>
+<div id="poster">
+  <div class="abs glow"></div>
+  <div class="abs bignum">01</div>
+  <div class="abs smoke"></div>
+
+  <div class="abs fighter fL"><img src="fighter_L.png" alt=""></div>
+  <div class="abs fighter fR"><img src="fighter_R.png" alt=""></div>
+  <div class="abs floor"></div>
+  <div class="abs vignette"></div>
+
+  <div class="abs meta"><span>WAR FC 01</span><span class="tag">PROVE YOU BELONG</span><span>20.02.2027</span></div>
+  <img class="abs war" src="war_logo.png" alt="WAR Fighting Championships">
+  <div class="abs presented"><div class="by">presented by</div><img src="ax_present.png" alt="AX Carpentry"></div>
+
+  <div class="abs nameL"><div class="first">Jamal</div><div class="sur">Issa</div></div>
+  <div class="abs vs">vs</div>
+  <div class="abs nameR"><div class="first">Zac</div><div class="sur">White</div></div>
+
+  <div class="abs bout"><i></i><b>LIGHTWEIGHT BOUT</b><i></i></div>
+  <div class="abs info">
+    <div><div class="k">DATE</div><div class="v">SAT 20 FEB 2027</div></div>
+    <div><div class="k">VENUE</div><div class="v">WSCC <small>·</small> PENRITH PANTHERS</div></div>
+    <div><div class="k">DOORS</div><div class="v">5:30 PM</div></div>
+  </div>
+  <div class="abs cta"><span>TICKETS</span><em>—</em><span>WARFC.ORG</span></div>
+
+  <div class="abs partners">
+    <div class="k">OFFICIAL PARTNERS</div>
+    <div class="row">
+      <img src="sp_ax.png" style="height:54px">
+      <img src="sp_yac.png" style="height:47px">
+      <img src="sp_rab.png" style="height:56px">
+      <img src="sp_cagecraft.png" style="height:50px">
+      <img src="sp_panthers.png" style="height:52px">
+      <img src="sp_wscc.png" style="height:47px">
+    </div>
+  </div>
+
+  <div class="abs grain"></div>
+  <div class="abs frame"></div>
+</div>
+</body></html>
