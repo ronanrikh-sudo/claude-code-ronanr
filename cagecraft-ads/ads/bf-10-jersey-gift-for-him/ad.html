@@ -63,6 +63,9 @@
   .headline .g em { font-style: inherit; color: var(--pink); }
   .headline .l2 { margin-top: 18px; }
   .headline .l2 em { font-style: inherit; color: var(--pink); }
+  .headline .l3 { display: block; font-size: 34px; line-height: 1; margin-top: 20px; white-space: nowrap; word-spacing: .08em; }
+  .headline .l3.b { margin-top: 8px; }
+  .headline .l3 em { font-style: inherit; color: var(--pink); }
   .strip { left: var(--side); right: var(--side); top: var(--strip-y); height: var(--strip-h); border: 1px solid var(--hair); border-left: 6px solid var(--pink); border-radius: 6px 16px 16px 6px;
     background: linear-gradient(90deg, rgba(255,255,255,.10), rgba(255,255,255,.04)); display: flex; flex-direction: column; justify-content: center; padding: 0 30px; }
   .strip .t1 { font-size: var(--strip-t, 40px); line-height: .95; color: #fff; white-space: nowrap; }
@@ -80,11 +83,13 @@
     <span class="g"><em>His</em> Christmas</span>
     <span class="g">present, sorted.</span>
     <span class="l2"><em>30% off</em> the Fight Jersey 2.0.</span>
+    <span class="l3"><em>+</em> A free kit bag with 1</span>
+    <span class="l3 b">or free socks &amp; a kit bag with 2</span>
   </div>
   <div class="abs lineup" id="lineup"></div>
   <div class="abs strip">
     <div class="t1 cc-display">Best price before Christmas.</div>
-    <div class="t2">Sale ends Sunday 29 Nov <span style="opacity:.55">·</span> Free kit bag with his jersey</div>
+    <div class="t2">Sale ends Sunday 29 Nov <span style="opacity:.55">·</span> Gifts added automatically, no code</div>
   </div>
   <div class="abs price-row">
     <div class="price"><span class="now cc-display">$55.97</span><span class="was">was <s>$79.95</s></span></div>
@@ -129,8 +134,8 @@
     el.style.display = "inline-block";
     while (el.getBoundingClientRect().width > maxW && fs > 20) { fs -= 1; el.style.fontSize = fs + "px"; }
     el.style.display = ""; }); }
-  const L = tall ? { labelsY: 278, headY: 346, priceY: 1090, factsY: 1232, top: 600, floorY: 915, floorH: 360, w: 236, step: 252, rot: 2, stripY: 952, stripH: 112, stripT: 38 }
-                 : { labelsY: 80, headY: 178, priceY: 1012, factsY: 1206, top: 492, floorY: 810, floorH: 340, w: 232, step: 252, rot: 2, stripY: 844, stripH: 130, stripT: 37 };
+  const L = tall ? { labelsY: 278, headY: 346, priceY: 1096, factsY: 1236, top: 656, floorY: 960, floorH: 340, w: 236, step: 252, rot: 2, stripY: 984, stripH: 96, stripT: 34 }
+                 : { labelsY: 80, headY: 178, priceY: 1024, factsY: 1212, top: 548, floorY: 850, floorH: 330, w: 236, step: 252, rot: 2, stripY: 884, stripH: 116, stripT: 37 };
   setVars({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h2": 50, "--h-gap": 18, "--price-y": L.priceY, "--facts-y": L.factsY, "--floor-y": L.floorY, "--floor-h": L.floorH,
             "--strip-y": L.stripY, "--strip-h": L.stripH, "--strip-t": L.stripT });
   var maxW = 1080 - 2 * (tall ? 65 : 64);
