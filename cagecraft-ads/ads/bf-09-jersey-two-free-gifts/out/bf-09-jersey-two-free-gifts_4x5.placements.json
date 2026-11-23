@@ -31,7 +31,7 @@
     {
       "src": "cut/kit-bag/front.png",
       "x": 741,
-      "y": 644.71875,
+      "y": 666.203125,
       "w": 104,
       "h": 90.546875,
       "rotation": 0,
@@ -42,15 +42,15 @@
     },
     {
       "src": "cut/crew-socks/white.png",
-      "x": 901,
-      "y": 625.1875,
-      "w": 62,
-      "h": 129.609375,
+      "x": 896,
+      "y": 636.21875,
+      "w": 72,
+      "h": 150.5,
       "rotation": 0,
       "flipX": false,
-      "drawnWidth": 62,
+      "drawnWidth": 72,
       "naturalWidth": 851,
-      "upscale": 0.07285546415981199
+      "upscale": 0.0846063454759107
     }
   ],
   "photos": [],

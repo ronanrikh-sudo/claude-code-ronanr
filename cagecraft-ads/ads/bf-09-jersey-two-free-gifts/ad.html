@@ -62,7 +62,7 @@
   .headline .l2 { word-spacing: .08em; }
   .plus { font-size: 84px; line-height: 1; color: var(--pink); }
   .gifts { border: 1px solid var(--hair); border-radius: 16px; background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04)); padding: 22px 22px 20px; box-sizing: border-box; display: flex; flex-direction: column; }
-  .gifts .gh { font: 800 17px/1 var(--cc-body); letter-spacing: .16em; text-transform: uppercase; color: var(--pink); white-space: nowrap; }
+  .gifts .gh { font-size: var(--free, 76px); line-height: .82; color: var(--pink); white-space: nowrap; text-align: center; }
   .gifts .row { display: flex; gap: 14px; margin-top: 16px; flex: 1; }
   .gifts .tile { flex: 1; border-radius: 12px; background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center; padding: 12px; }
   .gifts .tile img { display: block; height: auto; }
@@ -80,12 +80,12 @@
   </div>
   <div class="abs headline cc-display">
     <span class="l1"><em>30%</em> off</span>
-    <span class="l2">Buy two. Get two free gifts.</span>
+    <span class="l2">A free gift with every jersey you buy.</span>
   </div>
   <div class="abs lineup" id="lineup"></div>
-  <div class="abs plus cc-display" id="plus">+</div>
+  <div class="abs plus cc-display" id="plus">=</div>
   <div class="abs gifts" id="gifts">
-    <div class="gh">Free with two jerseys</div>
+    <div class="gh cc-display">Free</div>
     <div class="row">
       <div class="tile"><img id="bag" data-product="cut/kit-bag/front.png" src="../../library/cut/kit-bag/front.png" alt="Kit bag"></div>
       <div class="tile"><img id="socks" data-product="cut/crew-socks/white.png" src="../../library/cut/crew-socks/white.png" alt="Crew socks"></div>
@@ -135,9 +135,9 @@
     el.style.display = "inline-block";
     while (el.getBoundingClientRect().width > maxW && fs > 20) { fs -= 1; el.style.fontSize = fs + "px"; }
     el.style.display = ""; }); }
-  const L = tall ? { labelsY: 278, headY: 352, priceY: 1090, factsY: 1232, top: 640, floorY: 960, floorH: 360, w: 240, cx: [186, 440], gx: 640, gy: 640, gw: 375, gh: 330, bagW: 118, sockW: 62, plusX: 574, plusY: 760 }
-                 : { labelsY: 80, headY: 184, priceY: 1002, factsY: 1200, top: 486, floorY: 870, floorH: 360, w: 286, cx: [208, 500], gx: 706, gy: 500, gw: 310, gh: 372, bagW: 104, sockW: 62, plusX: 652, plusY: 640 };
-  setVars({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": 166, "--h2": 62, "--price-y": L.priceY, "--facts-y": L.factsY, "--floor-y": L.floorY, "--floor-h": L.floorH, "--price": 92 });
+  const L = tall ? { labelsY: 278, headY: 352, priceY: 1090, factsY: 1232, top: 640, floorY: 960, floorH: 360, w: 240, cx: [186, 440], gx: 640, gy: 628, gw: 375, gh: 348, free: 62, bagW: 118, sockW: 62, plusX: 574, plusY: 760 }
+                 : { labelsY: 80, headY: 184, priceY: 1002, factsY: 1200, top: 486, floorY: 870, floorH: 360, w: 286, cx: [208, 500], gx: 706, gy: 482, gw: 310, gh: 404, free: 78, bagW: 104, sockW: 72, plusX: 652, plusY: 640 };
+  setVars({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": 166, "--h2": 62, "--price-y": L.priceY, "--facts-y": L.factsY, "--floor-y": L.floorY, "--floor-h": L.floorH, "--price": 92, "--free": L.free });
   document.querySelector(".floor").style.left = "360px";
   jersey("tiffany", L.cx[0], L.top, L.w, -2);
   jersey("cottoncandy", L.cx[1], L.top, L.w, 2);
