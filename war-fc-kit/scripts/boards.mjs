@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from './pw.mjs';
-import { warLogo, axLogo, axWordmark, cagecraftLogo, emblemLogo, CROWN_D, CROWN_BOX, WAR_RED, WHITE } from './brand.mjs';
+import { warLogo, axLogo, axWordmark, axEmblem, cagecraftLogo, emblemLogo, CROWN_D, CROWN_BOX, WAR_RED, WHITE } from './brand.mjs';
 import { CONCEPTS, PRODUCTS } from './shorts.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -119,8 +119,8 @@ function logoSystemSlide(n) {
         tile(svgOf(warLogo(L, ['Crown']), 190), 'Crown emblem · back leg', 'The crown on its own, on the open back leg.'),
       ])}
       ${row('AX Carpentry · presenting sponsor  /  CAGECRAFT · kit partner', [
-        tile(svgOf(axLogo(WHITE), 200), 'AX stacked logo · front leg', 'Their primary logo as supplied.'),
-        tile(svgOf(axWordmark(WHITE), 470), 'AX horizontal wordmark · side', 'Built from AX’s own monogram and lettering; for AX’s sign-off.'),
+        tile(svgOf(axWordmark(WHITE), 470), 'AX horizontal wordmark · side', 'Up the outer side of one leg. Built from AX’s own monogram and lettering; for AX’s sign-off.'),
+        tile(svgOf(axEmblem(WHITE), 190), 'AX emblem · beside the sash', 'House and AX monogram on the other leg, next to PROVE YOU BELONG.'),
         tile(`<div style="display:flex;align-items:center;gap:40px">${svgOf(emblemLogo(WHITE), 170)}${svgOf(cagecraftLogo(WHITE), 230)}</div>`, 'CAGECRAFT · waistband', 'Emblem on the front panel; wordmark at the back.'),
       ])}
     </div>
@@ -138,12 +138,12 @@ function placementSlide(n) {
       <img src="${cut(name)}" style="width:100%;height:100%;display:block">${pins.map(([x, y, i]) => pin(name, x, y, i)).join('')}
       <div class="kicker" style="position:absolute;left:0;right:0;bottom:-34px;text-align:center;font-size:12px">${label}</div></div>`;
   };
-  const front = fig('fight-short_black_front', [[1345, 935, 1], [874, 1545, 2], [470, 1455, 3], [1186, 716, 6], [556, 716, 7], [1250, 1580, 8]], 'Front');
-  const back = fig('fight-short_black_back', [[1458, 935, 4], [1288, 1690, 5], [1200, 716, 6]], 'Back');
+  const front = fig('fight-short_black_front', [[1345, 935, 1], [470, 1455, 2], [1058, 1318, 3], [1186, 716, 6], [556, 716, 7], [1132, 1730, 8]], 'Front');
+  const back = fig('fight-short_black_back', [[1458, 935, 4], [1272, 1370, 5], [1200, 716, 6]], 'Back');
   const rows = [
     ['WAR FC crest', 'Large across the upper front.'],
-    ['AX Carpentry logo', 'Presenting sponsor: full stacked logo on the lower front leg.'],
-    ['AX Carpentry wordmark', 'Horizontal wordmark running up the outer side of the same leg.'],
+    ['AX Carpentry wordmark', 'Presenting sponsor: horizontal wordmark up the outer side of one leg.'],
+    ['AX Carpentry emblem', 'House and AX monogram on the other leg, beside the sash.'],
     ['WAR FC wide wordmark', 'Across the back, just below the waistband.'],
     ['WAR crown', 'The crown emblem on the open back leg.'],
     ['CAGECRAFT', 'Emblem inside the flat front waistband panel; modest wordmark at the back.'],

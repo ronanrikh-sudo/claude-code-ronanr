@@ -1,4 +1,4 @@
-# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 5)
+# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 6)
 
 Pitch to WAR Fighting Championships for official event fight shorts, built in the
 `cagecraft-wholesale-process` format (see `.claude/skills/cagecraft-wholesale-process`).
@@ -10,7 +10,12 @@ Pitch to WAR Fighting Championships for official event fight shorts, built in th
 - Inspiration: professional promotion uniforms (Eternal MMA, Venum UFC); logos integrated, on-brand pattern
 - Commercial: in-kind sponsorship (CAGECRAFT on posters, venue access, social features)
 
-## Round 5 (current): logo variations
+## Round 6 (current): decluttered
+- Front: WAR FC crest; AX **wordmark up the outer side** of one leg; AX **emblem** (house + monogram, no text) on the other leg beside the PROVE YOU BELONG sash. The stacked AX logo was removed from the front.
+- Swipe rebuilt as one diagonal gesture: red brush at the sash-side hip, white streaks coming off the opposite side near the hem. The back drops the red swipe so nothing crosses the sash.
+- Back: wide WAR FC wordmark below the waistband, crown on the open leg (raised), white streaks off the lower outer side.
+
+## Round 5: logo variations
 - Researched AX Carpentry: axcarpentry.com.au ("AX Carpentry Constructions") is an unfinished site template with no logo or fonts, so all AX variations are built from the supplied logo's own vector parts.
 - **AX Carpentry**: stacked logo on the lower front leg; new **horizontal wordmark** (AX monogram + CARPENTRY) running up the outer side of the same leg (`axWordmark` in `brand.mjs`; needs AX's sign-off)
 - **WAR FC**: full crest on the front; **wide wordmark** (WAR + FIGHTING CHAMPIONSHIPS, no crown) across the back below the waistband; **crown emblem** on the open back leg

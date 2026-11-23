@@ -126,3 +126,7 @@ Round 1 for WAR FC used a flat tonal monogram, side panels and a lace tie. The u
 - **Research the sponsor's branding** (website, socials) before inventing anything. AX Carpentry's site was an unfinished template with no logo or fonts, so the supplied logo file was the only real asset. Build variations **only from the sponsor's own vector parts** (monogram, roofline, letter paths). Never retype their name in a guessed font. Flag derived lockups for the sponsor's sign-off.
 - Add a **Logo system** slide to the deck (each brand's primary and secondary lockups on dark tiles, labelled with where each goes) before the placement map.
 - When a new mark lands where the accent streaks start, move the streak origin. `clearLen` silently drops streaks whose origin sits inside a logo's clear zone.
+
+### WAR FC round 6 feedback: restraint
+- **One mark per zone.** Round 5 (crest, stacked sponsor logo, side wordmark, sash and streaks on one front) read "way too crowded". The approved front has the promotion crest, the sponsor **wordmark on one side**, the sponsor **emblem only** (no text) on the other leg beside the sash, and the sash.
+- **Accent gestures must start at an edge.** Streaks floating mid-leg looked "off". Compose the swipes as one diagonal: the red brush at the sash-side hip, and white streaks coming off the opposite side near the hem. On the back, skip the red swipe if it would cross the sash.

@@ -4,14 +4,14 @@
 //  - White Corner: white ground with soft grey streaks, dark red + black accents, dark red sash
 // Waistband: flat front panel inside the band (like Rival's) with the CAGECRAFT emblem; crown/spear
 // band either side; CAGECRAFT wordmark large on the back waistband. No external drawstring.
-// Front: big WAR FC crest across the upper front; AX Carpentry stacked logo on the lower leg and
-// its horizontal wordmark up the outer side of the same leg. Back: wide WAR FC wordmark below the
+// Front: big WAR FC crest across the upper front; AX Carpentry horizontal wordmark up the outer side of
+// one leg and the AX emblem beside the sash on the other. Back: wide WAR FC wordmark below the
 // waistband, WAR crown emblem on the open leg.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { W, H, f, frame, shadingPass, stitch, flatlock, fold, crease, glow, symOutline, mirrorD, both } from './kit.mjs';
-import { warLogo, axLogo, axWordmark, cagecraftLogo, emblemLogo, place, heightAt, CROWN_D, CROWN_BOX, WAR_RED, WHITE } from './brand.mjs';
+import { warLogo, axLogo, axWordmark, axEmblem, cagecraftLogo, emblemLogo, place, heightAt, CROWN_D, CROWN_BOX, WAR_RED, WHITE } from './brand.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const SAIRA = fs.readFileSync(path.join(here, '../assets/fonts/saira-italic-latin.woff2')).toString('base64');
@@ -99,17 +99,17 @@ function slim(x, y, angle, len, t, color, op) {
 //  axWord  AX Carpentry horizontal wordmark (AX monogram + CARPENTRY), run up the outer side of the leg
 const MARKS = {
   'fight-short': {
-    front: [['crest', 1000, 985, 600], ['ax', 720, 1562, 250], ['axWord', 562, 1122, 540, -83.5]],
-    back: [['warWide', 1000, 935, 800], ['crown', 1288, 1560, 230]],
+    front: [['crest', 1000, 985, 600], ['axWord', 562, 1122, 540, -83.5], ['axEmblem', 1195, 1318, 180]],
+    back: [['warWide', 1000, 935, 800], ['crown', 1272, 1250, 230]],
   },
   compression: {
-    front: [['crest', 1000, 980, 470], ['ax', 805, 1530, 200], ['axWord', 620, 1225, 410, -88.2]],
-    back: [['warWide', 1000, 905, 560], ['crown', 1200, 1500, 180]],
+    front: [['crest', 1000, 980, 470], ['axWord', 620, 1225, 410, -88.2], ['axEmblem', 1108, 1212, 140]],
+    back: [['warWide', 1000, 905, 560], ['crown', 1172, 1180, 180]],
   },
 };
 const ART = {
-  'fight-short': { hipL: [708, 1250], hipR: [1440, 1000] },
-  compression: { hipL: [726, 1214], hipR: [1330, 1020] },
+  'fight-short': { sideL: [452, 1560], hipR: [1440, 1000] },
+  compression: { sideL: [676, 1500], hipR: [1330, 1020] },
 };
 function logoOf(c, k) {
   switch (k) {
@@ -117,6 +117,7 @@ function logoOf(c, k) {
     case 'warWide': return warLogo(c.logo, ['WAR', 'FIGHTING_CHAMPIONSHIPS']);
     case 'crown': return warLogo(c.logo, ['Crown']);
     case 'axWord': return axWordmark(c.ax);
+    case 'axEmblem': return axEmblem(c.ax);
     default: return axLogo(c.ax);
   }
 }
@@ -149,16 +150,18 @@ function art(c, cut, view) {
   const mir = view === 'back';
   const X = (x) => (mir ? W - x : x);
   const A = (a) => (mir ? 180 - a : a);
-  const { hipL, hipR } = ART[cut];
+  const { sideL, hipR } = ART[cut];
   const boxes = avoidBoxes(c, cut, view);
   // brushed accent at the outer hip (red on black / black on red), kept clear of the logos
   let accent = '';
-  const ay = hipR[1] + (mir ? 190 : 0);
-  for (let i = 0; i < 9; i++) accent += brush(X(hipR[0] - r() * 110), ay + i * 30 + r() * 24, A(-30 + (r() - 0.5) * 6), 200 + r() * 260, 20 + r() * 30, c.accent, 3000 + i, 0.95);
-  // clean white accents: slim tapered streaks off the other hip, stopping short of every logo
+  const ay = hipR[1] + (mir ? 100 : 0);
+  // front only: on the back the sash already carries the red, and a swipe there crosses the sash
+  for (let i = 0; i < 9; i++) { const b = brush(X(hipR[0] - r() * 110), ay + i * 30 + r() * 24, A(-30 + (r() - 0.5) * 6), 200 + r() * 260, 20 + r() * 30, c.accent, 3000 + i, 0.95); if (!mir) accent += b; }
+  // clean white accents: slim tapered streaks coming off the outer side of the lower leg opposite the
+  // sash (one diagonal gesture with the hip swipe), stopping short of every logo
   let lines = '';
   for (let i = 0; i < 6; i++) {
-    const x = X(hipL[0] + r() * 40 - 20), y = hipL[1] + i * 32 + r() * 12, ang = A(-30 + (r() - 0.5) * 4);
+    const x = X(sideL[0] + r() * 16 - 8), y = sideL[1] + i * 30 + r() * 10, ang = A(-30 + (r() - 0.5) * 4);
     const L = clearLen(x, y, ang, 240 + r() * 260, boxes);
     if (L > 120) lines += slim(x, y, ang, L, 3 + r() * 5, c.accent2, 0.55 + r() * 0.3);
   }
