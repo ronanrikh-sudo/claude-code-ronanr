@@ -119,8 +119,8 @@ function logoSystemSlide(n) {
         tile(svgOf(warLogo(L, ['Crown']), 190), 'Crown emblem · back leg', 'The crown on its own, on the open back leg.'),
       ])}
       ${row('AX Carpentry · presenting sponsor  /  CAGECRAFT · kit partner', [
-        tile(svgOf(axWordmark(WHITE), 470), 'AX horizontal wordmark · side', 'Up the outer side of one leg. Built from AX’s own monogram and lettering; for AX’s sign-off.'),
-        tile(svgOf(axEmblem(WHITE), 190), 'AX emblem · beside the sash', 'House and AX monogram on the other leg, next to PROVE YOU BELONG.'),
+        tile(svgOf(axWordmark(WHITE), 470), 'AX horizontal wordmark · side', 'Runs the full height of one side. Built from AX’s own monogram and lettering; for AX’s sign-off.'),
+        tile(svgOf(axEmblem(WHITE), 190), 'AX emblem · other side', 'House and AX monogram on the other side, outside the PROVE YOU BELONG sash.'),
         tile(`<div style="display:flex;align-items:center;gap:40px">${svgOf(emblemLogo(WHITE), 170)}${svgOf(cagecraftLogo(WHITE), 230)}</div>`, 'CAGECRAFT · waistband', 'Emblem on the front panel; wordmark at the back.'),
       ])}
     </div>
@@ -128,49 +128,59 @@ function logoSystemSlide(n) {
   </div>`;
 }
 
+const VIEWS = [['front', 'Front'], ['back', 'Back'], ['side-wordmark', 'Side · AX wordmark'], ['side-sash', 'Side · sash + AX emblem']];
+
 function placementSlide(n) {
-  const k = 0.42;
+  const base = 'fight-short_black_';
+  const widths = VIEWS.reduce((a, [v]) => a + META[base + v].w, 0);
+  const k = Math.min(0.36, (1760 - 3 * 26) / widths);
   const at = (name, x, y) => { const m = META[name]; return [(x - m.box[0]) * k, (y - m.box[1]) * k]; };
   const pin = (name, x, y, i) => { const [px, py] = at(name, x, y); return `<div class="num" style="position:absolute;left:${px - 17}px;top:${py - 17}px">${i}</div>`; };
-  const fig = (name, pins, label) => {
-    const m = META[name];
-    return `<div style="position:relative;width:${m.w * k}px;height:${m.h * k}px">
-      <img src="${cut(name)}" style="width:100%;height:100%;display:block">${pins.map(([x, y, i]) => pin(name, x, y, i)).join('')}
-      <div class="kicker" style="position:absolute;left:0;right:0;bottom:-34px;text-align:center;font-size:12px">${label}</div></div>`;
+  const fig = (view, pins, label) => {
+    const name = base + view, m = META[name];
+    return `<div style="position:relative;width:${m.w * k}px;height:${MAX_H * k}px;display:flex;align-items:center">
+      <div style="position:relative;width:${m.w * k}px;height:${m.h * k}px"><img src="${cut(name)}" style="width:100%;height:100%;display:block">${pins.map(([x, y, i]) => pin(name, x, y, i)).join('')}</div>
+      <div class="kicker" style="position:absolute;left:-20px;right:-20px;bottom:-30px;text-align:center;font-size:11px">${label}</div></div>`;
   };
-  const front = fig('fight-short_black_front', [[1345, 935, 1], [470, 1455, 2], [1058, 1318, 3], [1186, 716, 6], [556, 716, 7], [1132, 1730, 8]], 'Front');
-  const back = fig('fight-short_black_back', [[1458, 935, 4], [1272, 1370, 5], [1200, 716, 6]], 'Back');
+  const figs = [
+    fig('front', [[1345, 935, 1], [1186, 716, 6], [556, 716, 7], [1132, 1730, 8]], 'Front'),
+    fig('back', [[1458, 935, 2], [1272, 1370, 3], [1200, 716, 6]], 'Back'),
+    fig('side-wordmark', [[1092, 880, 4]], 'Side · wearer’s right'),
+    fig('side-sash', [[1196, 1470, 5], [1300, 1094, 8]], 'Side · wearer’s left'),
+  ];
   const rows = [
     ['WAR FC crest', 'Large across the upper front.'],
-    ['AX Carpentry wordmark', 'Presenting sponsor: horizontal wordmark up the outer side of one leg.'],
-    ['AX Carpentry emblem', 'House and AX monogram on the other leg, beside the sash.'],
     ['WAR FC wide wordmark', 'Across the back, just below the waistband.'],
     ['WAR crown', 'The crown emblem on the open back leg.'],
-    ['CAGECRAFT', 'Emblem inside the flat front waistband panel; modest wordmark at the back.'],
+    ['AX Carpentry wordmark', 'Presenting sponsor: runs the full height of one side.'],
+    ['AX Carpentry emblem', 'On the other side, below (outside) the sash.'],
+    ['CAGECRAFT', 'Emblem in the front waistband panel; modest wordmark at the back.'],
     ['Crest bar', 'WAR crown and spear bars between red rules on the waistband.'],
-    ['PROVE YOU BELONG sash', 'Diagonal across the lower outer leg, wrapping to the back.'],
+    ['PROVE YOU BELONG sash', 'Across the front leg, wrapping round the side.'],
   ];
+  const top = 230, figH = MAX_H * k;
   return `<div class="slide light">
     ${header('Logo placement', 'Every logo has a <span class="red">home</span>', 'Shown on the Black Corner Fight Short; the Compression Short and White Corner follow the same map.')}
-    <div style="position:absolute;left:70px;top:236px;display:flex;gap:30px">${front}${back}</div>
-    <div style="position:absolute;left:1170px;right:84px;top:250px;display:flex;flex-direction:column;gap:16px">
-      ${rows.map(([h, t], i) => `<div style="display:flex;gap:16px;align-items:flex-start"><span class="num">${i + 1}</span><div class="note"><b>${h}</b><br>${t}</div></div>`).join('')}
+    <div style="position:absolute;left:84px;right:84px;top:${top}px;display:flex;justify-content:space-between;align-items:flex-start">${figs.join('')}</div>
+    <div style="position:absolute;left:84px;right:84px;top:${Math.round(top + figH + 62)}px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px 34px">
+      ${rows.map(([h, t], i) => `<div style="display:flex;gap:12px;align-items:flex-start"><span class="num" style="width:28px;height:28px;font-size:14px">${i + 1}</span><div class="note" style="font-size:14.5px;line-height:1.35"><b>${h}</b><br>${t}</div></div>`).join('')}
     </div>
     ${footer(n)}
   </div>`;
 }
 
 function productSlide(p, c, n) {
-  const k = Math.min(0.6, 650 / MAX_H);
-  const cell = (view) => {
+  const widths = VIEWS.reduce((a, [v]) => a + META[`${p.key}_${c.key}_${v}`].w, 0);
+  const k = Math.min(0.6, 600 / MAX_H, (1752 - 3 * 34) / widths);
+  const cell = ([view, label]) => {
     const name = `${p.key}_${c.key}_${view}`, m = META[name];
     return `<div style="display:flex;flex-direction:column;align-items:center">
       <div style="height:${Math.round(MAX_H * k)}px;display:flex;align-items:center"><img src="${cut(name)}" style="width:${Math.round(m.w * k)}px;height:${Math.round(m.h * k)}px;display:block"></div>
-      <div class="cap" style="margin-top:20px">${view}</div></div>`;
+      <div class="cap" style="margin-top:20px;font-size:15px">${label}</div></div>`;
   };
   return `<div class="slide light">
     ${header(`War Streaks · ${p.label} · ${p.sub}`, `${c.label} <span class="red">·</span> ${p.label}`, c.sub)}
-    <div style="position:absolute;left:120px;right:120px;top:236px;display:flex;justify-content:space-around;align-items:flex-start">${cell('front')}${cell('back')}</div>
+    <div style="position:absolute;left:84px;right:84px;top:250px;display:flex;justify-content:space-between;align-items:flex-start">${VIEWS.map(cell).join('')}</div>
     ${footer(n, c.key === 'white'
       ? `<div class="chips"><div class="chip"><i style="background:#EEEEEC"></i>Base: White</div><div class="chip"><i style="background:#8E0B13"></i>Accents: Dark red #8E0B13</div><div class="chip"><i style="background:#151515"></i>Marks: Black</div><div class="chip"><i style="background:${WAR_RED}"></i>WAR Red #ED1C24</div></div>`
       : `<div class="chips"><div class="chip"><i style="background:#141414"></i>Base: Black</div><div class="chip"><i style="background:${WAR_RED}"></i>Accents: WAR Red #ED1C24</div><div class="chip"><i style="background:#F4F4F2"></i>Marks: White</div></div>`)}
@@ -189,9 +199,9 @@ function detailsSlide(n) {
     ${header('Up close', 'The <span class="red">details</span>', '')}
     <div style="position:absolute;left:84px;right:84px;top:240px;display:flex;justify-content:space-between">
       ${crop('fight-short_black_front', 760, 600, 480, 552, 'Waistband logo panel', 'CAGECRAFT emblem on a flat panel set into the waistband. No external drawstring.')}
-      ${crop('fight-short_black_front', 380, 812, 520, 598, 'AX side wordmark', 'AX monogram and CARPENTRY run up the outer side of the leg, readable side-on and in action shots.')}
+      ${crop('fight-short_black_side-wordmark', 700, 830, 600, 690, 'AX side wordmark', 'AX monogram and CARPENTRY run the full height of the side, made for side-on and action shots.')}
       ${crop('fight-short_black_front', 1100, 1150, 520, 598, 'PROVE YOU BELONG sash', 'Black italic lettering flanked by the WAR spear bars, with red keylines.')}
-      ${crop('fight-short_white_front', 400, 1080, 520, 598, 'White Corner', 'White ground with soft grey streaks, dark red brushed accents and a dark red sash.')}
+      ${crop('fight-short_black_side-sash', 690, 1050, 600, 690, 'Sash side', 'The sash wraps round the side; the AX emblem sits below it on the side panel.')}
     </div>
     ${footer(n)}
   </div>`;

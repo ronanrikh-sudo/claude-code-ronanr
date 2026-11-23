@@ -1,4 +1,4 @@
-# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 6)
+# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 7)
 
 Pitch to WAR Fighting Championships for official event fight shorts, built in the
 `cagecraft-wholesale-process` format (see `.claude/skills/cagecraft-wholesale-process`).
@@ -10,7 +10,12 @@ Pitch to WAR Fighting Championships for official event fight shorts, built in th
 - Inspiration: professional promotion uniforms (Eternal MMA, Venum UFC); logos integrated, on-brand pattern
 - Commercial: in-kind sponsorship (CAGECRAFT on posters, venue access, social features)
 
-## Round 6 (current): decluttered
+## Round 7 (current): side views
+- New **turned side views** for both cuts: wearer's right side carries the **AX Carpentry wordmark** running the full height of the side; wearer's left side shows the **sash wrapping round** with the **AX emblem** below it on the side panel.
+- Front is now just the WAR FC crest, sash and swipes; back unchanged.
+- Product boards show four views (front, back, both sides); the placement map covers all four.
+
+## Round 6: decluttered
 - Front: WAR FC crest; AX **wordmark up the outer side** of one leg; AX **emblem** (house + monogram, no text) on the other leg beside the PROVE YOU BELONG sash. The stacked AX logo was removed from the front.
 - Swipe rebuilt as one diagonal gesture: red brush at the sash-side hip, white streaks coming off the opposite side near the hem. The back drops the red swipe so nothing crosses the sash.
 - Back: wide WAR FC wordmark below the waistband, crown on the open leg (raised), white streaks off the lower outer side.
@@ -38,7 +43,7 @@ Round 1 (monogram) and round 2 (Smoke & Stone vs War Streaks) led here. The clie
 
 ## Outputs
 - `out/deck/WAR-FC-Fight-Shorts-Proposal.pdf`: 11 slides (cover, two corners, logo system, logo placement, 4 product boards, details, full set, partnership)
-- `out/products/{fight-short,compression}_{black,white}_{front,back}.png`: 2000×2500 mockups
+- `out/products/{fight-short,compression}_{black,white}_{front,back,side-wordmark,side-sash}.png`: 2000×2500 mockups
 
 ## Build
 ```bash
