@@ -1,4 +1,4 @@
-# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 9)
+# WAR FC × CAGECRAFT — Event Fight Shorts (proposal, round 10)
 
 Pitch to WAR Fighting Championships for official event fight shorts, built in the
 `cagecraft-wholesale-process` format (see `.claude/skills/cagecraft-wholesale-process`).
@@ -10,7 +10,12 @@ Pitch to WAR Fighting Championships for official event fight shorts, built in th
 - Inspiration: professional promotion uniforms (Eternal MMA, Venum UFC); logos integrated, on-brand pattern
 - Commercial: in-kind sponsorship (CAGECRAFT on posters, venue access, social features)
 
-## Round 9 (current): Benny's notes
+## Round 10 (current): WAR band
+- The front hero is now the long WAR FC wordmark running diagonally in a band on the left leg, mirroring the PROVE YOU BELONG sash so the front reads as a V (replaces the angled crest and the repeat stripe). White Corner uses a black band so the logo keeps its true colours.
+- Both bands wrap round to the sides and stop in spear tips either side of the AX wordmarks.
+- Back wordmark restored to its full supporting size (fight short 560 px, compression 420 px).
+
+## Round 9: Benny's notes
 - WAR FC crest moved off the crotch: angled across the left front leg (hero; back wide wordmark trimmed to keep it supporting)
 - Plain left leg now carries the crest plus a **repeat stripe**: a slimmer echo of the sash, forming a V with it and ending in a WAR spear tip
 - AX Carpentry: the **same wordmark on both sides**; on the sash side the sash stops in spear tips either side of the wordmark

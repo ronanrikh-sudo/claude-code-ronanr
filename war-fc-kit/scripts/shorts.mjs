@@ -22,12 +22,14 @@ export const CONCEPTS = {
     key: 'black', label: 'Black Corner', name: 'War Streaks', sub: 'Black ground, tonal claw streaks, red and white brushed accents',
     base: '#121212', tones: ['#1b1b1b', '#202020', '#262626', '#2c2c2c'], accent: WAR_RED, accent2: WHITE,
     sash: '#0b0b0b', keyline: WAR_RED, spear: WAR_RED, logo: { red: WAR_RED, white: WHITE }, ax: WHITE,
+    warBand: { fill: '#0b0b0b', keyline: WAR_RED },
     light: false, shade: 1, splitFill: '#050505', stitch: '#3a3a3a', seamOp: 0.6,
   },
   white: {
     key: 'white', label: 'White Corner', name: 'War Streaks (white)', sub: 'White ground, soft grey streaks, dark red brushed accents',
     base: '#EEEEEC', tones: ['#e2e2e0', '#dadad8', '#e7e7e5', '#d3d3d1'], accent: '#8E0B13', accent2: '#151515',
     sash: '#8E0B13', keyline: '#151515', spear: WHITE, logo: { red: WAR_RED, white: '#151515' }, ax: '#151515',
+    warBand: { fill: '#151515', keyline: '#8E0B13' },
     light: true, shade: 0.42, splitFill: '#c9c9c7', stitch: '#a2a2a0', seamOp: 0.2,
   },
 };
@@ -99,12 +101,12 @@ function slim(x, y, angle, len, t, color, op) {
 //  axWord  AX Carpentry horizontal wordmark (AX monogram + CARPENTRY), run up the outer side of the leg
 const MARKS = {
   'fight-short': {
-    front: [['crest', 740, 1175, 500, -10]],
-    back: [['warWide', 1000, 905, 470], ['crown', 1272, 1250, 230]],
+    front: [],
+    back: [['warWide', 1000, 905, 560], ['crown', 1272, 1250, 230]],
   },
   compression: {
-    front: [['crest', 808, 1120, 360, -10]],
-    back: [['warWide', 1000, 885, 330], ['crown', 1172, 1180, 180]],
+    front: [],
+    back: [['warWide', 1000, 885, 420], ['crown', 1172, 1180, 180]],
   },
 };
 const ART = {
@@ -165,7 +167,7 @@ function art(c, cut, view) {
     const L = clearLen(x, y, ang, 240 + r() * 260, boxes);
     if (L > 120 && mir) lines += slim(x, y, ang, L, 3 + r() * 5, c.accent2, 0.55 + r() * 0.3);
   }
-  return `<rect width="${W}" height="${H}" fill="${c.base}"/>${ground}${accent}${lines}${mir ? '' : stripe2(c, cut)}`;
+  return `<rect width="${W}" height="${H}" fill="${c.base}"/>${ground}${accent}${lines}${mir ? '' : warBand(c, cut)}`;
 }
 
 // diagonal PROVE YOU BELONG sash across the lower outer leg; text sized to the visible stretch
@@ -188,7 +190,25 @@ function sash(c, cut, view) {
     </g>`;
 }
 
-// repeat stripe on the front's other leg: echoes the sash (mirrored angle), narrower, no lettering,
+// WAR band on the front's left leg: the PROVE YOU BELONG sash mirrored (together a V), a little wider,
+// carrying the long WAR FC wordmark (WAR + FIGHTING CHAMPIONSHIPS), reading downward toward the crotch
+const WARBAND = {
+  'fight-short': { x0: 920, y0: 1960, ang: -122, w: 140, mid: 505, logoH: 0.78 },
+  compression: { x0: 910, y0: 1850, ang: -108, w: 108, mid: 450, logoH: 0.78 },
+};
+function warBand(c, cut) {
+  const s = WARBAND[cut], b = c.warBand, w = s.w, len = 1300;
+  const logo = warLogo({ red: WAR_RED, white: WHITE }, ['WAR', 'FIGHTING_CHAMPIONSHIPS']);
+  const lw = (w * s.logoH * (logo.box[2] - logo.box[0])) / (logo.box[3] - logo.box[1]);
+  return `<g transform="translate(${s.x0} ${s.y0}) rotate(${s.ang})">
+      <rect x="-60" y="${-w / 2}" width="${len}" height="${w}" fill="${b.fill}"/>
+      <rect x="-60" y="${-w / 2 - 14}" width="${len}" height="6" fill="${b.keyline}"/>
+      <rect x="-60" y="${w / 2 + 8}" width="${len}" height="6" fill="${b.keyline}"/>
+      <g transform="translate(${s.mid} 0) rotate(180)">${place(logo, 0, 0, lw)}</g>
+    </g>`;
+}
+
+// repeat stripe on the front's other leg (superseded by the WAR band; kept for reference): echoes the sash (mirrored angle), narrower, no lettering,
 // finishing in a WAR spear tip toward the outer side
 const STRIPE2 = {
   'fight-short': { x0: 846, y0: 1960, ang: -122, w: 58, len: 560 },
@@ -401,27 +421,32 @@ function sideView(c, cut, view) {
     ground += brush(X(x), y, A(-28 + (r() - 0.5) * 10), 160 + r() * 340, 24 + r() * 50, c.tones[i % 4], 5000 + i);
   }
   let prints = '';
+  // band pieces: come round from the front and back, stop in spear tips either side of the side panel
+  const pieces = (fill, keyline) => {
+    const b = g.sash, hw = b.w / 2, tip = b.w * 1.1, end = b.len + 160;
+    const body = `<g transform="translate(${b.x} ${b.y}) rotate(${b.ang})">
+        <path d="M-160,${-hw} L${b.a - tip},${-hw} L${b.a},0 L${b.a - tip},${hw} L-160,${hw} Z" fill="${fill}"/>
+        <path d="M${end},${-hw} L${b.b + tip},${-hw} L${b.b},0 L${b.b + tip},${hw} L${end},${hw} Z" fill="${fill}"/>
+        <path d="M-160,${-hw - 10} L${b.a - tip},${-hw - 10} L${b.a + 22},0 L${b.a - tip},${hw + 10} L-160,${hw + 10}" fill="none" stroke="${keyline}" stroke-width="6"/>
+        <path d="M${end},${-hw - 10} L${b.b + tip},${-hw - 10} L${b.b - 22},0 L${b.b + tip},${hw + 10} L${end},${hw + 10}" fill="none" stroke="${keyline}" stroke-width="6"/></g>`;
+    return mir ? `<g transform="translate(${W} 0) scale(-1 1)">${body}</g>` : body;
+  };
   if (mir) {
-    // white streaks continue from the front, flowing toward the front edge; wordmark runs the full side
+    // wearer's right: the WAR band wraps round; white streaks continue from the back
     for (let i = 0; i < g.streaks.n; i++) {
       const L = g.streaks.len[0] + r() * (g.streaks.len[1] - g.streaks.len[0]);
       prints += slim(X(g.streaks.x + r() * 10), g.streaks.y + i * 30 + r() * 10, A(210 + (r() - 0.5) * 4), L, 3 + r() * 4, c.accent2, 0.55 + r() * 0.3);
     }
+    prints += pieces(c.warBand.fill, c.warBand.keyline);
     const [wx, wy, ww] = g.word;
     prints += place(axWordmark(c.ax), X(wx), wy, ww, -90);
   } else {
-    // red hip swipe continues from the front; the sash comes round from the front and the back and stops
-    // in spear tips either side of the side panel, leaving the full height for the AX wordmark
+    // wearer's left: red hip swipe continues from the front; the PROVE YOU BELONG sash wraps round
     for (let i = 0; i < g.swipe.n; i++) {
       const L = g.swipe.len[0] + r() * (g.swipe.len[1] - g.swipe.len[0]);
       prints += brush(g.swipe.x + r() * 60, g.swipe.y + i * 22 + r() * 16, -30 + (r() - 0.5) * 6, L, 18 + r() * 26, c.accent, 6000 + i, 0.95);
     }
-    const b = g.sash, hw = b.w / 2, tip = b.w * 1.1, end = b.len + 160;
-    prints += `<g transform="translate(${b.x} ${b.y}) rotate(${b.ang})">
-        <path d="M-160,${-hw} L${b.a - tip},${-hw} L${b.a},0 L${b.a - tip},${hw} L-160,${hw} Z" fill="${c.sash}"/>
-        <path d="M${end},${-hw} L${b.b + tip},${-hw} L${b.b},0 L${b.b + tip},${hw} L${end},${hw} Z" fill="${c.sash}"/>
-        <path d="M-160,${-hw - 10} L${b.a - tip},${-hw - 10} L${b.a + 22},0 L${b.a - tip},${hw + 10} L-160,${hw + 10}" fill="none" stroke="${c.keyline}" stroke-width="6"/>
-        <path d="M${end},${-hw - 10} L${b.b + tip},${-hw - 10} L${b.b - 22},0 L${b.b + tip},${hw + 10} L${end},${hw + 10}" fill="none" stroke="${c.keyline}" stroke-width="6"/></g>`;
+    prints += pieces(c.sash, c.keyline);
     const [wx, wy, ww] = g.word;
     prints += place(axWordmark(c.ax), wx, wy, ww, -90);
   }
