@@ -1,0 +1,173 @@
+{
+  "_note": "Gift-angle ads ('Gifts sorted for him'). Product prices come from products.json (price = was, sale = now). Set sale.on to false after Black Friday (29 Nov) to render full prices and the Christmas strip instead.",
+  "sale": {
+    "on": true,
+    "strip": [
+      "Black Friday",
+      "30% off fightwear",
+      "Ends Sun 29 Nov"
+    ],
+    "offStrip": [
+      "Christmas gifts, sorted",
+      "cagecraftco.com"
+    ]
+  },
+  "cta": "Shop gifts for him",
+  "hero": {
+    "kicker": "The Christmas gift guide",
+    "headline": [
+      "Gifts",
+      "*Sorted.*"
+    ],
+    "sub": "For the MMA-obsessed one in your life.",
+    "tiles": [
+      {
+        "id": "jersey-tiffany",
+        "focus": "50% 30%"
+      },
+      {
+        "id": "hoodie-concrete",
+        "focus": "50% 28%"
+      },
+      {
+        "id": "shorts-legacy",
+        "focus": "70% 70%",
+        "zoom": 1.1
+      },
+      {
+        "id": "tee-menace",
+        "focus": "50% 30%"
+      }
+    ]
+  },
+  "versus": [
+    {
+      "id": "game",
+      "left": [
+        "Another",
+        "video game"
+      ]
+    },
+    {
+      "id": "gta",
+      "left": [
+        "GTA 6"
+      ]
+    }
+  ],
+  "list": [
+    {
+      "id": "game",
+      "struck": [
+        "Another video game",
+        "New controller"
+      ]
+    },
+    {
+      "id": "gta",
+      "struck": [
+        "GTA 6",
+        "New controller"
+      ]
+    }
+  ],
+  "personas": [
+    {
+      "id": "girlfriend",
+      "kicker": "To the girlfriends",
+      "headline": [
+        "He's at the gym",
+        "more than *home?*"
+      ],
+      "sub": "Lean into it. Gifts he'll actually train in.",
+      "photo": "jersey-cottoncandy",
+      "focus": "50% 22%",
+      "zoom": 1.15
+    },
+    {
+      "id": "mum",
+      "kicker": "Mums of fighters",
+      "headline": [
+        "Feed the habit",
+        "that's *good for him.*"
+      ],
+      "sub": "Gear for the one who never misses training.",
+      "photo": "rash-legacy",
+      "focus": "50% 12%"
+    },
+    {
+      "id": "dad",
+      "kicker": "Dads",
+      "headline": [
+        "Back the hobby",
+        "that *builds him.*"
+      ],
+      "sub": "Fightwear he'll wear to every session.",
+      "photo": "jersey-tiffany",
+      "focus": "50% 30%"
+    },
+    {
+      "id": "sister",
+      "kicker": "Sisters",
+      "headline": [
+        "Your brother's",
+        "Christmas, *sorted.*"
+      ],
+      "sub": "He'll think you know MMA. You don't have to.",
+      "photo": "hoodie-concrete",
+      "focus": "50% 30%"
+    }
+  ],
+  "budget": {
+    "intro": {
+      "kicker": "The MMA gift guide",
+      "headline": [
+        "Gifts",
+        "*sorted*",
+        "by budget"
+      ],
+      "sub": "Swipe for every price point"
+    },
+    "cards": [
+      {
+        "id": "towel",
+        "name": "Training Towel",
+        "focus": "50% 45%",
+        "link": "/products/training-towel"
+      },
+      {
+        "id": "tee-menace",
+        "name": "Oversized Tees",
+        "focus": "50% 35%",
+        "link": "/products/menace-oversized-tee"
+      },
+      {
+        "id": "jersey-tiffany",
+        "name": "Fight Jerseys",
+        "focus": "50% 38%",
+        "link": "/products/fight-jersey-2-0-tiffany"
+      },
+      {
+        "id": "shorts-legacy",
+        "name": "Legacy 2-in-1 Shorts",
+        "focus": "70% 78%",
+        "zoom": 1.2,
+        "link": "/products/legacy-2-in-1-hybrid-mma-shorts"
+      },
+      {
+        "id": "hoodie-concrete",
+        "name": "Walkout Hoodies",
+        "focus": "50% 30%",
+        "link": "/products/walkout-hoodie-concrete"
+      }
+    ],
+    "giftcard": {
+      "headline": [
+        "Not sure",
+        "of his size?"
+      ],
+      "sub": "Gift cards from $25",
+      "link": "/products/cagecraft-gift-card"
+    }
+  }
+}
