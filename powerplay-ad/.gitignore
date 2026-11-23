@@ -5,3 +5,11 @@ out/final/
 out/qc-sheet-*.jpg
 out/final/
 out/ad-qc-*.jpg
+
+# Rendered media and source assets (kept locally, not in git)
+*.mp4
+*.mp3
+*.wav
+*.png
+*.jpg
+*.jpeg

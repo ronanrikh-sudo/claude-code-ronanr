@@ -3,3 +3,11 @@ node_modules/
 out/frames/
 out/final/
 out/qc-sheet-*.jpg
+
+# Rendered media and source assets (kept locally, not in git)
+*.mp4
+*.mp3
+*.wav
+*.png
+*.jpg
+*.jpeg
