@@ -1,0 +1,241 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family:'ArchivoI'; font-style:normal; font-weight:100 900; font-stretch:62% 125%; src:url(archivo-latin-wdth-italic.woff2) format('woff2-variations'); }
+@font-face { font-family:'Archivo X'; font-style:normal; font-weight:100 900; font-stretch:62% 125%; src:url(archivo-latin-wdth-normal.woff2) format('woff2-variations'); }
+@font-face { font-family:'Inter Tight'; font-weight:500; src:url(inter-tight-500.woff2) format('woff2'); }
+@font-face { font-family:'Inter Tight'; font-weight:600; src:url(inter-tight-600.woff2) format('woff2'); }
+@font-face { font-family:'Inter Tight'; font-weight:700; src:url(inter-tight-700.woff2) format('woff2'); }
+@font-face { font-family:'Inter Tight'; font-weight:800; src:url(inter-tight-800.woff2) format('woff2'); }
+:root { --bg:#050506; --teal:#16B3B7; --soft:#8EDFDF; --ui:#7FD8CC; --muted:#A7ABB3; --dim:#5E636C; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:#222; padding:30px 0; }
+.slice { width:600px; margin:0 auto 16px; background:var(--bg); color:#fff; position:relative; overflow:hidden; }
+.disp { font-family:'ArchivoI'; font-style:normal; font-weight:900; font-stretch:125%; text-transform:uppercase; letter-spacing:-0.01em; line-height:.9; }
+.lab { font-family:'Inter Tight'; font-weight:600; text-transform:uppercase; letter-spacing:.24em; }
+.body { font-family:'Inter Tight'; font-weight:500; }
+.abs { position:absolute; }
+/* film grain + vignette, shared */
+.grain { position:absolute; inset:-50%; pointer-events:none; opacity:.10; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+.vig { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 85% 75% at 50% 45%, transparent 55%, rgba(0,0,0,.62) 100%); }
+.teal-txt { background:linear-gradient(180deg,#E9FFFE 0%, #8EDFDF 38%, #16B3B7 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.cube { display:inline-block; width:9px; height:9px; border:1.6px solid var(--ui); transform:rotate(45deg); }
+
+/* ---------- 01 HERO ---------- */
+#s01 { height:940px; }
+#s01 .bar { position:absolute; left:0; right:0; top:0; height:36px; background:#0b0c0e; border-bottom:1px solid rgba(255,255,255,.07); display:flex; align-items:center; justify-content:center; gap:12px; font-size:10.5px; color:#c9ccd2; z-index:9; }
+#s01 .bar b { color:var(--ui); font-weight:700; }
+#s01 .logo { position:absolute; top:58px; left:0; right:0; text-align:center; z-index:9; }
+#s01 .logo img { width:236px; filter:drop-shadow(0 4px 18px rgba(0,0,0,.6)); }
+#s01 .stage { position:absolute; left:-30px; top:150px; width:660px; height:825px; }
+#s01 .ph { position:absolute; inset:0; background:url(hero_bg.jpg) center/100% 100% no-repeat; filter:grayscale(.35) contrast(1.12) brightness(.5); }
+#s01 .tint { position:absolute; inset:0; background:linear-gradient(180deg, #050506 0%, rgba(5,5,6,.2) 9%, rgba(5,5,6,0) 30%, rgba(5,5,6,.15) 55%, #050506 88%), radial-gradient(ellipse 60% 45% at 62% 30%, rgba(22,179,183,.28), transparent 70%); }
+#s01 .haze { position:absolute; inset:0; background:url(haze.png) center top/100% auto no-repeat; mix-blend-mode:screen; opacity:.85; }
+#s01 .big { position:absolute; top:38px; left:0; width:660px; text-align:center; font-size:230px; z-index:3; }
+#s01 .big span { display:inline-block; }
+#s01 .big .glow { position:absolute; inset:0; color:var(--teal); filter:blur(28px); opacity:.55; }
+#s01 .cut { position:absolute; inset:0; background:url(hero_cut.png) center/100% 100% no-repeat; z-index:4; filter:contrast(1.1) brightness(.97) drop-shadow(0 0 22px rgba(0,0,0,.55)) drop-shadow(-6px 0 18px rgba(22,179,183,.18)); }
+#s01 .fadeb { position:absolute; left:0; right:0; bottom:0; height:330px; z-index:5; background:linear-gradient(180deg, rgba(5,5,6,0), rgba(5,5,6,.78) 45%, #050506 80%); }
+#s01 .pre { position:absolute; top:104px; left:0; right:0; text-align:center; z-index:6; }
+#s01 .pre .e { font-size:11px; color:var(--ui); letter-spacing:.42em; display:inline-flex; gap:10px; align-items:center; }
+#s01 .pre .y { font-size:44px; color:#fff; text-shadow:0 6px 30px rgba(0,0,0,.65); }
+#s01 .copy { position:absolute; left:0; right:0; bottom:44px; z-index:7; text-align:center; padding:0 54px; }
+#s01 .copy .l { font-size:18px; line-height:1.55; color:#e3e5e8; }
+#s01 .copy .l b { color:#fff; font-weight:700; }
+
+/* ---------- 02 CTA ---------- */
+#s02 { padding:4px 0 40px; text-align:center; }
+.btn { position:relative; display:inline-flex; align-items:center; gap:14px; padding:22px 44px 21px; border-radius:4px;
+  background:linear-gradient(180deg,#9AE8DE 0%, #7FD8CC 48%, #5EC3B6 100%); color:#03100f; font-size:25px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.35) inset, 0 -3px 0 rgba(0,0,0,.18) inset, 0 14px 40px rgba(22,179,183,.42), 0 0 80px rgba(22,179,183,.25); }
+.btn .arr { font-family:'Inter Tight'; font-weight:800; font-size:24px; transform:translateY(-1px); }
+.trust { margin-top:20px; font-size:10.5px; color:#8d929b; display:flex; justify-content:center; gap:14px; align-items:center; }
+.trust i { width:4px; height:4px; background:#3a3e45; transform:rotate(45deg); display:inline-block; }
+
+/* ---------- 03 LABEL ---------- */
+#s03 { height:118px; text-align:center; }
+#s03 .rule { position:absolute; top:22px; left:60px; right:60px; height:1px; background:linear-gradient(90deg, transparent, rgba(127,216,204,.5), transparent); }
+#s03 .e { position:absolute; top:40px; left:0; right:0; font-size:10.5px; color:var(--ui); letter-spacing:.42em; }
+#s03 .t { position:absolute; top:62px; left:0; right:0; font-size:36px; }
+
+/* ---------- 04 GIFTS ---------- */
+#s04 { height:1090px; }
+#s04 .smoke { position:absolute; left:-80px; right:-80px; top:330px; height:560px; background:url(smoke.png) center/cover no-repeat; opacity:.55; mix-blend-mode:screen; filter:hue-rotate(-4deg) saturate(.9); }
+#s04 .glowtop { position:absolute; inset:0; background:radial-gradient(ellipse 70% 30% at 50% 0%, rgba(22,179,183,.22), transparent 70%); }
+#s04 .head { position:absolute; top:52px; left:0; right:0; text-align:center; }
+#s04 .head .e { font-size:10.5px; color:var(--ui); letter-spacing:.42em; display:inline-flex; gap:10px; align-items:center; }
+#s04 .head .t { margin-top:14px; font-size:50px; }
+#s04 .head .s { margin:16px auto 0; max-width:430px; font-size:15.5px; line-height:1.55; color:#b9bdc4; }
+.gift { position:absolute; text-align:center; }
+.gift .num, .gift .numfill { position:absolute; left:50%; top:0; transform:translateX(-50%); font-size:130px; white-space:nowrap; font-stretch:70%; line-height:.86; }
+.gift .num { color:transparent; -webkit-text-stroke:1.6px rgba(127,216,204,.6); }
+.gift .numfill { color:rgba(22,179,183,.12); }
+.gift img { position:absolute; left:50%; transform:translateX(-50%); filter:drop-shadow(0 22px 22px rgba(0,0,0,.75)) drop-shadow(0 0 1px rgba(0,0,0,.6)); }
+.gift .floor { position:absolute; left:50%; transform:translateX(-50%); width:150px; height:22px; border-radius:50%; background:radial-gradient(ellipse, rgba(22,179,183,.35), transparent 70%); filter:blur(4px); }
+.gift .cap { position:absolute; left:0; right:0; }
+.gift .cap .n { font-size:19px; }
+.ship-ico { position:absolute; left:50%; transform:translateX(-50%); }
+.pp { position:absolute; left:50%; transform:translateX(-50%); bottom:46px; width:520px; display:flex; align-items:center; gap:16px; padding:16px 20px; border-radius:8px;
+  background:linear-gradient(180deg, rgba(14,34,34,.92), rgba(8,20,20,.92)); border:1px solid rgba(127,216,204,.55); box-shadow:0 0 40px rgba(22,179,183,.18); }
+.pp .bolt { width:40px; height:40px; border-radius:50%; border:1.5px solid rgba(127,216,204,.7); display:flex; align-items:center; justify-content:center; flex:none; }
+.pp .a { font-size:19px; }
+.pp .b { margin-top:4px; font-size:13px; color:#a9b8b6; }
+
+/* ---------- 05 CLOSE ---------- */
+#s05 { height:1040px; }
+#s05 .bgglow { position:absolute; inset:0; background:radial-gradient(ellipse 70% 40% at 50% 34%, rgba(22,179,183,.22), transparent 70%), radial-gradient(ellipse 52% 22% at 50% 41%, rgba(22,179,183,.42), transparent 72%), radial-gradient(ellipse 80% 6% at 50% 54%, rgba(127,216,204,.16), transparent 70%); }
+#s05 .big { position:absolute; top:62px; left:0; right:0; text-align:center; font-size:118px; }
+#s05 .big span { display:inline-block; }
+#s05 .big .l2 { display:block; margin-top:2px; }
+#s05 .fan img { position:absolute; filter:drop-shadow(0 26px 26px rgba(0,0,0,.8)); }
+#s05 .copy { position:absolute; top:612px; left:0; right:0; text-align:center; padding:0 50px; }
+#s05 .copy .t { font-size:33px; line-height:1; }
+#s05 .copy .s { margin:16px auto 26px; max-width:440px; font-size:16px; line-height:1.55; color:#c3c7cd; }
+#s05 .copy .s b { color:#fff; font-weight:700; }
+.perks { position:absolute; left:40px; right:40px; bottom:36px; display:grid; grid-template-columns:repeat(3,1fr); border:1px solid rgba(255,255,255,.08); border-radius:6px; background:rgba(255,255,255,.025); }
+.perk { padding:16px 8px 15px; text-align:center; border-right:1px solid rgba(255,255,255,.08); }
+.perk:last-child { border-right:0; }
+.perk .a { font-size:15px; }
+.perk .b { margin-top:6px; font-size:11.5px; color:#8d929b; }
+
+/* ---------- 06 TEAM ---------- */
+#s06 { height:168px; text-align:center; background:#08090b; border-top:1px solid rgba(255,255,255,.06); }
+#s06 .k { position:absolute; top:30px; left:0; right:0; font-size:10px; color:#6c717a; letter-spacing:.42em; }
+#s06 .n { position:absolute; top:58px; left:16px; right:16px; font-size:11.5px; line-height:2.1; color:#d6d9dd; letter-spacing:.14em; }
+#s06 .n i { color:var(--ui); font-style:normal; padding:0 7px; }
+#s06 .n span { white-space:nowrap; }
+</style></head>
+<body>
+
+<!-- 01 HERO -->
+<div class="slice" id="s01">
+  <div class="bar lab">Black Friday <b>◆</b> Up to 40% off <b>◆</b> A free gift with every $50</div>
+  <div class="logo"><img src="logo-white.png" alt=""></div>
+  <div class="stage">
+    <div class="ph"></div><div class="tint"></div><div class="haze"></div>
+    <div class="big disp"><span class="glow">HERE.</span><span class="teal-txt" id="here">HERE.</span></div>
+    <div class="cut"></div>
+  </div>
+  <div class="fadeb"></div>
+  <div class="pre"><div class="y disp">Your cart's still</div></div>
+  <div class="copy"><div class="l body">You picked it for a reason. Finish your order and <b>your free gifts are added automatically.</b></div></div>
+  <div class="vig"></div><div class="grain"></div>
+</div>
+
+<!-- 02 CTA -->
+<div class="slice" id="s02">
+  <div class="btn disp">Complete your order <span class="arr">→</span></div>
+  <div class="trust lab"><span>Secure checkout</span><i></i><span>Tracked shipping</span><i></i><span>Afterpay</span></div>
+  <div class="grain"></div>
+</div>
+
+<!-- 03 LABEL -->
+<div class="slice" id="s03">
+  <div class="rule"></div>
+  <div class="e lab">Saved for you</div>
+  <div class="t disp">Still in your cart</div>
+  <div class="grain"></div>
+</div>
+
+<!-- 04 GIFTS -->
+<div class="slice" id="s04">
+  <div class="glowtop"></div><div class="smoke"></div>
+  <div class="head">
+    <div class="e lab"><span class="cube"></span>Black Friday bonus<span class="cube"></span></div>
+    <div class="t disp">Every $50 unlocks<br><span class="teal-txt">a free gift.</span></div>
+    <div class="s body">They stack. Each one drops into your cart automatically as you cross the line, while stocks last.</div>
+  </div>
+
+  <!-- row 1 -->
+  <div class="gift" style="left:20px; top:330px; width:180px; height:250px;">
+    <div class="numfill disp">$50</div><div class="num disp">$50</div>
+    <div class="floor" style="top:214px"></div>
+    <img src="g_kitbag.png" style="top:78px; width:128px;">
+    <div class="cap" style="top:236px"><div class="n disp">Kit bag</div></div>
+  </div>
+  <div class="gift" style="left:210px; top:330px; width:180px; height:250px;">
+    <div class="numfill disp">$100</div><div class="num disp">$100</div>
+    <div class="floor" style="top:214px"></div>
+    <img src="g_socks.png" style="top:62px; width:66px;">
+    <div class="cap" style="top:236px"><div class="n disp">Crew socks</div></div>
+  </div>
+  <div class="gift" style="left:400px; top:330px; width:180px; height:250px;">
+    <div class="numfill disp">$150</div><div class="num disp">$150</div>
+    <div class="floor" style="top:214px"></div>
+    <svg class="ship-ico" style="top:104px" width="120" height="96" viewBox="0 0 120 96" fill="none">
+      <defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8FFF8"/><stop offset="1" stop-color="#16B3B7"/></linearGradient>
+      <filter id="gl" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <g filter="url(#gl)" stroke="url(#tg)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M8 18h62v46H8z"/><path d="M70 34h22l18 18v12H70z"/><circle cx="30" cy="70" r="9" fill="#050506"/><circle cx="90" cy="70" r="9" fill="#050506"/><path d="M20 32h30M20 44h20" opacity=".7"/>
+      </g></svg>
+    <div class="cap" style="top:236px"><div class="n disp">Free shipping</div></div>
+  </div>
+
+  <!-- row 2 -->
+  <div class="gift" style="left:40px; top:640px; width:250px; height:300px;">
+    <div class="numfill disp" style="font-size:150px">$200</div><div class="num disp" style="font-size:150px">$200</div>
+    <div class="floor" style="top:238px; width:200px"></div>
+    <img src="g_towel.png" style="top:104px; width:172px; transform:translateX(-50%) rotate(-6deg);">
+    <div class="cap" style="top:262px"><div class="n disp">Training towel</div></div>
+  </div>
+  <div class="gift" style="left:310px; top:640px; width:250px; height:300px;">
+    <div class="numfill disp" style="font-size:150px">$250</div><div class="num disp" style="font-size:150px">$250</div>
+    <div class="floor" style="top:238px; width:200px"></div>
+    <img src="g_tee.png" style="top:84px; width:178px;">
+    <div class="cap" style="top:262px"><div class="n disp">Essentials tee</div></div>
+  </div>
+
+  <div class="pp">
+    <div class="bolt"><svg width="16" height="22" viewBox="0 0 16 22"><path d="M10 0L0 13h7l-2 9L16 8H9z" fill="#7FD8CC"/></svg></div>
+    <div><div class="a disp">A few dollars short? PowerPlay it.</div><div class="b body">One tap in your cart tops up the difference and unlocks the next gift.</div></div>
+  </div>
+  <div class="vig"></div><div class="grain"></div>
+</div>
+
+<!-- 05 CLOSE -->
+<div class="slice" id="s05">
+  <div class="bgglow"></div>
+  <div class="big disp"><span style="color:rgba(255,255,255,.95)" id="ends">Ends</span><br><span class="teal-txt" id="sunday">Sunday.</span></div>
+  <div class="fan">
+    <img src="p_jersey-diamond.png" style="left:36px; top:286px; width:168px; transform:rotate(-9deg);">
+    <img src="p_monarch-shorts.png" style="left:384px; top:316px; width:196px; transform:rotate(8deg);">
+    <img src="p_boxer-diamond.png" style="left:120px; top:392px; width:190px; transform:rotate(-4deg);">
+    <img src="p_hoodie-diamond.png" style="left:222px; top:262px; width:176px; transform:rotate(3deg);">
+  </div>
+  <div class="copy">
+    <div class="t disp">One step left.<br><span class="teal-txt">We'll do the rest.</span></div>
+    <div class="s body">Black Friday ends <b>Sunday 29 November, 11:59pm AEDT</b>. Your size might not last that long.</div>
+    <div class="btn disp" style="font-size:22px;padding:20px 40px 19px">Complete my order <span class="arr">→</span></div>
+  </div>
+  <div class="perks">
+    <div class="perk"><div class="a disp">Free shipping</div><div class="b body">AU orders over $150</div></div>
+    <div class="perk"><div class="a disp">Afterpay</div><div class="b body">4 interest-free payments</div></div>
+    <div class="perk"><div class="a disp">Tracked</div><div class="b body">Every order, door to door</div></div>
+  </div>
+  <div class="vig"></div><div class="grain"></div>
+</div>
+
+<!-- 06 TEAM -->
+<div class="slice" id="s06">
+  <div class="k lab">Fight team &amp; partners</div>
+  <div class="n lab"><span>Daniel Amari</span><i>◆</i><span>Ali Sharrad</span><i>◆</i><span>Daniel Morris</span><br><span>Shane "Showtime" Parker</span><i>◆</i><span>Ryan "Rook" Castle</span><br><span>Lucas "Spartan" Cannon</span></div>
+  <div class="grain"></div>
+</div>
+
+<script>
+  function fit(el, target, max) {
+    const w = el.getBoundingClientRect().width; const fs = parseFloat(getComputedStyle(el).fontSize);
+    el.style.fontSize = Math.min(max || 999, fs * target / w) + 'px';
+  }
+  document.fonts.ready.then(() => {
+    const here = document.getElementById('here'); fit(here.parentElement, 610 * here.parentElement.getBoundingClientRect().width / here.getBoundingClientRect().width);
+    for (const id of ['ends', 'sunday']) { const e = document.getElementById(id); fit(e, 540, 150); }
+    document.querySelectorAll('.gift').forEach(g => {
+      const cw = g.getBoundingClientRect().width - 6;
+      g.querySelectorAll('.num, .numfill').forEach(n => fit(n, cw, 170));
+    });
+    document.body.dataset.ready = '1';
+  });
+</script>
+</body></html>

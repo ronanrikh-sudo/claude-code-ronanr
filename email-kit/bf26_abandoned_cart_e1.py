@@ -8,7 +8,7 @@ import copy, json, sys
 from image_email import PAGE, img, stack, FOOTER, html_section, general_settings, hid
 
 CDN = "https://cdn.shopify.com/s/files/1/0643/7358/8030/files/"
-V = "?v=1795473917"
+V = "?v=1795476967"  # v2 slices (Cube Noir build)
 CHECKOUT = "[[event.raw.abandoned_checkout_url]]"
 SHOP = "https://www.cagecraftco.com/collections/shop-all"
 PRE = "Black Friday is on. Up to 40% off + a free gift with every $50."
@@ -18,20 +18,20 @@ name = sys.argv[3] if len(sys.argv) > 3 else "BF26 | Abandoned Cart E1 (image ve
 cur = json.load(open(src))
 
 top = stack([
-    img(CDN + "bf26-abandoned-cart-e1-01-hero.jpg" + V,
+    img(CDN + "bf26-ac-e1-v2-01-hero.jpg" + V,
         "Your cart's still here. You picked it for a reason. Finish your order and your free gifts are added automatically.",
         CHECKOUT, h=730),
-    img(CDN + "bf26-abandoned-cart-e1-02-cta.jpg" + V, "Complete your order", CHECKOUT, h=129),
-    img(CDN + "bf26-abandoned-cart-e1-03-label.jpg" + V, "Still in your cart", None, h=100),
+    img(CDN + "bf26-ac-e1-v2-02-cta.jpg" + V, "Complete your order", CHECKOUT, h=129),
+    img(CDN + "bf26-ac-e1-v2-03-label.jpg" + V, "Still in your cart", None, h=100),
 ], preheader=PRE)
 
 bottom = stack([
-    img(CDN + "bf26-abandoned-cart-e1-04-gifts.jpg" + V,
+    img(CDN + "bf26-ac-e1-v2-04-gifts.jpg" + V,
         "Every $50 unlocks a free gift: $50 Kit Bag, $100 Crew Socks, $150 free shipping, $200 Training Towel, "
         "$250 Essentials Tee. A few dollars short? PowerPlay your cart.", SHOP, h=550),
-    img(CDN + "bf26-abandoned-cart-e1-05-close.jpg" + V,
-        "One step left. Black Friday ends Sunday 29 November, 11:59pm AEDT. Complete my order.", CHECKOUT, h=416),
-    img(CDN + "bf26-abandoned-cart-e1-06-team.jpg" + V,
+    img(CDN + "bf26-ac-e1-v2-05-close.jpg" + V,
+        "Ends Sunday. One step left. Black Friday ends Sunday 29 November, 11:59pm AEDT. Complete my order.", CHECKOUT, h=416),
+    img(CDN + "bf26-ac-e1-v2-06-team.jpg" + V,
         "Fight Team & Partners: Daniel Amari, Ali Sharrad, Daniel Morris, Shane Showtime Parker, "
         "Ryan Rook Castle, Lucas Spartan Cannon", None, h=129),
 ], extra_html=FOOTER)

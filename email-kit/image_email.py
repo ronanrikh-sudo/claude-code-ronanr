@@ -9,7 +9,7 @@ build_sections(slices_top, live_sections, slices_bottom) returns Omnisend `secti
 """
 import secrets
 
-PAGE = "#080808"
+PAGE = "#050506"  # Cube Noir black (matches the image slices)
 
 
 def hid():
