@@ -93,10 +93,10 @@
   // Each entry: [file, centre x, top, width, rotation, height/width]. One shared light sits under the whole group.
   const tall = new URLSearchParams(location.search).get("v") === "916";
   if (tall) document.body.classList.add("v916");
-  const L = tall ? { labelsY: 278, headY: 352, priceY: 1200, factsY: 1346 } : { labelsY: 80, headY: 184, priceY: 1020, factsY: 1206 };
+  const L = tall ? { labelsY: 278, headY: 352, priceY: 1250, factsY: 1396 } : { labelsY: 80, headY: 184, priceY: 1036, factsY: 1220 };
   const R = document.documentElement.style;
   for (const [k, v] of Object.entries({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": 166, "--h2": 62, "--price-y": L.priceY, "--facts-y": L.factsY })) R.setProperty(k, v + "px");
-  const items = tall ? [["rashguard-global/front.png", 318, 640, 430, 0, 0.9962], ["shorts-monarch/front.png", 776, 740, 460, 2, 0.7423]] : [["rashguard-global/front.png", 318, 470, 410, -2, 0.9962], ["shorts-monarch/front.png", 776, 560, 450, 2, 0.7423]];
+  const items = tall ? [["rashguard-champion-white-gold/front.png", 330.0, 596, 320, -2, 0.9221], ["rashguard-monarch/front.png", 750.0, 596, 320, 2, 0.8993], ["shorts-champion-gold/front.png", 206.0, 926, 312, 2, 0.6958], ["shorts-legacy/flat-front.png", 540.0, 926, 312, -2, 0.6443], ["shorts-global/front.png", 874.0, 926, 312, 2, 0.729]] : [["rashguard-champion-white-gold/front.png", 340.0, 434, 292, -2, 0.9221], ["rashguard-monarch/front.png", 740.0, 434, 292, 2, 0.8993], ["shorts-champion-gold/front.png", 214.0, 724, 300, 2, 0.6958], ["shorts-legacy/flat-front.png", 540.0, 724, 300, -2, 0.6443], ["shorts-global/front.png", 866.0, 724, 300, 2, 0.729]];
   const host = document.getElementById("lineup");
   const box = (cls, s) => { const d = document.createElement("div"); d.className = cls; Object.assign(d.style, s); host.appendChild(d); return d; };
   const x0 = Math.min(...items.map(i => i[1] - i[3] / 2)), x1 = Math.max(...items.map(i => i[1] + i[3] / 2));
