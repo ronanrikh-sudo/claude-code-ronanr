@@ -21,5 +21,6 @@
   "fidelity": "PASS for every garment in both sizes (kit/fidelity-check.py, 24 Nov)",
   "notes_for_owner": [
     "Diamond is sold out in S; Concrete and Cotton Candy are sold out in 3XL, so the ad makes no size claim."
-  ]
+  ],
+  "accent": "pink"
 }

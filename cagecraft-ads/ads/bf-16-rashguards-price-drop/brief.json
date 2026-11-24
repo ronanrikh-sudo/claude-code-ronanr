@@ -2,7 +2,7 @@
   "id": "bf-16-rashguards-price-drop",
   "title": "Black Friday: 30% off rashguards",
   "format": "Static image, 4:5 (1080x1350) and 9:16 (1080x1920)",
-  "product": "Global, Champion Gold, Monarch Long Sleeve and Champion White Gold Long Sleeve rashguards",
+  "product": "Monarch LS, Global, Champion White Gold LS, Champion Gold and Legacy rashguards (all rashguards except Grace in Battle and Wings of Endurance)",
   "recreates": "bf-03-jersey-price-drop layout (winning ad) for another collection",
   "hook": "30% OFF RASHGUARDS.",
   "price": "From $55.96 was $79.95 (short sleeve); long sleeve $59.46 was $84.95",
@@ -13,14 +13,16 @@
     "out/bf-16-rashguards-price-drop_9x16.jpg"
   ],
   "garment_source": [
-    "library/cut/rashguard-global/front.png",
-    "library/cut/rashguard-champion-gold/front.png",
     "library/cut/rashguard-monarch/front.png",
-    "library/cut/rashguard-champion-white-gold/front.png"
+    "library/cut/rashguard-global/front.png",
+    "library/cut/rashguard-champion-white-gold/front.png",
+    "library/cut/rashguard-champion-gold/front.png",
+    "library/cut/rashguard-legacy/flat-front.png"
   ],
   "ai_generated": [],
   "fidelity": "PASS for every garment in both sizes (kit/fidelity-check.py, 24 Nov)",
   "notes_for_owner": [
     "Rashguard volumes are low: the top three sold 3 each from 20-24 Nov."
-  ]
+  ],
+  "accent": "pink"
 }
