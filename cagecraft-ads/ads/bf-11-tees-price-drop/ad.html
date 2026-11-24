@@ -96,7 +96,7 @@
   const L = tall ? { labelsY: 278, headY: 352, priceY: 1290, factsY: 1436 } : { labelsY: 80, headY: 184, priceY: 1046, factsY: 1228 };
   const R = document.documentElement.style;
   for (const [k, v] of Object.entries({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": 166, "--h2": 62, "--price-y": L.priceY, "--facts-y": L.factsY })) R.setProperty(k, v + "px");
-  const items = tall ? [["tee-boxer-diamond/back.png", 315.0, 600, 400, -2, 0.7697], ["tee-apex-black/back.png", 765.0, 600, 400, 2, 0.7475], ["tee-heavy-hitters/back.png", 315.0, 930, 400, 2, 0.7619], ["tee-bodylock-tiffany/back.png", 765.0, 930, 400, -2, 0.7572]] : [["tee-boxer-diamond/back.png", 330.0, 440, 372, -2, 0.7697], ["tee-apex-black/back.png", 750.0, 440, 372, 2, 0.7475], ["tee-heavy-hitters/back.png", 330.0, 740, 372, 2, 0.7619], ["tee-bodylock-tiffany/back.png", 750.0, 740, 372, -2, 0.7572]];
+  const items = tall ? [["tee-boxer-diamond/back.png", 315.0, 600, 400, -2, 0.7697], ["tee-boxer-cottoncandy/back.png", 765.0, 600, 400, 2, 0.7519], ["tee-bodylock-tiffany/back.png", 315.0, 930, 400, 2, 0.7572], ["tee-heavy-hitters/back.png", 765.0, 930, 400, -2, 0.7619]] : [["tee-boxer-diamond/back.png", 330.0, 440, 372, -2, 0.7697], ["tee-boxer-cottoncandy/back.png", 750.0, 440, 372, 2, 0.7519], ["tee-bodylock-tiffany/back.png", 330.0, 740, 372, 2, 0.7572], ["tee-heavy-hitters/back.png", 750.0, 740, 372, -2, 0.7619]];
   const host = document.getElementById("lineup");
   const box = (cls, s) => { const d = document.createElement("div"); d.className = cls; Object.assign(d.style, s); host.appendChild(d); return d; };
   const x0 = Math.min(...items.map(i => i[1] - i[3] / 2)), x1 = Math.max(...items.map(i => i[1] + i[3] / 2));
