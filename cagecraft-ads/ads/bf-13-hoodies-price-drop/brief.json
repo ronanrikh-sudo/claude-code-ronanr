@@ -1,0 +1,25 @@
+{
+  "id": "bf-13-hoodies-price-drop",
+  "title": "Black Friday: 25% off the Walkout Hoodie",
+  "format": "Static image, 4:5 (1080x1350) and 9:16 (1080x1920)",
+  "product": "Walkout Hoodie Diamond, Concrete, Cotton Candy",
+  "recreates": "bf-03-jersey-price-drop layout (winning ad) for another collection",
+  "hook": "25% OFF THE WALKOUT HOODIE.",
+  "price": "$82.46 was $109.95",
+  "link": "https://www.cagecraftco.com/collections/hoodies",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/bf-13-hoodies-price-drop_4x5.jpg",
+    "out/bf-13-hoodies-price-drop_9x16.jpg"
+  ],
+  "garment_source": [
+    "library/cut/hoodie-diamond/flat-back.png",
+    "library/cut/hoodie-concrete/flat-back.png",
+    "library/cut/hoodie-cottoncandy/flat-back.png"
+  ],
+  "ai_generated": [],
+  "fidelity": "PASS for every garment in both sizes (kit/fidelity-check.py, 24 Nov)",
+  "notes_for_owner": [
+    "Diamond is sold out in S; Concrete and Cotton Candy are sold out in 3XL, so the ad makes no size claim."
+  ]
+}

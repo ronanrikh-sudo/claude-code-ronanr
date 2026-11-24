@@ -1,0 +1,49 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/hoodie-diamond/flat-back.png",
+      "x": 39.85867691040039,
+      "y": 534.6471557617188,
+      "w": 329.0444641113281,
+      "h": 332.91748046875,
+      "rotation": -1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 318.00005501101407,
+      "naturalWidth": 1583,
+      "upscale": 0.2008844314662123
+    },
+    {
+      "src": "cut/hoodie-concrete/flat-back.png",
+      "x": 381.09686279296875,
+      "y": 534.6484375,
+      "w": 329.11810302734375,
+      "h": 335.02557373046875,
+      "rotation": 1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 318.00005501101407,
+      "naturalWidth": 986,
+      "upscale": 0.32251526877384795
+    },
+    {
+      "src": "cut/hoodie-cottoncandy/flat-back.png",
+      "x": 699.8587036132812,
+      "y": 534.6471557617188,
+      "w": 329.04449462890625,
+      "h": 332.91748046875,
+      "rotation": -1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 318.00005501101407,
+      "naturalWidth": 1583,
+      "upscale": 0.2008844314662123
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

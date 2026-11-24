@@ -1,0 +1,27 @@
+{
+  "id": "bf-11-tees-price-drop",
+  "title": "Black Friday: 25% off oversized tees",
+  "format": "Static image, 4:5 (1080x1350) and 9:16 (1080x1920)",
+  "product": "Boxer Oversized Tee Diamond, Apex Oversized Tee Black, Heavy Hitters Tee, Body Lock Oversized Tee Tiffany (top four oversized tees by units, 20-24 Nov)",
+  "recreates": "bf-03-jersey-price-drop layout (winning ad) for another collection",
+  "hook": "25% OFF OVERSIZED TEES.",
+  "price": "$48.71 was $64.95",
+  "link": "https://www.cagecraftco.com/collections/tees",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/bf-11-tees-price-drop_4x5.jpg",
+    "out/bf-11-tees-price-drop_9x16.jpg"
+  ],
+  "garment_source": [
+    "library/cut/tee-boxer-diamond/back.png",
+    "library/cut/tee-apex-black/back.png",
+    "library/cut/tee-heavy-hitters/back.png",
+    "library/cut/tee-bodylock-tiffany/back.png"
+  ],
+  "ai_generated": [],
+  "fidelity": "PASS for every garment in both sizes (kit/fidelity-check.py, 24 Nov)",
+  "notes_for_owner": [
+    "Apex Oversized Tee Black is sold out in S and M.",
+    "One tee is $48.71, just under the $50 free kit bag tier, so the ad says \"Free gifts from $50\" rather than promising a kit bag."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/tee-boxer-diamond/back.png",
+      "x": 134.12060546875,
+      "y": 433.68310546875,
+      "w": 381.76611328125,
+      "h": 299.1363525390625,
+      "rotation": -1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 372.000064352507,
+      "naturalWidth": 1928,
+      "upscale": 0.19294609146914266
+    },
+    {
+      "src": "cut/tee-apex-black/back.png",
+      "x": 564.11328125,
+      "y": 433.6781005859375,
+      "w": 381.47821044921875,
+      "h": 290.891357421875,
+      "rotation": 1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 372.000064352507,
+      "naturalWidth": 2448,
+      "upscale": 0.1519608106015143
+    },
+    {
+      "src": "cut/tee-heavy-hitters/back.png",
+      "x": 144.11331176757812,
+      "y": 733.6813354492188,
+      "w": 381.6640930175781,
+      "h": 296.21624755859375,
+      "rotation": 1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 372.000064352507,
+      "naturalWidth": 1957,
+      "upscale": 0.19008690053781657
+    },
+    {
+      "src": "cut/tee-bodylock-tiffany/back.png",
+      "x": 554.2830810546875,
+      "y": 733.6802978515625,
+      "w": 381.6036376953125,
+      "h": 294.48291015625,
+      "rotation": -1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 372.000064352507,
+      "naturalWidth": 1981,
+      "upscale": 0.18778397998612167
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}
