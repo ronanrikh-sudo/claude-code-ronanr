@@ -57,11 +57,12 @@
 
   /* ---------- 9:16 ---------- */
   .v916 { --side: 65px; }
-  .price .from { font: 700 20px/1 var(--cc-body); letter-spacing: .16em; text-transform: uppercase; color: #fff; align-self: flex-start; margin-top: 8px; }
+  .price .from { font: 700 20px/1.25 var(--cc-body); letter-spacing: .16em; text-transform: uppercase; color: #fff; align-self: flex-start; margin-top: 6px; max-width: 90px; }
+  /* soft light behind every garment so dark product never melts into the dark world */
+  .glow { position: absolute; border-radius: 50%; background: radial-gradient(ellipse closest-side, rgba(176,182,196,.46) 0%, rgba(132,137,150,.26) 46%, rgba(70,73,82,.10) 74%, rgba(20,21,24,0) 100%); }
 </style>
 </head>
 <body>
-  <div class="abs floor"></div>
   <div class="abs grain"></div>
 
   <div class="abs labels">
@@ -88,35 +89,27 @@
 
 <script>
   // Real product cutouts, sized by width only, translate/rotate only. Nothing overlaps a garment.
+  // Each entry: [file, centre x, top, width, rotation, height/width]. All glows are drawn first, under every garment.
   const tall = new URLSearchParams(location.search).get("v") === "916";
   if (tall) document.body.classList.add("v916");
-  const base = tall ? { labelsY: 278, headY: 352, h1: 166, h2: 62 } : { labelsY: 80, headY: 184, h1: 166, h2: 62 };
-  const L = Object.assign(base, tall ? {"w": 318, "stepx": 330, "top": 700, "stepy": 0, "priceY": 1150, "factsY": 1296, "floorY": 880, "floorH": 680} : {"w": 318, "stepx": 330, "top": 540, "stepy": 0, "priceY": 1000, "factsY": 1200, "floorY": 720, "floorH": 640});
+  const L = tall ? { labelsY: 278, headY: 352, priceY: 1150, factsY: 1296 } : { labelsY: 80, headY: 184, priceY: 1000, factsY: 1200 };
   const R = document.documentElement.style;
-  for (const [k, v] of Object.entries({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": L.h1, "--h2": L.h2,
-    "--price-y": L.priceY, "--facts-y": L.factsY, "--floor-y": L.floorY, "--floor-h": L.floorH })) R.setProperty(k, v + "px");
-  const items = [["hoodie-diamond/flat-back.png", 1.012634238787113, "Walkout Hoodie Diamond"], ["hoodie-concrete/flat-back.png", 1.0192697768762677, "Walkout Hoodie Concrete"], ["hoodie-cottoncandy/flat-back.png", 1.012634238787113, "Walkout Hoodie Cotton Candy"]];
-  const rows = 1, cols = items.length / rows;
+  for (const [k, v] of Object.entries({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": 166, "--h2": 62, "--price-y": L.priceY, "--facts-y": L.factsY })) R.setProperty(k, v + "px");
+  const items = tall ? [["hoodie-diamond/flat-back.png", 210.0, 700, 318, -2, 1.0126], ["hoodie-concrete/flat-back.png", 540.0, 700, 318, 2, 1.0193], ["hoodie-cottoncandy/flat-back.png", 870.0, 700, 318, -2, 1.0126]] : [["hoodie-diamond/flat-back.png", 210.0, 540, 318, -2, 1.0126], ["hoodie-concrete/flat-back.png", 540.0, 540, 318, 2, 1.0193], ["hoodie-cottoncandy/flat-back.png", 870.0, 540, 318, -2, 1.0126]];
   const host = document.getElementById("lineup");
-  items.forEach(([file, ar, alt], i) => {
-    const c = i % cols, r = Math.floor(i / cols);
-    const cx = 540 + (c - (cols - 1) / 2) * L.stepx;
-    const w = L.w, h = w * ar, top = L.top + r * L.stepy;
-    const rot = ((c + r) % 2 ? 1 : -1) * 2;
-    const sh = document.createElement("div");
-    sh.className = "shadow";
-    Object.assign(sh.style, { left: (cx - w * 0.44) + "px", top: (top + h - 18) + "px", width: (w * 0.88) + "px", height: "32px" });
-    host.appendChild(sh);
-    const slot = document.createElement("div");
-    slot.className = "slot";
-    Object.assign(slot.style, { left: (cx - w / 2) + "px", top: top + "px", width: w + "px", transform: `rotate(${rot}deg)` });
+  const box = (cls, s) => { const d = document.createElement("div"); d.className = cls; Object.assign(d.style, s); host.appendChild(d); return d; };
+  for (const [file, cx, top, w, rot, ar] of items) {
+    const h = w * ar, gw = w * 1.5, gh = h * 1.5;
+    box("glow", { left: (cx - gw / 2) + "px", top: (top + h / 2 - gh / 2) + "px", width: gw + "px", height: gh + "px" });
+  }
+  for (const [file, cx, top, w, rot, ar] of items) {
+    const slot = box("slot", { left: (cx - w / 2) + "px", top: top + "px", width: w + "px", transform: `rotate(${rot}deg)` });
     const img = document.createElement("img");
     img.dataset.product = "cut/" + file;
     img.src = "../../library/cut/" + file;
-    img.alt = alt;
+    img.alt = file.split("/")[0];
     slot.appendChild(img);
-    host.appendChild(slot);
-  });
+  }
 </script>
 </body>
 </html>

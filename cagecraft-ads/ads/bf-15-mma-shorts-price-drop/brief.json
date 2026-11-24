@@ -1,0 +1,26 @@
+{
+  "id": "bf-15-mma-shorts-price-drop",
+  "title": "Black Friday: 30% off MMA shorts",
+  "format": "Static image, 4:5 (1080x1350) and 9:16 (1080x1920)",
+  "product": "Monarch, Global Gladiator, Champion Gold and Legacy shorts (top four by units, 20-24 Nov)",
+  "recreates": "bf-03-jersey-price-drop layout (winning ad) for another collection",
+  "hook": "30% OFF MMA SHORTS.",
+  "price": "From $52.46 was $74.95 (Champion Gold); the 2-in-1 shorts are $62.96 was $89.95",
+  "link": "https://www.cagecraftco.com/collections/mma-shorts",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/bf-15-mma-shorts-price-drop_4x5.jpg",
+    "out/bf-15-mma-shorts-price-drop_9x16.jpg"
+  ],
+  "garment_source": [
+    "library/cut/shorts-monarch/front.png",
+    "library/cut/shorts-global/front.png",
+    "library/cut/shorts-champion-gold/front.png",
+    "library/cut/shorts-legacy/flat-front.png"
+  ],
+  "ai_generated": [],
+  "fidelity": "PASS for every garment in both sizes (kit/fidelity-check.py, 24 Nov)",
+  "notes_for_owner": [
+    "Monarch shorts are sold out in XS."
+  ]
+}

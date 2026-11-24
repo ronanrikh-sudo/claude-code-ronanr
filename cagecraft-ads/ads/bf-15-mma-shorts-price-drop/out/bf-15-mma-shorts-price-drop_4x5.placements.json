@@ -1,0 +1,61 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/shorts-monarch/front.png",
+      "x": 140.78439331054688,
+      "y": 443.880859375,
+      "w": 369.10595703125,
+      "h": 279.60418701171875,
+      "rotation": -1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 360.0000622766197,
+      "naturalWidth": 1808,
+      "upscale": 0.19911507869282064
+    },
+    {
+      "src": "cut/shorts-global/front.png",
+      "x": 570.1096801757812,
+      "y": 443.8779602050781,
+      "w": 368.9395751953125,
+      "h": 274.8414611816406,
+      "rotation": 1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 360.0000622766197,
+      "naturalWidth": 1620,
+      "upscale": 0.22222226066458006
+    },
+    {
+      "src": "cut/shorts-champion-gold/front.png",
+      "x": 150.10964965820312,
+      "y": 731.8706665039062,
+      "w": 368.5219421386719,
+      "h": 262.8800048828125,
+      "rotation": 1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 360.0000622766197,
+      "naturalWidth": 1660,
+      "upscale": 0.21686750739555405
+    },
+    {
+      "src": "cut/shorts-legacy/flat-front.png",
+      "x": 562.01513671875,
+      "y": 731.859375,
+      "w": 367.87518310546875,
+      "h": 244.36004638671875,
+      "rotation": -1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 360.0000622766197,
+      "naturalWidth": 1819,
+      "upscale": 0.19791097431369967
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

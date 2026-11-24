@@ -2,10 +2,10 @@
   "id": "bf-12-fightwear-price-drop",
   "title": "Black Friday: 30% off all fightwear",
   "format": "Static image, 4:5 (1080x1350) and 9:16 (1080x1920)",
-  "product": "Monarch 2-in-1 Hybrid MMA Shorts, Global 2-in-1 Gladiator Shorts, Champion Gold MMA Shorts, Legacy 2-in-1 Hybrid MMA Shorts (top four fightwear items by units, 20-24 Nov)",
+  "product": "Champion Gold Rashguard, Monarch Long Sleeve Rashguard, Monarch 2-in-1 Hybrid MMA Shorts, Global 2-in-1 Gladiator Shorts",
   "recreates": "bf-03-jersey-price-drop layout (winning ad) for another collection",
   "hook": "30% OFF ALL FIGHTWEAR.",
-  "price": "From $52.46 was $74.95 (Champion Gold MMA Shorts); the 2-in-1 shorts are $62.96 was $89.95",
+  "price": "From $52.46 was $74.95 (the lowest-priced fightwear item; none of the four shown is that price)",
   "link": "https://www.cagecraftco.com/collections/fightwear",
   "cta": "Shop Now",
   "deliverables": [
@@ -13,15 +13,14 @@
     "out/bf-12-fightwear-price-drop_9x16.jpg"
   ],
   "garment_source": [
+    "library/cut/rashguard-champion-gold/front.png",
+    "library/cut/rashguard-monarch/front.png",
     "library/cut/shorts-monarch/front.png",
-    "library/cut/shorts-global/front.png",
-    "library/cut/shorts-champion-gold/front.png",
-    "library/cut/shorts-legacy/flat-front.png"
+    "library/cut/shorts-global/front.png"
   ],
   "ai_generated": [],
   "fidelity": "PASS for every garment in both sizes (kit/fidelity-check.py, 24 Nov)",
   "notes_for_owner": [
-    "Monarch shorts are sold out in XS.",
-    "Every shorts and rashguard price checked on 24 Nov was 30% off; confirm nothing in the Fightwear collection is excluded."
+    "Monarch shorts are sold out in XS."
   ]
 }

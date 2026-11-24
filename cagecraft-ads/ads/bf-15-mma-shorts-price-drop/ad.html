@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CAGECRAFT Black Friday MMA shorts price drop</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  /* 4:5 master (1080x1350). ?v=916 switches to the 1080x1920 layout (text kept inside y 270-1250, 65px sides). */
+  html, body { width: 1080px; height: 100vh; overflow: hidden; }
+  body { position: relative; background: #050506; }
+  .abs { position: absolute; }
+  :root { --pink: #F09EC0; --grey: #A7ABB3; --hair: rgba(255,255,255,.16); --side: 64px; --price: 92px; }
+
+  /* ---------- world: near-black, restrained floor spotlight, fine grain ---------- */
+  .floor { left: 50%; top: var(--floor-y); width: 1240px; height: var(--floor-h, 360px); transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(74,76,82,.50) 0%, rgba(44,46,50,.30) 42%, rgba(20,21,24,0) 74%); }
+  .grain { inset: 0; opacity: .05; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+  /* ---------- label row ---------- */
+  .labels { left: var(--side); right: var(--side); top: var(--labels-y); display: flex; align-items: center; justify-content: space-between; }
+  .campaign { display: flex; align-items: center; gap: 18px; }
+  .tag { background: var(--pink); color: #050506; font: 800 19px/1 var(--cc-body); letter-spacing: .16em; text-transform: uppercase; padding: 10px 10px 9px 13px; }
+  .lab { font: 700 19px/1 var(--cc-body); letter-spacing: .2em; text-transform: uppercase; color: #fff; }
+  .logo { width: 200px; height: auto; display: block; }
+
+  /* ---------- headline ---------- */
+  .headline { left: var(--side); right: var(--side); top: var(--head-y); color: #fff; }
+  .headline .l1 { display: block; font-size: var(--h1, 196px); line-height: .9; white-space: nowrap; }
+  .headline .l1 em { font-style: inherit; color: var(--pink); }
+  .headline .l2 { display: block; font-size: var(--h2, 62px); line-height: .9; margin-top: var(--h-gap, 14px); white-space: nowrap; }
+
+  /* ---------- line-up (real cutouts, translate/rotate only) ---------- */
+  .lineup { left: 0; top: 0; width: 1080px; height: 100%; }
+  .slot { position: absolute; transform-origin: 50% 100%; }
+  .slot img { width: 100%; height: auto; display: block; }
+  .shadow { position: absolute; border-radius: 50%; background: rgba(0,0,0,.6); filter: blur(14px); }
+
+  /* ---------- price row ---------- */
+  .price-row { left: var(--side); right: var(--side); top: var(--price-y); border-top: 1px solid var(--hair); padding-top: var(--price-pad, 30px);
+    display: flex; align-items: center; justify-content: space-between; }
+  .price { display: flex; align-items: baseline; gap: 18px; }
+  .price .now { font-size: var(--price, 110px); line-height: .82; color: var(--pink); }
+  .price .was { font: 600 24px/1 var(--cc-body); color: var(--grey); white-space: nowrap; }
+  .price .was s { text-decoration: none; position: relative; }
+  .price .was s::after { content: ""; position: absolute; left: -2px; right: -2px; top: 52%; height: 1.5px; background: var(--grey); }
+  .btn { background: #fff; color: #050506; border-radius: 999px; padding: 22px 28px 22px 32px; font: 800 20px/1 var(--cc-body); letter-spacing: .06em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 14px; white-space: nowrap; }
+  .btn svg { width: 12px; height: 20px; }
+
+  /* ---------- facts line ---------- */
+  .facts { left: var(--side); right: var(--side); top: var(--facts-y); display: flex; align-items: center; gap: 12px;
+    font: 700 18px/1 var(--cc-body); letter-spacing: .15em; text-transform: uppercase; color: var(--grey); white-space: nowrap; }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 15px; height: 15px; border-radius: 50%; position: relative; box-shadow: 0 0 0 1px rgba(255,255,255,.28); }
+  .dot::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--ink); }
+  .facts i { font-style: normal; color: rgba(167,171,179,.55); margin: 0 -2px; }
+
+  /* ---------- 9:16 ---------- */
+  .v916 { --side: 65px; }
+  .price .from { font: 700 20px/1.25 var(--cc-body); letter-spacing: .16em; text-transform: uppercase; color: #fff; align-self: flex-start; margin-top: 6px; max-width: 90px; }
+  /* soft light behind every garment so dark product never melts into the dark world */
+  .glow { position: absolute; border-radius: 50%; background: radial-gradient(ellipse closest-side, rgba(176,182,196,.46) 0%, rgba(132,137,150,.26) 46%, rgba(70,73,82,.10) 74%, rgba(20,21,24,0) 100%); }
+</style>
+</head>
+<body>
+  <div class="abs grain"></div>
+
+  <div class="abs labels">
+    <div class="campaign"><span class="tag">Black Friday</span><span class="lab">Nov 20 – 29</span></div>
+    <img class="logo" src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+  </div>
+
+  <div class="abs headline cc-display">
+    <span class="l1"><em>30%</em> off</span>
+    <span class="l2">MMA shorts.</span>
+  </div>
+
+  <div class="abs lineup" id="lineup"></div>
+
+  <div class="abs price-row">
+    <div class="price"><span class="from">From</span><span class="now cc-display">$52.46</span><span class="was">was <s>$74.95</s></span></div>
+    <div class="btn">Shop the shorts <svg viewBox="0 0 14 22" fill="none" stroke="#050506" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l8 8-8 8"/></svg></div>
+  </div>
+
+  <div class="abs facts">
+    <span>Four best sellers <i>·</i> XS to 3XL <i>·</i> Free kit bag over $50 <i>·</i> Ends Sun 29 Nov</span>
+  </div>
+
+<script>
+  // Real product cutouts, sized by width only, translate/rotate only. Nothing overlaps a garment.
+  // Each entry: [file, centre x, top, width, rotation, height/width]. All glows are drawn first, under every garment.
+  const tall = new URLSearchParams(location.search).get("v") === "916";
+  if (tall) document.body.classList.add("v916");
+  const L = tall ? { labelsY: 278, headY: 352, priceY: 1290, factsY: 1436 } : { labelsY: 80, headY: 184, priceY: 1046, factsY: 1228 };
+  const R = document.documentElement.style;
+  for (const [k, v] of Object.entries({ "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": 166, "--h2": 62, "--price-y": L.priceY, "--facts-y": L.factsY })) R.setProperty(k, v + "px");
+  const items = tall ? [["shorts-monarch/front.png", 315.0, 600, 400, -2, 0.7423], ["shorts-global/front.png", 765.0, 600, 400, 2, 0.729], ["shorts-champion-gold/front.png", 315.0, 930, 400, 2, 0.6958], ["shorts-legacy/flat-front.png", 765.0, 930, 400, -2, 0.6443]] : [["shorts-monarch/front.png", 330.0, 450, 360, -2, 0.7423], ["shorts-global/front.png", 750.0, 450, 360, 2, 0.729], ["shorts-champion-gold/front.png", 330.0, 738, 360, 2, 0.6958], ["shorts-legacy/flat-front.png", 750.0, 738, 360, -2, 0.6443]];
+  const host = document.getElementById("lineup");
+  const box = (cls, s) => { const d = document.createElement("div"); d.className = cls; Object.assign(d.style, s); host.appendChild(d); return d; };
+  for (const [file, cx, top, w, rot, ar] of items) {
+    const h = w * ar, gw = w * 1.5, gh = h * 1.5;
+    box("glow", { left: (cx - gw / 2) + "px", top: (top + h / 2 - gh / 2) + "px", width: gw + "px", height: gh + "px" });
+  }
+  for (const [file, cx, top, w, rot, ar] of items) {
+    const slot = box("slot", { left: (cx - w / 2) + "px", top: top + "px", width: w + "px", transform: `rotate(${rot}deg)` });
+    const img = document.createElement("img");
+    img.dataset.product = "cut/" + file;
+    img.src = "../../library/cut/" + file;
+    img.alt = file.split("/")[0];
+    slot.appendChild(img);
+  }
+</script>
+</body>
+</html>

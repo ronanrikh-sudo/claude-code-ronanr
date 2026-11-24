@@ -1,0 +1,29 @@
+{
+  "id": "bf-14-fight-kits-price-drop",
+  "title": "Black Friday: 30% off fight kits",
+  "format": "Static image, 4:5 (1080x1350) and 9:16 (1080x1920)",
+  "product": "Monarch, Global and Champion Gold rashguard + shorts pairs",
+  "recreates": "bf-03-jersey-price-drop layout (winning ad) for another collection",
+  "hook": "30% OFF FIGHT KITS.",
+  "price": "Kits from $108.42 was $154.90 (Champion Gold rashguard $55.96 + shorts $52.46); Global kit $118.92, Monarch kit $122.42",
+  "link": "https://www.cagecraftco.com/collections/fightwear",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/bf-14-fight-kits-price-drop_4x5.jpg",
+    "out/bf-14-fight-kits-price-drop_9x16.jpg"
+  ],
+  "garment_source": [
+    "library/cut/rashguard-monarch/front.png",
+    "library/cut/shorts-monarch/front.png",
+    "library/cut/rashguard-global/front.png",
+    "library/cut/shorts-global/front.png",
+    "library/cut/rashguard-champion-gold/front.png",
+    "library/cut/shorts-champion-gold/front.png"
+  ],
+  "ai_generated": [],
+  "fidelity": "PASS for every garment in both sizes (kit/fidelity-check.py, 24 Nov)",
+  "notes_for_owner": [
+    "There is no fight kit product or collection in the store: a kit is a rashguard and shorts added separately, and the price is the sum of the two sale prices.",
+    "Every kit is over $100, so the free kit bag and free socks tiers both apply."
+  ]
+}

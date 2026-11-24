@@ -1,0 +1,61 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1920
+  },
+  "products": [
+    {
+      "src": "cut/rashguard-global/front.png",
+      "x": 128.28353881835938,
+      "y": 584.2733764648438,
+      "w": 351.6129150390625,
+      "h": 350.3470458984375,
+      "rotation": -1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 340.0000588168075,
+      "naturalWidth": 1569,
+      "upscale": 0.21669857158496336
+    },
+    {
+      "src": "cut/rashguard-champion-gold/front.png",
+      "x": 600.1035766601562,
+      "y": 584.2786254882812,
+      "w": 351.91119384765625,
+      "h": 358.888671875,
+      "rotation": 1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 340.0000588168075,
+      "naturalWidth": 1503,
+      "upscale": 0.22621427732322522
+    },
+    {
+      "src": "cut/rashguard-monarch/front.png",
+      "x": 140.1035614013672,
+      "y": 942.2564697265625,
+      "w": 350.64337158203125,
+      "h": 322.5826416015625,
+      "rotation": 1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 340.0000588168075,
+      "naturalWidth": 1683,
+      "upscale": 0.20202023696780005
+    },
+    {
+      "src": "cut/rashguard-champion-white-gold/front.png",
+      "x": 589.1620483398438,
+      "y": 942.258056640625,
+      "w": 350.734375,
+      "h": 325.1904296875,
+      "rotation": -1.999999842926156,
+      "flipX": false,
+      "drawnWidth": 340.0000588168075,
+      "naturalWidth": 1798,
+      "upscale": 0.18909903160000416
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

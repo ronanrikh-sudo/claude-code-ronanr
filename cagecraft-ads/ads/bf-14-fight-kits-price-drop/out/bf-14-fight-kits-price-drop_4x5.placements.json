@@ -1,0 +1,85 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/rashguard-monarch/front.png",
+      "x": 67,
+      "y": 438,
+      "w": 270,
+      "h": 246.890625,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 270,
+      "naturalWidth": 1683,
+      "upscale": 0.16042780748663102
+    },
+    {
+      "src": "cut/shorts-monarch/front.png",
+      "x": 82,
+      "y": 710.890625,
+      "w": 240,
+      "h": 178.140625,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 240,
+      "naturalWidth": 1808,
+      "upscale": 0.13274336283185842
+    },
+    {
+      "src": "cut/rashguard-global/front.png",
+      "x": 405,
+      "y": 438,
+      "w": 270,
+      "h": 268.953125,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 270,
+      "naturalWidth": 1569,
+      "upscale": 0.17208413001912046
+    },
+    {
+      "src": "cut/shorts-global/front.png",
+      "x": 420,
+      "y": 733,
+      "w": 240,
+      "h": 174.953125,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 240,
+      "naturalWidth": 1620,
+      "upscale": 0.14814814814814814
+    },
+    {
+      "src": "cut/rashguard-champion-gold/front.png",
+      "x": 743,
+      "y": 438,
+      "w": 270,
+      "h": 275.734375,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 270,
+      "naturalWidth": 1503,
+      "upscale": 0.17964071856287425
+    },
+    {
+      "src": "cut/shorts-champion-gold/front.png",
+      "x": 758,
+      "y": 739.6875,
+      "w": 240,
+      "h": 166.984375,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 240,
+      "naturalWidth": 1660,
+      "upscale": 0.14457831325301204
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}
