@@ -1,0 +1,69 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [],
+  "photos": [
+    {
+      "src": "stylised:car",
+      "x": 7,
+      "y": 7,
+      "w": 406,
+      "h": 432
+    },
+    {
+      "src": "stylised:city1",
+      "x": 383,
+      "y": 7,
+      "w": 352,
+      "h": 422.9375
+    },
+    {
+      "src": "stylised:train3",
+      "x": 713,
+      "y": 7,
+      "w": 360,
+      "h": 414.125
+    },
+    {
+      "src": "stylised:hoodie",
+      "x": 7,
+      "y": 444.1875,
+      "w": 352,
+      "h": 450.25
+    },
+    {
+      "src": "stylised:kick",
+      "x": 733,
+      "y": 427,
+      "w": 340,
+      "h": 488
+    },
+    {
+      "src": "stylised:city2",
+      "x": 7,
+      "y": 899,
+      "w": 378,
+      "h": 444
+    },
+    {
+      "src": "stylised:kit",
+      "x": 359,
+      "y": 908.765625,
+      "w": 352,
+      "h": 434.21875
+    },
+    {
+      "src": "stylised:train2",
+      "x": 697,
+      "y": 918.9375,
+      "w": 376,
+      "h": 424.046875
+    }
+  ],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}
