@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CAGECRAFT Black Friday jersey price drop on the court photo</title>
+<link rel="stylesheet" href="../../kit/brand.css">
+<style>
+  /* 4:5 master (1080x1350). ?v=916 switches to 1080x1920 (text kept inside y 270-1250).
+     The court photograph is the whole world: it is only scaled and feathered into a matching asphalt tone. Nothing sits on a jersey. */
+  html, body { width: 1080px; height: 100vh; overflow: hidden; }
+  body { position: relative; background: #403c39; }
+  .abs { position: absolute; }
+  :root { --tiff: #5FD6CC; --grey: #C9CBD0; --side: 64px; }
+
+  .photo { left: var(--px); top: var(--py); width: var(--pw); height: auto; display: block;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 7%, #000 96%, transparent 100%);
+    -webkit-mask-composite: source-in; mask-composite: intersect; }
+  .v916 .photo { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 8%, #000 97%, transparent 100%); }
+  /* asphalt fill carries the photo's own light: brighter top-left, darker bottom-right */
+  .fill { inset: 0; background: radial-gradient(ellipse 90% 70% at 22% 12%, #4a4643 0%, #403c39 46%, #37332f 100%); }
+  .grain { inset: 0; opacity: .16; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); -webkit-mask-image: var(--grain-mask); mask-image: var(--grain-mask); }
+  /* shade only where type sits, never over a jersey */
+  .shade-top { left: 0; right: 0; top: 0; height: var(--shade-top); background: linear-gradient(to bottom, rgba(18,17,16,.62) 0%, rgba(18,17,16,.38) 55%, rgba(18,17,16,0) 100%); }
+  .shade-bot { left: 0; top: var(--shade-bot-y); width: var(--shade-bot-w); height: var(--shade-bot-h); background: radial-gradient(ellipse 72% 80% at 28% 72%, rgba(14,13,12,.72) 0%, rgba(14,13,12,.46) 46%, rgba(14,13,12,0) 100%); }
+
+  .labels { left: var(--side); right: var(--side); top: var(--labels-y); display: flex; align-items: center; justify-content: space-between; }
+  .campaign { display: flex; align-items: center; gap: 18px; }
+  .tag { background: var(--tiff); color: #0b0b0c; font: 800 19px/1 var(--cc-body); letter-spacing: .16em; text-transform: uppercase; padding: 10px 10px 9px 13px; }
+  .lab { font: 700 19px/1 var(--cc-body); letter-spacing: .2em; text-transform: uppercase; color: #fff; }
+  .logo { width: 200px; height: auto; display: block; }
+
+  .headline { left: var(--side); right: var(--side); top: var(--head-y); color: #fff; text-shadow: 0 2px 22px rgba(0,0,0,.35); }
+  .headline .l1 { display: block; font-size: var(--h1); line-height: .9; white-space: nowrap; }
+  .headline .l1 em { font-style: inherit; color: var(--tiff); }
+  .headline .l2 { display: block; font-size: var(--h2); line-height: .9; margin-top: 10px; white-space: nowrap; }
+
+  .price { left: var(--side); top: var(--price-y); display: flex; align-items: baseline; gap: 16px; text-shadow: 0 2px 20px rgba(0,0,0,.45); }
+  .price .now { font-size: var(--price); line-height: .82; color: var(--tiff); }
+  .price .was { font: 600 24px/1 var(--cc-body); color: #E4E5E8; white-space: nowrap; background: rgba(14,13,12,.62); padding: 6px 10px 6px; border-radius: 6px; text-shadow: none; }
+  .price .was s { text-decoration: none; position: relative; }
+  .price .was s::after { content: ""; position: absolute; left: -2px; right: -2px; top: 52%; height: 1.5px; background: #E4E5E8; }
+  .btn { right: var(--side); top: var(--btn-y); background: #fff; color: #050506; border-radius: 999px; padding: 20px 26px 20px 30px; font: 800 19px/1 var(--cc-body); letter-spacing: .06em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 14px; white-space: nowrap; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+  .btn svg { width: 12px; height: 20px; }
+  .facts { left: var(--side); right: var(--side); top: var(--facts-y); font: 700 17px/1 var(--cc-body); letter-spacing: .15em; text-transform: uppercase; color: var(--grey); white-space: nowrap; text-shadow: 0 1px 12px rgba(0,0,0,.6); }
+  .facts i { font-style: normal; opacity: .55; margin: 0 4px; }
+  .v916 .btn { display: none; }
+  .v916 { --side: 65px; }
+</style>
+</head>
+<body>
+  <div class="abs fill"></div>
+  <img class="abs photo" data-photo="photo/jersey-court/top-view-both.png" src="../../library/photo/jersey-court/top-view-both.png" alt="Fight Jersey 2.0 Tiffany and Concrete laid flat on a basketball court">
+  <div class="abs grain"></div>
+  <div class="abs shade-top"></div>
+  <div class="abs shade-bot"></div>
+
+  <div class="abs labels">
+    <div class="campaign"><span class="tag">Black Friday</span><span class="lab">Nov 20 – 29</span></div>
+    <img class="logo" src="../../library/logo/logo-white.png" alt="CAGECRAFT">
+  </div>
+
+  <div class="abs headline cc-display">
+    <span class="l1"><em>30%</em> off</span>
+    <span class="l2">The Fight Jersey 2.0.</span>
+  </div>
+
+  <div class="abs price"><span class="now cc-display">$55.96</span><span class="was">was <s>$79.95</s></span></div>
+  <div class="abs btn">Shop the jerseys <svg viewBox="0 0 14 22" fill="none" stroke="#050506" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l8 8-8 8"/></svg></div>
+  <div class="abs facts">Four colourways <i>·</i> XS to 3XL <i>·</i> Free kit bag over $50 <i>·</i> Ends Sun 29 Nov</div>
+
+<script>
+  const tall = new URLSearchParams(location.search).get("v") === "916";
+  if (tall) document.body.classList.add("v916");
+  const L = tall
+    ? { px: 0, py: 566, pw: 1080, labelsY: 278, headY: 346, h1: 150, h2: 54, priceY: 596, price: 78, btnY: 0, factsY: 692, shadeTop: 760, shadeBotY: 1920, shadeBotW: 0, shadeBotH: 0, grainMask: "linear-gradient(to bottom, #000 0, #000 600px, transparent 700px, transparent 1830px, #000 1900px)" }
+    : { px: 70, py: 150, pw: 940, labelsY: 46, headY: 112, h1: 112, h2: 42, priceY: 1234, price: 74, btnY: 1236, factsY: 1312, shadeTop: 330, shadeBotY: 1090, shadeBotW: 560, shadeBotH: 260, grainMask: "linear-gradient(to bottom, #000 0, #000 190px, transparent 250px)" };
+  const R = document.documentElement.style;
+  for (const [k, v] of Object.entries({ "--px": L.px, "--py": L.py, "--pw": L.pw, "--labels-y": L.labelsY, "--head-y": L.headY, "--h1": L.h1, "--h2": L.h2,
+    "--price-y": L.priceY, "--price": L.price, "--btn-y": L.btnY, "--facts-y": L.factsY, "--shade-top": L.shadeTop, "--shade-bot-y": L.shadeBotY, "--shade-bot-w": L.shadeBotW, "--shade-bot-h": L.shadeBotH })) R.setProperty(k, v + "px");
+  R.setProperty("--grain-mask", L.grainMask);
+</script>
+</body>
+</html>

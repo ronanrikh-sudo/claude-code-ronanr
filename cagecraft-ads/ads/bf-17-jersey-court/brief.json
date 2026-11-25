@@ -1,0 +1,26 @@
+{
+  "id": "bf-17-jersey-court",
+  "title": "Black Friday: 30% off the Fight Jersey 2.0 (court photo)",
+  "format": "Static image, 4:5 (1080x1350) and 9:16 (1080x1920)",
+  "product": "Fight Jersey 2.0 Tiffany and Concrete",
+  "recreates": "bf-03-jersey-price-drop (winning ad): same headline, price row and facts line, set on the court flat-lay photograph with Tiffany accents",
+  "hook": "30% OFF THE FIGHT JERSEY 2.0.",
+  "price": "$55.96 was $79.95",
+  "link": "https://www.cagecraftco.com/collections/fight-jerseys",
+  "cta": "Shop Now",
+  "deliverables": [
+    "out/bf-17-jersey-court_4x5.jpg",
+    "out/bf-17-jersey-court_9x16.jpg"
+  ],
+  "photo_source": [
+    "library/photo/jersey-court/top-view-both.png (store product image JERSEY_TOP_VIEW_BOTH.png)"
+  ],
+  "ai_generated": [],
+  "fidelity": "The photograph is only scaled and edge-feathered into a flat asphalt tone; no text, shade or overlay sits on either jersey.",
+  "notes_for_owner": [
+    "Price shown is $55.96, the live store price; the original winning ad says $55.97.",
+    "Sizes shown as XS to 3XL; the original winning ad says XS to 2XL.",
+    "The 9:16 version has no button graphic so the price block stays inside the Story/Reels safe area.",
+    "Switch off Advantage+ creative enhancements so Meta does not crop or alter the photo."
+  ]
+}
