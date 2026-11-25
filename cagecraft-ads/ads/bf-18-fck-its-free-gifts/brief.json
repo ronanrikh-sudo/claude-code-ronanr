@@ -1,6 +1,6 @@
 {
   "id": "bf-18-fck-its-free-gifts",
-  "title": "F*CK IT. IT'S FREE: all four free gifts with spend tiers, plus \"Take up to 40% off\"",
+  "title": "F*CK IT. IT'S FREE: all four free gifts, plus \"Take up to 40% off\"",
   "format": "Static image, 4:5 (1080x1350)",
   "recreates": "Rebuild of the old \"F*CK IT. IT'S FREE\" kit bag ad (best click-through in Q4 Scale)",
   "deliverables": [
@@ -9,6 +9,6 @@
   "ai_generated": [],
   "prices_shown": false,
   "notes_for_owner": [
-    "Spend thresholds ($50, $100, $200, $250) are shown because the gifts are only free at those tiers; they are not product prices."
+    "Spend tiers removed at the owner's request so people click through to find out. The small line \"Free gifts unlock as you spend\" stays so the ad does not imply the gifts come with no purchase."
   ]
 }
