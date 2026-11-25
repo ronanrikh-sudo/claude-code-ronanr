@@ -1,0 +1,37 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/jersey-concrete/front.png",
+      "x": 76.12232971191406,
+      "y": 409.3664245605469,
+      "w": 479.75537109375,
+      "h": 614.54833984375,
+      "rotation": -4.000001701562397,
+      "flipX": false,
+      "drawnWidth": 439.9999787454145,
+      "naturalWidth": 1175,
+      "upscale": 0.37446806701737406
+    },
+    {
+      "src": "cut/jersey-concrete/back.png",
+      "x": 536.6967163085938,
+      "y": 455.34637451171875,
+      "w": 478.6065673828125,
+      "h": 598.1196899414062,
+      "rotation": 4.000001701562397,
+      "flipX": false,
+      "drawnWidth": 439.9999787454145,
+      "naturalWidth": 1216,
+      "upscale": 0.361842087784058
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

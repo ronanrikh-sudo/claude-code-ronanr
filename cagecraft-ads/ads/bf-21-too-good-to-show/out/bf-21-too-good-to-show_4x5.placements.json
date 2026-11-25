@@ -1,0 +1,20 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [],
+  "photos": [
+    {
+      "src": "photo/jersey-court/top-view-both.png",
+      "x": -90,
+      "y": -110,
+      "w": 1260,
+      "h": 1564.125
+    }
+  ],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

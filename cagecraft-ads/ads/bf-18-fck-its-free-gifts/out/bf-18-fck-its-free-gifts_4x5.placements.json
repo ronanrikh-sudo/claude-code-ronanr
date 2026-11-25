@@ -1,0 +1,61 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "products": [
+    {
+      "src": "cut/kit-bag/front.png",
+      "x": 36,
+      "y": 486,
+      "w": 280,
+      "h": 243.8125,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 280,
+      "naturalWidth": 1656,
+      "upscale": 0.16908212560386474
+    },
+    {
+      "src": "cut/crew-socks/white.png",
+      "x": 346,
+      "y": 470,
+      "w": 128,
+      "h": 267.578125,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 128,
+      "naturalWidth": 851,
+      "upscale": 0.15041128084606345
+    },
+    {
+      "src": "cut/training-towel/c.png",
+      "x": 500,
+      "y": 520,
+      "w": 262,
+      "h": 190.09375,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 262,
+      "naturalWidth": 1534,
+      "upscale": 0.17079530638852672
+    },
+    {
+      "src": "cut/tee-essentials/front.png",
+      "x": 776,
+      "y": 474,
+      "w": 284,
+      "h": 257.796875,
+      "rotation": 0,
+      "flipX": false,
+      "drawnWidth": 284,
+      "naturalWidth": 1735,
+      "upscale": 0.16368876080691644
+    }
+  ],
+  "photos": [],
+  "ai": [],
+  "warnings": [],
+  "scale": 2,
+  "errors": []
+}

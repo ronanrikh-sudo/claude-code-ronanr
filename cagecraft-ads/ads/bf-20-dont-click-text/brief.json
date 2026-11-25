@@ -1,0 +1,12 @@
+{
+  "id": "bf-20-dont-click-text",
+  "title": "Plain text post: \"This sale is too good. We were told not to tell anyone. Don't click.\"",
+  "format": "Static image, 4:5 (1080x1350)",
+  "recreates": "New pattern-break text ad",
+  "deliverables": [
+    "out/bf-20-dont-click-text_4x5.jpg"
+  ],
+  "ai_generated": [],
+  "prices_shown": false,
+  "notes_for_owner": []
+}

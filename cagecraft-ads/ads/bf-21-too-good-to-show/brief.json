@@ -1,0 +1,14 @@
+{
+  "id": "bf-21-too-good-to-show",
+  "title": "Blurred product photo with \"Too good to show\" and a View sale line",
+  "format": "Static image, 4:5 (1080x1350)",
+  "recreates": "Own-brand take on the hidden-content look",
+  "deliverables": [
+    "out/bf-21-too-good-to-show_4x5.jpg"
+  ],
+  "ai_generated": [],
+  "prices_shown": false,
+  "notes_for_owner": [
+    "Deliberately does not copy Instagram's sensitive-content screen (its icon and wording): Meta rejects ads that imitate its own interface, and repeat rejections can restrict the ad account."
+  ]
+}

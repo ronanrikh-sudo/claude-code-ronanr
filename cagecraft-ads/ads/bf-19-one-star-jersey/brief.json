@@ -1,0 +1,15 @@
+{
+  "id": "bf-19-one-star-jersey",
+  "title": "1-star \"review\" of the jersey sale, written by the brand",
+  "format": "Static image, 4:5 (1080x1350)",
+  "recreates": "Rebuild of the old 1-Star Review hoodie ad",
+  "deliverables": [
+    "out/bf-19-one-star-jersey_4x5.jpg"
+  ],
+  "ai_generated": [],
+  "prices_shown": false,
+  "notes_for_owner": [
+    "The review is openly from CAGECRAFT (\"The brand, reviewing our own sale\"), not presented as a customer review.",
+    "Claim \"XL is already gone in two colourways\" was true on 26 Nov (Diamond and Cotton Candy); recheck before running past a restock."
+  ]
+}

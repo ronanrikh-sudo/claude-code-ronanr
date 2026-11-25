@@ -1,0 +1,14 @@
+{
+  "id": "bf-22-concrete-offer",
+  "title": "30% OFF / Crafted for Combat, Concrete jersey front and back",
+  "format": "Static image, 4:5 (1080x1350)",
+  "recreates": "Offer-led rebuild of the old Concrete \"Crafted for Combat\" ad",
+  "deliverables": [
+    "out/bf-22-concrete-offer_4x5.jpg"
+  ],
+  "ai_generated": [],
+  "prices_shown": false,
+  "notes_for_owner": [
+    "Front and back sit side by side rather than overlapping, so no part of either jersey is hidden."
+  ]
+}
