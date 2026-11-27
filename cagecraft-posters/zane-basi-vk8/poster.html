@@ -93,17 +93,18 @@ html, body { background: var(--bg); }
 .winner.post .tag { font-size: 26px; margin-top: 20px; }
 
 /* ---------- FIGHT DAY ---------- */
-.fightday .credit:not(.url) { display: none; } /* training photo, not Atta Pix */
 .fightday .photo { background-image: url("assets/BASI1.jpg"); filter: grayscale(.55) contrast(1.12) brightness(1.02); }
-.fightday.story .photo { width: 1280px; height: 1600px; left: -150px; top: 170px; }
+.fightday.story .photo { width: 1280px; height: 1600px; left: -150px; top: 60px; }
+.fightday.story .top { top: 130px; }
+.fightday.story .url { top: 1828px; }
 .fightday.post  .photo { width: 1160px; height: 1450px; left: -60px; top: -40px; }
 .fightday .shade { background:
-  radial-gradient(ellipse 55% 30% at 38% 32%, rgba(22,179,183,.18), transparent 70%),
-  linear-gradient(180deg, var(--bg) 0%, var(--bg) 17%, rgba(5,5,6,.35) 24%, rgba(5,5,6,0) 34%, rgba(5,5,6,0) 47%, rgba(5,5,6,.85) 61%, var(--bg) 72%); }
+  radial-gradient(ellipse 55% 30% at 38% 26%, rgba(22,179,183,.18), transparent 70%),
+  linear-gradient(180deg, var(--bg) 0%, var(--bg) 11.5%, rgba(5,5,6,.3) 15%, rgba(5,5,6,0) 19%, rgba(5,5,6,0) 54%, rgba(5,5,6,.8) 66%, var(--bg) 76%); }
 .fightday.post .shade { background:
   radial-gradient(ellipse 55% 32% at 40% 30%, rgba(22,179,183,.18), transparent 70%),
   linear-gradient(180deg, var(--bg) 0%, var(--bg) 8%, rgba(5,5,6,.3) 13%, rgba(5,5,6,0) 17%, rgba(5,5,6,0) 42%, rgba(5,5,6,.85) 58%, var(--bg) 70%); }
-.fightday.story .block { top: 1000px; }
+.fightday.story .block { top: auto; bottom: 120px; }
 .fightday.post  .block { top: 700px; }
 .fightday .name { font-size: 64px; }
 .fightday .head { font-size: 224px; margin: 14px 0 0 -8px; }
@@ -136,7 +137,6 @@ html, body { background: var(--bg); }
 
   <div class="block" id="block"></div>
 
-  <div class="credit label">Photo: Atta Pix</div>
   <div class="credit label url">cagecraftco.com</div>
 </div>
 
