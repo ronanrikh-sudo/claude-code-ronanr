@@ -1,0 +1,15 @@
+{
+  "id": "bf-25-sizes-selling-out",
+  "title": "Sizes are selling out, up to 40% off",
+  "format": "Static image, 4:5 and 9:16",
+  "recreates": "bf-23 big-type layout with a scarcity line",
+  "deliverables": [
+    "out/bf-25-sizes-selling-out_4x5.jpg",
+    "out/bf-25-sizes-selling-out_9x16.jpg"
+  ],
+  "ai_generated": [],
+  "prices_shown": false,
+  "notes_for_owner": [
+    "True on 27 Nov: Diamond jersey out in S/XL/3XL, Cotton Candy jersey out in L/XL, hoodies out in several sizes. Recheck before running past a restock."
+  ]
+}

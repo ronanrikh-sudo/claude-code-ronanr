@@ -1,0 +1,15 @@
+{
+  "id": "bf-26-last-day",
+  "title": "Last day, up to 40% off",
+  "format": "Static image, 4:5 and 9:16",
+  "recreates": "bf-23 big-type layout with a scarcity line",
+  "deliverables": [
+    "out/bf-26-last-day_4x5.jpg",
+    "out/bf-26-last-day_9x16.jpg"
+  ],
+  "ai_generated": [],
+  "prices_shown": false,
+  "notes_for_owner": [
+    "Sunday 29 Nov only: \"Ends tonight at midnight\" is false on any other day."
+  ]
+}

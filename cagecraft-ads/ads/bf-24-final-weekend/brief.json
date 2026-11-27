@@ -1,0 +1,15 @@
+{
+  "id": "bf-24-final-weekend",
+  "title": "Final weekend, up to 40% off",
+  "format": "Static image, 4:5 and 9:16",
+  "recreates": "bf-23 big-type layout with a scarcity line",
+  "deliverables": [
+    "out/bf-24-final-weekend_4x5.jpg",
+    "out/bf-24-final-weekend_9x16.jpg"
+  ],
+  "ai_generated": [],
+  "prices_shown": false,
+  "notes_for_owner": [
+    "Run Fri 27 - Sun 29 Nov."
+  ]
+}
