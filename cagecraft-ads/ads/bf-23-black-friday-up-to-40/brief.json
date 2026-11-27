@@ -1,0 +1,16 @@
+{
+  "id": "bf-23-black-friday-up-to-40",
+  "title": "Black Friday, up to 40% off (type-only, Hallensteins-style layout)",
+  "format": "Static image, 4:5 and 9:16",
+  "recreates": "Owner-supplied reference: big-type Black Friday banner on a textured background",
+  "deliverables": [
+    "out/bf-23-black-friday-up-to-40_4x5.jpg",
+    "out/bf-23-black-friday-up-to-40_9x16.jpg"
+  ],
+  "ai_generated": [],
+  "prices_shown": false,
+  "notes_for_owner": [
+    "Original CAGECRAFT colours, wordmark and texture; only the layout idea is borrowed.",
+    "The product cards under the reference image are Meta catalog cards, not part of the image; they need a catalog-linked ad format."
+  ]
+}
