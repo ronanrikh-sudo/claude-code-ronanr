@@ -92,6 +92,31 @@ html, body { background: var(--bg); }
 .winner .tag { font-size: 30px; margin-top: 34px; }
 .winner.post .tag { font-size: 26px; margin-top: 20px; }
 
+/* ---------- FIGHT DAY ---------- */
+.fightday .credit:not(.url) { display: none; } /* training photo, not Atta Pix */
+.fightday .photo { background-image: url("assets/BASI1.jpg"); filter: grayscale(.55) contrast(1.12) brightness(1.02); }
+.fightday.story .photo { width: 1280px; height: 1600px; left: -150px; top: 170px; }
+.fightday.post  .photo { width: 1160px; height: 1450px; left: -60px; top: -40px; }
+.fightday .shade { background:
+  radial-gradient(ellipse 55% 30% at 38% 32%, rgba(22,179,183,.18), transparent 70%),
+  linear-gradient(180deg, var(--bg) 0%, var(--bg) 17%, rgba(5,5,6,.35) 24%, rgba(5,5,6,0) 34%, rgba(5,5,6,0) 47%, rgba(5,5,6,.85) 61%, var(--bg) 72%); }
+.fightday.post .shade { background:
+  radial-gradient(ellipse 55% 32% at 40% 30%, rgba(22,179,183,.18), transparent 70%),
+  linear-gradient(180deg, var(--bg) 0%, var(--bg) 8%, rgba(5,5,6,.3) 13%, rgba(5,5,6,0) 17%, rgba(5,5,6,0) 42%, rgba(5,5,6,.85) 58%, var(--bg) 70%); }
+.fightday.story .block { top: 1000px; }
+.fightday.post  .block { top: 700px; }
+.fightday .name { font-size: 64px; }
+.fightday .head { font-size: 224px; margin: 14px 0 0 -8px; }
+.fightday.post .name { font-size: 54px; }
+.fightday.post .head { font-size: 196px; }
+.fightday .head .day { display: inline-block; }
+.fightday .row { margin-top: 36px; padding-top: 26px; }
+.fightday.post .row { margin-top: 24px; padding-top: 20px; }
+.fightday .tag { font-size: 30px; margin-top: 34px; }
+.fightday.post .tag { font-size: 26px; margin-top: 20px; }
+.fightday .live { display: inline-flex; align-items: center; gap: 14px; }
+.fightday .live i { width: 16px; height: 16px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 18px var(--teal); }
+
 .story .credit { left: 72px; top: 1740px; } .post .credit { left: 72px; bottom: 44px; font-size: 13px; }
 .story .url { right: 72px; left: auto; } .post .url { right: 72px; left: auto; }
 .url { color: rgba(255,255,255,.7); }
@@ -135,6 +160,16 @@ if (poster === "fightweek") {
     <div class="display head">Fight<br><span class="teal">Week</span></div>
     ${row}
     <div class="label tag">Camp is done. The cage is waiting.</div>`;
+} else if (poster === "fightday") {
+  document.getElementById("toplabel").innerHTML = '<span class="live"><i></i>Tonight</span>';
+  document.getElementById("block").innerHTML = `
+    <div class="display name"><span class="tick"></span>Zane Basi</div>
+    <div class="display head">Fight<br><span class="teal">Day</span></div>
+    <div class="row">
+      <div><div class="label k">The event</div><div class="display v">Vital Kombat 8</div></div>
+      <div class="r"><div class="label k">Sat 28 Nov</div><div class="display v teal">Tonight</div></div>
+    </div>
+    <div class="label tag">The work is done. Tonight, he collects.</div>`;
 } else {
   document.getElementById("toplabel").textContent = "Athlete";
   document.getElementById("block").innerHTML = `
