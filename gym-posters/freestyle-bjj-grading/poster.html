@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>BJJ Grading Day</title>
+<!-- Freestyle MMA, BJJ Grading Day, Instagram post 1080x1350.
+     Red / white / black, taken from the Freestyle MMA hex badge (flame red on black and white).
+     Type: Archivo condensed 900 (close to the badge's heavy condensed wordmark), Inter Tight (site uses Inter). -->
+<style>
+@font-face { font-family: "Archivo"; src: url("assets/fonts/archivo-latin-wdth-normal.woff2") format("woff2");
+  font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: "Inter Tight"; src: url("assets/fonts/inter-tight-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900; }
+
+:root { --paper:#F3F0EA; --red:#D5182B; --redDeep:#A50F1E; --ink:#0B0B0C; --white:#fff; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--paper); }
+#poster { position: relative; width: 1080px; height: 1350px; overflow: hidden; color: var(--ink);
+  background: radial-gradient(ellipse 80% 60% at 50% 38%, #FBFAF7 0%, var(--paper) 55%, #E6E1D8 100%); }
+
+.cond { font-family: "Archivo", sans-serif; font-weight: 900; font-stretch: 62%; text-transform: uppercase; line-height: .82; }
+.label { font-family: "Inter Tight", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .24em; }
+
+/* giant word behind the subject */
+.giant { position: absolute; left: 0; right: 0; top: 520px; text-align: center; font-size: 520px; letter-spacing: -.015em;
+  color: var(--red); filter: drop-shadow(0 -6px 22px rgba(0,0,0,.18)); }
+.giant span { background: linear-gradient(180deg, #E21F31 0%, var(--red) 55%, var(--redDeep) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  display: inline-block; padding: .14em .02em .04em; margin-top: -.14em; }
+
+.subject { position: absolute; left: 196px; top: 196px; width: 637px;
+  filter: grayscale(1) contrast(1.18) brightness(1.02) drop-shadow(0 34px 38px rgba(40,0,6,.28)); }
+
+/* header */
+.head { position: absolute; top: 52px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: flex-start; }
+.brand { display: flex; align-items: center; gap: 22px; }
+.brand img { width: 118px; display: block; }
+.brand .label { font-size: 17px; line-height: 1.55; color: var(--ink); }
+.brand .label b { color: var(--red); font-weight: 700; }
+.date { text-align: right; }
+.date .label { font-size: 16px; color: #6B6862; }
+.date .cond { font-size: 92px; color: var(--ink); margin-top: 6px; }
+.date .cond i { font-style: normal; color: var(--red); }
+
+.side { position: absolute; right: 30px; top: 560px; transform: rotate(90deg); transform-origin: right top;
+  font-size: 14px; color: #8C877E; white-space: nowrap; }
+.side2 { position: absolute; left: 30px; top: 560px; transform: rotate(-90deg); transform-origin: left top;
+  font-size: 14px; color: #8C877E; white-space: nowrap; }
+
+/* bottom panel */
+.panel { position: absolute; left: 0; right: 0; bottom: 0; height: 418px; color: var(--white);
+  background: linear-gradient(180deg, var(--red) 0%, #C51426 60%, var(--redDeep) 100%); padding: 40px 64px 0; }
+.panel::before { content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px; background: var(--ink); }
+.panel .kicker { font-size: 17px; opacity: .85; }
+.panel .title { font-size: 168px; margin-top: 12px; letter-spacing: -.005em; white-space: nowrap; }
+
+/* BJJ belt: white belt, black rank bar with four stripes */
+.belt { position: relative; height: 22px; margin: 26px 0 26px; background: var(--white); }
+.belt .bar { position: absolute; right: 90px; top: 0; bottom: 0; width: 200px; background: var(--ink);
+  display: flex; gap: 14px; justify-content: center; align-items: stretch; padding: 0 0; }
+.belt .bar i { width: 10px; background: var(--white); }
+
+.info { display: grid; grid-template-columns: 1fr 1.12fr 1fr; }
+.info > div + div { border-left: 2px solid rgba(255,255,255,.28); padding-left: 30px; }
+.info .k { font-size: 15px; opacity: .75; }
+.info .v { font-size: 54px; margin-top: 10px; white-space: nowrap; }
+
+.grain { position: absolute; inset: 0; pointer-events: none; opacity: .09; mix-blend-mode: multiply; }
+</style>
+</head>
+<body>
+<div id="poster">
+  <img class="subject" src="assets/subject.png" alt="">
+  <div class="giant cond"><span>BJJ</span></div>
+
+  <div class="head">
+    <div class="brand">
+      <img src="assets/freestyle-logo.png" alt="Freestyle MMA">
+      <div class="label">Freestyle MMA<br><b>Members notice</b></div>
+    </div>
+    <div class="date">
+      <div class="label">Friday</div>
+      <div class="cond">04<i>.</i>12</div>
+    </div>
+  </div>
+
+  <div class="label side">Earn your stripe &nbsp;&mdash;&nbsp; Freestyle MMA</div>
+  <div class="label side2">Brazilian Jiu-Jitsu &nbsp;&mdash;&nbsp; Grading</div>
+
+  <div class="panel">
+    <div class="label kicker">Brazilian Jiu-Jitsu</div>
+    <div class="cond title">Grading Day</div>
+    <div class="belt"><div class="bar"><i></i><i></i><i></i><i></i></div></div>
+    <div class="info">
+      <div><div class="label k">When</div><div class="cond v">Friday 4th</div></div>
+      <div><div class="label k">Who</div><div class="cond v">All members</div></div>
+      <div><div class="label k">Bring</div><div class="cond v">Gi &amp; belt</div></div>
+    </div>
+  </div>
+
+  <svg class="grain" width="100%" height="100%"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+</div>
+</body>
+</html>
