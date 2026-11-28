@@ -23,9 +23,9 @@ const INV = {
   billTo: ['Rival Gym · Castle Hill', 'Attn: Laz Mirdjonov', 'castle.hill@rivalgym.com.au'],
 };
 const ITEMS = [
-  { name: 'Rashguard', desc: 'Idea A · short sleeve · red &amp; white on black · full sublimation', img: 'rashguard_A', price: 24.5, qty: 51, fightwear: true, sizes: [1, 4, 12, 14, 12, 6, 2] },
-  { name: 'MMA Shorts', desc: 'Idea A · non-velcro curved cut · full sublimation', img: 'shorts_A', price: 26.0, qty: 51, fightwear: true, sizes: [1, 4, 12, 14, 12, 6, 2] },
-  { name: 'Training Tee', desc: 'Black tee · white print · front chest + back neck', img: 'tee_B2', price: 20.0, qty: 100, fightwear: false, sizes: [2, 8, 24, 28, 24, 10, 4] },
+  { name: 'Rashguard', desc: 'Idea A · short sleeve · red &amp; white on black · full sublimation', img: 'rashguard_A', price: 24.5, qty: 51, fightwear: true, sizes: [3, 4, 11, 13, 12, 6, 2] },
+  { name: 'MMA Shorts', desc: 'Idea A · non-velcro curved cut · full sublimation', img: 'shorts_A', price: 26.0, qty: 51, fightwear: true, sizes: [3, 4, 11, 13, 12, 6, 2] },
+  { name: 'Training Tee', desc: 'Black tee · white print · front chest + back neck', img: 'tee_B2', price: 20.0, qty: 100, fightwear: false, sizes: [4, 12, 21, 22, 21, 13, 7] },
 ];
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'];
 const MAJOR = new Set(['M', 'L', 'XL']);
@@ -165,7 +165,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</st
       <tr><th class="l">Your order · size breakdown</th>${SIZES.map((z) => `<th>${z}</th>`).join('')}<th>Total</th></tr>
       ${lines.map((i) => `<tr><td class="p"><div class="pr"><img src="${cut(i.img)}"><span class="pn">${i.name}</span></div></td>${i.sizes.map((n, k) => `<td class="${MAJOR.has(SIZES[k]) ? 'm' : ''}">${n}</td>`).join('')}<td class="t">${i.qty}</td></tr>`).join('')}
     </table>
-    <div class="szn">Mostly M, L &amp; XL as requested, with a few of each other size as a buffer. Let us know any changes before production starts.</div>
+    <div class="szn">Mostly M, L &amp; XL as requested, with a spread across the other sizes, including XS for female members. Let us know any changes before production starts.</div>
     <table class="it-t">
       <tr><th>Item</th><th class="r">Price</th><th class="r">Qty</th><th class="r">Total</th></tr>
       ${lines.map((i) => `<tr><td><div class="it">${i.name}${i.save > 0 ? `<span class="save">≈ $${Math.max(1, Math.round(i.save))} less per unit than your last order (all-in)</span>` : i.price === LAST_PRICE[i.name] ? `<span class="same">Same unit price as your last order</span>` : ''}</div><div class="ds">${i.desc}</div></td><td class="r">${money(i.price)}</td><td class="r">${i.qty}</td><td class="r">${money(i.total)}</td></tr>`).join('')}
