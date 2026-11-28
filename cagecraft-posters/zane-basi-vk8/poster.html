@@ -81,6 +81,21 @@ html, body { background: var(--bg); }
   linear-gradient(180deg, rgba(5,5,6,.72) 0%, rgba(5,5,6,0) 18%, rgba(5,5,6,0) 40%, rgba(5,5,6,.82) 58%, var(--bg) 76%); }
 .winner.story .block { top: 1040px; }
 .winner.post  .block { top: 760px; }
+/* winner, flying knee photo (?poster=winner3), credit Dunley Films */
+.winner.knee .photo { background-image: url("assets/zane-winner-knee.jpg"); filter: grayscale(.72) contrast(1.14) brightness(1.04); }
+.winner.knee.story .photo { width: 1242px; height: 1858px; left: -104px; top: -258px; }
+.winner.knee.post  .photo { width: 1296px; height: 1939px; left: -132px; top: -442px; }
+.winner.knee.story .shade { background:
+  radial-gradient(ellipse 62% 40% at 50% 32%, rgba(5,5,6,0) 55%, rgba(5,5,6,.5) 100%),
+  radial-gradient(ellipse 60% 30% at 52% 30%, rgba(22,179,183,.12), transparent 70%),
+  linear-gradient(180deg, var(--bg) 0%, var(--bg) 8%, rgba(5,5,6,0) 16%, rgba(5,5,6,0) 45%, rgba(5,5,6,.80) 62%, var(--bg) 78%); }
+.winner.knee.post .shade { background:
+  radial-gradient(ellipse 62% 46% at 50% 30%, rgba(5,5,6,0) 55%, rgba(5,5,6,.5) 100%),
+  radial-gradient(ellipse 60% 36% at 52% 26%, rgba(22,179,183,.12), transparent 70%),
+  linear-gradient(180deg, rgba(5,5,6,.85) 0%, rgba(5,5,6,0) 13%, rgba(5,5,6,0) 40%, rgba(5,5,6,.82) 58%, var(--bg) 76%); }
+.photo-credit { display: none; }
+.knee .photo-credit { display: block; }
+
 /* winner, alt photo: ground-and-pound from behind (?poster=winner2) */
 .winner.alt .photo { background-image: url("assets/zane-winner-gnp.jpg"); filter: grayscale(.72) contrast(1.16) brightness(1.06); }
 .winner.alt.story .photo { width: 1350px; height: 2020px; left: -210px; top: -250px; }
@@ -149,6 +164,7 @@ html, body { background: var(--bg); }
 
   <div class="block" id="block"></div>
 
+  <div class="credit label photo-credit">Photo: Dunley Films</div>
   <div class="credit label url">cagecraftco.com</div>
 </div>
 
@@ -157,8 +173,9 @@ const q = new URLSearchParams(location.search);
 const poster = q.get("poster") || "fightweek";
 const format = q.get("format") || "story";
 const el = document.getElementById("poster");
-el.classList.add(poster === "winner2" ? "winner" : poster, format);
+el.classList.add(/^winner\d$/.test(poster) ? "winner" : poster, format);
 if (poster === "winner2") el.classList.add("alt");
+if (poster === "winner3") el.classList.add("knee");
 
 const row = `
   <div class="row">

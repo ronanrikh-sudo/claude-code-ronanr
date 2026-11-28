@@ -10,7 +10,7 @@ const page_url = pathToFileURL(path.join(dir, "poster.html")).href;
 const sizes = { story: [1080, 1920], post: [1080, 1350] };
 
 const browser = await chromium.launch();
-for (const poster of (process.argv[2] ? process.argv.slice(2) : ["fightweek", "winner", "winner2", "fightday"])) {
+for (const poster of (process.argv[2] ? process.argv.slice(2) : ["fightweek", "winner", "winner2", "winner3", "fightday"])) {
   for (const [format, [width, height]] of Object.entries(sizes)) {
     const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
     await page.goto(`${page_url}?poster=${poster}&format=${format}`);
