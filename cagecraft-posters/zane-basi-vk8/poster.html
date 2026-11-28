@@ -81,6 +81,18 @@ html, body { background: var(--bg); }
   linear-gradient(180deg, rgba(5,5,6,.72) 0%, rgba(5,5,6,0) 18%, rgba(5,5,6,0) 40%, rgba(5,5,6,.82) 58%, var(--bg) 76%); }
 .winner.story .block { top: 1040px; }
 .winner.post  .block { top: 760px; }
+/* winner, alt photo: ground-and-pound from behind (?poster=winner2) */
+.winner.alt .photo { background-image: url("assets/zane-winner-gnp.jpg"); filter: grayscale(.72) contrast(1.16) brightness(1.06); }
+.winner.alt.story .photo { width: 1350px; height: 2020px; left: -210px; top: -250px; }
+.winner.alt.post  .photo { width: 1134px; height: 1697px; left: -150px; top: -395px; }
+.winner.alt.story .shade { background:
+  radial-gradient(ellipse 62% 40% at 50% 30%, rgba(5,5,6,0) 55%, rgba(5,5,6,.55) 100%),
+  radial-gradient(ellipse 60% 30% at 50% 26%, rgba(22,179,183,.12), transparent 70%),
+  linear-gradient(180deg, var(--bg) 0%, var(--bg) 9%, rgba(5,5,6,0) 17%, rgba(5,5,6,0) 45%, rgba(5,5,6,.80) 62%, var(--bg) 78%); }
+.winner.alt.post .shade { background:
+  radial-gradient(ellipse 62% 46% at 50% 30%, rgba(5,5,6,0) 55%, rgba(5,5,6,.55) 100%),
+  radial-gradient(ellipse 60% 36% at 50% 24%, rgba(22,179,183,.12), transparent 70%),
+  linear-gradient(180deg, rgba(5,5,6,.85) 0%, rgba(5,5,6,0) 13%, rgba(5,5,6,0) 40%, rgba(5,5,6,.82) 58%, var(--bg) 76%); }
 .winner .head { font-size: 172px; margin-left: -8px; white-space: nowrap; }
 .winner .echo { margin-bottom: -68px; }
 .winner .echo.e1 { opacity: .22; } .winner .echo.e2 { opacity: .55; }
@@ -145,7 +157,8 @@ const q = new URLSearchParams(location.search);
 const poster = q.get("poster") || "fightweek";
 const format = q.get("format") || "story";
 const el = document.getElementById("poster");
-el.classList.add(poster, format);
+el.classList.add(poster === "winner2" ? "winner" : poster, format);
+if (poster === "winner2") el.classList.add("alt");
 
 const row = `
   <div class="row">
