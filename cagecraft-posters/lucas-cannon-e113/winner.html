@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lucas Cannon Winner</title>
+<!-- Lucas "Spartan" Cannon, Winner, Eternal MMA 113. ?format=story|post
+     Same layout as ../zane-basi-vk8 Winner posters (CAGECRAFT "Cube Noir"). -->
+<style>
+@font-face { font-family: "Archivo"; src: url("assets/fonts/archivo-latin-wdth-italic.woff2") format("woff2");
+  font-style: italic; font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: "Inter Tight"; src: url("assets/fonts/inter-tight-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900; }
+
+:root { --bg:#050506; --teal:#16B3B7; --text:#fff; --muted:#A7ABB3; --line:rgba(255,255,255,.16); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); }
+#poster { position: relative; overflow: hidden; background: var(--bg); color: var(--text); width: 1080px; height: var(--h); }
+.story { --h: 1920px; } .post { --h: 1350px; }
+
+.photo { position: absolute; background: url("assets/lucas-winner.jpg") no-repeat; background-size: 100% 100%;
+  filter: grayscale(.8) contrast(1.14) brightness(1.04); }
+.layer { position: absolute; inset: 0; pointer-events: none; }
+.grain { opacity: .08; mix-blend-mode: overlay; }
+.frame { border: 2px solid rgba(255,255,255,.10); inset: 28px; }
+
+.display { font-family: "Archivo", sans-serif; font-weight: 900; font-stretch: 125%; font-style: italic;
+  text-transform: uppercase; letter-spacing: -.01em; line-height: .9; }
+.label { font-family: "Inter Tight", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .22em; }
+.teal { color: var(--teal); }
+.outline { color: transparent; -webkit-text-stroke: 2.5px var(--teal); }
+
+.top { position: absolute; left: 72px; right: 72px; display: flex; align-items: center; justify-content: space-between; }
+.top img { display: block; height: auto; }
+.block { position: absolute; left: 72px; right: 72px; }
+.tick { display: inline-block; width: 64px; height: 6px; background: var(--teal); transform: skewX(-18deg); margin-right: 22px; vertical-align: middle; }
+.head { margin-left: -8px; white-space: nowrap; }
+.echo { margin-bottom: -68px; } .echo.e1 { opacity: .22; } .echo.e2 { opacity: .55; }
+.nick { margin: 22px 0 0 86px; }
+.name { white-space: nowrap; }
+.row { display: flex; align-items: flex-end; justify-content: space-between; border-top: 2px solid var(--line); }
+.row .k { color: var(--muted); }
+.row .r { text-align: right; }
+.row .v { white-space: nowrap; }
+.tag { color: var(--muted); letter-spacing: .04em; text-transform: none; font-weight: 500; }
+.url { position: absolute; right: 72px; color: rgba(255,255,255,.7); font-size: 15px; letter-spacing: .18em; }
+
+/* ---------- story 1080x1920 ---------- */
+.story .photo { width: 1366px; height: 1482px; left: -286px; top: -23px; }
+.story .shade { background:
+  radial-gradient(ellipse 60% 40% at 62% 32%, rgba(5,5,6,0) 55%, rgba(5,5,6,.5) 100%),
+  radial-gradient(ellipse 60% 30% at 60% 30%, rgba(22,179,183,.12), transparent 70%),
+  linear-gradient(180deg, var(--bg) 0%, rgba(5,5,6,.6) 6%, rgba(5,5,6,0) 14%, rgba(5,5,6,0) 45%, rgba(5,5,6,.82) 61%, var(--bg) 74%); }
+.story .top { top: 130px; } .story .top img { width: 330px; } .story .top .label { font-size: 21px; }
+.story .block { top: 1030px; }
+.story .head { font-size: 172px; }
+.story .nick { font-size: 24px; }
+.story .name { font-size: 80px; margin-top: 8px; }
+.story .row { margin-top: 32px; padding-top: 24px; }
+.story .row .v { font-size: 42px; } .story .row .k { font-size: 19px; margin-bottom: 10px; }
+.story .tag { font-size: 30px; margin-top: 32px; }
+.story .url { top: 1828px; }
+
+/* ---------- post 1080x1350 ---------- */
+.post .photo { width: 1346px; height: 1460px; left: -266px; top: -208px; }
+.post .shade { background:
+  radial-gradient(ellipse 26% 13% at 86% 5%, rgba(5,5,6,.88) 0%, rgba(5,5,6,.55) 55%, transparent 100%),
+  radial-gradient(ellipse 60% 46% at 62% 30%, rgba(5,5,6,0) 55%, rgba(5,5,6,.5) 100%),
+  radial-gradient(ellipse 60% 36% at 60% 26%, rgba(22,179,183,.12), transparent 70%),
+  linear-gradient(180deg, rgba(5,5,6,.8) 0%, rgba(5,5,6,0) 12%, rgba(5,5,6,0) 40%, rgba(5,5,6,.84) 57%, var(--bg) 72%); }
+.post .top { top: 58px; } .post .top img { width: 280px; } .post .top .label { font-size: 19px; }
+.post .block { top: 690px; }
+.post .echo.e1 { display: none; }
+.post .head { font-size: 172px; }
+.post .nick { font-size: 20px; margin-top: 16px; margin-left: 76px; }
+.post .tick { width: 54px; margin-right: 18px; }
+.post .name { font-size: 68px; margin-top: 6px; }
+.post .row { margin-top: 22px; padding-top: 18px; }
+.post .row .v { font-size: 40px; } .post .row .k { font-size: 17px; margin-bottom: 8px; }
+.post .tag { font-size: 26px; margin-top: 20px; }
+.post .url { bottom: 44px; font-size: 13px; }
+</style>
+</head>
+<body>
+<div id="poster">
+  <div class="photo"></div>
+  <div class="layer shade"></div>
+  <svg class="layer grain" width="100%" height="100%"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <div class="layer frame"></div>
+
+  <div class="top">
+    <img src="assets/logo-white.png" alt="CAGECRAFT">
+    <div class="label teal">Athlete</div>
+  </div>
+
+  <div class="block">
+    <div class="display head outline echo e1">Winner</div>
+    <div class="display head outline echo e2">Winner</div>
+    <div class="display head">Winner</div>
+    <div class="label nick teal">&ldquo;Spartan&rdquo;</div>
+    <div class="display name"><span class="tick"></span><span class="teal">Lucas Cannon</span></div>
+    <div class="row">
+      <div><div class="label k">The event</div><div class="display v">Eternal MMA 113</div></div>
+      <div class="r"><div class="label k">Geelong</div><div class="display v">28 Nov 2026</div></div>
+    </div>
+    <div class="label tag">Weight made. Went to work. Job done.</div>
+  </div>
+
+  <div class="label url">cagecraftco.com</div>
+</div>
+<script>
+document.getElementById("poster").classList.add(new URLSearchParams(location.search).get("format") || "story");
+</script>
+</body>
+</html>
