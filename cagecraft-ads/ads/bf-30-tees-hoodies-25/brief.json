@@ -1,0 +1,14 @@
+{
+  "id": "bf-30-tees-hoodies-25",
+  "title": "25% off tees and hoodies",
+  "format": "Static image, 4:5 and 9:16",
+  "template": "bf-23-black-friday-up-to-40",
+  "target_buyer": "Lifestyle and casual buyers who will never wear a rashguard.",
+  "deliverables": [
+    "out/bf-30-tees-hoodies-25_4x5.jpg",
+    "out/bf-30-tees-hoodies-25_9x16.jpg"
+  ],
+  "ai_generated": [],
+  "prices_shown": false,
+  "claims_checked": "Discounts read from live Shopify compare-at prices on 28 Nov: fightwear and jerseys 30%, tees and hoodies 25%, Essentials Training Tee 40% (the 'up to 40%')."
+}

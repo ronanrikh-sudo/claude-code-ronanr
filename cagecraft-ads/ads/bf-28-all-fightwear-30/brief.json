@@ -1,0 +1,14 @@
+{
+  "id": "bf-28-all-fightwear-30",
+  "title": "30% off all fightwear",
+  "format": "Static image, 4:5 and 9:16",
+  "template": "bf-23-black-friday-up-to-40",
+  "target_buyer": "MMA, BJJ and Muay Thai athletes who train in shorts and rashguards.",
+  "deliverables": [
+    "out/bf-28-all-fightwear-30_4x5.jpg",
+    "out/bf-28-all-fightwear-30_9x16.jpg"
+  ],
+  "ai_generated": [],
+  "prices_shown": false,
+  "claims_checked": "Discounts read from live Shopify compare-at prices on 28 Nov: fightwear and jerseys 30%, tees and hoodies 25%, Essentials Training Tee 40% (the 'up to 40%')."
+}
