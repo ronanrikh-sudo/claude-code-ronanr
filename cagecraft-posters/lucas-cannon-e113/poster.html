@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lucas Cannon E113</title>
+<!-- Lucas "Spartan" Cannon, Fight Day, Eternal MMA 113. ?format=story|post
+     Same CAGECRAFT "Cube Noir" system as ../zane-basi-vk8/poster.html. -->
+<style>
+@font-face { font-family: "Archivo"; src: url("assets/fonts/archivo-latin-wdth-italic.woff2") format("woff2");
+  font-style: italic; font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: "Inter Tight"; src: url("assets/fonts/inter-tight-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900; }
+
+:root { --bg:#050506; --teal:#16B3B7; --text:#fff; --muted:#A7ABB3; --line:rgba(255,255,255,.16); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); }
+#poster { position: relative; overflow: hidden; background: var(--bg); color: var(--text); width: 1080px; height: var(--h); }
+.story { --h: 1920px; } .post { --h: 1350px; }
+
+.photo { position: absolute; background: url("assets/lucas-weighin.jpg") no-repeat; background-size: 100% 100%;
+  filter: grayscale(.92) contrast(1.18) brightness(1.04); }
+.layer { position: absolute; inset: 0; pointer-events: none; }
+/* knocks back the weigh-in backdrop logos at the edges, keeps him lit */
+.vig { background: radial-gradient(ellipse 52% 46% at 50% 36%, rgba(5,5,6,0) 45%, rgba(5,5,6,.55) 78%, rgba(5,5,6,.9) 100%); }
+.post .vig { background: radial-gradient(ellipse 54% 50% at 50% 34%, rgba(5,5,6,0) 45%, rgba(5,5,6,.6) 78%, rgba(5,5,6,.92) 100%); }
+.grain { opacity: .08; mix-blend-mode: overlay; }
+.frame { border: 2px solid rgba(255,255,255,.10); inset: 28px; }
+
+.display { font-family: "Archivo", sans-serif; font-weight: 900; font-stretch: 125%; font-style: italic;
+  text-transform: uppercase; letter-spacing: -.01em; line-height: .9; }
+.label { font-family: "Inter Tight", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .22em; }
+.teal { color: var(--teal); }
+
+.top { position: absolute; left: 72px; right: 72px; display: flex; align-items: center; justify-content: space-between; }
+.top img { display: block; height: auto; }
+.live { display: inline-flex; align-items: center; gap: 14px; }
+.live i { width: 16px; height: 16px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 18px var(--teal); }
+.block { position: absolute; left: 72px; right: 72px; }
+.tick { display: inline-block; width: 64px; height: 6px; background: var(--teal); transform: skewX(-18deg); margin-right: 22px; vertical-align: middle; }
+.nick { margin: 0 0 14px 86px; }
+.row { display: flex; align-items: flex-end; justify-content: space-between; border-top: 2px solid var(--line); }
+.row .k { color: var(--muted); }
+.row .r { text-align: right; }
+.tag { color: var(--muted); letter-spacing: .04em; text-transform: none; font-weight: 500; }
+.stream { color: var(--text); }
+.stream b { color: var(--teal); font-weight: 600; }
+.url { position: absolute; right: 72px; color: rgba(255,255,255,.7); font-size: 15px; letter-spacing: .18em; }
+
+/* ---------- story 1080x1920 ---------- */
+.story .photo { width: 1300px; height: 1167px; left: -110px; top: 262px; }
+.story .shade { background:
+  radial-gradient(ellipse 60% 26% at 50% 30%, rgba(22,179,183,.16), transparent 70%),
+  linear-gradient(180deg, var(--bg) 0%, var(--bg) 13.2%, rgba(5,5,6,0) 15.6%, rgba(5,5,6,0) 52%, rgba(5,5,6,.82) 63%, var(--bg) 73%); }
+.story .top { top: 130px; } .story .top img { width: 330px; } .story .top .label { font-size: 21px; }
+.story .block { bottom: 132px; }
+.story .nick { font-size: 24px; }
+.story .name { font-size: 64px; }
+.story .head { font-size: 224px; margin: 14px 0 0 -8px; }
+.story .row { margin-top: 34px; padding-top: 24px; }
+.story .row .v { font-size: 46px; } .story .row .k { font-size: 19px; margin-bottom: 10px; }
+.story .tag { font-size: 30px; margin-top: 30px; }
+.story .stream { font-size: 20px; margin-top: 22px; }
+.story .url { top: 1828px; }
+
+/* ---------- post 1080x1350 ---------- */
+.post .photo { width: 1150px; height: 1032px; left: -35px; top: 112px; }
+.post .shade { background:
+  radial-gradient(ellipse 60% 30% at 50% 28%, rgba(22,179,183,.16), transparent 70%),
+  linear-gradient(180deg, var(--bg) 0%, var(--bg) 8%, rgba(5,5,6,0) 11.5%, rgba(5,5,6,0) 44%, rgba(5,5,6,.84) 58%, var(--bg) 70%); }
+.post .top { top: 58px; } .post .top img { width: 280px; } .post .top .label { font-size: 19px; }
+.post .block { bottom: 84px; }
+.post .nick { font-size: 20px; margin-bottom: 10px; margin-left: 76px; }
+.post .tick { width: 54px; margin-right: 18px; }
+.post .name { font-size: 54px; }
+.post .head { font-size: 180px; margin: 10px 0 0 -6px; }
+.post .row { margin-top: 22px; padding-top: 18px; }
+.post .row .v { font-size: 40px; } .post .row .k { font-size: 17px; margin-bottom: 8px; }
+.post .tag { display: none; }
+.post .stream { font-size: 18px; margin-top: 18px; }
+.post .url { bottom: 44px; font-size: 13px; }
+</style>
+</head>
+<body>
+<div id="poster">
+  <div class="photo"></div>
+  <div class="layer vig"></div>
+  <div class="layer shade"></div>
+  <svg class="layer grain" width="100%" height="100%"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <div class="layer frame"></div>
+
+  <div class="top">
+    <img src="assets/logo-white.png" alt="CAGECRAFT">
+    <div class="label teal"><span class="live"><i></i>Tonight</span></div>
+  </div>
+
+  <div class="block">
+    <div class="label nick teal">&ldquo;Spartan&rdquo;</div>
+    <div class="display name"><span class="tick"></span>Lucas Cannon</div>
+    <div class="display head">Fight<br><span class="teal">Day</span></div>
+    <div class="row">
+      <div><div class="label k">The event</div><div class="display v">Eternal MMA 113</div></div>
+      <div class="r"><div class="label k">Geelong</div><div class="display v teal">Tonight</div></div>
+    </div>
+    <div class="label tag">Weight made. Now he goes to work.</div>
+    <div class="label stream">Live on <b>UFC Fight Pass</b></div>
+  </div>
+
+  <div class="label url">cagecraftco.com</div>
+</div>
+<script>
+document.getElementById("poster").classList.add(new URLSearchParams(location.search).get("format") || "story");
+</script>
+</body>
+</html>
