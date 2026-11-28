@@ -1,3 +1,6 @@
 # regenerable intermediates (node scripts/build.mjs && python3 scripts/crop_cutouts.py)
 out/products/cutouts/
 out/products/cutouts_cropped/
+# invoices carry bank details: keep them out of git
+invoice/private.json
+out/invoice/
