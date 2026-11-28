@@ -25,7 +25,7 @@ const INV = {
 const ITEMS = [
   { name: 'Rashguard', desc: 'Idea A · short sleeve · red &amp; white on black · full sublimation', img: 'rashguard_A', price: 24.5, qty: 51, fightwear: true, sizes: [3, 4, 11, 13, 12, 6, 2] },
   { name: 'MMA Shorts', desc: 'Idea A · non-velcro curved cut · full sublimation', img: 'shorts_A', price: 26.0, qty: 51, fightwear: true, sizes: [3, 4, 11, 13, 12, 6, 2] },
-  { name: 'Training Tee', desc: 'Black tee · white print · front chest + back neck', img: 'tee_B2', price: 20.0, qty: 100, fightwear: false, sizes: [4, 12, 21, 22, 21, 13, 7] },
+  { name: 'Training Tee', desc: 'Black tee · white print · front chest + back neck', img: 'tee_B2', price: 19.5, qty: 100, fightwear: false, sizes: [4, 12, 21, 22, 21, 13, 7] },
 ];
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'];
 const MAJOR = new Set(['M', 'L', 'XL']);
@@ -44,6 +44,7 @@ const fee = Math.round(feeBase * FEE_RATE * 100) / 100;
 const grand = goods + fee + FREIGHT;
 // all-in per unit = price + 10% fee + an even share of freight; last orders: CC2026001/CC2026011
 // (fightwear: unit + 10% fee + $450 DHL over 102 pcs) and CC2026030 (tees: $20 + $130 DHL over 70)
+const less = (d) => (d < 1 ? `${Math.round(d * 100)}c` : `≈ $${Math.round(d)}`);
 const LAST_PRICE = { Rashguard: 24.49, 'MMA Shorts': 26.0, 'Training Tee': 20.0 };
 const LAST = { Rashguard: 24.49 * 1.1 + 450 / 102, 'MMA Shorts': 26.0 * 1.1 + 450 / 102, 'Training Tee': 20 + 130 / 70 };
 const pcs = lines.reduce((a, i) => a + i.qty, 0);
@@ -80,17 +81,17 @@ const CSS = `
   html, body { width: 794px; height: 1123px; background: #fff }
   body { font-family: Inter, sans-serif; color: #141414; -webkit-font-smoothing: antialiased }
   .page { position: relative; width: 794px; height: 1123px; overflow: hidden }
-  .hdr { position: relative; height: 214px; background: radial-gradient(ellipse 70% 90% at 30% 20%, #1b1b1b 0%, #0b0b0b 70%); color: #f4f4f2; overflow: hidden; padding: 30px 52px 0 }
+  .hdr { position: relative; height: 196px; background: radial-gradient(ellipse 70% 90% at 30% 20%, #1b1b1b 0%, #0b0b0b 70%); color: #f4f4f2; overflow: hidden; padding: 24px 52px 0 }
   .kick { font: 600 9.5px/1 Inter; letter-spacing: .26em; text-transform: uppercase; color: #9a9a98 }
-  .big { font: 900 54px/0.95 'Inter Display', Inter; letter-spacing: -.01em; margin-top: 12px }
+  .big { font: 900 50px/0.95 'Inter Display', Inter; letter-spacing: -.01em; margin-top: 10px }
   .sub { font: 600 13px/1.4 Inter; color: #e2e2e0; margin-top: 10px }
   .invno { font: 700 12px/1 Inter; letter-spacing: .08em; color: #fff; margin-top: 10px }
   .invno span { color: ${RED} }
-  .co { position: absolute; right: 52px; top: 30px; text-align: right; font: 500 10.5px/1.7 Inter; color: #c8c8c6 }
+  .co { position: absolute; right: 52px; top: 24px; text-align: right; font: 500 10.5px/1.7 Inter; color: #c8c8c6 }
   .co b { display: block; font: 800 15px/1 'Inter Display', Inter; letter-spacing: .06em; color: #fff; margin: 4px 0 10px }
   .lock { display: flex; align-items: center; gap: 10px; margin-top: 2px }
   .lock .x { font: 300 16px/1 Inter; color: #8a8a88 }
-  .body { padding: 22px 52px 0 }
+  .body { padding: 16px 52px 0 }
   .meta { display: grid; grid-template-columns: 1.05fr 1.05fr 1.1fr; gap: 22px; align-items: start }
   .lbl { font: 700 8.5px/1 Inter; letter-spacing: .22em; text-transform: uppercase; color: #8a8a88; margin-bottom: 7px }
   .val { font: 500 11px/1.55 Inter; color: #222 }
@@ -101,12 +102,12 @@ const CSS = `
   .sz { width: 100%; border-collapse: separate; border-spacing: 0 5px; margin-top: 10px }
   .sz th { font: 700 8px/1 Inter; letter-spacing: .14em; text-transform: uppercase; color: #8a8a88; text-align: center; padding: 0 0 2px; border: 0 }
   .sz th.l { text-align: left }
-  .sz td { background: #f2f2f0; text-align: center; font: 600 11px/1 Inter; color: #333; padding: 0; height: 34px; border: 0 }
+  .sz td { background: #f2f2f0; text-align: center; font: 600 11px/1 Inter; color: #333; padding: 0; height: 30px; border: 0 }
   .sz td.p { text-align: left; border-radius: 9px 0 0 9px; padding-left: 8px }
   .sz td.t { border-radius: 0 9px 9px 0; font-weight: 800; color: #111 }
   .sz td.m { background: #e6e6e3; font-weight: 800; color: #111 }
   .sz .pr { display: flex; align-items: center; gap: 10px }
-  .sz img { max-width: 28px; max-height: 28px; display: block }
+  .sz img { max-width: 25px; max-height: 25px; display: block }
   .sz .pn { font: 800 10px/1.2 'Inter Display', Inter; letter-spacing: .06em; text-transform: uppercase }
   .szn { font: 500 9px/1.3 Inter; color: #8a8a88; margin-top: 1px }
   .same { display: inline-block; margin: 0 0 0 10px; vertical-align: 1px; padding: 2px 8px 2px 7px; border-radius: 20px; border: 1.2px solid #1E9E52; color: #177A43; font: 700 9.5px/1.2 Inter }
@@ -118,23 +119,23 @@ const CSS = `
   table { width: 100%; border-collapse: collapse; margin-top: 12px }
   .it-t th { font: 700 8.5px/1 Inter; letter-spacing: .2em; text-transform: uppercase; color: #8a8a88; text-align: left; padding: 0 0 9px; border-bottom: 1.5px solid #141414 }
   .it-t th.r, .it-t td.r { text-align: right }
-  .it-t td { padding: 7px 0; border-bottom: 1px solid #e3e3e1; font: 500 11px/1.4 Inter; vertical-align: top }
+  .it-t td { padding: 6px 0; border-bottom: 1px solid #e3e3e1; font: 500 11px/1.4 Inter; vertical-align: top }
   td .it { font: 700 12px/1.3 Inter; color: #111 }
   td .ds { font: 500 9.5px/1.4 Inter; color: #777; margin-top: 2px }
   .it-t tr.sep td { border-bottom: 1.5px solid #141414 }
   .tot { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 14px }
   .panel { width: 340px; background: #f2f2f0; border-radius: 10px; padding: 12px 16px }
   .panel .lbl { margin-bottom: 9px }
-  .tick { display: flex; gap: 8px; font: 500 10.5px/1.45 Inter; color: #222; margin-top: 5px }
+  .tick { display: flex; gap: 8px; font: 500 10.5px/1.45 Inter; color: #222; margin-top: 4px }
   .tick i { flex: none; width: 14px; height: 14px; border-radius: 50%; background: ${RED}; margin-top: 1px; position: relative }
   .tick i::after { content: ''; position: absolute; left: 4.5px; top: 2.5px; width: 3px; height: 6px; border: solid #fff; border-width: 0 1.6px 1.6px 0; transform: rotate(45deg) }
   .sums { width: 270px }
   .sums .row { display: flex; justify-content: space-between; font: 500 11px/1 Inter; color: #333; padding: 6px 0 }
   .sums .grand { border-top: 1.5px solid #141414; margin-top: 6px; padding-top: 11px; font: 900 18px/1 'Inter Display', Inter; color: #111 }
-  .pay { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e3e3e1 }
+  .pay { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #e3e3e1 }
   .kv { display: grid; grid-template-columns: 92px 1fr; font: 500 10.5px/1.75 Inter; color: #222 }
   .kv span:nth-child(odd) { color: #8a8a88 }
-  .foot { display: flex; justify-content: space-between; align-items: flex-end; margin: 12px 52px 0; padding-top: 12px; border-top: 1px solid #e3e3e1 }
+  .foot { display: flex; justify-content: space-between; align-items: flex-end; margin: 10px 52px 0; padding-top: 10px; border-top: 1px solid #e3e3e1 }
   .thanks { font: 500 10px/1.55 Inter; color: #555; max-width: 330px }
   .sig { text-align: right }
   .sig b { display: block; font: 800 12px/1.2 'Inter Display', Inter }
@@ -142,6 +143,21 @@ const CSS = `
   .save { display: inline-block; margin: 0 0 0 10px; vertical-align: 1px; padding: 3px 8px 3px 7px; border-radius: 20px; background: #E6F5EC; color: #177A43; font: 700 9.5px/1.2 Inter }
   .tick.g { color: #177A43; font-weight: 700 }
   .tick.g i { background: #1E9E52 }
+  .tl { margin-top: 10px; padding-top: 10px; border-top: 1px solid #e3e3e1 }
+  .tlh { display: flex; align-items: baseline; gap: 8px }
+  .tlh b { font: 900 16px/1 'Inter Display', Inter; color: #111 }
+  .tlh span { font: 500 10px/1 Inter; color: #555 }
+  .steps { position: relative; height: 40px; margin-top: 10px }
+  .steps::before { content: ''; position: absolute; left: 6px; right: 6px; top: 5px; height: 2px; background: #d6d6d3 }
+  .st { position: absolute; top: 0; font: 600 8.5px/1.25 Inter; color: #222; white-space: nowrap }
+  .st:nth-child(1) { left: 0 }
+  .st:nth-child(2) { left: 33.33%; transform: translateX(-50%); text-align: center }
+  .st:nth-child(3) { left: 66.67%; transform: translateX(-50%); text-align: center }
+  .st:nth-child(4) { right: 0; text-align: right }
+  .st i { display: block; width: 12px; height: 12px; border-radius: 50%; background: #141414; border: 2px solid #fff; box-shadow: 0 0 0 1px #141414; margin-bottom: 6px }
+  .st:nth-child(2) i, .st:nth-child(3) i { margin-left: auto; margin-right: auto }
+  .st:last-child i { margin-left: auto; background: ${RED}; box-shadow: 0 0 0 1px ${RED} }
+  .st em { display: block; font: 500 8.5px/1.25 Inter; font-style: normal; color: #8a8a88 }
   .band { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: ${RED} }
 `;
 
@@ -168,23 +184,32 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</st
     <div class="szn">Mostly M, L &amp; XL as requested, with a spread across the other sizes, including XS for female members. Let us know any changes before production starts.</div>
     <table class="it-t">
       <tr><th>Item</th><th class="r">Price</th><th class="r">Qty</th><th class="r">Total</th></tr>
-      ${lines.map((i) => `<tr><td><div class="it">${i.name}${i.save > 0 ? `<span class="save">≈ $${Math.max(1, Math.round(i.save))} less per unit than your last order (all-in)</span>` : i.price === LAST_PRICE[i.name] ? `<span class="same">Same unit price as your last order</span>` : ''}</div><div class="ds">${i.desc}</div></td><td class="r">${money(i.price)}</td><td class="r">${i.qty}</td><td class="r">${money(i.total)}</td></tr>`).join('')}
+      ${lines.map((i) => `<tr><td><div class="it">${i.name}${i.save > 0 ? `<span class="save">≈ $${Math.max(1, Math.round(i.save))} less per unit than your last order (all-in)</span>` : i.price < LAST_PRICE[i.name] ? `<span class="save">${less(LAST_PRICE[i.name] - i.price)} less per unit than your last order</span>` : i.price === LAST_PRICE[i.name] ? `<span class="same">Same unit price as your last order</span>` : ''}</div><div class="ds">${i.desc}</div></td><td class="r">${money(i.price)}</td><td class="r">${i.qty}</td><td class="r">${money(i.total)}</td></tr>`).join('')}
       <tr><td><div class="it">CAGECRAFT service fee</div><div class="ds">10% of goods · design, production management &amp; quality control</div></td><td class="r">10%</td><td class="r">—</td><td class="r">${money(fee)}</td></tr>
       <tr class="sep"><td><div class="it">International freight</div><div class="ds">Door to door · fixed price, nothing added on arrival</div></td><td class="r">${money(FREIGHT)}</td><td class="r">1</td><td class="r">${money(FREIGHT)}</td></tr>
     </table>
     <div class="tot">
       <div class="panel"><div class="lbl">This order</div>
-        <div class="tick"><i></i><div>Same unit prices as your last orders</div></div>
+        <div class="tick"><i></i><div>Same fightwear unit prices as your last order</div></div>
         ${saved.length ? `<div class="tick g"><i></i><div>Fightwear ≈ $1 cheaper per unit vs your last order</div></div>` : ''}
+        <div class="tick g"><i></i><div>Training tees 50c cheaper per unit than your last order</div></div>
         <div class="tick"><i></i><div>Freight fixed upfront, so nothing is added later</div></div>
         <div class="tick"><i></i><div>Custom kit design and mockups included</div></div>
-        <div class="tick"><i></i><div>Production starts once payment is received</div></div>
       </div>
       <div class="sums">
         <div class="row"><span>Goods</span><span>${money(goods)}</span></div>
         <div class="row"><span>Service fee (10% of goods)</span><span>${money(fee)}</span></div>
         <div class="row"><span>Freight</span><span>${money(FREIGHT)}</span></div>
         <div class="row grand"><span>Grand total</span><span>${money(grand)}</span></div>
+        <div class="tl">
+          <div class="tlh"><b>30–40 days</b><span>from payment to your gym</span></div>
+          <div class="steps">
+            <div class="st"><i></i>Payment<em>Day 0</em></div>
+            <div class="st"><i></i>Production<em>Day 1–2</em></div>
+            <div class="st"><i></i>QC &amp; dispatch<em>≈ Day 25</em></div>
+            <div class="st"><i></i>At your gym<em>Day 30–40</em></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="pay">
@@ -203,6 +228,8 @@ const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 794, height: 1123 }, deviceScaleFactor: 2 });
 await page.setContent(html, { waitUntil: 'load' });
 await page.evaluate(() => document.fonts.ready);
+const overflow = await page.evaluate(() => Math.ceil(document.querySelector('.foot').getBoundingClientRect().bottom - (1123 - 20)));
+if (overflow > 0) console.warn(`WARNING: footer is ${overflow}px too low (needs 20px clear of the bottom band)`);
 const base = path.join(OUT, `${INV.no}-Rival-Gym-Team-Kit`);
 await page.screenshot({ path: base + '.png' });
 await page.pdf({ path: base + '.pdf', format: 'A4', printBackground: true, preferCSSPageSize: true });
