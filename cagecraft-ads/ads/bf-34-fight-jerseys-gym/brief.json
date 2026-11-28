@@ -1,0 +1,11 @@
+{
+  "id": "bf-34-fight-jerseys-gym",
+  "title": "30% off Fight Jerseys (Tiffany gym photo)",
+  "format": "Static image, 4:5 and 9:16",
+  "template": "ads/_tpl/photo-bigtype.html",
+  "photo": "library/photo/jersey-tiffany/lifestyle-back-3.jpg",
+  "photo_choice": "Tiffany Fight Team 25 jersey in the gym: best seller, in context.",
+  "ai_generated": [],
+  "prices_shown": false,
+  "claims_checked": "Discounts match live Shopify compare-at prices on 28 Nov."
+}
