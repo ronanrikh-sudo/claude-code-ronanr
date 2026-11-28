@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from './pw.mjs';
 import { emblem, IDEAS, RED } from './emblem.mjs';
 import { patternPath } from './pattern.mjs';
+import { ORDER, ORDER_NO, SIZES, MAJOR } from './order.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const P = JSON.parse(fs.readFileSync(path.join(ROOT, 'invoice/private.json'), 'utf8'));
@@ -16,23 +17,17 @@ fs.mkdirSync(OUT, { recursive: true });
 
 // ---- order ------------------------------------------------------------------------------------
 const INV = {
-  no: 'CC2026032',
+  no: ORDER_NO,
   date: '28/11/2026',
   due: 'On receipt',
   title: 'Rival Gym Team Kit',
   billTo: ['Rival Gym · Castle Hill', 'Attn: Laz Mirdjonov', 'castle.hill@rivalgym.com.au'],
 };
 const ITEMS = [
-  { name: 'Rashguard', desc: 'Idea A · short sleeve · red &amp; white on black · full sublimation', img: 'rashguard_A', price: 24.5, qty: 51, fightwear: true, sizes: [3, 4, 11, 13, 12, 6, 2] },
-  { name: 'MMA Shorts', desc: 'Idea A · non-velcro curved cut · full sublimation', img: 'shorts_A', price: 26.0, qty: 51, fightwear: true, sizes: [3, 4, 11, 13, 12, 6, 2] },
-  { name: 'Training Tee', desc: 'Black tee · white print · front chest + back neck', img: 'tee_B2', price: 19.5, qty: 100, fightwear: false, sizes: [4, 12, 21, 22, 21, 13, 7] },
+  { name: 'Rashguard', desc: 'Idea A · short sleeve · red &amp; white on black · full sublimation', img: 'rashguard_A', price: 24.5, fightwear: true, ...ORDER.rashguard },
+  { name: 'MMA Shorts', desc: 'Idea A · non-velcro curved cut · full sublimation', img: 'shorts_A', price: 26.0, fightwear: true, ...ORDER.shorts },
+  { name: 'Training Tee', desc: 'Black tee · white print · front chest + back neck', img: 'tee_B2', price: 19.5, fightwear: false, ...ORDER.tee },
 ];
-const SIZES = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'];
-const MAJOR = new Set(['M', 'L', 'XL']);
-for (const i of ITEMS) {
-  const n = i.sizes.reduce((a, b) => a + b, 0);
-  if (n !== i.qty) throw new Error(`${i.name}: sizes add to ${n}, qty is ${i.qty}`);
-}
 const FEE_RATE = 0.10; // CAGECRAFT service fee on all goods (not freight)
 const FREIGHT = 700; // international freight, door to door, fixed
 

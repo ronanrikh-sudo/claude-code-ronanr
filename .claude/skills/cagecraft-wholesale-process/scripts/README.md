@@ -21,6 +21,9 @@ Requirements already present in this environment: Node 22 with a global Playwrig
 | `boards.mjs` | Builds the deck slides (4K PNG) and the PDF. |
 | `artwork.mjs` | Exports vector emblem + lockups to `out/artwork/`. |
 | `pw.mjs` | Loads the global Playwright from ESM. |
+| `order.mjs` | The confirmed order: invoice number, sizes and quantities per garment (shared by invoice + catalogue). |
+| `invoice.mjs` | The branded A4 invoice (Rival CC2026032 as the example). Reads payment details from a gitignored `invoice/private.json`; writes to a gitignored `out/invoice/`. |
+| `catalog.mjs` | The order catalogue PDF (cover, a page per garment with close-ups and sizes, order summary) → `out/catalog/`. |
 
 ## Run order (from the project root)
 ```bash
@@ -30,6 +33,9 @@ node scripts/build.mjs out/products        # optional 2nd arg filters names, e.g
 python3 scripts/crop_cutouts.py
 node scripts/boards.mjs
 node scripts/artwork.mjs
+# after approval, with scripts/order.mjs filled in:
+node scripts/invoice.mjs                   # needs invoice/private.json
+node scripts/catalog.mjs
 ```
 
 ## Adapting for a new client

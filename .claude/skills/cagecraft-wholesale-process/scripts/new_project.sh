@@ -18,6 +18,12 @@ cat > "$TARGET/.gitignore" <<'EOF'
 out/products/cutouts/
 out/products/cutouts_cropped/
 scripts/__pycache__/
+out/catalog/details/
+out/catalog/img/
+out/catalog/preview/
+# invoices carry bank details: keep them out of git
+invoice/private.json
+out/invoice/
 EOF
 cat <<MSG
 Scaffolded $TARGET

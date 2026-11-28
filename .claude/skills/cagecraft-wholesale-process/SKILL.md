@@ -64,6 +64,8 @@ Once fronts are approved, design backs in the surviving colourways only (co-bran
 ### 10. Invoice or sponsorship
 When the client is happy, follow `references/invoicing.md`. Never invent prices, quantities, ABN or bank details — collect them from the user.
 
+Send an **order catalogue** with the invoice: a short premium A4 PDF of exactly what they're getting (front + back, close-ups, size breakdown per garment, order summary, timeline). No prices in it, so it can be shared with their team. Spec in `references/deck-format.md` § Order catalogue; script `scripts/catalog.mjs`.
+
 ## Decision rules learned on Rival
 
 - **Real letterforms, exact colour.** Trace the client's own wordmark and sample their red; never approximate with a font.
